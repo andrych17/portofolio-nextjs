@@ -125,8 +125,6 @@ export default function Projects() {
 
       {/* Cyber Animations */}
       <CyberGrid />
-      <ScanLine />
-      <DigitalParticles />
       
       {/* Background decoration */}
       <motion.div
@@ -140,7 +138,7 @@ export default function Projects() {
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -410,6 +408,23 @@ export default function Projects() {
           ... and many more projects in SaaS and Manufacturing sectors
         </motion.p>
       </div>
+
+      {/* Scroll Down */}
+      <motion.a
+        href="#certifications"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-gray-500 text-sm">Scroll Down</span>
+          <div className="w-6 h-6 text-purple-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </div>
+      </motion.a>
     </section>
   );
 }

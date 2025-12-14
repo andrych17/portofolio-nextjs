@@ -49,9 +49,9 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900"
     >
-      {/* Animated Background Particles */}
-      <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => {
+      {/* Animated Background Particles - Only on desktop */}
+      <div className="absolute inset-0 hidden md:block">
+        {[...Array(20)].map((_, i) => {
           const duration = 5 + (i % 5);
           const delay = (i % 10) * 0.5;
           const left = (i * 7) % 100;
@@ -92,58 +92,15 @@ export default function Hero() {
         />
       </div>
 
-      {/* Gradient Orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-          x: [0, 50, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/30 rounded-full blur-3xl"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.5, 0.3, 0.5],
-          x: [0, -50, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/20 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      {/* Gradient Orbs - Static on mobile for better performance */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl hidden md:block" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/30 rounded-full blur-3xl hidden md:block" />
 
       {/* Code Rain Effect */}
       <CodeRain />
       
       {/* Hex Floating */}
       <HexFloating />
-
-      {/* Cyber Animations */}
-      <CyberGrid />
-      <ScanLine />
-      <DigitalParticles />
 
       <div className="relative z-10 text-center px-4">
         {/* Floating Badge */}
@@ -180,21 +137,12 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-8xl font-bold mb-6"
+          className="text-5xl md:text-8xl font-bold mb-6 text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <motion.span 
-            className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent inline-block"
-            animate={{ 
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{ duration: 5, repeat: Infinity }}
-            style={{ backgroundSize: "200% 200%" }}
-          >
-            <GlitchText>Andry Huang</GlitchText>
-          </motion.span>
+          <GlitchText>Andry Huang</GlitchText>
         </motion.h1>
 
         <motion.div
@@ -314,25 +262,6 @@ export default function Hero() {
         </motion.div>
 
         {/* Tech Stack Preview */}
-        <motion.div
-          className="mt-16 flex flex-wrap justify-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-        >
-          {["Next.js", "React", ".NET Core", "Node.js", "TypeScript", "AWS"].map((tech, i) => (
-            <motion.span
-              key={tech}
-              className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-400"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.3 + i * 0.1 }}
-              whileHover={{ scale: 1.1, borderColor: "rgba(139, 92, 246, 0.5)" }}
-            >
-              {tech}
-            </motion.span>
-          ))}
-        </motion.div>
       </div>
 
       <motion.a

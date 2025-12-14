@@ -3,24 +3,44 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+// Helper to detect if screen is mobile size (disable background animations)
+function useReducedMotion() {
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      // Disable background animations on mobile screens (< 768px)
+      setShouldReduceMotion(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  return shouldReduceMotion;
+}
+
 // Cyber Grid Background
 export function CyberGrid() {
+  const shouldReduce = useReducedMotion();
+  
+  if (shouldReduce) return null; // Disable on mobile/Android
+  
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
-      <div className="absolute inset-0" style={{
-        backgroundImage: `
-          linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px)
-        `,
-        backgroundSize: "50px 50px",
-        animation: "gridMove 20s linear infinite"
-      }} />
-      <style jsx>{`
-        @keyframes gridMove {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
-        }
-      `}</style>
+      <div 
+        className="absolute inset-0" 
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+          animation: "gridMove 20s linear infinite"
+        }} 
+      />
     </div>
   );
 }
@@ -49,6 +69,7 @@ export function ScanLine() {
 
 // Digital Particles
 export function DigitalParticles() {
+  const shouldReduce = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const [particles, setParticles] = useState<Array<{
     x1: number;
@@ -64,7 +85,7 @@ export function DigitalParticles() {
     const width = window.innerWidth;
     const height = window.innerHeight;
     
-    const newParticles = [...Array(30)].map(() => ({
+    const newParticles = [...Array(10)].map(() => ({
       x1: Math.random() * width,
       y1: Math.random() * height,
       x2: Math.random() * width,
@@ -76,7 +97,7 @@ export function DigitalParticles() {
     setParticles(newParticles);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted || shouldReduce) return null;
   
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -109,9 +130,12 @@ export function DigitalParticles() {
 
 // Matrix-style Code Rain
 export function CodeRain() {
-  const columns = 15;
+  const shouldReduce = useReducedMotion();
+  const columns = 8;
   const codeChars = "{}[]()<>=;+-*/&#$@!%^&*_|~".split("");
   const languages = ["JS", "TS", "PY", "GO", "RS", "PHP", "SQL", "CSS"];
+
+  if (shouldReduce) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-20 z-0">
@@ -143,6 +167,7 @@ export function CodeRain() {
 
 // Floating Code Snippets
 export function FloatingCodeSnippets() {
+  const shouldReduce = useReducedMotion();
   const snippets = [
     { code: "const dev = () => {", color: "text-yellow-400" },
     { code: "function build()", color: "text-blue-400" },
@@ -153,6 +178,8 @@ export function FloatingCodeSnippets() {
     { code: "npm install", color: "text-orange-400" },
     { code: "git commit -m", color: "text-red-400" },
   ];
+
+  if (shouldReduce) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -247,19 +274,20 @@ export function TerminalWindow() {
 
 // Binary Rain Background
 export function BinaryRain() {
+  const shouldReduce = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const [binaries, setBinaries] = useState<Array<{ binary: string; left: number }>>([]);
 
   useEffect(() => {
     setMounted(true);
-    const newBinaries = [...Array(30)].map((_, i) => ({
+    const newBinaries = [...Array(12)].map((_, i) => ({
       binary: Math.random() > 0.5 ? "1" : "0",
-      left: (i * 3.33) % 100,
+      left: (i * 8.33) % 100,
     }));
     setBinaries(newBinaries);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted || shouldReduce) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
@@ -289,38 +317,28 @@ export function BinaryRain() {
   );
 }
 
-// Glitch Effect Component
+// Shimmer/Shine Text Effect Component - No blur, crisp text
 export function GlitchText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const [isGlitching, setIsGlitching] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsGlitching(true);
-      setTimeout(() => setIsGlitching(false), 200);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <span className={`relative inline-block ${className}`}>
-      <span className={isGlitching ? "opacity-0" : ""}>{children}</span>
-      {isGlitching && (
-        <>
-          <span
-            className="absolute top-0 left-0 text-cyan-400"
-            style={{ transform: "translate(-2px, -2px)" }}
-          >
-            {children}
-          </span>
-          <span
-            className="absolute top-0 left-0 text-red-400"
-            style={{ transform: "translate(2px, 2px)" }}
-          >
-            {children}
-          </span>
-        </>
-      )}
+      {children}
+      {/* Shine overlay - moves across text */}
+      <motion.span
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, white, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, white, transparent)"
+        }}
+        animate={{
+          x: ["-200%", "200%"]
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          repeatDelay: 2,
+          ease: "linear"
+        }}
+      />
     </span>
   );
 }
@@ -367,6 +385,7 @@ export function CursorTrail() {
 
 // Hexadecimal Floating Numbers
 export function HexFloating() {
+  const shouldReduce = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const hexChars = "0123456789ABCDEF".split("");
   
@@ -374,7 +393,7 @@ export function HexFloating() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted || shouldReduce) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">

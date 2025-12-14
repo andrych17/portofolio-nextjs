@@ -13,8 +13,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Andry Huang",
-  description: "A modern portfolio website showcasing my work and skills",
+  title: "Andry Huang | Full-Stack Developer Portfolio",
+  description: "Full-stack developer specializing in Next.js, .NET Core, Node.js, and cloud solutions. Building enterprise SaaS platforms, POS systems, and modern web applications with 6+ years of experience.",
+  keywords: ["Full-Stack Developer", "Next.js", ".NET Core", "Node.js", "React", "TypeScript", "Web Developer", "Software Engineer", "Portfolio"],
+  authors: [{ name: "Andry Huang" }],
+  creator: "Andry Huang",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://andrych17.github.io",
+    title: "Andry Huang | Full-Stack Developer Portfolio",
+    description: "Full-stack developer specializing in Next.js, .NET Core, Node.js, and cloud solutions.",
+    siteName: "Andry Huang Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Andry Huang | Full-Stack Developer Portfolio",
+    description: "Full-stack developer specializing in Next.js, .NET Core, Node.js, and cloud solutions.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
