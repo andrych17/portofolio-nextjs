@@ -11,7 +11,7 @@ const experiences = [
   {
     period: "Nov 2022 - Present",
     title: "Fullstack Developer",
-    company: "Anacle System LTD, Singapore (Remote)",
+    company: "MRI Software, Singapore (Remote)",
     description: "Develop and maintain SaaS applications and tenant portal apps using .NET Framework, .NET Core, Next.js, and Nest.js. Integrate multiple enterprise APIs including Bank API and SharePoint. Build and optimize complex reporting queries to improve system performance. Improve code quality through SonarQube analysis, refactoring, and collaboration with QA/testing teams.",
   },
   {

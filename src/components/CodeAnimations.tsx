@@ -257,7 +257,7 @@ export function TerminalWindow() {
             key={i}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            className={line.startsWith("$") ? "text-green-400" : line.startsWith("✓") ? "text-green-400" : "text-gray-400"}
+            className={line?.startsWith("$") ? "text-green-400" : line?.startsWith("✓") ? "text-green-400" : "text-gray-400"}
           >
             {line}
           </motion.div>
