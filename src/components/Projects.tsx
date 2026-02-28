@@ -118,7 +118,7 @@ export default function Projects() {
     <section
       id="projects"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden"
+      className="py-20 aurora-bg relative overflow-hidden"
     >
       {/* Floating Code Snippets */}
       <FloatingCodeSnippets />
@@ -128,12 +128,14 @@ export default function Projects() {
       
       {/* Background decoration */}
       <motion.div
-        className="absolute top-1/2 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2"
+        className="absolute top-1/2 left-0 w-96 h-96 rounded-full blur-[120px] -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.15), transparent 70%)" }}
         animate={{ x: [-100, 100, -100] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -translate-y-1/2"
+        className="absolute top-1/2 right-0 w-96 h-96 rounded-full blur-[120px] -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(236,72,153,0.15), transparent 70%)" }}
         animate={{ x: [100, -100, 100] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -147,7 +149,7 @@ export default function Projects() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured{" "}
-            <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
@@ -155,7 +157,7 @@ export default function Projects() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 mx-auto rounded-full"
           />
           <motion.p
             initial={{ opacity: 0 }}
@@ -164,7 +166,7 @@ export default function Projects() {
             className="text-gray-400 mt-6 max-w-2xl mx-auto"
           >
             A collection of projects I&apos;ve worked on, from retail POS systems to enterprise SaaS platforms.
-            <span className="text-purple-400"> Click on any project to see details.</span>
+            <span className="text-pink-400"> Click on any project to see details.</span>
           </motion.p>
         </motion.div>
 
@@ -184,8 +186,8 @@ export default function Projects() {
               }}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                 activeCategory === category
-                  ? "bg-gradient-to-r from-purple-500 to-cyan-500 text-white"
-                  : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
+                  ? "bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 text-white shadow-[0_0_20px_rgba(236,72,153,0.3)]"
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10 hover:border-pink-500/30"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -205,7 +207,7 @@ export default function Projects() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-colors"
+                className="bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/30 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.3)]"
               >
                 <div className="grid md:grid-cols-2 gap-8 p-8">
                   <motion.div 
@@ -258,7 +260,7 @@ export default function Projects() {
                         <motion.span
                           key={tag}
                           className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300 border border-white/10"
-                          whileHover={{ scale: 1.05, borderColor: "rgba(139, 92, 246, 0.5)" }}
+                          whileHover={{ scale: 1.05, borderColor: "rgba(236, 72, 153, 0.5)" }}
                         >
                           {tag}
                         </motion.span>
@@ -301,7 +303,7 @@ export default function Projects() {
                     onClick={() => setActiveIndex(index)}
                     className={`w-2 h-2 rounded-full transition-all ${
                       index === activeIndex
-                        ? "w-8 bg-gradient-to-r from-purple-500 to-cyan-500"
+                        ? "w-8 bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 shadow-[0_0_10px_rgba(236,72,153,0.5)]"
                         : "bg-white/20 hover:bg-white/40"
                     }`}
                     whileHover={{ scale: 1.2 }}
@@ -337,7 +339,7 @@ export default function Projects() {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className={`relative group cursor-pointer rounded-2xl overflow-hidden ${
-                    index === activeIndex ? "ring-2 ring-purple-500 shadow-lg shadow-purple-500/50" : ""
+                    index === activeIndex ? "ring-2 ring-pink-500 shadow-lg shadow-pink-500/30" : ""
                   }`}
                   whileHover={{ y: -10 }}
                   onClick={() => setActiveIndex(index)}
@@ -350,7 +352,7 @@ export default function Projects() {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
                   />
                   
-                  <div className="relative bg-gray-900/90 backdrop-blur-sm p-6 h-full border border-white/10 rounded-2xl group-hover:border-purple-500/50 transition-all">
+                  <div className="relative bg-gray-900/90 backdrop-blur-sm p-6 h-full border border-white/10 rounded-2xl group-hover:border-pink-500/50 transition-all">
                     <div className="flex items-start justify-between mb-4">
                       <motion.div 
                         className="text-4xl"
@@ -369,7 +371,7 @@ export default function Projects() {
                         {project.category}
                       </motion.span>
                     </div>
-                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-pink-300 transition-colors">
                       {project.title}
                     </h4>
                     <p className="text-gray-400 text-sm line-clamp-2 mb-4">
@@ -380,7 +382,7 @@ export default function Projects() {
                         <motion.span 
                           key={tag} 
                           className="px-2 py-0.5 bg-white/5 rounded text-xs text-gray-400"
-                          whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
+                          whileHover={{ scale: 1.1, backgroundColor: "rgba(236, 72, 153, 0.2)" }}
                         >
                           {tag}
                         </motion.span>

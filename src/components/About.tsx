@@ -102,24 +102,36 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden"
+      className="py-20 aurora-bg relative overflow-hidden"
     >
       {/* Cyber Animations */}
       <CyberGrid />
 
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent" />
+        <motion.div
+          className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(236,72,153,0.2), transparent 70%)" }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(245,158,11,0.15), transparent 70%)" }}
+          animate={{ scale: [1.2, 0.9, 1.2], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
       </div>
 
       {/* Floating elements */}
       <motion.div
-        className="absolute top-20 right-10 w-20 h-20 border border-purple-500/30 rounded-full"
+        className="absolute top-20 right-10 w-20 h-20 border border-pink-500/30 rounded-full"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
-        className="absolute bottom-20 left-10 w-32 h-32 border border-cyan-500/30 rounded-full"
+        className="absolute bottom-20 left-10 w-32 h-32 border border-amber-500/30 rounded-full"
         animate={{ rotate: -360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
@@ -136,13 +148,13 @@ export default function About() {
             className="text-4xl md:text-5xl font-bold mb-4"
           >
             About{" "}
-            <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
               Me
             </span>
           </motion.h2>
           <motion.div
             variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 mx-auto rounded-full"
           />
         </motion.div>
 
@@ -178,13 +190,13 @@ export default function About() {
               </div>
               {/* Decorative elements */}
               <motion.div
-                className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500 rounded-full"
+                className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full shadow-[0_0_15px_rgba(236,72,153,0.5)]"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 suppressHydrationWarning
               />
               <motion.div
-                className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-500 rounded-full"
+                className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.5)]"
                 animate={{ scale: [1.2, 1, 1.2] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 suppressHydrationWarning
@@ -201,8 +213,8 @@ export default function About() {
                 variants={itemVariants}
                 className="text-gray-300 text-lg leading-relaxed"
               >
-                Hi! I&apos;m <span className="text-purple-400 font-semibold">Andry Huang</span>, 
-                a Fullstack Engineer with <span className="text-cyan-400 font-semibold">{yearsOfExperience}+ years of experience</span> building 
+                Hi! I&apos;m <span className="text-pink-400 font-semibold">Andry Huang</span>, 
+                a Fullstack Engineer with <span className="text-amber-400 font-semibold">{yearsOfExperience}+ years of experience</span> building 
                 and maintaining large-scale SaaS platforms, web applications, and cloud-integrated solutions.
               </motion.p>
               <motion.p
@@ -218,11 +230,11 @@ export default function About() {
                 variants={itemVariants}
                 className="flex flex-wrap gap-4"
               >
-                <div className="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-                  <span className="text-purple-400 font-semibold">📍 Surabaya, Indonesia</span>
+                <div className="px-4 py-2 bg-pink-500/10 border border-pink-500/30 rounded-lg neon-glow-pink">
+                  <span className="text-pink-400 font-semibold">📍 Surabaya, Indonesia</span>
                 </div>
-                <div className="px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
-                  <span className="text-cyan-400 font-semibold">🎓 BSc Computer Science</span>
+                <div className="px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                  <span className="text-amber-400 font-semibold">🎓 BSc Computer Science</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -238,14 +250,14 @@ export default function About() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="group p-5 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all hover:bg-white/[0.08]"
+                className="group p-5 glass-card rounded-xl hover:border-purple-500/50 transition-all hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(168,85,247,0.15)]"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 + index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <motion.div 
-                  className="p-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg w-fit mb-3"
+                  className="p-3 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-lg w-fit mb-3 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
                   whileHover={{ rotate: 5 }}
                 >
                   <feature.icon className="w-5 h-5 text-white" />
@@ -264,11 +276,11 @@ export default function About() {
           transition={{ delay: 0.5 }}
         >
           <h3 className="text-2xl font-bold text-white text-center mb-12">
-            Work <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">Experience</span>
+            Work <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">Experience</span>
           </h3>
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-cyan-500" />
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500" />
             
             {experiences.map((exp, index) => (
               <motion.div
@@ -282,19 +294,19 @@ export default function About() {
               >
                 {/* Timeline dot */}
                 <motion.div
-                  className="absolute left-0 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-black"
+                  className="absolute left-0 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full border-4 border-[#030014] shadow-[0_0_10px_rgba(236,72,153,0.5)]"
                   whileHover={{ scale: 1.5 }}
                 />
                 
                 {/* Content */}
                 <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"} pl-8 md:pl-0`}>
                   <motion.div
-                    className="p-6 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all"
+                    className="p-6 glass-card rounded-xl hover:border-purple-500/50 transition-all hover:shadow-[0_0_20px_rgba(168,85,247,0.15)]"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <span className="text-purple-400 text-sm font-medium">{exp.period}</span>
+                    <span className="text-pink-400 text-sm font-medium">{exp.period}</span>
                     <h4 className="text-xl font-bold text-white mt-2">{exp.title}</h4>
-                    <p className="text-cyan-400 text-sm mt-1">{exp.company}</p>
+                    <p className="text-amber-400 text-sm mt-1">{exp.company}</p>
                     <p className="text-gray-400 mt-3 text-sm">{exp.description}</p>
                   </motion.div>
                 </div>

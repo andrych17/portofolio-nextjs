@@ -36,14 +36,14 @@ export default function Certifications() {
     <section
       id="certifications"
       ref={ref}
-      className="py-20 bg-gray-900 relative overflow-hidden"
+      className="py-20 aurora-bg relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.4) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.3) 1px, transparent 0)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -58,7 +58,7 @@ export default function Certifications() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Certifications &{" "}
-            <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
               Awards
             </span>
           </h2>
@@ -66,7 +66,7 @@ export default function Certifications() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-amber-500 via-pink-500 to-purple-500 mx-auto rounded-full"
           />
         </motion.div>
 
@@ -78,7 +78,7 @@ export default function Certifications() {
             transition={{ delay: 0.3 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-12">
+              <div className="glass-card rounded-2xl p-12 hover:shadow-[0_0_30px_rgba(236,72,153,0.1)]">
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
@@ -108,7 +108,7 @@ export default function Certifications() {
                 whileHover={{ scale: 1.05 }}
                 className="group relative"
               >
-                <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 h-full hover:border-purple-500/50 transition-all duration-300">
+                <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 h-full hover:border-pink-500/50 transition-all duration-300">
                   {/* Badge/Logo */}
                   <div className="text-5xl mb-4">{cert.logo}</div>
 
@@ -116,7 +116,7 @@ export default function Certifications() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     {cert.title}
                   </h3>
-                  <p className="text-purple-400 mb-2">{cert.issuer}</p>
+                  <p className="text-pink-400 mb-2">{cert.issuer}</p>
                   <p className="text-gray-400 text-sm mb-4">{cert.date}</p>
 
                   {/* Credential ID */}
@@ -141,7 +141,7 @@ export default function Certifications() {
                   )}
 
                   {/* Glow effect on hover */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/0 to-cyan-500/0 group-hover:from-purple-500/10 group-hover:to-cyan-500/10 transition-all duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500/0 to-amber-500/0 group-hover:from-pink-500/10 group-hover:to-amber-500/10 transition-all duration-300 pointer-events-none" />
                 </div>
               </motion.div>
             ))}

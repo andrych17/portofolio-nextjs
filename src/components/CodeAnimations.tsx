@@ -34,8 +34,8 @@ export function CyberGrid() {
         className="absolute inset-0" 
         style={{
           backgroundImage: `
-            linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(236, 72, 153, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(168, 85, 247, 0.08) 1px, transparent 1px)
           `,
           backgroundSize: "50px 50px",
           animation: "gridMove 20s linear infinite"
@@ -138,11 +138,13 @@ export function CodeRain() {
   if (shouldReduce) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-20 z-0">
-      {[...Array(columns)].map((_, i) => (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-15 z-0">
+      {[...Array(columns)].map((_, i) => {
+        const colors = ["text-green-400", "text-cyan-400", "text-purple-400", "text-pink-400", "text-amber-400", "text-blue-400", "text-emerald-400", "text-rose-400"];
+        return (
         <motion.div
           key={i}
-          className="absolute top-0 text-green-400 font-mono text-xs"
+          className={`absolute top-0 ${colors[i % colors.length]} font-mono text-xs`}
           initial={{ y: -100 }}
           animate={{ y: "100vh" }}
           transition={{
@@ -160,7 +162,8 @@ export function CodeRain() {
             </div>
           ))}
         </motion.div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -238,7 +241,7 @@ export function TerminalWindow() {
 
   return (
     <motion.div
-      className="fixed bottom-8 right-8 bg-gray-900/90 backdrop-blur-sm rounded-lg p-4 w-80 border border-green-500/30 shadow-2xl z-50 hidden lg:block"
+      className="fixed bottom-8 right-8 bg-[#030014]/90 backdrop-blur-sm rounded-lg p-4 w-80 border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.15)] z-50 hidden lg:block"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1 }}
@@ -291,10 +294,12 @@ export function BinaryRain() {
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
-      {binaries.map((item, i) => (
+      {binaries.map((item, i) => {
+        const binaryColors = ["text-cyan-400", "text-purple-400", "text-pink-400", "text-emerald-400", "text-amber-400", "text-blue-400"];
+        return (
         <motion.div
           key={i}
-          className="absolute text-cyan-400 font-mono text-2xl font-bold"
+          className={`absolute ${binaryColors[i % binaryColors.length]} font-mono text-2xl font-bold`}
           initial={{ y: -50, opacity: 0 }}
           animate={{ 
             y: "100vh",
@@ -312,7 +317,8 @@ export function BinaryRain() {
             <div key={j}>{(i + j) % 2}</div>
           ))}
         </motion.div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -370,12 +376,12 @@ export function CursorTrail() {
   return (
     <>
       <motion.div
-        className="fixed w-4 h-4 bg-purple-500/30 rounded-full pointer-events-none z-50 hidden lg:block"
+        className="fixed w-4 h-4 bg-gradient-to-r from-purple-500/40 to-pink-500/40 rounded-full pointer-events-none z-50 hidden lg:block"
         animate={{ x: position.x - 8, y: position.y - 8 }}
         transition={{ type: "spring", damping: 30, stiffness: 200 }}
       />
       <motion.div
-        className="fixed w-8 h-8 border-2 border-cyan-400/30 rounded-full pointer-events-none z-50 hidden lg:block"
+        className="fixed w-8 h-8 border-2 border-pink-400/30 rounded-full pointer-events-none z-50 hidden lg:block"
         animate={{ x: position.x - 16, y: position.y - 16 }}
         transition={{ type: "spring", damping: 20, stiffness: 150 }}
       />
@@ -396,16 +402,17 @@ export function HexFloating() {
   if (!mounted || shouldReduce) return null;
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-8">
       {[...Array(20)].map((_, i) => {
         const hex = `0x${hexChars[i % 16]}${hexChars[(i + 3) % 16]}`;
         const left = (i * 5) % 100;
         const duration = 15 + (i % 5) * 3;
+        const hexColors = ["text-purple-400", "text-pink-400", "text-cyan-400", "text-amber-400", "text-emerald-400"];
         
         return (
           <motion.div
             key={i}
-            className="absolute text-purple-400 font-mono font-bold text-lg"
+            className={`absolute ${hexColors[i % hexColors.length]} font-mono font-bold text-lg`}
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ 
               y: -100,

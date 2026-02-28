@@ -19,7 +19,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden"
+      className="py-20 aurora-bg relative overflow-hidden"
     >
       {/* Cyber Background Effects */}
       <CyberGrid />
@@ -29,19 +29,27 @@ export default function Contact() {
       {/* Animated background */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
+          className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(236,72,153,0.2), transparent 70%)" }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 8, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(6,182,212,0.2), transparent 70%)" }}
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.2, 0.3] }}
           transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(245,158,11,0.1), transparent 70%)" }}
+          animate={{ scale: [0.8, 1.2, 0.8] }}
+          transition={{ duration: 12, repeat: Infinity }}
         />
         
         {/* Neon Lines */}
         <motion.div
-          className="absolute top-0 left-1/4 h-full w-px bg-gradient-to-b from-transparent via-purple-500 to-transparent"
+          className="absolute top-0 left-1/4 h-full w-px bg-gradient-to-b from-transparent via-pink-500 to-transparent"
           animate={{ opacity: [0.2, 0.5, 0.2] }}
           transition={{ duration: 2, repeat: Infinity }}
         />
@@ -69,7 +77,7 @@ export default function Contact() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 cursor-pointer hover:opacity-80 transition-opacity">
               Get In{" "}
-              <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
                 Touch
               </span>
             </h2>
@@ -78,7 +86,7 @@ export default function Contact() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 mx-auto rounded-full"
           />
           <motion.p
             initial={{ opacity: 0 }}
@@ -107,11 +115,11 @@ export default function Contact() {
                 href="https://linkedin.com/in/andry-huang-ba410a170"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative block p-6 bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition-all overflow-hidden group"
+                className="relative block p-6 bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition-all overflow-hidden group hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.9 }}
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59, 130, 246, 0.4)" }}
               >
                 {/* Cyber corners */}
                 <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-blue-500" />
@@ -144,7 +152,7 @@ export default function Contact() {
                 href="https://github.com/andrych17"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-6 bg-gradient-to-r from-gray-500/10 to-gray-600/10 rounded-2xl border border-gray-500/20 hover:border-gray-400/50 transition-all"
+                className="block p-6 bg-gradient-to-r from-gray-500/10 to-gray-600/10 rounded-2xl border border-gray-500/20 hover:border-purple-400/50 transition-all hover:shadow-[0_0_25px_rgba(168,85,247,0.2)]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1.0 }}
@@ -168,7 +176,7 @@ export default function Contact() {
                 href="https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-6 bg-gradient-to-r from-green-500/10 to-green-600/10 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition-all sm:col-span-2"
+                className="block p-6 bg-gradient-to-r from-green-500/10 to-emerald-600/10 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition-all sm:col-span-2 hover:shadow-[0_0_25px_rgba(16,185,129,0.3)]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1.1 }}

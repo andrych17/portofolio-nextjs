@@ -21,14 +21,19 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black border-t border-white/10">
-      <div className="max-w-6xl mx-auto px-4 py-12">
+    <footer className="bg-[#030014] border-t border-white/10 relative overflow-hidden">
+      {/* Subtle aurora glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[300px] h-[100px] rounded-full blur-[80px]" style={{ background: "radial-gradient(circle, rgba(168,85,247,0.1), transparent 70%)" }} />
+        <div className="absolute top-0 right-1/4 w-[300px] h-[100px] rounded-full blur-[80px]" style={{ background: "radial-gradient(circle, rgba(236,72,153,0.1), transparent 70%)" }} />
+      </div>
+      <div className="max-w-6xl mx-auto px-4 py-12 relative z-10">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo & Description */}
           <div>
             <motion.a
               href="#home"
-              className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent inline-block mb-4"
+              className="text-2xl font-bold animated-gradient-text inline-block mb-4"
               whileHover={{ scale: 1.05 }}
             >
               Portfolio
@@ -66,7 +71,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
+                  className="p-2 glass-card rounded-lg transition-colors hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label={social.label}
@@ -92,7 +97,7 @@ export default function Footer() {
           </p>
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="px-4 py-2 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors text-sm"
+            className="px-4 py-2 glass-card rounded-full text-gray-400 hover:text-white transition-colors text-sm hover:shadow-[0_0_15px_rgba(236,72,153,0.2)]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

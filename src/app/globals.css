@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  --background: #030014;
   --foreground: #ffffff;
+  --neon-purple: #a855f7;
+  --neon-cyan: #06b6d4;
+  --neon-pink: #ec4899;
+  --neon-amber: #f59e0b;
+  --neon-emerald: #10b981;
+  --neon-rose: #f43f5e;
+  --neon-blue: #3b82f6;
 }
 
 @theme inline {
@@ -24,7 +31,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #030014;
 }
 
 /* Grid animation for CyberGrid component */
@@ -33,13 +40,46 @@ body {
   100% { transform: translate(50px, 50px); }
 }
 
+@keyframes aurora {
+  0%, 100% { 
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 40px rgba(6, 182, 212, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(6, 182, 212, 0.2); }
+}
+
+@keyframes rainbow-border {
+  0% { border-color: #a855f7; }
+  20% { border-color: #ec4899; }
+  40% { border-color: #f59e0b; }
+  60% { border-color: #10b981; }
+  80% { border-color: #3b82f6; }
+  100% { border-color: #a855f7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #a855f7, #06b6d4);
+  background: linear-gradient(to bottom, #a855f7, #ec4899, #06b6d4);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #9333ea, #0891b2);
+  background: linear-gradient(to bottom, #9333ea, #db2777, #0891b2);
 }
 
 /* Smooth scroll */
@@ -49,6 +89,57 @@ html {
 
 /* Selection */
 ::selection {
-  background: rgba(168, 85, 247, 0.3);
+  background: rgba(236, 72, 153, 0.3);
   color: #ffffff;
+}
+
+/* Neon glow utility classes */
+.neon-glow-purple {
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4), 0 0 30px rgba(168, 85, 247, 0.1), inset 0 0 15px rgba(168, 85, 247, 0.05);
+}
+
+.neon-glow-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.1), inset 0 0 15px rgba(6, 182, 212, 0.05);
+}
+
+.neon-glow-pink {
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.4), 0 0 30px rgba(236, 72, 153, 0.1), inset 0 0 15px rgba(236, 72, 153, 0.05);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.neon-text-cyan {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.neon-text-pink {
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
+}
+
+.aurora-bg {
+  background: linear-gradient(-45deg, #030014, #1a0533, #0c1445, #041c2c, #0a2614, #1a0533);
+  background-size: 400% 400%;
+  animation: aurora 15s ease infinite;
+}
+
+.animated-gradient-text {
+  background: linear-gradient(90deg, #a855f7, #ec4899, #f59e0b, #10b981, #3b82f6, #a855f7);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(168, 85, 247, 0.3);
 }

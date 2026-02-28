@@ -52,7 +52,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="py-20 bg-black relative overflow-hidden"
+      className="py-20 aurora-bg relative overflow-hidden"
     >
       {/* Binary Rain Effect */}
       <BinaryRain />
@@ -63,10 +63,22 @@ export default function Skills() {
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(236,72,153,0.15) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(168,85,247,0.15) 1px, transparent 1px)`,
           backgroundSize: "50px 50px"
         }} />
+        <motion.div
+          className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%)" }}
+          animate={{ x: [-100, 100, -100], scale: [1, 1.2, 1] }}
+          transition={{ duration: 15, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(236,72,153,0.15), transparent 70%)" }}
+          animate={{ x: [100, -100, 100], scale: [1.2, 1, 1.2] }}
+          transition={{ duration: 18, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 relative z-10 pb-24">
@@ -78,7 +90,7 @@ export default function Skills() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             My{" "}
-            <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
               Skills
             </span>
           </h2>
@@ -86,7 +98,7 @@ export default function Skills() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 mx-auto rounded-full"
           />
         </motion.div>
 
@@ -112,9 +124,9 @@ export default function Skills() {
                   <span className="text-gray-300">{skill.name}</span>
                   <span className="text-gray-400">{skill.level}%</span>
                 </div>
-                <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
+                <div className="h-3 bg-gray-800/60 rounded-full overflow-hidden border border-white/5">
                   <motion.div
-                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
+                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full shadow-[0_0_10px_rgba(168,85,247,0.3)]`}
                     initial={{ width: 0 }}
                     animate={isInView ? { width: `${skill.level}%` } : {}}
                     transition={{ duration: 1, delay: 0.6 + index * 0.1, ease: "easeOut" }}
@@ -138,14 +150,14 @@ export default function Skills() {
             {skillCategories.map((category, catIndex) => (
               <motion.div
                 key={category.title}
-                className="p-4 bg-white/5 rounded-xl border border-white/10 relative overflow-hidden group"
+                className="p-4 glass-card rounded-xl relative overflow-hidden group"
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + catIndex * 0.1 }}
                 whileHover={{ 
-                  borderColor: "rgba(139, 92, 246, 0.5)",
+                  borderColor: "rgba(236, 72, 153, 0.5)",
                   y: -5,
-                  boxShadow: "0 10px 30px rgba(139, 92, 246, 0.2)"
+                  boxShadow: "0 10px 30px rgba(236, 72, 153, 0.15)"
                 }}
               >
                 {/* Animated gradient background on hover */}
@@ -160,7 +172,7 @@ export default function Skills() {
                   {category.skills.map((skill, skillIndex) => (
                     <motion.span
                       key={skill}
-                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all cursor-default"
+                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300 hover:border-pink-500/50 hover:bg-pink-500/10 hover:text-pink-300 transition-all cursor-default"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.3, delay: 0.5 + catIndex * 0.1 + skillIndex * 0.03 }}

@@ -54,7 +54,7 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-black/80 backdrop-blur-md shadow-lg"
+          ? "bg-[#030014]/80 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-white/5"
           : "bg-transparent"
       }`}
     >
@@ -62,7 +62,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <motion.a
             href="#home"
-            className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent"
+            className="text-2xl font-bold animated-gradient-text"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -89,14 +89,14 @@ export default function Navbar() {
                   {item.name}
                 </motion.span>
                 <motion.span 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-cyan-500"
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500"
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.3 }}
                 />
                 {/* Glow effect on hover */}
                 <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={false}
                 />
               </motion.a>
@@ -121,7 +121,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 backdrop-blur-md"
+            className="md:hidden bg-[#030014]/95 backdrop-blur-md border-b border-white/5"
           >
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item, index) => (
