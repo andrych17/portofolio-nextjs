@@ -110,30 +110,32 @@ export default function About() {
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent" />
-        <motion.div
+        <div
           className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, rgba(236,72,153,0.2), transparent 70%)" }}
-          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity }}
+          style={{
+            background: "radial-gradient(circle, rgba(236,72,153,0.2), transparent 70%)",
+            animation: "orb1 8s ease-in-out infinite",
+            willChange: "transform",
+          }}
         />
-        <motion.div
+        <div
           className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, rgba(245,158,11,0.15), transparent 70%)" }}
-          animate={{ scale: [1.2, 0.9, 1.2], opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 10, repeat: Infinity }}
+          style={{
+            background: "radial-gradient(circle, rgba(245,158,11,0.15), transparent 70%)",
+            animation: "orb2 10s ease-in-out infinite",
+            willChange: "transform",
+          }}
         />
       </div>
 
-      {/* Floating elements */}
-      <motion.div
+      {/* Floating decorative rings — CSS spin */}
+      <div
         className="absolute top-20 right-10 w-20 h-20 border border-pink-500/30 rounded-full"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        style={{ animation: "spin-slow 20s linear infinite" }}
       />
-      <motion.div
+      <div
         className="absolute bottom-20 left-10 w-32 h-32 border border-amber-500/30 rounded-full"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        style={{ animation: "spin-slow-reverse 25s linear infinite" }}
       />
 
       <div className="max-w-6xl mx-auto px-4 pb-24">

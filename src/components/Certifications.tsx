@@ -15,17 +15,16 @@ interface Certification {
   logo: string;
 }
 
-// TODO: Tambahkan sertifikasi Anda di sini
 const certifications: Certification[] = [
-  // {
-  //   id: 1,
-  //   title: "AWS Certified Solutions Architect",
-  //   issuer: "Amazon Web Services",
-  //   date: "2024",
-  //   credentialId: "ABC123",
-  //   link: "#",
-  //   logo: "🏆",
-  // },
+  {
+    id: 1,
+    title: "Software Architecture & Design of Modern Large Scale Systems",
+    issuer: "Udemy",
+    date: "Feb 2026",
+    credentialId: "UC-ff06e4f9-87de-44cd-b029-c7ad33e03e80",
+    link: "https://www.udemy.com/certificate/UC-ff06e4f9-87de-44cd-b029-c7ad33e03e80/",
+    logo: "🏗️",
+  },
 ];
 
 export default function Certifications() {

@@ -49,51 +49,47 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden aurora-bg"
     >
-      {/* Animated Aurora Orbs */}
+      {/* Animated Aurora Orbs — CSS-animated, reduced blur for GPU performance */}
       <div className="absolute inset-0 hidden md:block">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, rgba(168,85,247,0.4), transparent 70%)" }}
-          animate={{ 
-            x: [0, 100, -50, 0],
-            y: [0, -80, 60, 0],
-            scale: [1, 1.2, 0.9, 1],
+        <div
+          className="absolute top-1/4 left-1/4 w-[380px] h-[380px] rounded-full blur-[80px]"
+          style={{
+            background: "radial-gradient(circle, rgba(168,85,247,0.35), transparent 70%)",
+            animation: "orb1 12s ease-in-out infinite",
+            willChange: "transform",
           }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, rgba(6,182,212,0.35), transparent 70%)" }}
-          animate={{ 
-            x: [0, -80, 60, 0],
-            y: [0, 100, -50, 0],
-            scale: [1.1, 0.9, 1.2, 1.1],
+        <div
+          className="absolute bottom-1/4 right-1/4 w-[380px] h-[380px] rounded-full blur-[80px]"
+          style={{
+            background: "radial-gradient(circle, rgba(6,182,212,0.3), transparent 70%)",
+            animation: "orb2 15s ease-in-out infinite",
+            willChange: "transform",
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[100px]"
-          style={{ background: "radial-gradient(circle, rgba(236,72,153,0.25), transparent 70%)" }}
-          animate={{ 
-            scale: [0.8, 1.3, 0.8],
-            rotate: [0, 180, 360],
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full blur-[70px]">
+          <div
+            className="w-full h-full rounded-full"
+            style={{
+              background: "radial-gradient(circle, rgba(236,72,153,0.22), transparent 70%)",
+              animation: "orb3-scale 20s ease-in-out infinite",
+              willChange: "transform",
+            }}
+          />
+        </div>
+        <div
+          className="absolute top-20 right-20 w-[240px] h-[240px] rounded-full blur-[70px]"
+          style={{
+            background: "radial-gradient(circle, rgba(245,158,11,0.18), transparent 70%)",
+            animation: "orb4 18s ease-in-out infinite",
+            willChange: "transform",
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-20 right-20 w-[300px] h-[300px] rounded-full blur-[100px]"
-          style={{ background: "radial-gradient(circle, rgba(245,158,11,0.2), transparent 70%)" }}
-          animate={{ 
-            x: [0, -60, 40, 0],
-            y: [0, 50, -30, 0],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
       {/* Animated Particles - Desktop only */}
       <div className="absolute inset-0 hidden md:block">
-        {[...Array(20)].map((_, i) => {
+        {[...Array(8)].map((_, i) => {
           const duration = 5 + (i % 5);
           const delay = (i % 10) * 0.5;
           const left = (i * 7) % 100;
