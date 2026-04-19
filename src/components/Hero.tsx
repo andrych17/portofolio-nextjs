@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, MessageCircle, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
-import { CodeRain, HexFloating, GlitchText, CyberGrid, DigitalParticles } from "./CodeAnimations";
+import { GlitchText } from "./CodeAnimations";
+import ThreeBackground from "./ThreeBackground";
 
 const roles = [
   "Fullstack Developer",
@@ -49,93 +50,25 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden aurora-bg"
     >
-      {/* Animated Aurora Orbs — CSS-animated, reduced blur for GPU performance */}
-      <div className="absolute inset-0 hidden md:block">
-        <div
-          className="absolute top-1/4 left-1/4 w-[380px] h-[380px] rounded-full blur-[80px]"
-          style={{
-            background: "radial-gradient(circle, rgba(168,85,247,0.35), transparent 70%)",
-            animation: "orb1 12s ease-in-out infinite",
-            willChange: "transform",
-          }}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-[380px] h-[380px] rounded-full blur-[80px]"
-          style={{
-            background: "radial-gradient(circle, rgba(6,182,212,0.3), transparent 70%)",
-            animation: "orb2 15s ease-in-out infinite",
-            willChange: "transform",
-          }}
-        />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full blur-[70px]">
-          <div
-            className="w-full h-full rounded-full"
-            style={{
-              background: "radial-gradient(circle, rgba(236,72,153,0.22), transparent 70%)",
-              animation: "orb3-scale 20s ease-in-out infinite",
-              willChange: "transform",
-            }}
-          />
-        </div>
-        <div
-          className="absolute top-20 right-20 w-[240px] h-[240px] rounded-full blur-[70px]"
-          style={{
-            background: "radial-gradient(circle, rgba(245,158,11,0.18), transparent 70%)",
-            animation: "orb4 18s ease-in-out infinite",
-            willChange: "transform",
-          }}
-        />
-      </div>
+      {/* Three.js Galaxy Animation */}
+      <ThreeBackground />
 
-      {/* Animated Particles - Desktop only */}
-      <div className="absolute inset-0 hidden md:block">
-        {[...Array(8)].map((_, i) => {
-          const duration = 5 + (i % 5);
-          const delay = (i % 10) * 0.5;
-          const left = (i * 7) % 100;
-          const top = 80 + (i % 5) * 4;
-          const colors = ["bg-purple-400/30", "bg-cyan-400/30", "bg-pink-400/30", "bg-amber-400/30", "bg-emerald-400/30"];
-          
-          return (
-            <motion.div
-              key={i}
-              className={`absolute w-1.5 h-1.5 ${colors[i % colors.length]} rounded-full`}
-              animate={{
-                y: [0, -500],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration,
-                repeat: Infinity,
-                delay,
-                ease: "linear",
-              }}
-              style={{
-                left: `${left}%`,
-                top: `${top}%`,
-              }}
-            />
-          );
-        })}
-      </div>
-
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 opacity-15">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(rgba(168, 85, 247, 0.3) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(236, 72, 153, 0.2) 1px, transparent 1px)`,
-            backgroundSize: "100px 100px",
-          }}
-        />
-      </div>
-
-      {/* Code Rain Effect */}
-      <CodeRain />
-      
-      {/* Hex Floating */}
-      <HexFloating />
+      {/* Dark overlay so text stays readable over Three.js */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 1,
+          background: "rgba(3,0,20,0.55)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 1,
+          background:
+            "radial-gradient(ellipse 60% 60% at 50% 50%, transparent 0%, rgba(3,0,20,0.8) 100%)",
+        }}
+      />
 
       <div className="relative z-10 text-center px-4">
         {/* Floating Badge */}
@@ -181,10 +114,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
+          style={{
+            color: "#ffffff",
+            textShadow: "0 0 40px rgba(168,85,247,0.6), 0 0 80px rgba(236,72,153,0.3)",
+          }}
         >
-          <span className="animated-gradient-text">
-            <GlitchText>Andry Huang</GlitchText>
-          </span>
+          <GlitchText>Andry Huang</GlitchText>
         </motion.h1>
 
         <motion.div
@@ -255,7 +190,7 @@ export default function Hero() {
           transition={{ delay: 0.9, duration: 0.5 }}
         >
           <motion.a
-            href="#projects"
+            href="/portofolio"
             className="group px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 rounded-full text-white font-semibold relative overflow-hidden shadow-[0_0_30px_rgba(168,85,247,0.4)]"
             whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(236, 72, 153, 0.5)" }}
             whileTap={{ scale: 0.95 }}

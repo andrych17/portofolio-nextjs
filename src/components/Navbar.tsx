@@ -3,19 +3,22 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Certifications", href: "#certifications" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#home", page: "/" },
+  { name: "About", href: "#about", page: "/" },
+  { name: "Skills", href: "#skills", page: "/" },
+  { name: "Portfolio", href: "/portofolio", page: "/portofolio" },
+  { name: "Certifications", href: "#certifications", page: "/" },
+  { name: "Contact", href: "#contact", page: "/" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,23 +29,15 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return; // let Next.js Link handle page navigation
     e.preventDefault();
-    
-    // Close mobile menu first
     setIsOpen(false);
-    
-    // Small delay to let menu close animation finish, then scroll
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
-        const navHeight = 64; // height of navbar (h-16 = 64px)
+        const navHeight = 64;
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navHeight;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: elementPosition - navHeight, behavior: "smooth" });
       }
     }, 100);
   };
@@ -60,47 +55,48 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <motion.a
-            href="#home"
-            className="text-2xl font-bold animated-gradient-text"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Portfolio
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link href="/" className="text-2xl font-bold animated-gradient-text">
+              Portfolio
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-gray-300 hover:text-white transition-colors relative group"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
-              >
-                <motion.span
-                  whileHover={{ scale: 1.1 }}
-                  className="inline-block"
-                >
-                  {item.name}
-                </motion.span>
-                <motion.span 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-                {/* Glow effect on hover */}
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={false}
-                />
-              </motion.a>
-            ))}
+            {navItems.map((item, index) => {
+              const isActive = item.page === "/portofolio"
+                ? pathname === "/portofolio"
+                : pathname === "/";
+              return (
+                <motion.div key={item.name} className="relative group" whileHover={{ y: -2 }}>
+                  <Link
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, item.href)}
+                    className={`text-gray-300 hover:text-white transition-colors relative ${isActive && item.page === pathname ? "text-white" : ""}`}
+                  >
+                    <motion.span
+                      whileHover={{ scale: 1.1 }}
+                      className="inline-block"
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      {item.name}
+                    </motion.span>
+                    <motion.span
+                      className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500"
+                      initial={{ width: 0 }}
+                      whileHover={{ width: "100%" }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <motion.span
+                      className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      initial={false}
+                    />
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -131,13 +127,16 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <a
+                  <Link
                     href={item.href}
                     className="block text-gray-300 hover:text-white transition-colors py-2"
-                    onClick={(e) => handleNavClick(e, item.href)}
+                    onClick={(e) => {
+                      setIsOpen(false);
+                      handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, item.href);
+                    }}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </motion.div>
               ))}
             </div>
