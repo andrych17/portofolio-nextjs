@@ -7,12 +7,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { name: "Home", href: "#home", page: "/" },
-  { name: "About", href: "#about", page: "/" },
-  { name: "Skills", href: "#skills", page: "/" },
+  { name: "Home", href: "/#home", page: "/" },
+  { name: "About", href: "/#about", page: "/" },
+  { name: "Skills", href: "/#skills", page: "/" },
   { name: "Portfolio", href: "/portofolio", page: "/portofolio" },
-  { name: "Certifications", href: "#certifications", page: "/" },
-  { name: "Contact", href: "#contact", page: "/" },
+  { name: "Certifications", href: "/#certifications", page: "/" },
+  { name: "Contact", href: "/#contact", page: "/" },
 ];
 
 export default function Navbar() {
@@ -29,11 +29,16 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.startsWith("#")) return; // let Next.js Link handle page navigation
-    e.preventDefault();
     setIsOpen(false);
+    // Only intercept hash-on-current-page; let Next.js Link route everything else.
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+    const targetPath = href.slice(0, hashIndex) || "/";
+    if (targetPath !== pathname) return; // cross-page → let Link navigate
+    e.preventDefault();
+    const hash = href.slice(hashIndex);
     setTimeout(() => {
-      const element = document.querySelector(href);
+      const element = document.querySelector(hash);
       if (element) {
         const navHeight = 64;
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
