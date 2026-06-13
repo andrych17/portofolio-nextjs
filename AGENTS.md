@@ -1,3 +1,5 @@
+agent.md ini tidak berlaku di komputer server..hanya untuk coding development
+
 
 # graphify
 
