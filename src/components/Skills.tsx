@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { BinaryRain, CyberGrid, ScanLine, DigitalParticles } from "./CodeAnimations";
+import { SpotlightCard } from "./AnimationEffects";
 
 const skills = [
   { name: "Next.js / React", level: 95, color: "from-cyan-500 to-blue-500" },
@@ -150,38 +151,34 @@ export default function Skills() {
             {skillCategories.map((category, catIndex) => (
               <motion.div
                 key={category.title}
-                className="p-4 glass-card rounded-xl relative overflow-hidden group"
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + catIndex * 0.1 }}
-                whileHover={{ 
-                  borderColor: "rgba(236, 72, 153, 0.5)",
-                  y: -5,
-                  boxShadow: "0 10px 30px rgba(236, 72, 153, 0.15)"
-                }}
+                whileHover={{ y: -5 }}
               >
-                {/* Animated gradient background on hover */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                  initial={false}
-                />
-                <h4 className={`text-sm font-semibold bg-gradient-to-r ${category.color} bg-clip-text text-transparent mb-3`}>
-                  {category.title}
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.span
-                      key={skill}
-                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300 hover:border-pink-500/50 hover:bg-pink-500/10 hover:text-pink-300 transition-all cursor-default"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ duration: 0.3, delay: 0.5 + catIndex * 0.1 + skillIndex * 0.03 }}
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
+                <SpotlightCard
+                  className="p-4 cursor-default"
+                  spotlightColor="rgba(6, 182, 212, 0.12)"
+                  borderGlowColor="rgba(168, 85, 247, 0.2)"
+                >
+                  <h4 className={`text-sm font-semibold bg-gradient-to-r ${category.color} bg-clip-text text-transparent mb-3`}>
+                    {category.title}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.span
+                        key={skill}
+                        className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300 hover:border-pink-500/50 hover:bg-pink-500/10 hover:text-pink-300 transition-all cursor-default"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.3, delay: 0.5 + catIndex * 0.1 + skillIndex * 0.03 }}
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>

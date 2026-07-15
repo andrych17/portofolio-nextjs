@@ -102,3 +102,55 @@ export function RevealOnScroll({ children }: { children: React.ReactNode }) {
     </motion.div>
   );
 }
+
+export function SpotlightCard({
+  children,
+  className = "",
+  spotlightColor = "rgba(168, 85, 247, 0.15)",
+  borderGlowColor = "rgba(236, 72, 153, 0.25)",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  spotlightColor?: string;
+  borderGlowColor?: string;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      className={`group relative overflow-hidden rounded-xl border border-white/8 bg-[#0c0826]/75 p-6 transition-all duration-300 hover:border-purple-500/50 hover:bg-[#160e3a]/85 ${className}`}
+      style={{
+        "--mouse-x": "0px",
+        "--mouse-y": "0px",
+      } as React.CSSProperties}
+    >
+      {/* Background Spotlight Glow */}
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+        style={{
+          background: `radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), ${spotlightColor}, transparent 80%)`,
+        }}
+      />
+      {/* Border Spotlight Glow */}
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+        style={{
+          background: `radial-gradient(120px circle at var(--mouse-x) var(--mouse-y), ${borderGlowColor}, transparent 80%)`,
+        }}
+      />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+}

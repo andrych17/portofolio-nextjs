@@ -6,6 +6,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { Code2, Database, Cloud, Server, Layers, Zap } from "lucide-react";
 import { CyberGrid } from "./CodeAnimations";
+import { SpotlightCard } from "./AnimationEffects";
 
 const experiences = [
   {
@@ -252,20 +253,21 @@ export default function About() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="group p-5 glass-card rounded-xl hover:border-purple-500/50 transition-all hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(168,85,247,0.15)]"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 + index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
+                whileHover={{ y: -5 }}
               >
-                <motion.div 
-                  className="p-3 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-lg w-fit mb-3 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
-                  whileHover={{ rotate: 5 }}
-                >
-                  <feature.icon className="w-5 h-5 text-white" />
-                </motion.div>
-                <h3 className="text-white font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <SpotlightCard className="h-full cursor-default">
+                  <motion.div 
+                    className="p-3 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-lg w-fit mb-3 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+                    whileHover={{ rotate: 5 }}
+                  >
+                    <feature.icon className="w-5 h-5 text-white" />
+                  </motion.div>
+                  <h3 className="text-white font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-gray-400 text-sm">{feature.description}</p>
+                </SpotlightCard>
               </motion.div>
             ))}
           </motion.div>

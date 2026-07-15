@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Award, ExternalLink } from "lucide-react";
+import { SpotlightCard } from "./AnimationEffects";
 
 interface Certification {
   id: number;
@@ -18,6 +19,96 @@ interface Certification {
 const certifications: Certification[] = [
   {
     id: 1,
+    title: "Certificate of completion: AI Capabilities and Limitations",
+    issuer: "Anthropic",
+    date: "Jul 2026",
+    credentialId: "exhhy4ripy8p",
+    link: "https://verify.skilljar.com/c/exhhy4ripy8p",
+    logo: "🧠",
+  },
+  {
+    id: 2,
+    title: "Certificate of completion: Introduction to subagents",
+    issuer: "Anthropic",
+    date: "Jul 2026",
+    credentialId: "ziob4haqtfxa",
+    link: "https://verify.skilljar.com/c/ziob4haqtfxa",
+    logo: "🤖",
+  },
+  {
+    id: 3,
+    title: "Certificate of completion: Introduction to agent skills",
+    issuer: "Anthropic",
+    date: "Jul 2026",
+    credentialId: "9d6emc43e68b",
+    link: "https://verify.skilljar.com/c/9d6emc43e68b",
+    logo: "🛠️",
+  },
+  {
+    id: 4,
+    title: "Model Context Protocol: Advanced Topics",
+    issuer: "Anthropic",
+    date: "Jul 2026",
+    credentialId: "nucfxrj2cxoy",
+    link: "https://verify.skilljar.com/c/nucfxrj2cxoy",
+    logo: "🔌",
+  },
+  {
+    id: 5,
+    title: "Introduction to Model Context Protocol",
+    issuer: "Anthropic",
+    date: "Jul 2026",
+    credentialId: "hdv4nqhaequh",
+    link: "https://verify.skilljar.com/c/hdv4nqhaequh",
+    logo: "🔌",
+  },
+  {
+    id: 6,
+    title: "Building with the Claude API",
+    issuer: "Anthropic",
+    date: "Jul 2026",
+    credentialId: "3ik737t8atvf",
+    link: "https://verify.skilljar.com/c/3ik737t8atvf",
+    logo: "💻",
+  },
+  {
+    id: 7,
+    title: "AI Agents with Model Context Protocol",
+    issuer: "Vanderbilt University",
+    date: "Jun 2026",
+    credentialId: "ZI2P1DZ8J56C",
+    link: "https://www.coursera.org/account/accomplishments/records/ZI2P1DZ8J56C",
+    logo: "🎓",
+  },
+  {
+    id: 8,
+    title: "Claude Code in Action",
+    issuer: "Anthropic",
+    date: "Jun 2026",
+    credentialId: "opzctbnhdmcs",
+    link: "https://verify.skilljar.com/c/opzctbnhdmcs",
+    logo: "🖥️",
+  },
+  {
+    id: 9,
+    title: "Certificate of completion: Introduction to Claude Cowork",
+    issuer: "Anthropic",
+    date: "Jun 2026",
+    credentialId: "zydanea62pwv",
+    link: "https://verify.skilljar.com/c/zydanea62pwv",
+    logo: "🤝",
+  },
+  {
+    id: 10,
+    title: "Certificate of completion: Claude 101",
+    issuer: "Anthropic",
+    date: "Jun 2026",
+    credentialId: "fyrqffssmxur",
+    link: "https://verify.skilljar.com/c/fyrqffssmxur",
+    logo: "📚",
+  },
+  {
+    id: 11,
     title: "Software Architecture & Design of Modern Large Scale Systems",
     issuer: "Udemy",
     date: "Feb 2026",
@@ -105,9 +196,12 @@ export default function Certifications() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="group relative"
               >
-                <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 h-full hover:border-pink-500/50 transition-all duration-300">
+                <SpotlightCard
+                  className="h-full cursor-default"
+                  spotlightColor="rgba(236, 72, 153, 0.12)"
+                  borderGlowColor="rgba(6, 182, 212, 0.2)"
+                >
                   {/* Badge/Logo */}
                   <div className="text-5xl mb-4">{cert.logo}</div>
 
@@ -131,17 +225,14 @@ export default function Certifications() {
                       href={cert.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm"
+                      className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm relative z-20"
                     >
                       <Award className="w-4 h-4" />
                       View Certificate
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   )}
-
-                  {/* Glow effect on hover */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500/0 to-amber-500/0 group-hover:from-pink-500/10 group-hover:to-amber-500/10 transition-all duration-300 pointer-events-none" />
-                </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
