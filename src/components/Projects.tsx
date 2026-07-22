@@ -29,6 +29,9 @@ import {
   ShoppingBag,
   Cookie,
   X,
+  Users,
+  PieChart,
+  Activity,
 } from "lucide-react";
 import { FloatingCodeSnippets, CyberGrid } from "./CodeAnimations";
 
@@ -233,14 +236,17 @@ const projects: Project[] = [
   {
     id: 501,
     group: "freelance",
-    status: "in-progress",
-    title: "Knit and Cro — Online Shop (v2)",
+    status: "done",
+    title: "Knit and Cro — Online Shop",
     description:
-      "Online storefront for Knit and Cro Pluit, extending the in-store yarn system: Midtrans payment gateway, dynamic shipping cost by destination, and an upgraded admin panel with full transaction management. RBAC across customer, admin, and operator.",
+      "Live storefront for Knit and Cro Pluit: Midtrans payment, dynamic shipping by destination, and an admin panel with full transaction management. RBAC across customer, admin, and operator — built on top of the in-store yarn inventory system.",
     images: ["/projects/retail2.png", "/projects/retail3.png"],
     icon: ShoppingBag,
     tags: ["Laravel", "Livewire", "Midtrans", "RajaOngkir", "MySQL", "RBAC"],
     color: "from-fuchsia-500 to-pink-500",
+    liveUrl: "https://knitandcro.com",
+    liveLabel: "knitandcro.com",
+    featured: true,
   },
   {
     id: 502,
@@ -266,6 +272,45 @@ const projects: Project[] = [
     icon: TrendingUp,
     tags: ["Flutter", "Nest.js", "OpenAI", "Web Scraping", "WebSocket"],
     color: "from-cyan-500 to-blue-500",
+  },
+  {
+    id: 504,
+    group: "freelance",
+    status: "in-progress",
+    title: "Qualiv — AI Recruitment Platform",
+    description:
+      "Multi-tenant AI recruitment platform: CV screening, candidate scoring, and interview workflows powered by OpenAI. Queue-backed processing (BullMQ), Midtrans billing, and Cloudflare R2 document storage.",
+    emoji: "🧠",
+    icon: Users,
+    tags: ["Next.js", "Nest.js", "OpenAI", "BullMQ", "PostgreSQL", "Midtrans"],
+    color: "from-violet-500 to-fuchsia-500",
+    liveUrl: "https://qualiv.id",
+    liveLabel: "qualiv.id",
+    featured: true,
+  },
+  {
+    id: 505,
+    group: "freelance",
+    status: "in-progress",
+    title: "AI Stock Portfolio Manager",
+    description:
+      "Personal AI assistant for stock portfolio management: holdings tracking, allocation insights, and LLM-assisted analysis of positions and market context — built for day-to-day portfolio decisions.",
+    emoji: "📉",
+    icon: PieChart,
+    tags: ["Next.js", "Nest.js", "OpenAI", "TypeScript", "Finance"],
+    color: "from-sky-500 to-indigo-500",
+  },
+  {
+    id: 506,
+    group: "freelance",
+    status: "in-progress",
+    title: "OpenClaw — Server Monitor",
+    description:
+      "Lightweight server monitoring agent: watch CPU, memory, disk, and service health across hosts, with alerts when thresholds breach. Built to keep self-hosted and VPS fleets visible without heavy ops stack.",
+    emoji: "🦞",
+    icon: Activity,
+    tags: ["Node.js", "Monitoring", "DevOps", "Alerts", "Linux"],
+    color: "from-lime-500 to-emerald-600",
   },
 ];
 
