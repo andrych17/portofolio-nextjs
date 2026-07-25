@@ -7,19 +7,21 @@ import Image from "next/image";
 import { Code2, Database, Cloud, Server, Layers, Zap } from "lucide-react";
 import { CyberGrid } from "./CodeAnimations";
 import { SpotlightCard } from "./AnimationEffects";
+import { useLanguage } from "@/context/LanguageContext";
+import { getYearsOfExperience } from "@/utils/experience";
 
-const experiences = [
+const experiencesEn = [
   {
-    period: "Nov 2022 - Present",
+    period: "Nov 2022 - Mar 2026",
     title: "Fullstack Developer",
     company: "MRI Software, Singapore (Remote)",
     description: "Develop and maintain SaaS applications and tenant portal apps using .NET Framework, .NET Core, Next.js, and Nest.js. Integrate multiple enterprise APIs including Bank API and SharePoint. Build and optimize complex reporting queries to improve system performance. Improve code quality through SonarQube analysis, refactoring, and collaboration with QA/testing teams.",
   },
   {
-    period: "2020 - Present",
-    title: "Freelance Developer",
-    company: "Multiple Projects",
-    description: "Designed and developed multiple POS and management systems (Grocery Store, Tire Shop, Jewelry Store, Thread Store) using Laravel Livewire with RFID integration. Set up Linux servers, CI/CD pipelines, and DevOps infrastructure. Built complex Livewire components, provided system architecture consultancy, and conducted code reviews for quality assurance.",
+    period: "2021 - Present",
+    title: "Freelance & Side Projects",
+    company: "Multiple Clients & Personal SaaS",
+    description: "Designed and developed multiple POS, ERP, and AI platforms (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI, Grocery POS, Tire Shop ERP, Jewelry Store with RFID). Set up Linux servers, CI/CD pipelines, fail2ban SSH security, and DevOps infrastructure.",
   },
   {
     period: "Mar 2022 - Nov 2022",
@@ -31,18 +33,44 @@ const experiences = [
     period: "Sep 2019 - Feb 2022",
     title: "Full-Stack Developer",
     company: "PT Tjiwi Kimia, Indonesia",
-    description: "Developed web applications using .NET Core and C#. Created WhatsApp Bot using Selenium in Java for automated report sending. Developed Android app for barcode scanning. Created and optimized complex query reports for inventory and production systems.",
+    description: "Developed web applications using .NET Core and C#. Created WhatsApp Bot using Selenium for automated report sending. Developed Android app for barcode scanning. Created and optimized complex query reports for inventory and production systems.",
+  },
+];
+
+const experiencesId = [
+  {
+    period: "Nov 2022 - Mar 2026",
+    title: "Fullstack Developer",
+    company: "MRI Software, Singapura (Remote)",
+    description: "Mengembangkan & memelihara aplikasi SaaS enterprise dan portal penyewa menggunakan .NET Core, Next.js, dan Nest.js. Mengintegrasikan API perbankan & SharePoint. Mengoptimalkan kueri laporan data besar. Meningkatkan kualitas kode melalui SonarQube & kolaborasi tim QA.",
+  },
+  {
+    period: "2021 - Sekarang",
+    title: "Freelance & Side Projects",
+    company: "Berbagai Klien & SaaS Mandiri",
+    description: "Merancang & membangun berbagai platform POS, ERP, dan aplikasi AI (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI Sales Assistant, E-Commerce, POS Toko Benang, POS Emas RFID). Mengelola server Linux, CI/CD, audit keamanan SSH fail2ban, dan infrastruktur DevOps.",
+  },
+  {
+    period: "Mar 2022 - Nov 2022",
+    title: "Fullstack Developer",
+    company: "Software House",
+    description: "Mengembangkan aplikasi web berbasis Node.js dan Next.js. Mengoptimalkan kueri laporan performa tinggi. Mengelola Git server, infrastruktur Elasticsearch, refactoring versi Java enterprise, dan penanganan tiket insiden.",
+  },
+  {
+    period: "Sep 2019 - Feb 2022",
+    title: "Full-Stack Developer",
+    company: "PT Tjiwi Kimia, Indonesia",
+    description: "Mengembangkan aplikasi web manufaktur dengan .NET Core & C#. Membangun Bot WhatsApp pengirim laporan otomatis berbasis Selenium. Membangun aplikasi Android pemindai barcode gudang, serta mengoptimalkan kueri laporan inventaris & produksi.",
   },
 ];
 
 export default function About() {
+  const { lang } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
-  // Calculate years of experience from September 2019
-  const startDate = new Date(2019, 8); // September is month 8 (0-indexed)
-  const currentDate = new Date();
-  const yearsOfExperience = Math.floor((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+
+  const experiences = lang === "id" ? experiencesId : experiencesEn;
+  const yearsOfExperience = getYearsOfExperience();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -150,9 +178,9 @@ export default function About() {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
-            About{" "}
+            {lang === "id" ? "Tentang " : "About "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              Me
+              {lang === "id" ? "Saya" : "Me"}
             </span>
           </motion.h2>
           <motion.div
@@ -216,18 +244,36 @@ export default function About() {
                 variants={itemVariants}
                 className="text-gray-300 text-lg leading-relaxed"
               >
-                Hi! I&apos;m <span className="text-pink-400 font-semibold">Andry Huang</span>, 
-                a Fullstack Engineer with <span className="text-amber-400 font-semibold">{yearsOfExperience}+ years of experience</span> building 
-                and maintaining large-scale SaaS platforms, web applications, and cloud-integrated solutions.
+                {lang === "id" ? (
+                  <>
+                    Halo! Saya <span className="text-pink-400 font-semibold">Andry Huang</span>, 
+                    seorang Fullstack Engineer dengan <span className="text-amber-400 font-semibold">{yearsOfExperience}+ tahun pengalaman</span> dalam 
+                    membangun & mengelola platform SaaS berskala besar, aplikasi web modern, serta solusi terintegrasi cloud & AI.
+                  </>
+                ) : (
+                  <>
+                    Hi! I&apos;m <span className="text-pink-400 font-semibold">Andry Huang</span>, 
+                    a Fullstack Engineer with <span className="text-amber-400 font-semibold">{yearsOfExperience}+ years of experience</span> building 
+                    and maintaining large-scale SaaS platforms, web applications, and cloud-integrated solutions.
+                  </>
+                )}
               </motion.p>
               <motion.p
                 variants={itemVariants}
                 className="text-gray-300 text-lg leading-relaxed"
               >
-                Skilled in .NET Core, .NET Framework, SQL optimization, API integrations, 
-                and modern frontend frameworks such as Next.js and React. Experienced working 
-                in remote international teams and delivering end-to-end features across backend, 
-                frontend, and operational environments.
+                {lang === "id" ? (
+                  <>
+                    Ahli dalam .NET Core, Next.js, React, Node.js, optimasi SQL data besar, integrasi API perbankan/SharePoint, serta arsitektur AI agent & MCP. Berpengalaman dalam tim remote internasional dan pengembangan produk dari nol hingga rilis produksi.
+                  </>
+                ) : (
+                  <>
+                    Skilled in .NET Core, .NET Framework, SQL optimization, API integrations, 
+                    and modern frontend frameworks such as Next.js and React. Experienced working 
+                    in remote international teams and delivering end-to-end features across backend, 
+                    frontend, and operational environments.
+                  </>
+                )}
               </motion.p>
               <motion.div
                 variants={itemVariants}
@@ -237,7 +283,7 @@ export default function About() {
                   <span className="text-pink-400 font-semibold">📍 Surabaya, Indonesia</span>
                 </div>
                 <div className="px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg">
-                  <span className="text-amber-400 font-semibold">🎓 BSc Computer Science</span>
+                  <span className="text-amber-400 font-semibold">🎓 S1 Teknik Informatika (Computer Science)</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -280,7 +326,10 @@ export default function About() {
           transition={{ delay: 0.5 }}
         >
           <h3 className="text-2xl font-bold text-white text-center mb-12">
-            Work <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">Experience</span>
+            {lang === "id" ? "Pengalaman " : "Work "}
+            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              {lang === "id" ? "Kerja" : "Experience"}
+            </span>
           </h3>
           <div className="relative">
             {/* Timeline line */}

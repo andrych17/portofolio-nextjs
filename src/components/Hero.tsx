@@ -5,23 +5,31 @@ import { ArrowDown, Github, Linkedin, MessageCircle, Sparkles } from "lucide-rea
 import { useEffect, useState } from "react";
 import { GlitchText } from "./CodeAnimations";
 import ThreeBackground from "./ThreeBackground";
+import { useLanguage } from "@/context/LanguageContext";
+import { getYearsOfExperience } from "@/utils/experience";
 
-const roles = [
+const rolesEn = [
   "Fullstack Developer",
   "Backend Specialist", 
   "Frontend Engineer",
   "Cloud Architect",
 ];
 
+const rolesId = [
+  "Fullstack Developer",
+  "Pengembang Backend", 
+  "Frontend Engineer",
+  "Arsitek Cloud",
+];
+
 export default function Hero() {
+  const { lang } = useLanguage();
   const [currentRole, setCurrentRole] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  
-  // Calculate years of experience from September 2019
-  const startDate = new Date(2019, 8); // September is month 8 (0-indexed)
-  const currentDate = new Date();
-  const yearsOfExperience = Math.floor((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+
+  const roles = lang === "id" ? rolesId : rolesEn;
+  const yearsOfExperience = getYearsOfExperience();
 
   useEffect(() => {
     const role = roles[currentRole];
@@ -43,7 +51,7 @@ export default function Hero() {
     }, isDeleting ? 50 : 100);
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentRole]);
+  }, [displayText, isDeleting, currentRole, roles]);
 
   return (
     <section
@@ -86,7 +94,7 @@ export default function Hero() {
             <span className="text-sm font-medium">
               <Sparkles className="w-4 h-4 inline-block mr-1 text-amber-400" />
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent font-semibold">
-                {yearsOfExperience}+ Years of Experience
+                {lang === "id" ? `${yearsOfExperience}+ Tahun Pengalaman` : `${yearsOfExperience}+ Years of Experience`}
               </span>
             </span>
           </motion.div>
@@ -104,7 +112,7 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
           >
             <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent font-medium">
-              Hello, I&apos;m
+              {lang === "id" ? "Halo, Saya" : "Hello, I'm"}
             </span>
           </motion.p>
         </motion.div>
@@ -144,10 +152,21 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          Building large-scale <span className="text-purple-400 font-medium">SaaS platforms</span>, 
-          <span className="text-cyan-400 font-medium"> web applications</span>, and 
-          <span className="text-pink-400 font-medium"> cloud-integrated solutions</span>.
-          Skilled in .NET Core, Next.js, React, and modern technologies.
+          {lang === "id" ? (
+            <>
+              Membangun platform <span className="text-purple-400 font-medium">SaaS berskala besar</span>,{" "}
+              <span className="text-cyan-400 font-medium">aplikasi web modern</span>, dan{" "}
+              <span className="text-pink-400 font-medium">solusi berbasis cloud & AI</span>.{" "}
+              Ahli dalam .NET Core, Next.js, React, Node.js, dan teknologi modern.
+            </>
+          ) : (
+            <>
+              Building large-scale <span className="text-purple-400 font-medium">SaaS platforms</span>,{" "}
+              <span className="text-cyan-400 font-medium">web applications</span>, and{" "}
+              <span className="text-pink-400 font-medium">cloud & AI-integrated solutions</span>.{" "}
+              Skilled in .NET Core, Next.js, React, Node.js, and modern technologies.
+            </>
+          )}
         </motion.p>
 
         <motion.div
@@ -199,7 +218,7 @@ export default function Hero() {
               className="relative z-10 flex items-center gap-2 justify-center"
               whileHover={{ x: 5 }}
             >
-              View My Projects
+              {lang === "id" ? "Lihat Portofolio Saya" : "View My Projects"}
               <motion.span
                 initial={{ x: 0 }}
                 whileHover={{ x: 5 }}
@@ -231,7 +250,7 @@ export default function Hero() {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="relative z-10">Let&apos;s Talk</span>
+            <span className="relative z-10">{lang === "id" ? "Hubungi Saya" : "Let's Talk"}</span>
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-cyan-500/20"
               initial={{ scale: 0, borderRadius: "100%" }}
@@ -251,7 +270,7 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-gray-500 text-sm">Scroll Down</span>
+          <span className="text-gray-500 text-sm">{lang === "id" ? "Gulir Ke Bawah" : "Scroll Down"}</span>
           <ArrowDown className="w-6 h-6 text-pink-500" />
         </div>
       </motion.a>

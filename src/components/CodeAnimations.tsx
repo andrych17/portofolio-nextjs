@@ -171,22 +171,23 @@ export function FloatingCodeSnippets() {
 }
 
 // ─── Terminal Typing Window ───────────────────────────────────────────────────
+const TERMINAL_COMMANDS = [
+  "$ npm run build",
+  "> Building project...",
+  "✓ Compiled successfully",
+  "$ git push origin main",
+  "> Deploying to production...",
+  "✓ Deployment complete!",
+];
+
 export function TerminalWindow() {
   const [lines, setLines] = useState<string[]>([]);
-  const commands = [
-    "$ npm run build",
-    "> Building project...",
-    "✓ Compiled successfully",
-    "$ git push origin main",
-    "> Deploying to production...",
-    "✓ Deployment complete!",
-  ];
 
   useEffect(() => {
     let idx = 0;
     const interval = setInterval(() => {
-      if (idx < commands.length) {
-        setLines((prev) => [...prev, commands[idx]]);
+      if (idx < TERMINAL_COMMANDS.length) {
+        setLines((prev) => [...prev, TERMINAL_COMMANDS[idx]]);
         idx++;
       } else {
         setLines([]);
@@ -198,7 +199,7 @@ export function TerminalWindow() {
 
   return (
     <motion.div
-      className="fixed bottom-8 right-8 bg-[#030014]/90 rounded-lg p-4 w-80 border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.15)] z-50 hidden lg:block"
+      className="fixed bottom-8 left-8 bg-[#030014]/90 rounded-lg p-4 w-80 border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.15)] z-50 hidden lg:block"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1 }}

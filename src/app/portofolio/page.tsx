@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
+import AIChatbot from "@/components/AIChatbot";
 import { CursorTrail } from "@/components/CodeAnimations";
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function PortfolioPage() {
         <Projects />
       </div>
       <Footer />
+      <AIChatbot />
       <CursorTrail />
     </main>
   );

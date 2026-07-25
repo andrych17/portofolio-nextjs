@@ -3,49 +3,107 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { BinaryRain, CyberGrid, ScanLine, DigitalParticles } from "./CodeAnimations";
+import { BinaryRain, CyberGrid } from "./CodeAnimations";
 import { SpotlightCard } from "./AnimationEffects";
+import { useLanguage } from "@/context/LanguageContext";
 
 const skills = [
+  { name: "AI & LLM Integration (OpenAI / Claude)", level: 95, color: "from-purple-500 to-pink-500" },
+  { name: "AI Agent Workflows & MCP", level: 92, color: "from-fuchsia-500 to-violet-500" },
   { name: "Next.js / React", level: 95, color: "from-cyan-500 to-blue-500" },
   { name: ".NET Core / Framework", level: 92, color: "from-purple-500 to-indigo-500" },
   { name: "Node.js / Nest.js", level: 88, color: "from-green-500 to-emerald-500" },
   { name: "TypeScript / JavaScript", level: 95, color: "from-blue-500 to-cyan-500" },
   { name: "Laravel / PHP", level: 85, color: "from-red-500 to-orange-500" },
-  { name: "Flutter / Dart", level: 80, color: "from-blue-400 to-cyan-400" },
   { name: "PostgreSQL / MySQL", level: 90, color: "from-yellow-500 to-orange-500" },
-  { name: "Docker / DevOps", level: 82, color: "from-blue-600 to-purple-500" },
 ];
 
 const skillCategories = [
   {
-    title: "Frontend",
-    skills: ["Next.js", "React", "Flutter", "Tailwind CSS", "JavaScript", "TypeScript"],
+    title: "AI Development & Coding Tools",
+    skills: [
+      "Google Antigravity (AGY)",
+      "Claude Code",
+      "OpenCode",
+      "CommandCode",
+      "Cursor",
+      "CodeX",
+      "GLM",
+    ],
+    color: "from-purple-400 via-pink-400 to-rose-400",
+  },
+  {
+    title: "AI Protocols & Architecture",
+    skills: [
+      "Model Context Protocol (MCP)",
+      "Agentic Skills & Rules",
+      "OpenAI GPT-4o API",
+      "Claude Sonnet 3.7",
+      "LLM Vector Embeddings",
+      "Prompt Engineering",
+      "BullMQ Async Queues",
+    ],
+    color: "from-violet-500 to-fuchsia-500",
+  },
+  {
+    title: "Frontend Frameworks",
+    skills: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Laravel Livewire 3",
+      "Alpine.js",
+      "Framer Motion",
+      "Flutter",
+    ],
     color: "from-cyan-500 to-blue-500",
   },
   {
-    title: "Backend",
-    skills: [".NET Core", ".NET Framework", "Node.js", "Nest.js", "Laravel", "Java Spring", "PHP"],
-    color: "from-purple-500 to-pink-500",
+    title: "Backend & Systems",
+    skills: [
+      ".NET Core 8",
+      "NestJS",
+      "Node.js",
+      "Laravel 11",
+      "Python FastAPI",
+      "Java Spring Boot",
+      "ASP Classic",
+      "RESTful APIs",
+    ],
+    color: "from-emerald-500 to-teal-500",
   },
   {
-    title: "Database",
-    skills: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB"],
-    color: "from-green-500 to-emerald-500",
+    title: "Database & Cloud Storage",
+    skills: [
+      "PostgreSQL",
+      "MySQL 8",
+      "SQL Server",
+      "Prisma ORM",
+      "Redis",
+      "Cloudflare R2",
+      "AWS S3",
+      "Azure Blob",
+    ],
+    color: "from-yellow-500 to-amber-500",
   },
   {
-    title: "DevOps & Cloud",
-    skills: ["AWS", "Azure", "Docker", "Git", "CI/CD", "GitHub Actions", "Jenkins", "SonarQube"],
+    title: "DevOps & Integrations",
+    skills: [
+      "Docker",
+      "Git / GitHub",
+      "CI/CD Pipelines",
+      "SonarQube",
+      "RFID Hardware Integration",
+      "Midtrans Payment Gateway",
+      "RajaOngkir Shipping API",
+    ],
     color: "from-orange-500 to-red-500",
-  },
-  {
-    title: "Tools & Others",
-    skills: ["Selenium", "RFID Integration", "QGIS", "OpenAI API", "REST API", "GraphQL"],
-    color: "from-pink-500 to-purple-500",
   },
 ];
 
 export default function Skills() {
+  const { lang } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -90,9 +148,9 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My{" "}
+            {lang === "id" ? "Keahlian & " : "My "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              Skills
+              {lang === "id" ? "Teknologi" : "Skills"}
             </span>
           </h2>
           <motion.div
@@ -112,7 +170,7 @@ export default function Skills() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-2xl font-semibold text-white mb-8"
             >
-              Technical Proficiency
+              {lang === "id" ? "Tingkat Kemampuan Teknis" : "Technical Proficiency"}
             </motion.h3>
             {skills.map((skill, index) => (
               <motion.div
@@ -145,7 +203,7 @@ export default function Skills() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-2xl font-semibold text-white mb-8"
             >
-              Technologies I Work With
+              {lang === "id" ? "Ekosistem & Kakas Teknologi" : "Technologies I Work With"}
             </motion.h3>
             
             {skillCategories.map((category, catIndex) => (

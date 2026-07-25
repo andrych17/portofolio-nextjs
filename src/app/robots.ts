@@ -1,13 +1,13 @@
-import type { MetadataRoute } from "next";
-
-const BASE = "https://andrych17.github.io";
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = "https://andrych17.github.io";
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${BASE}/sitemap.xml`,
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

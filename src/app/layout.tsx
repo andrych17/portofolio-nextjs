@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,13 +15,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://andrych17.github.io"),
-  title: "Andry Huang | Full-Stack Developer Portfolio",
-  description: "Full-stack developer with 6+ years building enterprise SaaS platforms, POS systems, and cloud-integrated web apps. Specializing in Next.js, .NET Core, Node.js, React, and TypeScript.",
+  title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
+  description: "Andry Huang is a Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 6+ years of experience building enterprise SaaS platforms, AI recruitment tools, POS systems, and cloud architectures (.NET Core, Next.js, OpenAI, Anthropic Claude, MCP, Node.js, React, TypeScript).",
   keywords: [
-    "Full-Stack Developer", "Next.js", ".NET Core", "Node.js", "React", "TypeScript",
-    "Web Developer", "Software Engineer", "Portfolio", "Andry Huang",
-    "Surabaya", "Indonesia", "Remote Developer", "SaaS Developer",
-    "Laravel", "Docker", "AWS", "Azure", "PostgreSQL",
+    "Full-Stack Developer Indonesia", "Senior Web Developer Surabaya", "Fullstack Engineer Indonesia",
+    "AI Agent Engineer", "Model Context Protocol", "Next.js Developer", ".NET Core Developer",
+    "React Architect", "Node.js Engineer", "Software Engineer Surabaya", "SaaS Developer",
+    "Qualiv Founder", "Andry Huang", "Andry Huang Portfolio", "Indonesia Tech Talent",
   ],
   authors: [{ name: "Andry Huang", url: "https://andrych17.github.io" }],
   creator: "Andry Huang",
@@ -31,23 +32,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://andrych17.github.io",
-    title: "Andry Huang | Full-Stack Developer Portfolio",
-    description: "Full-stack developer with 6+ years building enterprise SaaS platforms, POS systems, and cloud-integrated web apps using Next.js, .NET Core, Node.js, and TypeScript.",
+    title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
+    description: "Senior Full-Stack & AI Engineer with 6+ years experience building enterprise SaaS platforms, AI systems, and POS apps using Next.js, .NET Core, Node.js, and TypeScript.",
     siteName: "Andry Huang Portfolio",
     images: [
       {
-        url: "/img/foto.jpg",
-        width: 800,
-        height: 800,
-        alt: "Andry Huang - Full-Stack Developer",
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Andry Huang - Senior Full-Stack & AI Developer from Indonesia",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andry Huang | Full-Stack Developer Portfolio",
-    description: "Full-stack developer with 6+ years building enterprise SaaS platforms, POS systems, and cloud-integrated web apps.",
-    images: ["/img/foto.jpg"],
+    title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
+    description: "Senior Full-Stack & AI Engineer with 6+ years experience building enterprise SaaS platforms, AI systems, and POS apps.",
+    images: ["/img/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -77,16 +78,17 @@ const jsonLd = {
     "https://github.com/andrych17",
     "https://linkedin.com/in/andry-huang-ba410a170",
   ],
-  jobTitle: "Full-Stack Developer",
+  jobTitle: "Senior Full-Stack & AI Developer",
   worksFor: {
     "@type": "Organization",
     name: "MRI Software",
   },
-  description: "Full-stack developer with 6+ years building enterprise SaaS platforms, POS systems, and cloud-integrated web apps.",
-  knowsAbout: ["Next.js", ".NET Core", "Node.js", "React", "TypeScript", "Laravel", "Docker", "AWS", "Azure", "PostgreSQL"],
+  description: "Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia with 6+ years experience building enterprise SaaS platforms, POS systems, and AI workflows.",
+  knowsAbout: ["Next.js", ".NET Core", "Node.js", "React", "TypeScript", "AI Agents", "Model Context Protocol", "OpenAI GPT-4o", "Claude 3.7", "PostgreSQL", "Docker"],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Surabaya",
+    addressRegion: "East Java",
     addressCountry: "ID",
   },
 };
@@ -120,7 +122,9 @@ export default function RootLayout({
             animation: "aurora 15s ease infinite",
           }}
         />
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

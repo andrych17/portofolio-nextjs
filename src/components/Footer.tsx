@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Heart, Github, Linkedin, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { lang } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -13,11 +15,11 @@ export default function Footer() {
   ];
 
   const footerLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: lang === "id" ? "Beranda" : "Home", href: "#home" },
+    { name: lang === "id" ? "Tentang" : "About", href: "#about" },
+    { name: lang === "id" ? "Keahlian" : "Skills", href: "#skills" },
+    { name: lang === "id" ? "Portofolio" : "Projects", href: "#projects" },
+    { name: lang === "id" ? "Kontak" : "Contact", href: "#contact" },
   ];
 
   return (
@@ -39,14 +41,17 @@ export default function Footer() {
               Portfolio
             </motion.a>
             <p className="text-gray-400 text-sm">
-              Building digital experiences with passion and precision.
-              Let&apos;s create something amazing together.
+              {lang === "id"
+                ? "Membangun pengalaman digital dengan dedikasi & presisi tinggi. Mari wujudkan ide hebat bersama."
+                : "Building digital experiences with passion and precision. Let's create something amazing together."}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-4">
+              {lang === "id" ? "Navigasi Cepat" : "Quick Links"}
+            </h4>
             <div className="flex flex-wrap gap-4">
               {footerLinks.map((link) => (
                 <motion.a
@@ -63,7 +68,9 @@ export default function Footer() {
 
           {/* Social Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Connect</h4>
+            <h4 className="text-white font-semibold mb-4">
+              {lang === "id" ? "Sosial Media" : "Connect"}
+            </h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <motion.a
@@ -86,14 +93,14 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm flex items-center gap-1">
-            © {currentYear} Made with
+            © {currentYear} {lang === "id" ? "Dibuat dengan" : "Made with"}
             <motion.span
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
             >
               <Heart className="w-4 h-4 text-red-500 fill-red-500" />
             </motion.span>
-            by Andry Huang
+            {lang === "id" ? "oleh Andry Huang" : "by Andry Huang"}
           </p>
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -101,7 +108,7 @@ export default function Footer() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Back to Top ↑
+            {lang === "id" ? "Kembali ke Atas ↑" : "Back to Top ↑"}
           </motion.button>
         </div>
       </div>

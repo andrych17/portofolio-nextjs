@@ -12,6 +12,19 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // AI agent/tool config directories, not part of the app source:
+    ".agents/**",
+    ".augment/**",
+    ".claude/**",
+    ".codebuddy/**",
+    ".codewhale/**",
+    ".codex/**",
+    ".continue/**",
+    ".cursor/**",
+    ".factory/**",
+    ".gemini/**",
+    ".opencode/**",
+    ".github/prompts/**",
   ]),
 ]);
 

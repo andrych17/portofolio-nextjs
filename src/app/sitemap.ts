@@ -1,17 +1,17 @@
-import type { MetadataRoute } from "next";
-
-const BASE = "https://andrych17.github.io";
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://andrych17.github.io";
+
   return [
     {
-      url: BASE,
+      url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
+      changeFrequency: "weekly",
+      priority: 1.0,
     },
     {
-      url: `${BASE}/portofolio`,
+      url: `${baseUrl}/portofolio`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,

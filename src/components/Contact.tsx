@@ -1,19 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { MessageCircle, MapPin, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { CyberGrid, ScanLine, DigitalParticles } from "./CodeAnimations";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
+  const { lang } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const contactInfo = [
-    { icon: Phone, label: "Phone", value: "+62 81-357-296-386", href: "tel:+6281357296386" },
-    { icon: MapPin, label: "Location", value: "Surabaya, Indonesia", href: "#" },
-  ];
 
   return (
     <section
@@ -76,9 +72,9 @@ export default function Contact() {
             whileTap={{ scale: 0.95 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 cursor-pointer hover:opacity-80 transition-opacity">
-              Get In{" "}
+              {lang === "id" ? "Hubungi " : "Get In "}
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
-                Touch
+                {lang === "id" ? "Saya" : "Touch"}
               </span>
             </h2>
           </motion.a>
@@ -94,8 +90,9 @@ export default function Contact() {
             transition={{ delay: 0.4 }}
             className="text-gray-400 mt-6 max-w-2xl mx-auto"
           >
-            Have a project in mind or want to collaborate? Feel free to reach out!
-            I&apos;m always open to discussing new opportunities.
+            {lang === "id"
+              ? "Punya ide proyek atau berminat untuk berkolaborasi? Jangan ragu untuk menghubungi saya! Saya selalu terbuka untuk mendiskusikan peluang baru."
+              : "Have a project in mind or want to collaborate? Feel free to reach out! I'm always open to discussing new opportunities."}
           </motion.p>
         </motion.div>
 
