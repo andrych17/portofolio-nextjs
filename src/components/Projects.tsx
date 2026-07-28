@@ -181,7 +181,7 @@ const projects: Project[] = [
     description:
       "Set up and rolled out SonarQube across multiple internal .NET projects. Defined quality gates, integrated with CI/CD, and onboarded teams onto the platform.",
     impact:
-      "Pelopor analisis kode statis 100.000+ file & me-enforce zero-vulnerability quality gates di CI/CD.",
+      "Pelopor analisis kode statis di beberapa proyek enterprise (100.000+ file) & me-enforce zero-vulnerability quality gates di CI/CD.",
     year: "2023 – 2024",
     emoji: "🛡️",
     icon: ShieldCheck,

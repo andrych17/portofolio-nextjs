@@ -43,3 +43,16 @@ next-env.d.ts
 
 # Graphify knowledge graph
 graphify-out/
+
+# Agent & IDE config
+.agents/
+.augment/
+.claude/
+.codewhale/
+.codex/
+.continue/
+.cursor/
+.factory/
+.gemini/
+.opencode/
+
