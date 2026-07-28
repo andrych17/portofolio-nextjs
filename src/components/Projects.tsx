@@ -67,6 +67,8 @@ const projects: Project[] = [
     title: "Internal Reporting System",
     description:
       "Developed dozens of internal reports with heavily optimized SQL queries for a large pulp & paper manufacturer. Cut long-running report times from minutes to seconds. Mixed ASP Classic with .NET for newer modules.",
+    impact:
+      "Mengoptimalkan kueri laporan data besar dari hitungan menit menjadi detik untuk operasional pabrik kertas & pulp.",
     year: "2017 – 2021",
     emoji: "📊",
     icon: FileBarChart,
@@ -88,6 +90,8 @@ const projects: Project[] = [
     title: "WhatsApp Scheduler Bot",
     description:
       "Selenium-based scheduler that auto-captures dashboard screenshots and pushes them via WhatsApp Web to stakeholders on a fixed cadence.",
+    impact:
+      "Otomatisasi pengiriman laporan analitik produksi real-time (OEE & HWT) via WhatsApp Web ke jajaran manajemen.",
     year: "2020 – 2021",
     emoji: "🤖",
     icon: Bot,
@@ -106,6 +110,8 @@ const projects: Project[] = [
     title: "Barcode Scanner Mobile App",
     description:
       "Mobile app for stationery & inventory management with barcode scanning to track stock-in / stock-out at the warehouse counter.",
+    impact:
+      "Digitalisasi pemindaian barcode stok gudang real-time untuk mempercepat pencatatan stock-in/out.",
     year: "2019 – 2020",
     emoji: "📱",
     icon: ScanLineIcon,
@@ -125,6 +131,8 @@ const projects: Project[] = [
     title: "Covid Employee Health Survey",
     description:
       "Internal web app to monitor employee health status during the pandemic, used company-wide for daily check-ins and contact-tracing reports.",
+    impact:
+      "Digunakan se-perusahaan untuk daily check-in kesehatan karyawan & contact tracing selama masa pandemi.",
     year: "2020",
     emoji: "🩺",
     icon: HeartPulse,
@@ -139,14 +147,16 @@ const projects: Project[] = [
     color: "from-rose-500 to-pink-500",
   },
 
-  // ── JOB #2 — Tool Management ──────────────────────────────
+  // ── JOB #2 — Software House (Surabaya) ────────────────────
   {
     id: 201,
     group: "tool-mgmt",
     title: "Tool Management System (TMS)",
     description:
       "Maintained and improved a legacy enterprise Tool Management System. Drove a Java version upgrade, large refactor, and code-review process — significantly reducing incident tickets quarter over quarter.",
-    year: "2021 – 2023",
+    impact:
+      "Membersihkan 10.000+ data terkorupsi dari bug legacy code & memangkas insiden tiket high-priority berulang.",
+    year: "Mar 2022 – Nov 2022",
     emoji: "🛠️",
     icon: Wrench,
     tags: [
@@ -170,6 +180,8 @@ const projects: Project[] = [
     title: "SonarQube Code Quality Pipeline",
     description:
       "Set up and rolled out SonarQube across multiple internal .NET projects. Defined quality gates, integrated with CI/CD, and onboarded teams onto the platform.",
+    impact:
+      "Pelopor analisis kode statis 100.000+ file & me-enforce zero-vulnerability quality gates di CI/CD.",
     year: "2023 – 2024",
     emoji: "🛡️",
     icon: ShieldCheck,
@@ -190,6 +202,8 @@ const projects: Project[] = [
     title: "SMRT Tenant Management System",
     description:
       "Development & maintenance of a mall tenant management platform for SMRT Singapore — leasing, billing, and tenant operations on a SaaS deployment. Newer modules built with Next.js + Nest.js on top of the legacy .NET core.",
+    impact:
+      "Sukses rilis platform SaaS manajemen penyewa mall SMRT Singapore (digitasi tender, aplikasi tenant, & operasi penyewa).",
     year: "2023 – 2025",
     emoji: "🏬",
     icon: Store,
@@ -211,6 +225,8 @@ const projects: Project[] = [
     title: "Simplicity — Facilities Management SaaS",
     description:
       "Feature development and ticket-based maintenance on Simplicity, Anacle/MRI's enterprise facilities-management product. International remote team, cross-region releases.",
+    impact:
+      "Mengembangkan & memelihara modul SaaS enterprise facilities management untuk klien internasional.",
     year: "2023 – Mar 2026",
     emoji: "🏢",
     icon: Building2,
@@ -234,6 +250,8 @@ const projects: Project[] = [
     title: "Cloud Document Integration (SharePoint / AWS / Azure)",
     description:
       "Built an integration layer to upload documents from the database into SharePoint, AWS S3, and Azure Blob — with full RBAC, access control, and audit logging. Front-end in Next.js, service layer in Nest.js.",
+    impact:
+      "Engine migrasi dokumen syncing 10.000+ file enterprise ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit logging).",
     year: "2024 – 2025",
     emoji: "☁️",
     icon: Cloud,
@@ -636,6 +654,38 @@ const projects: Project[] = [
     ],
     color: "from-teal-600 to-emerald-700",
   },
+  {
+    id: 507,
+    group: "freelance",
+    status: "done",
+    title: "AI Portfolio Assistant & Interactive Chatbot",
+    description:
+      "Interactive RAG-powered portfolio chatbot allowing visitors and recruiters to query career history, tech stack, and project architecture in real time.",
+    longDescription:
+      "Asisten chatbot portofolio cerdas berbasis RAG (Retrieval-Augmented Generation) yang terintegrasi di website portofolio andryhuang.com. Memungkinkan pengunjung & recruiter bertanya tentang riwayat karir, penguasaan tech stack, arsitektur project, hingga detail pengalaman kerja secara real-time.",
+    features: [
+      "RAG Architecture & Context Retrieval berbasis Vector Embeddings",
+      "Jawaban Real-Time berbasis riwayat karir & arsitektur project CV",
+      "Interaksi Chatbot Melayang (Floating UI) interaktif",
+      "Streaming Response & optimasi token prompt LLM",
+    ],
+    impact:
+      "Memberikan pengalaman eksplorasi portofolio interaktif bagi recruiter & pengunjung website.",
+    emoji: "🤖",
+    icon: Bot,
+    tags: [
+      "Next.js 16",
+      "OpenAI API",
+      "Vector Embeddings",
+      "Tailwind CSS v4",
+      "TypeScript",
+      "RAG Architecture",
+    ],
+    color: "from-cyan-500 to-purple-500",
+    liveUrl: "https://andryhuang.com",
+    liveLabel: "andryhuang.com",
+    featured: true,
+  },
 ];
 
 const groups: {
@@ -646,7 +696,7 @@ const groups: {
 }[] = [
   { key: "freelance", label: "Side Projects", sub: "Client & Personal", icon: ShoppingCart },
   { key: "anacle", label: "Anacle / MRI", sub: "Singapore SaaS", icon: Building2 },
-  { key: "tool-mgmt", label: "Tool Mgmt", sub: "Java Enterprise", icon: Wrench },
+  { key: "tool-mgmt", label: "Software House", sub: "Surabaya, ID", icon: Wrench },
   { key: "tjiwi", label: "Tjiwi Kimia", sub: "Manufacturing", icon: Factory },
 ];
 
