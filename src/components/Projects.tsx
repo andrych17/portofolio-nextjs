@@ -251,7 +251,7 @@ const projects: Project[] = [
     description:
       "Built an integration layer to upload documents from the database into SharePoint, AWS S3, and Azure Blob — with full RBAC, access control, and audit logging. Front-end in Next.js, service layer in Nest.js.",
     impact:
-      "Engine migrasi dokumen syncing 10.000+ file enterprise ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit logging).",
+      "Engine migrasi dokumen syncing 100.000+ file enterprise ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit logging).",
     year: "2024 – 2025",
     emoji: "☁️",
     icon: Cloud,

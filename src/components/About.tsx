@@ -18,7 +18,7 @@ const experiencesEn = [
     description: "Engineered and maintained enterprise SaaS platforms (Anacle Simplicity & SMRT Tenant Management System) using .NET Core, .NET Framework 4.8, Next.js, and NestJS. Integrated enterprise APIs including Bank APIs and SharePoint.",
     achievements: [
       "Go-Live SMRT Tenant Management: Delivered enterprise tenant platform digitizing mall tenders, leasing, and tenant operations.",
-      "Go-Live SharePoint Document Migration: Synced 10,000+ enterprise files to SharePoint Graph API, AWS S3, and Azure Blob with RBAC & audit logging.",
+      "Go-Live SharePoint Document Migration: Synced 100,000+ enterprise files to SharePoint Graph API, AWS S3, and Azure Blob with RBAC & audit logging.",
       "SonarQube Security & Quality Pipeline: Spearheaded static code analysis across multiple internal enterprise projects and enforced automated CI/CD quality gates.",
     ],
   },
@@ -64,7 +64,7 @@ const experiencesId = [
     description: "Mengembangkan & memelihara aplikasi SaaS enterprise (Anacle Simplicity & SMRT Tenant Management System) menggunakan .NET Core, Next.js, dan NestJS. Mengintegrasikan API perbankan & SharePoint.",
     achievements: [
       "Go-Live SMRT Tenant Management: Sukses rilis platform SaaS manajemen penyewa mall SMRT Singapore (digitasi tender, aplikasi tenant, leasing).",
-      "Go-Live SharePoint Document Migration: Engine migrasi dokumen syncing 10.000+ file ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit).",
+      "Go-Live SharePoint Document Migration: Engine migrasi dokumen syncing 100.000+ file ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit).",
       "SonarQube Quality Pipeline: Memimpin analisis kode statis di beberapa proyek enterprise & me-enforce zero-vulnerability quality gates di CI/CD.",
     ],
   },
