@@ -282,15 +282,11 @@ export function GlitchText({
   className?: string;
 }) {
   return (
-    <span className={`relative inline-block ${className}`}>
+    <span className={`relative inline-block overflow-hidden ${className}`}>
       {children}
       <motion.span
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
-        style={{
-          maskImage: "linear-gradient(to right, transparent, white, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, transparent, white, transparent)",
-        }}
-        animate={{ x: ["-200%", "200%"] }}
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none"
+        animate={{ x: ["-100%", "200%"] }}
         transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, ease: "linear" }}
       />
     </span>

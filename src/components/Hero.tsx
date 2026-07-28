@@ -56,7 +56,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden aurora-bg"
+      className="min-h-screen min-h-[100dvh] flex items-center justify-center relative overflow-hidden aurora-bg"
     >
       {/* Three.js Galaxy Animation */}
       <ThreeBackground />

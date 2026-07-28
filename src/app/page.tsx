@@ -10,7 +10,7 @@ import { TerminalWindow, CursorTrail } from "@/components/CodeAnimations";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#030014]">
+    <main className="min-h-screen min-h-[100dvh] bg-[#030014]">
       <Navbar />
       <Hero />
       <About />

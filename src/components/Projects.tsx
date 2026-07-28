@@ -661,8 +661,6 @@ const statusLabel = (s: ProjectStatus) =>
 
 const fmt = (n: number) => (n < 10 ? `0${n}` : `${n}`);
 
-// ─── Editorial Cards ─────────────────────────────────────────────────────────
-
 function HeroCard({
   project,
   number,
@@ -673,9 +671,17 @@ function HeroCard({
   onOpen: (p: Project) => void;
 }) {
   return (
-    <button
+    <div
+      role="button"
+      tabIndex={0}
       onClick={() => onOpen(project)}
-      className="group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 hover:shadow-[0_0_40px_-10px_rgba(236,72,153,0.35)]"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen(project);
+        }
+      }}
+      className="group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 hover:shadow-[0_0_40px_-10px_rgba(236,72,153,0.35)] cursor-pointer select-none"
     >
       <div className="relative aspect-[16/11] md:aspect-[16/10] w-full overflow-hidden">
         {project.images?.[0] ? (
@@ -774,7 +780,7 @@ function HeroCard({
           </div>
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 
@@ -788,9 +794,17 @@ function SidebarCard({
   onOpen: (p: Project) => void;
 }) {
   return (
-    <button
+    <div
+      role="button"
+      tabIndex={0}
       onClick={() => onOpen(project)}
-      className="group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 flex min-h-[120px] md:min-h-0 flex-1"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen(project);
+        }
+      }}
+      className="group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 flex min-h-[120px] md:min-h-0 flex-1 cursor-pointer select-none"
     >
       {/* thumbnail */}
       <div className="relative w-28 md:w-40 lg:w-44 shrink-0 overflow-hidden">
@@ -844,7 +858,7 @@ function SidebarCard({
           ) : null}
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 
@@ -858,9 +872,17 @@ function GridCard({
   onOpen: (p: Project) => void;
 }) {
   return (
-    <button
+    <div
+      role="button"
+      tabIndex={0}
       onClick={() => onOpen(project)}
-      className="group relative w-full text-left rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 flex flex-col h-full"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen(project);
+        }
+      }}
+      className="group relative w-full text-left rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 flex flex-col h-full cursor-pointer select-none"
     >
       {/* image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -939,7 +961,7 @@ function GridCard({
           <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-pink-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0" />
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 

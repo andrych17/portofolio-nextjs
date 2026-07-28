@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-[#030014]">
+    <main className="min-h-screen min-h-[100dvh] bg-[#030014]">
       <Navbar />
       <div className="pt-20">
         <Projects />
