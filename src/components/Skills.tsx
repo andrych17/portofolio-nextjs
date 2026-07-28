@@ -8,14 +8,14 @@ import { SpotlightCard } from "./AnimationEffects";
 import { useLanguage } from "@/context/LanguageContext";
 
 const skills = [
-  { name: "AI & LLM Integration (OpenAI / Claude)", level: 95, color: "from-purple-500 to-pink-500" },
-  { name: "AI Agent Workflows & MCP", level: 92, color: "from-fuchsia-500 to-violet-500" },
-  { name: "Next.js / React", level: 95, color: "from-cyan-500 to-blue-500" },
-  { name: ".NET Core / Framework", level: 92, color: "from-purple-500 to-indigo-500" },
-  { name: "Node.js / Nest.js", level: 88, color: "from-green-500 to-emerald-500" },
-  { name: "TypeScript / JavaScript", level: 95, color: "from-blue-500 to-cyan-500" },
-  { name: "Laravel / PHP", level: 85, color: "from-red-500 to-orange-500" },
-  { name: "PostgreSQL / MySQL", level: 90, color: "from-yellow-500 to-orange-500" },
+  { name: ".NET Core & Enterprise Systems", years: "6+ Yrs", pct: 100, color: "from-purple-500 to-indigo-500" },
+  { name: "SQL Server & PostgreSQL Databases", years: "6+ Yrs", pct: 100, color: "from-yellow-500 to-orange-500" },
+  { name: "TypeScript / JavaScript", years: "5+ Yrs", pct: 85, color: "from-blue-500 to-cyan-500" },
+  { name: "Next.js / React Architecture", years: "4+ Yrs", pct: 70, color: "from-cyan-500 to-blue-500" },
+  { name: "Node.js / Nest.js Backend", years: "4+ Yrs", pct: 70, color: "from-green-500 to-emerald-500" },
+  { name: "Laravel / PHP Ecosystem", years: "4+ Yrs", pct: 70, color: "from-red-500 to-orange-500" },
+  { name: "AI & LLM Systems (OpenAI / Claude)", years: "2+ Yrs", pct: 40, color: "from-purple-500 to-pink-500" },
+  { name: "AI Agent Protocols (MCP & Workflows)", years: "2+ Yrs", pct: 40, color: "from-fuchsia-500 to-violet-500" },
 ];
 
 const skillCategories = [
@@ -170,7 +170,7 @@ export default function Skills() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-2xl font-semibold text-white mb-8"
             >
-              {lang === "id" ? "Tingkat Kemampuan Teknis" : "Technical Proficiency"}
+              {lang === "id" ? "Pengalaman Teknis (Track Record)" : "Technical Experience (Track Record)"}
             </motion.h3>
             {skills.map((skill, index) => (
               <motion.div
@@ -179,15 +179,17 @@ export default function Skills() {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               >
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300">{skill.name}</span>
-                  <span className="text-gray-400">{skill.level}%</span>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-gray-300 text-sm md:text-base font-medium">{skill.name}</span>
+                  <span className="font-mono text-xs text-cyan-300 bg-cyan-950/80 border border-cyan-500/30 px-2.5 py-0.5 rounded-full backdrop-blur">
+                    {skill.years}
+                  </span>
                 </div>
-                <div className="h-3 bg-gray-800/60 rounded-full overflow-hidden border border-white/5">
+                <div className="h-2.5 bg-gray-800/60 rounded-full overflow-hidden border border-white/5">
                   <motion.div
                     className={`h-full bg-gradient-to-r ${skill.color} rounded-full shadow-[0_0_10px_rgba(168,85,247,0.3)]`}
                     initial={{ width: 0 }}
-                    animate={isInView ? { width: `${skill.level}%` } : {}}
+                    animate={isInView ? { width: `${skill.pct}%` } : {}}
                     transition={{ duration: 1, delay: 0.6 + index * 0.1, ease: "easeOut" }}
                   />
                 </div>

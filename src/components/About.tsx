@@ -14,26 +14,45 @@ const experiencesEn = [
   {
     period: "Nov 2022 - Mar 2026",
     title: "Fullstack Developer",
-    company: "MRI Software, Singapore (Remote)",
-    description: "Develop and maintain SaaS applications and tenant portal apps using .NET Framework, .NET Core, Next.js, and Nest.js. Integrate multiple enterprise APIs including Bank API and SharePoint. Build and optimize complex reporting queries to improve system performance. Improve code quality through SonarQube analysis, refactoring, and collaboration with QA/testing teams.",
+    company: "MRI Software (formerly Anacle Systems), Singapore (Remote)",
+    description: "Engineered and maintained enterprise SaaS platforms (Anacle Simplicity & SMRT Tenant Management System) using .NET Core, .NET Framework 4.8, Next.js, and NestJS. Integrated enterprise APIs including Bank APIs and SharePoint.",
+    achievements: [
+      "Go-Live SMRT Tenant Management: Delivered enterprise tenant platform digitizing mall tenders, leasing, and tenant operations.",
+      "Go-Live SharePoint Document Migration: Synced 10,000+ enterprise files to SharePoint Graph API, AWS S3, and Azure Blob with RBAC & audit logging.",
+      "SonarQube Security & Quality Pipeline: Spearheaded static code analysis across 100,000+ files and enforced automated CI/CD quality gates.",
+    ],
   },
   {
     period: "2021 - Present",
     title: "Freelance & Side Projects",
     company: "Multiple Clients & Personal SaaS",
-    description: "Designed and developed multiple POS, ERP, and AI platforms (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI, Grocery POS, Tire Shop ERP, Jewelry Store with RFID). Set up Linux servers, CI/CD pipelines, fail2ban SSH security, and DevOps infrastructure.",
+    description: "Designed and developed multiple POS, ERP, and AI platforms (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI, Grocery POS, Tire Shop ERP, Jewelry Store with RFID).",
+    achievements: [
+      "Qualiv Founder & Architect: Multi-tenant AI recruitment SaaS with LLM CV screening, candidate logic tests, and real-time AI interview simulation.",
+      "Enterprise Retail Solutions: Delivered RFID jewelry POS (reduced stock audit from 2 hrs to 3 mins), tire shop double-entry ERP, and yarn store e-commerce.",
+      "OpenClaw Security Agent: Autonomous AI server security agent with LLM log anomaly diagnosis, SSH fail2ban, and Telegram alerts.",
+    ],
   },
   {
     period: "Mar 2022 - Nov 2022",
     title: "Fullstack Developer",
-    company: "Software House",
-    description: "Developed and maintained applications using Node.js and Next.js. Created and optimized complex query reports for improved performance. Managed Git servers, handled Elasticsearch infrastructure, and upgraded legacy Java versions. Managed and resolved incident tickets.",
+    company: "Software House, Surabaya, Indonesia",
+    description: "Developed scalable web apps using Node.js and Next.js, optimizing high-concurrency SQL queries, managing self-hosted Git servers, and configuring Elasticsearch infrastructure.",
+    achievements: [
+      "Database Cleanup & Recovery: Repaired & cleaned 10,000+ corrupted database records caused by legacy code logic bugs.",
+      "Incident & Ticket Elimination: Resolved core architectural bottlenecks, eliminating recurring high-priority incident tickets.",
+    ],
   },
   {
     period: "Sep 2019 - Feb 2022",
     title: "Full-Stack Developer",
     company: "PT Tjiwi Kimia, Indonesia",
-    description: "Developed web applications using .NET Core and C#. Created WhatsApp Bot using Selenium for automated report sending. Developed Android app for barcode scanning. Created and optimized complex query reports for inventory and production systems.",
+    description: "Developed enterprise web solutions and internal reporting modules for pulp & paper manufacturing using .NET Core, C#, ASP Classic, and SQL Server.",
+    achievements: [
+      "Automated OEE & HWT Metrics Reporting: Built Python/Java WhatsApp bot for real-time production analytics dispatches enabling plant target machine performance.",
+      "Android Barcode Scanner: Deployed native Android app for real-time warehouse inventory stock-in / stock-out tracking.",
+      "COVID-19 Employee Health Survey: Automated company-wide pandemic check-ins & contact tracing web app.",
+    ],
   },
 ];
 
@@ -41,26 +60,45 @@ const experiencesId = [
   {
     period: "Nov 2022 - Mar 2026",
     title: "Fullstack Developer",
-    company: "MRI Software, Singapura (Remote)",
-    description: "Mengembangkan & memelihara aplikasi SaaS enterprise dan portal penyewa menggunakan .NET Core, Next.js, dan Nest.js. Mengintegrasikan API perbankan & SharePoint. Mengoptimalkan kueri laporan data besar. Meningkatkan kualitas kode melalui SonarQube & kolaborasi tim QA.",
+    company: "MRI Software (formerly Anacle Systems), Singapura (Remote)",
+    description: "Mengembangkan & memelihara aplikasi SaaS enterprise (Anacle Simplicity & SMRT Tenant Management System) menggunakan .NET Core, Next.js, dan NestJS. Mengintegrasikan API perbankan & SharePoint.",
+    achievements: [
+      "Go-Live SMRT Tenant Management: Sukses rilis platform SaaS manajemen penyewa mall SMRT Singapore (digitasi tender, aplikasi tenant, leasing).",
+      "Go-Live SharePoint Document Migration: Engine migrasi dokumen syncing 10.000+ file ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit).",
+      "SonarQube Quality Pipeline: Memimpin analisis kode 100.000+ file & me-enforce zero-vulnerability quality gates di CI/CD.",
+    ],
   },
   {
     period: "2021 - Sekarang",
     title: "Freelance & Side Projects",
     company: "Berbagai Klien & SaaS Mandiri",
-    description: "Merancang & membangun berbagai platform POS, ERP, dan aplikasi AI (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI Sales Assistant, E-Commerce, POS Toko Benang, POS Emas RFID). Mengelola server Linux, CI/CD, audit keamanan SSH fail2ban, dan infrastruktur DevOps.",
+    description: "Merancang & membangun berbagai platform POS, ERP, dan aplikasi AI (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI Sales Assistant, E-Commerce, POS Toko Benang, POS Emas RFID).",
+    achievements: [
+      "Qualiv Founder & Architect: Platform SaaS rekruitmen AI multi-tenant untuk screening CV, tes logika kandidat, & simulasi wawancara AI.",
+      "Solusi Retail Enterprise: Mengembangkan POS Emas RFID (memangkas audit stok dari 2 jam ke 3 menit), ERP Ban A/R & A/P, dan E-Commerce benang.",
+      "OpenClaw Security Agent: Agen keamanan VPS berbasis AI otomatis dengan fail2ban & notifikasi insiden Telegram.",
+    ],
   },
   {
     period: "Mar 2022 - Nov 2022",
     title: "Fullstack Developer",
-    company: "Software House",
-    description: "Mengembangkan aplikasi web berbasis Node.js dan Next.js. Mengoptimalkan kueri laporan performa tinggi. Mengelola Git server, infrastruktur Elasticsearch, refactoring versi Java enterprise, dan penanganan tiket insiden.",
+    company: "Software House, Surabaya, Indonesia",
+    description: "Mengembangkan aplikasi web berbasis Node.js dan Next.js, mengoptimalkan kueri SQL performa tinggi, serta mengelola infrastruktur Elasticsearch & Git server.",
+    achievements: [
+      "Database Cleanup & Data Recovery: Memperbaiki & membersihkan 10.000+ data database terkorupsi akibat bug legacy code.",
+      "Incident & Ticket Elimination: Menyelesaikan bottleneck arsitektur utama & mengeliminasi tiket insiden high-priority berulang.",
+    ],
   },
   {
     period: "Sep 2019 - Feb 2022",
     title: "Full-Stack Developer",
     company: "PT Tjiwi Kimia, Indonesia",
-    description: "Mengembangkan aplikasi web manufaktur dengan .NET Core & C#. Membangun Bot WhatsApp pengirim laporan otomatis berbasis Selenium. Membangun aplikasi Android pemindai barcode gudang, serta mengoptimalkan kueri laporan inventaris & produksi.",
+    description: "Mengembangkan aplikasi web manufaktur dengan .NET Core, C#, ASP Classic, & SQL Server untuk industri kertas & pulp.",
+    achievements: [
+      "Automated OEE & HWT Metric Bot: WhatsApp Bot (Python/Selenium) otomatisasi laporan analitik pabrik real-time untuk pencapaian OEE & HWT.",
+      "Android Barcode Scanner: Membangun aplikasi native Android pemindai barcode stok gudang real-time (stock-in/out).",
+      "COVID-19 Health Survey App: Sistem web check-in & contact tracing harian karyawan se-perusahaan.",
+    ],
   },
 ];
 
@@ -359,8 +397,23 @@ export default function About() {
                   >
                     <span className="text-pink-400 text-sm font-medium">{exp.period}</span>
                     <h4 className="text-xl font-bold text-white mt-2">{exp.title}</h4>
-                    <p className="text-amber-400 text-sm mt-1">{exp.company}</p>
-                    <p className="text-gray-400 mt-3 text-sm">{exp.description}</p>
+                    <p className="text-amber-400 text-sm mt-1 font-medium">{exp.company}</p>
+                    <p className="text-gray-300 mt-3 text-sm leading-relaxed">{exp.description}</p>
+                    {exp.achievements && exp.achievements.length > 0 && (
+                      <div className="mt-4 pt-3 border-t border-white/10">
+                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-pink-300 flex items-center gap-1 mb-2 font-semibold">
+                          ★ {lang === "id" ? "Key Achievements / Impact" : "Key Achievements / Impact"}
+                        </span>
+                        <ul className="space-y-1.5">
+                          {exp.achievements.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-xs text-gray-300 leading-normal">
+                              <span className="text-pink-400 mt-0.5 shrink-0">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </motion.div>
                 </div>
               </motion.div>
