@@ -41,7 +41,7 @@ const skillCategories = [
       "Claude Sonnet 3.7",
       "LLM Vector Embeddings",
       "Prompt Engineering",
-      "BullMQ Async Queues",
+      "Redis Async Queues",
     ],
     color: "from-violet-500 to-fuchsia-500",
   },

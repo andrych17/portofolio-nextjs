@@ -275,7 +275,7 @@ const projects: Project[] = [
     status: "done",
     title: "Qualiv — AI Recruitment Platform (Founder)",
     description:
-      "Founder & Lead Architect. Multi-tenant AI recruitment SaaS platform: CV screening, candidate scoring, and interview workflows powered by OpenAI & BullMQ queue.",
+      "Founder & Lead Architect. Multi-tenant AI recruitment SaaS platform: CV screening, candidate scoring, and interview workflows powered by OpenAI & Redis queue.",
     longDescription:
       "Founder & Lead Architect dari Qualiv (qualiv.id). Platform SaaS rekruitmen berbasis AI multi-tenant yang dibangun dari nol (end-to-end architecture & product design) untuk mengotomatisasi seleksi berkas CV, tes logika kandidat, simulasi wawancara chat/video AI, penilaian kualifikasi pelamar, dan pembuatan ringkasan asesmen secara obyektif.",
     features: [
@@ -283,7 +283,7 @@ const projects: Project[] = [
       "Simulasi Wawancara AI Chat & Video Interview (LLM Interviewer)",
       "Tes Logika & Asesmen Keterampilan Kandidat Otomatis (Real-Time Scoring)",
       "Sistem Penilaian & Match Score kandidat terhadap kualifikasi posisi",
-      "Pemrosesan Antrean Berkas Massal (BullMQ + Redis Queue)",
+      "Pemrosesan Antrean Berkas Massal (Redis Queue)",
       "Sistem Langganan & Billing Midtrans terintegrasi",
       "Penyimpanan Dokumen Aman Cloudflare R2 & Postgres Storage",
     ],
@@ -306,7 +306,7 @@ const projects: Project[] = [
       "OpenAI GPT-4o API",
       "PostgreSQL",
       "Prisma ORM",
-      "BullMQ Worker",
+      "Redis Worker",
       "Redis",
       "Cloudflare R2",
       "Midtrans",

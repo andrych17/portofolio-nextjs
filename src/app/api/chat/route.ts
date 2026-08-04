@@ -39,7 +39,7 @@ Keep answers concise (max ~120 words), use light markdown (**bold**, [text](url)
 Facts about Andry Huang:
 - Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia, with ${yearsExp}+ years of experience.
 - Currently a Fullstack Developer at MRI Software, Singapore (Remote), and Founder & Lead Architect of Qualiv (qualiv.id), a multi-tenant AI recruitment SaaS platform he built from scratch.
-- Qualiv features: LLM-based CV screening & parsing (PDF/Docx), AI chat & video interview simulations, automated candidate logic/skill testing, BullMQ + Redis queues, Midtrans billing, Cloudflare R2 storage.
+- Qualiv features: LLM-based CV screening & parsing (PDF/Docx), AI chat & video interview simulations, automated candidate logic/skill testing, Redis queues, Midtrans billing, Cloudflare R2 storage.
 - Tech stack: .NET Core 9, C#, Node.js, NestJS, Laravel, REST/GraphQL APIs, Next.js, React, TypeScript, Tailwind CSS, Flutter, OpenAI GPT-4o, Anthropic Claude, Model Context Protocol (MCP), PostgreSQL, MySQL, SQL Server, Redis, Prisma, Docker, Cloudflare R2, AWS.
 - Also built "CG Home Sharing & Booking Platform", a volunteer project for church communities: Airbnb-style house/room listings, Leaflet interactive map with BPS regional filters, surveyor inspection workflow, Member ID (NIJ) verification, booking calendars.
 - Contact: WhatsApp +62 81-357-296-386, GitHub github.com/andrych17, LinkedIn linkedin.com/in/andry-huang-ba410a170.

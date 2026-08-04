@@ -1,0 +1,16 @@
+# Node & Build Artifacts
+**/node_modules/
+**/dist/
+**/build/
+**/.next/
+**/.out/
+**/.cache/
+**/coverage/
+
+# Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log

@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { Code2, Database, Cloud, Server, Layers, Zap } from "lucide-react";
+import { Code2, Database, Cloud, Server, Layers, Zap, Briefcase } from "lucide-react";
 import { CyberGrid } from "./CodeAnimations";
 import { SpotlightCard } from "./AnimationEffects";
+import SectionDivider from "./SectionDivider";
 import { useLanguage } from "@/context/LanguageContext";
 import { getYearsOfExperience } from "@/utils/experience";
 
@@ -356,6 +357,13 @@ export default function About() {
             ))}
           </motion.div>
         </div>
+
+        {/* Section Divider between Bio and Experience */}
+        <SectionDivider
+          variant="purple"
+          label={lang === "id" ? "RIWAYAT KARIR & PENGALAMAN" : "CAREER & EXPERIENCE HISTORY"}
+          icon={<Briefcase className="w-3.5 h-3.5" />}
+        />
 
         {/* Experience Timeline */}
         <motion.div

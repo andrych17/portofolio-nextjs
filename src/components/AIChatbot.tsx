@@ -116,8 +116,8 @@ export default function AIChatbot() {
 
     if (q.includes("qualiv")) {
       return currentLang === "id"
-        ? `🧠 **Qualiv (qualiv.id)** adalah platform SaaS rekruitmen berbasis AI multi-tenant yang didirikan dan dirancang oleh Andry Huang dari nol.\n\n✨ **Fitur Utama Qualiv**:\n• Screening & Parsing CV otomatis berbasis LLM (PDF/Docx)\n• Simulasi Wawancara AI Chat & Video Interview (LLM Interviewer)\n• Tes Logika & Asesmen Keterampilan Kandidat Otomatis\n• BullMQ + Redis Queue untuk pemrosesan masal\n• Billing Midtrans & Cloudflare R2 storage.`
-        : `🧠 **Qualiv (qualiv.id)** is a multi-tenant AI recruitment SaaS platform founded & architected by Andry Huang from scratch.\n\n✨ **Key Features**:\n• LLM CV Screening & Parsing (PDF/Docx)\n• AI Chat & Video Interview Simulations (LLM Interviewer)\n• Automated Candidate Logic & Skill Testing\n• BullMQ + Redis Queue mass background processing\n• Midtrans Billing & Cloudflare R2 storage.`;
+        ? `🧠 **Qualiv (qualiv.id)** adalah platform SaaS rekruitmen berbasis AI multi-tenant yang didirikan dan dirancang oleh Andry Huang dari nol.\n\n✨ **Fitur Utama Qualiv**:\n• Screening & Parsing CV otomatis berbasis LLM (PDF/Docx)\n• Simulasi Wawancara AI Chat & Video Interview (LLM Interviewer)\n• Tes Logika & Asesmen Keterampilan Kandidat Otomatis\n• Redis Queue untuk pemrosesan masal\n• Billing Midtrans & Cloudflare R2 storage.`
+        : `🧠 **Qualiv (qualiv.id)** is a multi-tenant AI recruitment SaaS platform founded & architected by Andry Huang from scratch.\n\n✨ **Key Features**:\n• LLM CV Screening & Parsing (PDF/Docx)\n• AI Chat & Video Interview Simulations (LLM Interviewer)\n• Automated Candidate Logic & Skill Testing\n• Redis Queue mass background processing\n• Midtrans Billing & Cloudflare R2 storage.`;
     }
 
     if (q.includes("tech") || q.includes("stack") || q.includes("keahlian") || q.includes("skills")) {

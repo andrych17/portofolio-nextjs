@@ -101,7 +101,8 @@
       "Bash(python3 -c ' *)",
       "Bash(cp /tmp/knit_home2.png retail2.png)",
       "Bash(cp /tmp/knit_products.png retail3.png)",
-      "Bash(rtk npm *)"
+      "Bash(rtk npm *)",
+      "Bash(git commit -m ' *)"
     ],
     "additionalDirectories": [
       "/tmp"
