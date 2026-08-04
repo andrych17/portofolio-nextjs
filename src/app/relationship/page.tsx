@@ -1,30 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
   Heart,
   Sparkles,
-  ExternalLink,
-  Award,
-  GraduationCap,
-  Briefcase,
   ArrowLeft,
   Lock,
-  Star,
-  MapPin,
+  Stars,
+  Flame,
+  Music,
+  Smile,
+  Sun,
+  Crown,
+  Quote,
 } from "lucide-react";
 
 export default function RelationshipPage() {
-  const [likes, setLikes] = useState(100);
+  const [likes, setLikes] = useState(999);
   const [hasLiked, setHasLiked] = useState(false);
+  const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const loveNotes = [
+    "Senyumanmu selalu jadi alasan terbaik buat tersenyum setiap hari. ✨",
+    "Terima kasih sudah selalu jadi tempat pulang yang paling hangat dan nyaman, sayang. 🏡❤️",
+    "Setiap langkah, mimpi, dan masa depan terasa jauh lebih indah karena ada kamu di sisiku. 💫",
+    "Kamu bukan cuma pasangan, tapi sahabat terbaik dan berkah terindah dalam hidupku. 🌹",
+  ];
 
   const handleLike = () => {
     if (!hasLiked) {
@@ -36,287 +45,216 @@ export default function RelationshipPage() {
     }
   };
 
+  const nextNote = () => {
+    setCurrentNoteIndex((prev) => (prev + 1) % loveNotes.length);
+  };
+
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-[#030014] text-white selection:bg-rose-500/30 selection:text-rose-200 overflow-x-hidden">
-      {/* Background Glow Orbs */}
+    <div className="min-h-screen bg-[#060010] text-white selection:bg-rose-500/30 selection:text-rose-200 overflow-x-hidden relative">
+      {/* Ambient Romantic Glow Orbs */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-rose-600/20 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-purple-600/20 rounded-full blur-[140px]" />
-        <div className="absolute -bottom-40 left-1/3 w-[28rem] h-[28rem] bg-cyan-600/20 rounded-full blur-[130px]" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[35rem] h-[35rem] bg-gradient-to-tr from-rose-600/30 via-pink-500/20 to-purple-600/20 rounded-full blur-[150px] animate-pulse" />
+        <div className="absolute bottom-10 -left-20 w-96 h-96 bg-rose-500/20 rounded-full blur-[130px]" />
+        <div className="absolute top-1/2 -right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-[130px]" />
       </div>
 
       {/* Top Navbar */}
-      <nav className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-6 flex items-center justify-between">
+      <nav className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-6 flex items-center justify-between">
         <Link
           href="/"
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs sm:text-sm text-gray-300 hover:text-white transition-all backdrop-blur"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Portfolio</span>
+          <span>Kembali ke Portfolio</span>
         </Link>
 
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono tracking-wider backdrop-blur">
-          <Lock className="w-3.5 h-3.5 text-rose-400" />
-          <span>CONFIDENTIAL • HIDDEN VAULT</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-mono tracking-wider backdrop-blur shadow-[0_0_15px_rgba(244,63,94,0.2)]">
+          <Heart className="w-3.5 h-3.5 fill-rose-400 text-rose-400 animate-pulse" />
+          <span>SECRET LOVE VAULT</span>
         </div>
       </nav>
 
       {/* Hero Header */}
-      <section className="relative z-10 max-w-4xl mx-auto px-4 pt-12 pb-8 text-center">
+      <section className="relative z-10 max-w-3xl mx-auto px-4 pt-10 pb-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-rose-500/20 via-purple-500/20 to-cyan-500/20 border border-rose-400/30 text-rose-200 text-xs sm:text-sm font-medium mb-6 backdrop-blur shadow-[0_0_20px_rgba(244,63,94,0.2)]"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-rose-500/20 via-pink-500/20 to-purple-500/20 border border-rose-400/40 text-rose-200 text-xs sm:text-sm font-medium mb-6 backdrop-blur shadow-[0_0_25px_rgba(244,63,94,0.3)]"
         >
-          <Sparkles className="w-4 h-4 text-rose-400 animate-pulse" />
-          <span>Special Appreciation & Relationship Story</span>
+          <Sparkles className="w-4 h-4 text-rose-400 animate-spin" style={{ animationDuration: "6s" }} />
+          <span>For My Dearest Gracia Violeta</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl sm:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-purple-200 to-cyan-200 mb-4"
+          className="text-4xl sm:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-pink-300 to-purple-200 mb-4"
         >
-          Andry Huang & Gracia Violeta
+          I Love You, Sayang ❤️
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+          className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-light"
         >
-          Celebrating love, mutual growth, shared ambition, and continuous encouragement in career & life.
+          Halaman rahasia ini khusus buat kamu. Tempat pengingat betapa berharganya kamu dalam hidupku, hari ini dan selamanya.
         </motion.p>
       </section>
 
-      {/* Profile Card Section */}
-      <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-8">
+      {/* Main Romantic Photo & Love Letter Card */}
+      <section className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 py-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="p-6 sm:p-10 rounded-3xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden"
+          className="p-6 sm:p-10 rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-rose-500/30 backdrop-blur-xl shadow-[0_0_50px_rgba(244,63,94,0.15)] relative overflow-hidden"
         >
-          {/* Subtle card glow */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-rose-500/10 rounded-full blur-[90px] pointer-events-none" />
+          {/* Subtle Heart Watermark */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-5">
+            <Heart className="w-96 h-96 text-rose-500 fill-rose-500" />
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Image Column */}
-            <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-3xl overflow-hidden border-2 border-rose-400/40 p-1.5 bg-gradient-to-b from-rose-500/30 to-purple-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)] group">
-                <div className="relative w-full h-full rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* Real Gracia Photo */}
+            <div className="md:col-span-5 flex flex-col items-center">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-3xl p-2 bg-gradient-to-tr from-rose-500 via-pink-500 to-purple-500 shadow-[0_0_40px_rgba(244,63,94,0.4)] group">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gray-950">
                   <Image
                     src="/gracia.jpg"
                     alt="Gracia Violeta"
                     fill
                     sizes="(max-width: 768px) 100vw, 300px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                    <span className="px-2.5 py-1 rounded-full bg-rose-500/80 backdrop-blur text-[11px] font-semibold text-white tracking-wide">
-                      ★ Lulusan Terbaik UNAIR
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur text-[11px] font-mono text-cyan-200 border border-cyan-400/30">
-                      IPK 3.69
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3 text-center">
+                    <span className="px-3 py-1 rounded-full bg-rose-500/80 backdrop-blur text-xs font-semibold text-white tracking-wide shadow-lg inline-flex items-center gap-1.5">
+                      <Heart className="w-3.5 h-3.5 fill-white" />
+                      <span>Gracia Violeta</span>
                     </span>
                   </div>
                 </div>
               </div>
-
-              {/* LinkedIn Action Button */}
-              <a
-                href="https://www.linkedin.com/in/gracia-violeta-483b11313/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 w-full max-w-xs flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-rose-600 via-purple-600 to-cyan-600 hover:from-rose-500 hover:to-cyan-500 text-white font-medium text-sm shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all transform hover:-translate-y-0.5"
-              >
-                <span>View Gracia's LinkedIn</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
             </div>
 
-            {/* Profile Content Column */}
-            <div className="lg:col-span-7 space-y-5">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono uppercase tracking-wider mb-2">
-                  <Star className="w-3.5 h-3.5 fill-rose-400 text-rose-400" />
-                  <span>Featured Partner Profile</span>
-                </div>
-                <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
-                  Gracia Violeta, S.Pi.
-                </h2>
-                <p className="text-rose-300 text-sm sm:text-base font-medium mt-1">
-                  Staff Admin Marketing Export Udang • PT. Bumi Menara Internusa
-                </p>
-                <p className="text-gray-400 text-xs sm:text-sm flex items-center gap-1.5 mt-1">
-                  <MapPin className="w-3.5 h-3.5 text-gray-400" />
-                  <span>Surabaya & Depok, Indonesia</span>
-                </p>
+            {/* Romantic Message Letter */}
+            <div className="md:col-span-7 space-y-4 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono uppercase tracking-wider">
+                <Crown className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
+                <span>My Queen • My Favorite Person</span>
               </div>
 
-              <div className="space-y-3 text-gray-300 text-xs sm:text-sm leading-relaxed border-t border-b border-white/10 py-4">
-                <div className="flex items-start gap-2.5">
-                  <GraduationCap className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
-                  <div>
-                    <strong className="text-white">Pendidikan:</strong> Sarjana Akuakultur (S1) — Universitas Airlangga (IPK 3.69 / 4.00, Predikat Lulusan Terbaik).
-                  </div>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Briefcase className="w-4 h-4 text-purple-400 mt-0.5 shrink-0" />
-                  <div>
-                    <strong className="text-white">Pengalaman Karir:</strong> Admin Marketing Export Udang & Admin Produksi di PT. Bumi Menara Internusa (Mengelola Proforma Invoice, Sales Order ekspor internasional, laporan biaya operasional, dan KPI).
-                  </div>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Award className="w-4 h-4 text-rose-400 mt-0.5 shrink-0" />
-                  <div>
-                    <strong className="text-white">Keahlian Utama:</strong> Dokumen Ekspor & Perdagangan Internasional, Microsoft Office, Analytics Biaya Produksi, Relationship Building, & Berpikir Logis.
-                  </div>
-                </div>
-              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Terima Kasih Sudah Hadir dalam Hidupku ✨
+              </h2>
 
-              {/* Skills Tags */}
-              <div className="space-y-2">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-gray-400">
-                  Key Skills & Competencies
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Export Trade Admin",
-                    "Proforma Invoice",
-                    "Sales Order Processing",
-                    "Operational Costing",
-                    "Relationship Building",
-                    "Cross-Division Coordination",
-                    "Logical Thinking",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-mono"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                Makasih ya sayang sudah selalu sabar, nemenin, kasih perhatian, dan selalu jadi energi positif buat aku. Bersamamu buat segalanya terasa lebih ringan dan bermakna.
+              </p>
+
+              <p className="text-rose-200 text-sm sm:text-base font-medium leading-relaxed italic">
+                "Setiap hari bersamamu adalah berkah terbaik yang selalu aku syukuri. I'm so proud of you & I love you more than words can say!"
+              </p>
+
+              <div className="pt-2 flex flex-wrap gap-2 justify-center md:justify-start">
+                {["Sayangku", "Cintaku", "My Happiness", "Forever & Always"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-200 text-xs font-medium"
+                  >
+                    ❤️ {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </motion.div>
       </section>
 
-      {/* Shared Values & Story Highlights */}
-      <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-8">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Key Highlights & Shared Strengths
-          </h3>
-          <p className="text-gray-400 text-sm mt-1">
-            Complementary expertise across Software Engineering & International Trade Operations
-          </p>
-        </div>
+      {/* Love Notes Carousel / Card */}
+      <section className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 py-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="p-6 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur text-center relative overflow-hidden"
+        >
+          <Quote className="w-8 h-8 text-rose-400/40 mx-auto mb-2" />
+          
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={currentNoteIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className="text-base sm:text-lg font-medium text-rose-100 min-h-[4rem] flex items-center justify-center px-4"
+            >
+              "{loveNotes[currentNoteIndex]}"
+            </motion.p>
+          </AnimatePresence>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur hover:border-rose-400/40 transition-all group"
+          <button
+            onClick={nextNote}
+            className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 text-xs font-mono border border-rose-400/30 transition-all active:scale-95"
           >
-            <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-400/30 flex items-center justify-center text-rose-300 mb-4 group-hover:scale-110 transition-transform">
-              <GraduationCap className="w-5 h-5" />
-            </div>
-            <h4 className="text-lg font-bold text-white mb-2">Academic Excellence</h4>
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-              Lulusan Terbaik S1 Akuakultur Universitas Airlangga dengan IPK 3.69/4.00, membuktikan ketelitian, dedikasi, dan standar kerja yang tinggi.
-            </p>
-          </motion.div>
-
-          {/* Card 2 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur hover:border-purple-400/40 transition-all group"
-          >
-            <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center text-purple-300 mb-4 group-hover:scale-110 transition-transform">
-              <Briefcase className="w-5 h-5" />
-            </div>
-            <h4 className="text-lg font-bold text-white mb-2">Export Operations</h4>
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-              Mengelola dokumen perdagangan internasional dan aliran operasional ekspor udang secara sistematis dan berstandar global di PT Bumi Menara Internusa.
-            </p>
-          </motion.div>
-
-          {/* Card 3 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur hover:border-cyan-400/40 transition-all group"
-          >
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center text-cyan-300 mb-4 group-hover:scale-110 transition-transform">
-              <Heart className="w-5 h-5" />
-            </div>
-            <h4 className="text-lg font-bold text-white mb-2">Mutual Support & Growth</h4>
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-              Saling mendukung dalam membangun karir, cita-cita, serta pengembangan diri baik di industri teknologi maupun administrasi bisnis internasional.
-            </p>
-          </motion.div>
-        </div>
+            <Sparkles className="w-3.5 h-3.5 text-rose-300" />
+            <span>Baca Pesan Lainnya</span>
+          </button>
+        </motion.div>
       </section>
 
-      {/* Interactive Love & Appreciation Counter */}
-      <section className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 py-10 text-center">
+      {/* Interactive Love Button */}
+      <section className="relative z-10 max-w-xl mx-auto px-4 sm:px-6 py-8 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="p-8 rounded-3xl bg-gradient-to-r from-rose-950/40 via-purple-950/40 to-cyan-950/40 border border-rose-500/30 backdrop-blur-xl shadow-2xl"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="p-8 rounded-3xl bg-gradient-to-r from-rose-950/50 via-pink-950/40 to-purple-950/50 border border-rose-500/40 backdrop-blur-xl shadow-[0_0_40px_rgba(244,63,94,0.25)]"
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-            Send Love & Appreciation
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+            Love Counter
           </h3>
-          <p className="text-gray-300 text-xs sm:text-sm mb-6 max-w-md mx-auto">
-            Click the heart button below to leave a token of love and encouragement for Gracia Violeta & Andry Huang.
+          <p className="text-rose-200 text-xs sm:text-sm mb-6">
+            Klik tombol di bawah ini buat kirim cinta untuk kita berdua ❤️
           </p>
 
           <button
             onClick={handleLike}
-            className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-base sm:text-lg transition-all transform active:scale-95 shadow-lg ${
+            className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-base sm:text-lg transition-all transform active:scale-95 shadow-xl ${
               hasLiked
-                ? "bg-rose-600 text-white shadow-rose-600/50"
+                ? "bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-rose-600/50 scale-105"
                 : "bg-white/10 hover:bg-rose-500/20 text-rose-200 border border-rose-400/40 shadow-rose-500/20"
             }`}
           >
             <Heart
               className={`w-6 h-6 transition-transform ${
-                hasLiked ? "fill-white scale-125 animate-bounce" : "text-rose-400"
+                hasLiked ? "fill-white scale-125 animate-ping" : "text-rose-400"
               }`}
             />
-            <span>{hasLiked ? "Appreciated!" : "Show Appreciation"}</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-white/20 text-xs font-mono">
+            <span>{hasLiked ? "I Love You Too, Sayang! ❤️" : "Kirim Love (I Love You)"}</span>
+            <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-mono">
               {likes}
             </span>
           </button>
         </motion.div>
       </section>
 
-      {/* Footer */}
+      {/* Romantic Footer */}
       <footer className="relative z-10 border-t border-white/10 py-8 text-center text-gray-500 text-xs font-mono">
-        <p className="flex items-center justify-center gap-1.5">
-          <span>Crafted with</span>
-          <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 inline" />
+        <p className="flex items-center justify-center gap-1.5 text-rose-300">
+          <span>Made with endless love</span>
+          <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 inline animate-bounce" />
           <span>by Andry Huang for Gracia Violeta</span>
         </p>
-        <p className="mt-1 text-gray-600">Hidden Page • andryhuang.com/relationship</p>
+        <p className="mt-1 text-gray-600">Hidden Love Page • andryhuang.com/relationship</p>
       </footer>
     </div>
   );
