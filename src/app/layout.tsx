@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   creator: "Andry Huang",
   alternates: {
     canonical: "https://andrych17.github.io",
+    languages: {
+      "en-US": "https://andrych17.github.io",
+      "id-ID": "https://andrych17.github.io",
+    },
   },
   openGraph: {
     type: "website",
@@ -48,6 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
     description: "Senior Full-Stack & AI Engineer with 6+ years experience building enterprise SaaS platforms, AI systems, and POS apps.",
+    creator: "@andryhuang",
     images: ["/img/og-image.jpg"],
   },
   robots: {
@@ -70,27 +75,83 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Andry Huang",
-  url: "https://andrych17.github.io",
-  image: "https://andrych17.github.io/img/foto.jpg",
-  sameAs: [
-    "https://github.com/andrych17",
-    "https://linkedin.com/in/andry-huang-ba410a170",
-  ],
-  jobTitle: "Senior Full-Stack & AI Developer",
-  worksFor: {
-    "@type": "Organization",
-    name: "MRI Software",
-  },
-  description: "Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia with 6+ years experience building enterprise SaaS platforms, POS systems, and AI workflows.",
-  knowsAbout: ["Next.js", ".NET Core", "Node.js", "React", "TypeScript", "AI Agents", "Model Context Protocol", "OpenAI GPT-4o", "Claude 3.7", "PostgreSQL", "Docker"],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Surabaya",
-    addressRegion: "East Java",
-    addressCountry: "ID",
-  },
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://andrych17.github.io/#webpage",
+      "url": "https://andrych17.github.io",
+      "name": "Andry Huang — Senior Full-Stack & AI Developer",
+      "description": "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Developer.",
+      "mainEntity": { "@id": "https://andrych17.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://andrych17.github.io/#person",
+      "name": "Andry Huang",
+      "url": "https://andrych17.github.io",
+      "image": "https://andrych17.github.io/img/foto.jpg",
+      "sameAs": [
+        "https://github.com/andrych17",
+        "https://linkedin.com/in/andry-huang-ba410a170"
+      ],
+      "jobTitle": "Senior Full-Stack & AI Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "MRI Software"
+      },
+      "knowsLanguage": ["en", "id"],
+      "description": "Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia with 6+ years experience building enterprise SaaS platforms, POS systems, and AI workflows.",
+      "knowsAbout": [
+        "Next.js", ".NET Core", "Node.js", "React", "TypeScript",
+        "AI Agents", "Model Context Protocol", "OpenAI GPT-4o", "Claude 3.7",
+        "PostgreSQL", "Docker", "REST API", "Microservices"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Surabaya",
+        "addressRegion": "East Java",
+        "addressCountry": "ID"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://andrych17.github.io/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What primary tech stack and services does Andry Huang specialize in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Andry Huang specializes in Senior Full-Stack Engineering (.NET Core, Next.js, React, Node.js, TypeScript, PostgreSQL) and AI Systems Integration (Model Context Protocol/MCP, OpenAI GPT-4o, Claude AI Agents, and custom SaaS platforms)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Andry Huang available for project collaboration or full-time roles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Andry is available for high-impact software engineering projects, technical architecture consulting, and remote enterprise roles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Andry Huang located and can he work remotely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Andry is based in Surabaya, East Java, Indonesia, and has extensive experience working with distributed global teams across different time zones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Qualiv and what is Andry Huang's role in it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Qualiv is an AI-powered recruitment platform engineered by Andry Huang, featuring automated candidate evaluation pipelines, background analysis, and AI workflows."
+          }
+        }
+      ]
+    }
+  ]
 };
 
 export default function RootLayout({
