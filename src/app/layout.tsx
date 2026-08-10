@@ -14,29 +14,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andrych17.github.io"),
-  title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
-  description: "Andry Huang is a Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 6+ years of experience building enterprise SaaS platforms, AI recruitment tools, POS systems, and cloud architectures (.NET Core, Next.js, OpenAI, Anthropic Claude, MCP, Node.js, React, TypeScript).",
+  metadataBase: new URL("https://andryhuang.com"),
+  title: "Andry Huang — Senior Full-Stack & AI Developer",
+  description: "Andry Huang is a Senior Full-Stack & AI Engineer in Surabaya, Indonesia with 6+ years experience in SaaS platforms, AI tools, POS, and cloud architecture.",
   keywords: [
     "Full-Stack Developer Indonesia", "Senior Web Developer Surabaya", "Fullstack Engineer Indonesia",
     "AI Agent Engineer", "Model Context Protocol", "Next.js Developer", ".NET Core Developer",
     "React Architect", "Node.js Engineer", "Software Engineer Surabaya", "SaaS Developer",
     "Qualiv Founder", "Andry Huang", "Andry Huang Portfolio", "Indonesia Tech Talent",
   ],
-  authors: [{ name: "Andry Huang", url: "https://andrych17.github.io" }],
+  authors: [{ name: "Andry Huang", url: "https://andryhuang.com" }],
   creator: "Andry Huang",
   alternates: {
-    canonical: "https://andrych17.github.io",
+    canonical: "https://andryhuang.com",
     languages: {
-      "en-US": "https://andrych17.github.io",
-      "id-ID": "https://andrych17.github.io",
+      "en-US": "https://andryhuang.com",
+      "id-ID": "https://andryhuang.com",
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://andrych17.github.io",
-    title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
+    url: "https://andryhuang.com",
+    title: "Andry Huang — Senior Full-Stack & AI Developer",
     description: "Senior Full-Stack & AI Engineer with 6+ years experience building enterprise SaaS platforms, AI systems, and POS apps using Next.js, .NET Core, Node.js, and TypeScript.",
     siteName: "Andry Huang Portfolio",
     images: [
