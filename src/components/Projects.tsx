@@ -31,14 +31,14 @@ import {
   ChevronLeft,
   ChevronRight,
   Github,
+  Search,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { FloatingCodeSnippets, CyberGrid } from "./CodeAnimations";
 
-type ProjectStatus = "done" | "in-progress" | "terminated";
-type GroupKey = "tjiwi" | "tool-mgmt" | "anacle" | "freelance";
+export type ProjectStatus = "done" | "in-progress" | "terminated";
+export type GroupKey = "tjiwi" | "tool-mgmt" | "anacle" | "freelance";
 
-interface Project {
+export interface Project {
   id: number;
   group: GroupKey;
   title: string;
@@ -59,7 +59,7 @@ interface Project {
   featured?: boolean;
 }
 
-const projects: Project[] = [
+export const projects: Project[] = [
   // ── JOB #1 — PT Tjiwi Kimia ───────────────────────────────
   {
     id: 101,
@@ -731,7 +731,7 @@ function HeroCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 hover:shadow-[0_0_40px_-10px_rgba(236,72,153,0.35)] cursor-pointer select-none"
+      className="group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-[var(--line)] hover:border-[var(--accent)]/60 transition-all duration-300 bg-[var(--bg-2)] hover:shadow-[0_0_40px_-10px_rgba(255,77,0,0.25)] cursor-pointer select-none"
     >
       <div className="relative aspect-[16/11] md:aspect-[16/10] w-full overflow-hidden">
         {project.images?.[0] ? (
@@ -754,36 +754,27 @@ function HeroCard({
         )}
 
         {/* deep gradient for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/55 to-transparent" />
-        {/* faint grain */}
-        <div
-          className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-            backgroundSize: "3px 3px",
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/60 to-transparent" />
 
         {/* index numeral */}
-        <div className="absolute top-4 right-4 md:top-6 md:right-6 font-mono text-[10px] md:text-xs tracking-[0.3em] text-white/45">
+        <div className="absolute top-4 right-4 md:top-6 md:right-6 font-mono text-[10px] md:text-xs tracking-[0.3em] text-[var(--mut)]">
           № {fmt(number)}
         </div>
 
         {/* top-left badges */}
         <div className="absolute top-4 left-4 md:top-6 md:left-6 flex flex-col items-start gap-2">
           {project.featured && (
-            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.18em] text-amber-100 bg-amber-500/15 border border-amber-300/40 backdrop-blur">
+            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)] bg-[var(--bg)]/90 border border-[var(--accent)]/40 backdrop-blur">
               ★ Editor&apos;s Pick
             </span>
           )}
           {project.year && (
-            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[0.15em] text-cyan-200 bg-cyan-950/80 border border-cyan-400/40 backdrop-blur">
+            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
               📅 {project.year}
             </span>
           )}
           {project.status && (
-            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.15em] text-white/90 bg-black/55 border border-white/15 backdrop-blur">
+            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.15em] text-[var(--fg-2)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
               {statusLabel(project.status)}
             </span>
           )}
@@ -791,19 +782,17 @@ function HeroCard({
 
         {/* bottom content */}
         <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-          <div className="flex items-center gap-2.5 mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-pink-300/90">
-            <span
-              className={`inline-block w-6 h-px bg-gradient-to-r ${project.color}`}
-            />
-            <project.icon className="w-3 h-3" />
+          <div className="flex items-center gap-2.5 mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent)]">
+            <span className="inline-block w-6 h-px bg-[var(--accent)]" />
+            <project.icon className="w-3.5 h-3.5" />
             <span>Lead Project</span>
           </div>
 
-          <h3 className="text-2xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-[1.05] tracking-tight mb-3 group-hover:text-pink-100 transition-colors">
+          <h3 className="text-2xl md:text-4xl lg:text-[2.75rem] font-bold text-[var(--fg)] leading-[1.05] tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors">
             {project.title}
           </h3>
 
-          <p className="hidden sm:block text-sm md:text-[15px] text-gray-300/90 max-w-2xl mb-4 line-clamp-2 lg:line-clamp-3">
+          <p className="hidden sm:block text-sm md:text-[15px] text-[var(--fg-2)] max-w-2xl mb-4 line-clamp-2 lg:line-clamp-3">
             {project.description}
           </p>
 
@@ -812,18 +801,18 @@ function HeroCard({
               {project.tags.slice(0, 4).map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-gray-200 bg-white/5 border border-white/10 rounded"
+                  className="px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--fg-2)] bg-white/5 border border-[var(--line)] rounded"
                 >
                   {t}
                 </span>
               ))}
               {project.tags.length > 4 && (
-                <span className="px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-gray-400">
+                <span className="px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--mut)]">
                   +{project.tags.length - 4}
                 </span>
               )}
             </div>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.2em] text-pink-300 group-hover:text-pink-200 shrink-0">
+            <span className="hidden md:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent)] shrink-0">
               Open case
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </span>
@@ -854,7 +843,7 @@ function SidebarCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 flex min-h-[120px] md:min-h-0 flex-1 cursor-pointer select-none"
+      className="group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-[var(--line)] hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)] flex min-h-[120px] md:min-h-0 flex-1 cursor-pointer select-none"
     >
       {/* thumbnail */}
       <div className="relative w-28 md:w-40 lg:w-44 shrink-0 overflow-hidden">
@@ -873,36 +862,34 @@ function SidebarCard({
             <span className="text-3xl md:text-4xl">{project.emoji ?? "💼"}</span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-gray-950/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[var(--bg-2)]/80" />
       </div>
 
       {/* meta */}
       <div className="flex-1 p-3.5 md:p-4 lg:p-5 flex flex-col min-w-0">
         <div className="flex items-start justify-between gap-3 mb-1.5">
-          <span className="font-mono text-[10px] tracking-[0.3em] text-white/40">
+          <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--mut)]">
             № {fmt(number)}
           </span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-pink-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+          <ArrowUpRight className="w-3.5 h-3.5 text-[var(--mut)] group-hover:text-[var(--accent)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
         </div>
-        <h4 className="text-sm md:text-[15px] font-bold text-white leading-snug mb-1.5 group-hover:text-pink-100 transition-colors line-clamp-2">
+        <h4 className="text-sm md:text-[15px] font-bold text-[var(--fg)] leading-snug mb-1.5 group-hover:text-[var(--accent)] transition-colors line-clamp-2">
           {project.title}
         </h4>
-        <p className="text-[11px] md:text-xs text-gray-400 leading-relaxed line-clamp-2 mb-auto">
+        <p className="text-[11px] md:text-xs text-[var(--fg-2)] leading-relaxed line-clamp-2 mb-auto">
           {project.description}
         </p>
-        <div className="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-white/5">
-          <span
-            className={`inline-block w-3 h-px bg-gradient-to-r ${project.color}`}
-          />
-          <span className="font-mono text-[10px] uppercase tracking-wider text-gray-400 truncate">
+        <div className="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-[var(--line)]">
+          <project.icon className="w-3 h-3 text-[var(--accent)]" />
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--mut)] truncate">
             {project.tags[0]} · {project.tags.length} stack
           </span>
           {project.year ? (
-            <span className="ml-auto font-mono text-[9px] tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-1.5 py-0.5 rounded shrink-0">
+            <span className="ml-auto font-mono text-[9px] tracking-wider text-[var(--fg-2)] bg-white/5 border border-[var(--line)] px-1.5 py-0.5 rounded shrink-0">
               {project.year}
             </span>
           ) : project.status ? (
-            <span className="ml-auto font-mono text-[9px] uppercase tracking-wider text-white/45 shrink-0">
+            <span className="ml-auto font-mono text-[9px] uppercase tracking-wider text-[var(--mut)] shrink-0">
               {statusLabel(project.status)}
             </span>
           ) : null}
@@ -932,7 +919,7 @@ function GridCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-colors bg-gray-950/60 flex flex-col h-full cursor-pointer select-none"
+      className="group relative w-full text-left rounded-2xl overflow-hidden border border-[var(--line)] hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)] flex flex-col h-full cursor-pointer select-none"
     >
       {/* image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -951,24 +938,24 @@ function GridCard({
             <span className="text-5xl md:text-6xl">{project.emoji ?? "💼"}</span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-2)] via-[var(--bg-2)]/30 to-transparent" />
 
-        <div className="absolute top-3 right-3 font-mono text-[10px] tracking-[0.25em] text-white/55">
+        <div className="absolute top-3 right-3 font-mono text-[10px] tracking-[0.25em] text-[var(--mut)]">
           № {fmt(number)}
         </div>
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
           {project.featured && (
-            <span className="px-2 py-0.5 rounded font-mono text-[9px] uppercase tracking-[0.18em] text-amber-100 bg-amber-500/15 border border-amber-300/40 backdrop-blur">
+            <span className="px-2 py-0.5 rounded font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--accent)] bg-[var(--bg)]/90 border border-[var(--accent)]/40 backdrop-blur">
               ★ Pick
             </span>
           )}
           {project.year && (
-            <span className="px-2 py-0.5 rounded font-mono text-[9px] tracking-[0.15em] text-cyan-200 bg-cyan-950/80 border border-cyan-400/40 backdrop-blur">
+            <span className="px-2 py-0.5 rounded font-mono text-[9px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
               📅 {project.year}
             </span>
           )}
           {project.status && (
-            <span className="px-2 py-0.5 rounded font-mono text-[9px] uppercase tracking-[0.15em] text-white/90 bg-black/60 border border-white/15 backdrop-blur">
+            <span className="px-2 py-0.5 rounded font-mono text-[9px] uppercase tracking-[0.15em] text-[var(--fg-2)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
               {statusLabel(project.status)}
             </span>
           )}
@@ -977,18 +964,16 @@ function GridCard({
 
       {/* meta */}
       <div className="p-4 md:p-5 flex flex-col grow">
-        <div className="flex items-center gap-2 mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-pink-300/70">
-          <span
-            className={`inline-block w-4 h-px bg-gradient-to-r ${project.color}`}
-          />
-          <project.icon className="w-3 h-3" />
+        <div className="flex items-center gap-2 mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent)]">
+          <project.icon className="w-3.5 h-3.5" />
+          <span className="truncate">{project.tags[0]}</span>
         </div>
 
-        <h4 className="text-base md:text-lg font-bold text-white leading-snug mb-2 group-hover:text-pink-100 transition-colors line-clamp-2">
+        <h4 className="text-base md:text-lg font-bold text-[var(--fg)] leading-snug mb-2 group-hover:text-[var(--accent)] transition-colors line-clamp-2">
           {project.title}
         </h4>
 
-        <p className="text-xs text-gray-400 line-clamp-2 mb-3 leading-relaxed">
+        <p className="text-xs text-[var(--fg-2)] line-clamp-2 mb-3 leading-relaxed">
           {project.description}
         </p>
 
@@ -997,18 +982,18 @@ function GridCard({
             {project.tags.slice(0, 3).map((t) => (
               <span
                 key={t}
-                className="px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-gray-300 bg-white/5 border border-white/10 rounded truncate"
+                className="px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[var(--fg-2)] bg-white/5 border border-[var(--line)] rounded truncate"
               >
                 {t}
               </span>
             ))}
             {project.tags.length > 3 && (
-              <span className="px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-gray-500">
+              <span className="px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[var(--mut)]">
                 +{project.tags.length - 3}
               </span>
             )}
           </div>
-          <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-pink-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0" />
+          <ArrowUpRight className="w-4 h-4 text-[var(--mut)] group-hover:text-[var(--accent)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0" />
         </div>
       </div>
     </div>
@@ -1087,6 +1072,15 @@ function EditorialLayout({
 
 // ─── Main Component ──────────────────────────────────────────────────────────
 
+const popularTags = [
+  { key: "all", labelId: "Semua Stack", labelEn: "All Stack" },
+  { key: "ai", labelId: "AI & Agents", labelEn: "AI & Agents", match: ["ai", "mcp", "openai", "claude", "llm", "bot"] },
+  { key: "dotnet", labelId: ".NET / C#", labelEn: ".NET / C#", match: [".net", "c#", "asp classic"] },
+  { key: "nextjs", labelId: "Next.js / React", labelEn: "Next.js / React", match: ["next.js", "react", "typescript"] },
+  { key: "erp", labelId: "ERP & POS", labelEn: "ERP & POS", match: ["erp", "pos", "rfid", "inventory", "sales", "retail"] },
+  { key: "sql", labelId: "Database & Cloud", labelEn: "Database & Cloud", match: ["sql", "postgresql", "mysql", "redis", "azure", "aws", "docker"] },
+];
+
 export default function Projects() {
   const { lang } = useLanguage();
   const ref = useRef(null);
@@ -1095,6 +1089,8 @@ export default function Projects() {
   const [freelanceStatus, setFreelanceStatus] = useState<
     "all" | "done" | "in-progress"
   >("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState("all");
   const [openProject, setOpenProject] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -1111,51 +1107,54 @@ export default function Projects() {
     };
   }, [openProject]);
 
+  const isFiltering = searchQuery.trim() !== "" || selectedTag !== "all";
+
   const filteredProjects = useMemo(() => {
-    const inGroup = projects.filter((p) => p.group === activeGroup);
-    const scoped =
-      activeGroup !== "freelance" || freelanceStatus === "all"
-        ? inGroup
-        : inGroup.filter((p) => p.status === freelanceStatus);
-    return [...scoped].sort(
+    let list = projects;
+
+    if (!isFiltering) {
+      const inGroup = projects.filter((p) => p.group === activeGroup);
+      list =
+        activeGroup !== "freelance" || freelanceStatus === "all"
+          ? inGroup
+          : inGroup.filter((p) => p.status === freelanceStatus);
+    } else {
+      if (selectedTag !== "all") {
+        const tagRule = popularTags.find((t) => t.key === selectedTag);
+        if (tagRule?.match) {
+          list = list.filter((p) =>
+            p.tags.some((tag) =>
+              tagRule.match!.some((m) => tag.toLowerCase().includes(m))
+            )
+          );
+        }
+      }
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        list = list.filter(
+          (p) =>
+            p.title.toLowerCase().includes(q) ||
+            p.description.toLowerCase().includes(q) ||
+            p.tags.some((t) => t.toLowerCase().includes(q)) ||
+            p.impact?.toLowerCase().includes(q)
+        );
+      }
+    }
+
+    return [...list].sort(
       (a, b) => Number(!!b.featured) - Number(!!a.featured)
     );
-  }, [activeGroup, freelanceStatus]);
+  }, [activeGroup, freelanceStatus, searchQuery, selectedTag, isFiltering]);
 
   const totalCount = projects.length;
-  const filterKey = `${activeGroup}-${freelanceStatus}`;
+  const filterKey = `${activeGroup}-${freelanceStatus}-${searchQuery}-${selectedTag}`;
 
   return (
     <section
       id="projects"
       ref={ref}
-      className="py-16 md:py-24 aurora-bg relative overflow-hidden"
+      className="py-12 md:py-20 relative overflow-hidden"
     >
-      <FloatingCodeSnippets />
-      <CyberGrid />
-
-      {/* ambient orbs (hidden on mobile via max-w + opacity, kept light) */}
-      <motion.div
-        aria-hidden
-        className="hidden md:block absolute top-1/3 left-0 w-96 h-96 rounded-full blur-[120px] -translate-y-1/2 opacity-60"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(168,85,247,0.18), transparent 70%)",
-        }}
-        animate={{ x: [-100, 100, -100] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="hidden md:block absolute top-2/3 right-0 w-96 h-96 rounded-full blur-[120px] -translate-y-1/2 opacity-60"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(236,72,153,0.16), transparent 70%)",
-        }}
-        animate={{ x: [100, -100, 100] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-      />
-
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         {/* ── Editorial Header ─────────────────────────── */}
         <motion.div
@@ -1165,21 +1164,21 @@ export default function Projects() {
           className="mb-10 md:mb-14"
         >
           <div className="flex items-center gap-3 mb-4 md:mb-5">
-            <span className="h-px w-8 md:w-12 bg-gradient-to-r from-transparent via-pink-400 to-transparent" />
-            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-pink-300/90">
+            <span className="h-px w-8 md:w-12 bg-[var(--line)]" />
+            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-[var(--accent)]">
               {lang === "id" ? `Karya Pilihan · Indeks 01–${fmt(totalCount)}` : `Selected Works · Index 01–${fmt(totalCount)}`}
             </span>
-            <span className="h-px flex-1 bg-gradient-to-r from-pink-400/40 via-white/5 to-transparent" />
+            <span className="h-px flex-1 bg-[var(--line)]" />
           </div>
 
           <div className="grid md:grid-cols-12 items-end gap-4 md:gap-6">
-            <h2 className="md:col-span-9 text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight">
+            <h2 className="md:col-span-9 text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight uppercase text-[var(--fg)]">
               {lang === "id" ? "Arsip " : "The "}
-              <span className="italic font-light bg-gradient-to-r from-purple-300 via-pink-300 to-amber-300 bg-clip-text text-transparent">
+              <span className="italic font-light text-[var(--accent)]">
                 {lang === "id" ? "Portofolio" : "Archive"}
               </span>
             </h2>
-            <p className="md:col-span-3 text-sm md:text-[13px] text-gray-400 leading-relaxed md:text-right">
+            <p className="md:col-span-3 text-sm md:text-[13px] text-[var(--mut)] leading-relaxed md:text-right">
               {lang === "id"
                 ? "Pengalaman kerja profesional full-time dan side projects. Klik project untuk detail lengkap."
                 : "Three chapters of full-time work and side projects. Each entry opens for the full case."}
@@ -1187,93 +1186,158 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* ── Group Tabs (newspaper-section style) ──────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="border-y border-white/10 mb-6 md:mb-8 -mx-4 md:mx-0"
-        >
-          <div className="flex overflow-x-auto scrollbar-hide px-4 md:px-0">
-            {groups.map((g, i) => {
-              const Icon = g.icon;
-              const active = activeGroup === g.key;
-              const count = projects.filter((p) => p.group === g.key).length;
+        {/* ── Live Search & Stack Pills Bar (Wrap, 100% Vertical-Friendly) ────── */}
+        <div className="mb-6 flex flex-col gap-4">
+          <div className="relative w-full">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--mut)] pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={
+                lang === "id"
+                  ? "Cari nama proyek, stack (.NET, Next.js, AI, POS, ERP, SQL)..."
+                  : "Search projects, stack (.NET, Next.js, AI, POS, ERP, SQL)..."
+              }
+              className="w-full pl-10 pr-10 py-3 rounded-xl bg-[var(--bg-2)] border border-[var(--line)] text-[var(--fg)] placeholder:text-[var(--mut)] text-sm focus:outline-none focus:border-[var(--accent)] transition-colors shadow-sm"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-[var(--mut)] hover:text-[var(--fg)] cursor-pointer"
+                aria-label="Clear search"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--mut)] mr-1">
+              {lang === "id" ? "Filter:" : "Filter:"}
+            </span>
+            {popularTags.map((tag) => {
+              const active = selectedTag === tag.key;
               return (
                 <button
-                  key={g.key}
-                  onClick={() => {
-                    setActiveGroup(g.key);
-                    setFreelanceStatus("all");
-                  }}
-                  className={`shrink-0 relative py-4 md:py-5 pr-7 md:pr-12 text-left transition-colors ${
+                  key={tag.key}
+                  onClick={() => setSelectedTag(tag.key)}
+                  className={`px-3 py-1.5 rounded-lg font-mono text-[11px] uppercase tracking-wider transition-all border cursor-pointer ${
                     active
-                      ? "text-white"
-                      : "text-gray-500 hover:text-gray-200"
+                      ? "bg-[var(--accent)] text-[var(--bg)] border-[var(--accent)] font-bold shadow-md scale-105"
+                      : "bg-[var(--bg-2)] text-[var(--fg-2)] border-[var(--line)] hover:border-[var(--line-strong)] hover:text-[var(--fg)]"
                   }`}
                 >
-                  <div className="flex items-baseline gap-2">
-                    <span
-                      className={`font-mono text-[10px] tracking-[0.3em] ${
-                        active ? "text-pink-300" : "text-gray-600"
-                      }`}
-                    >
-                      {fmt(i + 1)}
-                    </span>
-                    <span className="text-sm md:text-[15px] font-semibold tracking-tight whitespace-nowrap">
-                      {g.label}
-                    </span>
-                    <span className="font-mono text-[10px] text-gray-500">
-                      ({count})
-                    </span>
-                  </div>
-                  <div className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 ml-7 flex items-center gap-1.5 whitespace-nowrap">
-                    <Icon className="w-3 h-3" />
-                    <span>{g.sub}</span>
-                  </div>
-                  {active && (
-                    <motion.span
-                      layoutId="group-underline"
-                      className="absolute -bottom-px left-0 right-7 md:right-12 h-0.5 bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
+                  {lang === "id" ? tag.labelId : tag.labelEn}
                 </button>
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
-        {/* ── Sub-filter (Freelance) ───────────────────── */}
-        {activeGroup === "freelance" && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center justify-between mb-6 md:mb-8 gap-3"
-          >
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gray-500">
-              Filter status
+        {/* ── Search Active Notice or Group Tabs ─────────── */}
+        {isFiltering ? (
+          <div className="mb-8 flex items-center justify-between py-3 px-4 rounded-xl bg-white/5 border border-[var(--line)]">
+            <span className="font-mono text-xs text-[var(--fg-2)]">
+              {lang === "id"
+                ? `Menampilkan ${filteredProjects.length} proyek dari filter/pencarian`
+                : `Showing ${filteredProjects.length} projects matching filter/search`}
             </span>
-            <div className="flex gap-1.5">
-              {freelanceFilters.map((f) => {
-                const active = freelanceStatus === f.key;
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedTag("all");
+              }}
+              className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] hover:underline cursor-pointer font-medium"
+            >
+              {lang === "id" ? "Reset Filter ✕" : "Reset Filters ✕"}
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* ── Group Grid (Responsive Cards, No Side-Scroll) ──────── */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.15, duration: 0.4 }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6"
+            >
+              {groups.map((g, i) => {
+                const Icon = g.icon;
+                const active = activeGroup === g.key;
+                const count = projects.filter((p) => p.group === g.key).length;
                 return (
                   <button
-                    key={f.key}
-                    onClick={() => setFreelanceStatus(f.key)}
-                    className={`px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] rounded-full border transition-colors ${
+                    key={g.key}
+                    onClick={() => {
+                      setActiveGroup(g.key);
+                      setFreelanceStatus("all");
+                    }}
+                    className={`relative p-4 rounded-xl text-left transition-all cursor-pointer border flex flex-col justify-between gap-3 ${
                       active
-                        ? "text-white bg-white/10 border-pink-500/50"
-                        : "text-gray-500 border-white/10 hover:border-white/30 hover:text-gray-300"
+                        ? "bg-white/10 border-[var(--accent)] text-[var(--fg)] shadow-lg scale-[1.02]"
+                        : "bg-[var(--bg-2)] border-[var(--line)] text-[var(--mut)] hover:border-[var(--line-strong)] hover:text-[var(--fg-2)]"
                     }`}
                   >
-                    {f.label}
+                    <div className="flex items-center justify-between w-full">
+                      <span
+                        className={`font-mono text-xs tracking-widest ${
+                          active ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"
+                        }`}
+                      >
+                        0{i + 1}
+                      </span>
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-[var(--line)] text-[var(--fg-2)]">
+                        {count} {lang === "id" ? "Proyek" : "Projects"}
+                      </span>
+                    </div>
+
+                    <div>
+                      <div className="text-sm md:text-base font-bold tracking-tight text-[var(--fg)]">
+                        {g.label}
+                      </div>
+                      <div className="text-xs text-[var(--mut)] mt-1 flex items-center gap-1.5">
+                        <Icon className="w-3.5 h-3.5 text-[var(--accent)] shrink-0" />
+                        <span className="truncate">{g.sub}</span>
+                      </div>
+                    </div>
                   </button>
                 );
               })}
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* ── Sub-filter (Freelance) ───────────────────── */}
+            {activeGroup === "freelance" && (
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-wrap items-center justify-between mb-6 gap-3 pt-2"
+              >
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--mut)]">
+                  {lang === "id" ? "Status Pengerjaan:" : "Project Status:"}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {freelanceFilters.map((f) => {
+                    const active = freelanceStatus === f.key;
+                    return (
+                      <button
+                        key={f.key}
+                        onClick={() => setFreelanceStatus(f.key)}
+                        className={`px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider rounded-lg border transition-all cursor-pointer ${
+                          active
+                            ? "text-[var(--bg)] bg-[var(--accent)] border-[var(--accent)] font-bold shadow-sm"
+                            : "text-[var(--mut)] bg-[var(--bg-2)] border-[var(--line)] hover:border-[var(--line-strong)] hover:text-[var(--fg-2)]"
+                        }`}
+                      >
+                        {f.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </>
         )}
 
         {/* ── Editorial Grid ───────────────────────────── */}
@@ -1433,17 +1497,17 @@ function DialogPanel({
 
                 <div className="absolute top-3 left-3 flex flex-wrap gap-2">
                   {project.featured && (
-                    <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.18em] text-amber-100 bg-amber-500/20 border border-amber-300/40 backdrop-blur">
+                    <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)] bg-[var(--bg)]/90 border border-[var(--accent)]/40 backdrop-blur">
                       ★ Editor&apos;s Pick
                     </span>
                   )}
                   {project.year && (
-                    <span className="px-2.5 py-1 bg-cyan-950/80 backdrop-blur rounded-full font-mono text-[10px] tracking-[0.15em] text-cyan-200 border border-cyan-400/40">
+                    <span className="px-2.5 py-1 bg-[var(--bg)]/80 backdrop-blur rounded-full font-mono text-[10px] tracking-[0.15em] text-[var(--fg)] border border-[var(--line)]">
                       📅 {project.year}
                     </span>
                   )}
                   {project.status && (
-                    <span className="px-2.5 py-1 bg-black/60 backdrop-blur rounded-full font-mono text-[10px] uppercase tracking-[0.15em] text-white border border-white/20">
+                    <span className="px-2.5 py-1 bg-[var(--bg)]/80 backdrop-blur rounded-full font-mono text-[10px] uppercase tracking-[0.15em] text-[var(--fg-2)] border border-[var(--line)]">
                       {statusLabel(project.status)}
                     </span>
                   )}
@@ -1453,29 +1517,29 @@ function DialogPanel({
               <div className="p-5 md:p-7">
                 <div className="flex items-start gap-3 mb-3">
                   <div
-                    className={`p-2 rounded-lg shrink-0 bg-gradient-to-r ${project.color}`}
+                    className="p-2 rounded-lg shrink-0 bg-[var(--accent)] text-[var(--bg)]"
                   >
-                    <project.icon className="w-5 h-5 text-white" />
+                    <project.icon className="w-5 h-5 text-[var(--bg)]" />
                   </div>
-                  <h3 className="text-lg md:text-2xl font-bold text-white leading-tight">
+                  <h3 className="text-lg md:text-2xl font-bold text-[var(--fg)] leading-tight">
                     {project.title}
                   </h3>
                 </div>
 
-                <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-5">
+                <p className="text-[var(--fg-2)] text-sm md:text-base leading-relaxed mb-5">
                   {project.longDescription || project.description}
                 </p>
 
                 {project.features && project.features.length > 0 && (
-                  <div className="mb-6 p-4 rounded-xl bg-white/[0.03] border border-white/10">
-                    <h4 className="text-[11px] font-mono uppercase tracking-[0.25em] text-pink-400 mb-3 flex items-center gap-1.5">
+                  <div className="mb-6 p-4 rounded-xl bg-white/[0.03] border border-[var(--line)]">
+                    <h4 className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--accent)] mb-3 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5" />
                       {lang === "id" ? "Fitur & Modul Utama" : "Key Features & Modules"}
                     </h4>
                     <ul className="space-y-2">
                       {project.features.map((feat, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs md:text-sm text-gray-300">
-                          <span className="text-pink-400 mt-0.5">•</span>
+                        <li key={idx} className="flex items-start gap-2.5 text-xs md:text-sm text-[var(--fg-2)]">
+                          <span className="text-[var(--accent)] mt-0.5">•</span>
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -1495,14 +1559,14 @@ function DialogPanel({
                 )}
 
                 <div className="mb-6">
-                  <h4 className="text-[11px] font-mono uppercase tracking-[0.25em] text-gray-500 mb-2">
+                  <h4 className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--mut)] mb-2">
                     — Tech Stack
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 bg-white/5 rounded-full font-mono text-[11px] uppercase tracking-wider text-gray-200 border border-white/10"
+                        className="px-2.5 py-1 bg-white/5 rounded-full font-mono text-[11px] uppercase tracking-wider text-[var(--fg-2)] border border-[var(--line)]"
                       >
                         {tag}
                       </span>
@@ -1515,7 +1579,7 @@ function DialogPanel({
                     href="https://github.com/andrych17"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-full text-white text-sm bg-white/10 hover:bg-white/20 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[var(--fg)] text-sm bg-white/10 hover:bg-white/20 transition-colors"
                   >
                     <Github size={16} />
                     GitHub
@@ -1527,7 +1591,7 @@ function DialogPanel({
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-white text-sm bg-gradient-to-r ${project.color} hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(236,72,153,0.25)]`}
+                          className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[var(--bg)] font-semibold text-sm bg-[var(--accent)] hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(255,77,0,0.25)]"
                         >
                           <ExternalLink size={16} />
                           {link.label}
@@ -1538,7 +1602,7 @@ function DialogPanel({
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-white text-sm bg-gradient-to-r ${project.color} hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(236,72,153,0.25)]`}
+                          className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[var(--bg)] font-semibold text-sm bg-[var(--accent)] hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(255,77,0,0.25)]"
                         >
                           <ExternalLink size={16} />
                           {project.liveLabel ?? "Visit Site"}

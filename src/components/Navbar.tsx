@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, ArrowUpRight, Github, Linkedin, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
+import { RollLink } from "./ui/RollLink";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,12 +24,21 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isOpen]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsOpen(false);
@@ -49,130 +59,165 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#030014]/80 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-white/5"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link href="/" className="text-2xl font-bold animated-gradient-text">
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-[100] transition-colors duration-300 ${
+          isOpen
+            ? "bg-[var(--bg)] border-b border-[var(--line)]"
+            : scrolled
+            ? "border-b border-[var(--line)] bg-[var(--bg)]/90 backdrop-blur-md"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="px-[var(--pad-x)]">
+          <div className="flex items-center justify-between h-16">
+            <Link
+              href="/"
+              onClick={() => setIsOpen(false)}
+              className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg)] hover:text-[var(--accent)] transition-colors"
+            >
               Portfolio
             </Link>
-          </motion.div>
 
-          {/* Desktop Navigation & Lang Switcher */}
-          <div className="hidden md:flex items-center space-x-6">
-            <div className="flex space-x-6">
+            {/* Desktop Navigation & Lang Switcher */}
+            <div className="hidden md:flex items-center gap-8">
+              <div className="flex gap-6">
+                {navItems.map((item) => {
+                  const isActive = item.page === pathname;
+                  return (
+                    <RollLink
+                      key={item.name}
+                      href={item.href}
+                      className={`font-mono text-xs uppercase tracking-[0.14em] py-3 ${
+                        isActive ? "text-[var(--accent)]" : "text-[var(--fg-2)]"
+                      }`}
+                    >
+                      {item.name}
+                    </RollLink>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1.5 font-mono text-xs py-3 cursor-pointer hover:opacity-80 transition-opacity"
+                title="Switch Language / Ganti Bahasa"
+              >
+                <Globe className="w-3.5 h-3.5 text-[var(--mut)]" />
+                <span className={lang === "id" ? "text-[var(--accent)] font-semibold" : "text-[var(--mut)]"}>ID</span>
+                <span className="text-[var(--mut)]">/</span>
+                <span className={lang === "en" ? "text-[var(--accent)] font-semibold" : "text-[var(--mut)]"}>EN</span>
+              </button>
+            </div>
+
+            {/* Mobile Right Bar */}
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1 px-2.5 py-2 font-mono text-xs rounded-lg border border-[var(--line)] bg-white/5 active:scale-95 transition-transform cursor-pointer"
+                aria-label="Toggle language"
+              >
+                <Globe className="w-3.5 h-3.5 text-[var(--mut)]" />
+                <span className={lang === "id" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>ID</span>
+                <span className="text-[var(--mut)]">/</span>
+                <span className={lang === "en" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>EN</span>
+              </button>
+
+              <button
+                className="text-[var(--fg)] p-2.5 rounded-lg border border-[var(--line)] bg-white/5 active:scale-95 transition-transform cursor-pointer"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isOpen}
+              >
+                {isOpen ? <X size={20} className="text-[var(--accent)]" /> : <Menu size={20} />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Full-Screen Navigation Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="md:hidden fixed inset-x-0 top-16 bottom-0 z-[90] bg-[var(--bg)] flex flex-col justify-between overflow-y-auto px-[var(--pad-x)] py-6"
+          >
+            {/* Nav list */}
+            <div className="flex flex-col">
               {navItems.map((item, index) => {
-                const isActive = item.page === "/portofolio"
-                  ? pathname === "/portofolio"
-                  : pathname === "/";
+                const isActive = item.page === pathname;
                 return (
-                  <motion.div key={item.name} className="relative group" whileHover={{ y: -2 }}>
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.04, duration: 0.25 }}
+                    className="border-b border-[var(--line)]"
+                  >
                     <Link
                       href={item.href}
-                      onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, item.href)}
-                      className={`text-gray-300 hover:text-white transition-colors relative text-sm font-medium ${isActive && item.page === pathname ? "text-white" : ""}`}
+                      className={`flex items-center justify-between py-4 text-2xl font-medium tracking-tight transition-colors ${
+                        isActive ? "text-[var(--accent)]" : "text-[var(--fg)] hover:text-[var(--accent)]"
+                      }`}
+                      onClick={(e) => handleNavClick(e, item.href)}
                     >
-                      <motion.span
-                        whileHover={{ scale: 1.05 }}
-                        className="inline-block"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        {item.name}
-                      </motion.span>
-                      <motion.span
-                        className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500"
-                        initial={{ width: 0 }}
-                        whileHover={{ width: "100%" }}
-                        transition={{ duration: 0.3 }}
-                      />
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-mono text-xs text-[var(--mut)] tabular-nums">
+                          0{index + 1}
+                        </span>
+                        <span>{item.name}</span>
+                      </div>
+                      <ArrowUpRight className="w-4 h-4 text-[var(--mut)]" />
                     </Link>
                   </motion.div>
                 );
               })}
             </div>
 
-            {/* Language Switcher Pill */}
-            <motion.button
-              onClick={toggleLang}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 backdrop-blur text-xs font-mono text-gray-200 transition-colors shadow-lg"
-              title="Switch Language / Ganti Bahasa"
-            >
-              <Globe className="w-3.5 h-3.5 text-cyan-400" />
-              <span className={lang === "id" ? "text-cyan-300 font-bold" : "text-gray-400"}>ID</span>
-              <span className="text-gray-500">|</span>
-              <span className={lang === "en" ? "text-cyan-300 font-bold" : "text-gray-400"}>EN</span>
-            </motion.button>
-          </div>
+            {/* Bottom Drawer Actions */}
+            <div className="mt-8 pt-6 border-t border-[var(--line)] flex flex-col gap-4">
+              <a
+                href="https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[var(--accent)] text-[var(--bg)] font-semibold text-sm tracking-wide shadow-lg active:scale-98 transition-transform"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>{lang === "id" ? "Hubungi via WhatsApp" : "Chat on WhatsApp"}</span>
+              </a>
 
-          {/* Mobile Right Bar (Lang Switcher + Menu Button) */}
-          <div className="flex md:hidden items-center gap-3">
-            <button
-              onClick={toggleLang}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-gray-200"
-            >
-              <Globe className="w-3 h-3 text-cyan-400" />
-              <span className={lang === "id" ? "text-cyan-300 font-bold" : "text-gray-400"}>ID</span>
-              <span className="text-gray-500">/</span>
-              <span className={lang === "en" ? "text-cyan-300 font-bold" : "text-gray-400"}>EN</span>
-            </button>
-
-            <motion.button
-              className="text-white p-1"
-              onClick={() => setIsOpen(!isOpen)}
-              whileTap={{ scale: 0.9 }}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#030014]/95 backdrop-blur-md border-b border-white/5"
-          >
-            <div className="px-4 py-4 space-y-4">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block text-gray-300 hover:text-white transition-colors py-2"
-                    onClick={(e) => {
-                      setIsOpen(false);
-                      handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, item.href);
-                    }}
+              <div className="flex items-center justify-between text-xs font-mono text-[var(--mut)] pt-2">
+                <div className="flex items-center gap-4">
+                  <a
+                    href="https://github.com/andrych17"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[var(--fg-2)] hover:text-[var(--accent)] py-1"
                   >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Github className="w-3.5 h-3.5" />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/andry-huang-ba410a170"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[var(--fg-2)] hover:text-[var(--accent)] py-1"
+                  >
+                    <Linkedin className="w-3.5 h-3.5" />
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
+                <span>Surabaya, ID</span>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

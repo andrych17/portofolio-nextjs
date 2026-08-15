@@ -1,38 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030014;
-  --foreground: #ffffff;
-  --neon-purple: #a855f7;
-  --neon-cyan: #06b6d4;
-  --neon-pink: #ec4899;
-  --neon-amber: #f59e0b;
-  --neon-emerald: #10b981;
-  --neon-rose: #f43f5e;
-  --neon-blue: #3b82f6;
+  /* surface */
+  --bg: #0c0c0c;
+  --bg-2: #151515;
+  --fg: #d8d8d4;
+  --fg-2: #c8c8c3;
+  --mut: #7b7b76;
+  --line: rgba(216, 216, 212, 0.15);
+  --line-strong: rgba(216, 216, 212, 0.28);
+  --accent: #ff4d00;
+
+  /* type scale — fluid, clamp-based */
+  --t-display: clamp(3.5rem, 1rem + 11vw, 12rem);
+  --t-h2: clamp(2.25rem, 1rem + 5vw, 6rem);
+  --t-h3: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  --t-body: clamp(1rem, 0.94rem + 0.3vw, 1.125rem);
+  --t-lbl: 0.6875rem;
+
+  /* rhythm */
+  --pad-x: clamp(1.25rem, 4vw, 5rem);
+  --sec-lg: clamp(7rem, 5rem + 9vw, 16rem);
+  --sec-sm: clamp(3.5rem, 3rem + 4vw, 7rem);
+
+  /* motion */
+  --ease: cubic-bezier(0.83, 0, 0.17, 1);
+  --d-fast: 280ms;
+  --d-norm: 620ms;
+  --d-slow: 1100ms;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Safari WebKit text gradient fix */
-.bg-clip-text, [class*="bg-clip-text"] {
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Safari WebKit backdrop-filter fix */
@@ -41,16 +51,13 @@ body {
 .backdrop-blur      { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .backdrop-blur-md   { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 .backdrop-blur-lg   { -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
-.backdrop-blur-xl   { -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); }
-.backdrop-blur-2xl  { -webkit-backdrop-filter: blur(40px); backdrop-filter: blur(40px); }
-.backdrop-blur-3xl  { -webkit-backdrop-filter: blur(64px); backdrop-filter: blur(64px); }
 
-/* Hide scrollbar utility (for horizontal pill scrollers) */
-.scrollbar-hide {
+/* Hide scrollbar utility (horizontal pill scrollers) */
+.scrollbar-hide, .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.scrollbar-hide::-webkit-scrollbar {
+.scrollbar-hide::-webkit-scrollbar, .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
@@ -58,221 +65,75 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #030014;
+  background: var(--bg);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #a855f7, #ec4899, #06b6d4);
+  background: var(--mut);
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #9333ea, #db2777, #0891b2);
+  background: var(--fg-2);
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection */
 ::selection {
-  background: rgba(236, 72, 153, 0.3);
-  color: #ffffff;
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* =============================================
-   AURORA — single fixed instance in layout.tsx
-   .aurora-bg sections are transparent overlays
+   GRAIN — inline SVG feTurbulence, no binary asset
    ============================================= */
-.aurora-bg {
-  background: transparent;
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
 /* =============================================
-   AURORA KEYFRAMES (used by layout.tsx div)
+   ROLL — stacked text, translateY hover swap
    ============================================= */
-@keyframes aurora {
-  0%, 100% { background-position: 0% 50%; }
-  50%       { background-position: 100% 50%; }
+.roll {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.roll__a,
+.roll__b {
+  display: block;
+  transition: transform var(--d-fast) var(--ease);
+}
+.roll__b {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+  color: var(--accent);
+}
+.roll:hover .roll__a {
+  transform: translateY(-100%);
+}
+.roll:hover .roll__b {
+  transform: translateY(0);
 }
 
-/* =============================================
-   ORBS — compositor-thread transform animations
-   ============================================= */
-@keyframes orb1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(80px, -60px) scale(1.15); }
-  66%       { transform: translate(-40px, 50px) scale(0.9); }
-}
-@keyframes orb2 {
-  0%, 100% { transform: translate(0, 0) scale(1.1); }
-  33%       { transform: translate(-60px, 80px) scale(0.9); }
-  66%       { transform: translate(50px, -40px) scale(1.15); }
-}
-@keyframes orb3-scale {
-  0%, 100% { transform: scale(0.8) rotate(0deg); }
-  50%       { transform: scale(1.2) rotate(180deg); }
-}
-@keyframes orb4 {
-  0%, 100% { transform: translate(0, 0); }
-  33%       { transform: translate(-50px, 40px); }
-  66%       { transform: translate(35px, -25px); }
-}
-
-/* =============================================
-   GRID ANIMATION
-   ============================================= */
-@keyframes gridMove {
-  0%   { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
-}
-
-/* =============================================
-   CSS PARTICLE/RAIN KEYFRAMES
-   All particle effects use these — no JS/Framer
-   ============================================= */
-
-/* Matrix-style code rain: falls from top to bottom */
-@keyframes rain-fall {
-  0%   { transform: translateY(-20px); opacity: 0; }
-  8%   { opacity: 1; }
-  92%  { opacity: 0.7; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-
-/* Hex numbers: float from bottom to top */
-@keyframes hex-rise {
-  0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-  8%   { opacity: 1; }
-  92%  { opacity: 1; }
-  100% { transform: translateY(-60px) rotate(360deg); opacity: 0; }
-}
-
-/* Floating particles: drift upward */
-@keyframes particle-float {
-  0%   { transform: translateY(0) scale(1); opacity: 0; }
-  15%  { opacity: 1; }
-  85%  { opacity: 1; }
-  100% { transform: translateY(-500px) scale(1.5); opacity: 0; }
-}
-
-/* Code snippets sliding left to right */
-@keyframes snippet-slide {
-  0%   { transform: translateX(-120px); opacity: 0; }
-  4%   { opacity: 1; }
-  96%  { opacity: 1; }
-  100% { transform: translateX(110vw); opacity: 0; }
-}
-
-/* Code snippets sliding right to left */
-@keyframes snippet-slide-rev {
-  0%   { transform: translateX(110vw); opacity: 0; }
-  4%   { opacity: 1; }
-  96%  { opacity: 1; }
-  100% { transform: translateX(-120px); opacity: 0; }
-}
-
-/* Scan line sweeping top to bottom */
-@keyframes scan-line {
-  0%   { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-/* Binary rain: same as code rain */
-@keyframes binary-fall {
-  0%   { transform: translateY(-20px); opacity: 0; }
-  8%   { opacity: 0.8; }
-  92%  { opacity: 0.8; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-
-/* Shimmer sweep — used on text */
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-/* Floating badge bob */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-20px); }
-}
-
-/* Spin utilities */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes spin-slow-reverse {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
-}
-
-/* Pulse glow */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 40px rgba(6, 182, 212, 0.1); }
-  50%       { box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(6, 182, 212, 0.2); }
-}
-
-/* Rainbow border */
-@keyframes rainbow-border {
-  0%   { border-color: #a855f7; }
-  20%  { border-color: #ec4899; }
-  40%  { border-color: #f59e0b; }
-  60%  { border-color: #10b981; }
-  80%  { border-color: #3b82f6; }
-  100% { border-color: #a855f7; }
-}
-
-/* =============================================
-   UTILITY CLASSES
-   ============================================= */
-
-.animated-gradient-text {
-  background: linear-gradient(90deg, #a855f7, #ec4899, #f59e0b, #10b981, #3b82f6, #a855f7);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: shimmer 4s linear infinite;
-}
-
-/* Glass card — solid background, NO backdrop-filter (paint-heavy on scroll) */
-.glass-card {
-  background: rgba(12, 8, 38, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-.glass-card:hover {
-  background: rgba(22, 14, 58, 0.85);
-  border-color: rgba(168, 85, 247, 0.3);
-}
-
-/* Neon glow utilities */
-.neon-glow-purple {
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4), 0 0 30px rgba(168, 85, 247, 0.1);
-}
-.neon-glow-cyan {
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.1);
-}
-.neon-glow-pink {
-  box-shadow: 0 0 15px rgba(236, 72, 153, 0.4), 0 0 30px rgba(236, 72, 153, 0.1);
-}
-.neon-text-purple {
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
-}
-.neon-text-cyan {
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
-}
-.neon-text-pink {
-  text-shadow: 0 0 10px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
-}
-
-/* Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .animated-gradient-text { animation: none; }
-  [style*="animation"]     { animation: none !important; }
+  .roll__a,
+  .roll__b {
+    transition: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

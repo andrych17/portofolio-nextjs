@@ -22,7 +22,7 @@ function parseFormattedMarkdown(text: string) {
         {parts.map((part, pIdx) => {
           if (part.startsWith("**") && part.endsWith("**")) {
             return (
-              <strong key={pIdx} className="font-semibold text-cyan-200">
+              <strong key={pIdx} className="font-semibold text-[var(--fg)]">
                 {part.slice(2, -2)}
               </strong>
             );
@@ -35,7 +35,7 @@ function parseFormattedMarkdown(text: string) {
                 href={linkMatch[2]}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan-300 hover:text-cyan-200 underline underline-offset-2 font-medium transition-colors"
+                className="text-[var(--accent)] hover:opacity-80 underline underline-offset-2 font-medium transition-opacity"
               >
                 {linkMatch[1]}
               </a>
@@ -210,15 +210,15 @@ export default function AIChatbot() {
       {/* Floating Action Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[90] flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-medium shadow-[0_0_25px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] transition-all cursor-pointer"
+        className="fixed bottom-6 right-6 z-[90] flex items-center gap-2.5 px-4 py-3 rounded-full bg-[var(--accent)] text-[var(--bg)] font-medium shadow-lg hover:opacity-90 transition-opacity cursor-pointer"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Open AI Assistant"
       >
         <div className="relative">
           <Bot className="w-5 h-5" />
-          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping" />
-          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full" />
+          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[var(--bg)] rounded-full animate-ping" />
+          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[var(--bg)] rounded-full" />
         </div>
         <span className="text-sm font-semibold tracking-wide hidden sm:inline">
           {lang === "id" ? "Tanya AI" : "Ask AI"}
@@ -233,28 +233,28 @@ export default function AIChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-22 right-4 sm:right-6 z-[95] w-[92vw] sm:w-[400px] h-[520px] max-h-[80vh] bg-gray-950/95 backdrop-blur-xl border border-white/15 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-22 right-4 sm:right-6 z-[95] w-[92vw] sm:w-[400px] h-[520px] max-h-[80vh] bg-[var(--bg-2)]/98 backdrop-blur-xl border border-[var(--line)] rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-purple-900/40 via-pink-900/30 to-cyan-900/40 border-b border-white/10 flex items-center justify-between">
+            <div className="p-4 border-b border-[var(--line)] flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-gradient-to-r from-pink-500 to-cyan-500 shadow-[0_0_15px_rgba(236,72,153,0.3)]">
-                  <Bot className="w-5 h-5 text-white" />
+                <div className="p-2 rounded-xl bg-[var(--accent)]">
+                  <Bot className="w-5 h-5 text-[var(--bg)]" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-sm flex items-center gap-1.5">
+                  <h3 className="text-[var(--fg)] font-semibold text-sm flex items-center gap-1.5">
                     Andry AI Assistant
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-[var(--accent)]" />
                   </h3>
-                  <p className="text-[11px] text-emerald-400 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <p className="text-[11px] text-[var(--mut)] flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
                     Online & Ready
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-1.5 rounded-lg text-[var(--mut)] hover:text-[var(--fg)] hover:bg-[var(--line)] transition-colors"
                 aria-label="Close Chat"
               >
                 <X className="w-4 h-4" />
@@ -273,8 +273,8 @@ export default function AIChatbot() {
                   <div
                     className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
                       msg.sender === "user"
-                        ? "bg-pink-500 text-white"
-                        : "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30"
+                        ? "bg-[var(--accent)] text-[var(--bg)]"
+                        : "bg-[var(--line)] text-[var(--fg)]"
                     }`}
                   >
                     {msg.sender === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -283,14 +283,14 @@ export default function AIChatbot() {
                   <div
                     className={`max-w-[80%] p-3 rounded-2xl ${
                       msg.sender === "user"
-                        ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-tr-none"
-                        : "bg-white/5 border border-white/10 text-gray-200 rounded-tl-none"
+                        ? "bg-[var(--accent)] text-[var(--bg)] rounded-tr-none"
+                        : "bg-white/5 border border-[var(--line)] text-[var(--fg-2)] rounded-tl-none"
                     }`}
                   >
                     <div className="leading-relaxed space-y-1">
                       {parseFormattedMarkdown(msg.text)}
                     </div>
-                    <span className="text-[10px] text-gray-400 mt-1 block text-right opacity-70">
+                    <span className="text-[10px] mt-1 block text-right opacity-70">
                       {msg.time}
                     </span>
                   </div>
@@ -299,13 +299,13 @@ export default function AIChatbot() {
 
               {isTyping && (
                 <div className="flex gap-2.5 items-center">
-                  <div className="w-7 h-7 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center">
+                  <div className="w-7 h-7 rounded-full bg-[var(--line)] text-[var(--fg)] flex items-center justify-center">
                     <Bot className="w-4 h-4" />
                   </div>
-                  <div className="px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10 text-gray-400 text-xs flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-bounce [animation-delay:0.2s]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:0.4s]" />
+                  <div className="px-4 py-2.5 rounded-2xl bg-white/5 border border-[var(--line)] text-[var(--mut)] text-xs flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-bounce" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-bounce [animation-delay:0.2s]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-bounce [animation-delay:0.4s]" />
                   </div>
                 </div>
               )}
@@ -313,13 +313,13 @@ export default function AIChatbot() {
             </div>
 
             {/* Quick Prompt Chips */}
-            <div className="px-3 py-2 bg-white/[0.02] border-t border-white/5 flex gap-1.5 overflow-x-auto no-scrollbar scroll-smooth">
+            <div className="px-3 py-2 bg-white/[0.02] border-t border-[var(--line)] flex flex-wrap gap-1.5 max-h-24 overflow-y-auto">
               {quickPrompts.map((prompt, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSend(prompt)}
                   disabled={isTyping}
-                  className="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-[11px] text-gray-300 whitespace-nowrap transition-colors shrink-0 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/15 border border-[var(--line)] text-[11px] text-[var(--fg-2)] whitespace-nowrap transition-colors shrink-0 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {prompt}
                 </button>
@@ -327,7 +327,7 @@ export default function AIChatbot() {
             </div>
 
             {/* Input Box */}
-            <div className="p-3 bg-gray-950 border-t border-white/10 flex items-center gap-2">
+            <div className="p-3 bg-[var(--bg-2)] border-t border-[var(--line)] flex items-center gap-2">
               <input
                 type="text"
                 value={input}
@@ -336,12 +336,12 @@ export default function AIChatbot() {
                 maxLength={MAX_MESSAGE_LENGTH}
                 disabled={isTyping}
                 placeholder={lang === "id" ? "Tanyakan sesuatu tentang Andry..." : "Ask something about Andry..."}
-                className="flex-1 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 text-xs focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50"
+                className="flex-1 px-3.5 py-2 rounded-xl bg-white/5 border border-[var(--line)] text-[var(--fg)] placeholder:text-[var(--mut)] text-xs focus:outline-none focus:border-[var(--accent)] transition-colors disabled:opacity-50"
               />
               <button
                 onClick={() => handleSend()}
                 disabled={!input.trim() || isTyping}
-                className="p-2 rounded-xl bg-gradient-to-r from-pink-500 to-cyan-500 text-white disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+                className="p-2 rounded-xl bg-[var(--accent)] text-[var(--bg)] disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
                 aria-label="Send message"
               >
                 <Send className="w-4 h-4" />

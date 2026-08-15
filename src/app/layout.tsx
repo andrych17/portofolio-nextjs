@@ -14,44 +14,67 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andryhuang.com"),
-  title: "Andry Huang — Senior Full-Stack & AI Developer",
-  description: "Andry Huang is a Senior Full-Stack & AI Engineer in Surabaya, Indonesia with 6+ years experience in SaaS platforms, AI tools, POS, and cloud architecture.",
+  metadataBase: new URL("https://andrych17.github.io"),
+  title: {
+    default: "Andry Huang — Senior Full-Stack & AI Systems Developer (7+ Years Exp)",
+    template: "%s | Andry Huang",
+  },
+  description:
+    "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 7+ years of continuous experience (since September 2019). Specializing in .NET Core, Next.js, AI Agents, Model Context Protocol (MCP), and PostgreSQL.",
   keywords: [
-    "Full-Stack Developer Indonesia", "Senior Web Developer Surabaya", "Fullstack Engineer Indonesia",
-    "AI Agent Engineer", "Model Context Protocol", "Next.js Developer", ".NET Core Developer",
-    "React Architect", "Node.js Engineer", "Software Engineer Surabaya", "SaaS Developer",
-    "Qualiv Founder", "Andry Huang", "Andry Huang Portfolio", "Indonesia Tech Talent",
+    "Full-Stack Developer Indonesia",
+    "Senior Web Developer Surabaya",
+    "Fullstack Engineer Indonesia",
+    "AI Agent Engineer",
+    "Model Context Protocol",
+    "Next.js Developer",
+    ".NET Core Developer",
+    "React Architect",
+    "Node.js Engineer",
+    "Software Engineer Surabaya",
+    "SaaS Developer",
+    "Qualiv Founder",
+    "Andry Huang",
+    "Andry Huang Portfolio",
+    "Indonesia Tech Talent",
+    "7 Years Experience Developer",
+    "Anthropic Certified Developer",
   ],
-  authors: [{ name: "Andry Huang", url: "https://andryhuang.com" }],
+  authors: [{ name: "Andry Huang", url: "https://andrych17.github.io" }],
   creator: "Andry Huang",
+  publisher: "Andry Huang",
+  category: "technology",
+  classification: "Software Engineering & AI Architecture",
   alternates: {
-    canonical: "https://andryhuang.com",
+    canonical: "https://andrych17.github.io",
     languages: {
-      "en-US": "https://andryhuang.com",
-      "id-ID": "https://andryhuang.com",
+      "en-US": "https://andrych17.github.io",
+      "id-ID": "https://andrych17.github.io",
     },
   },
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
-    url: "https://andryhuang.com",
-    title: "Andry Huang — Senior Full-Stack & AI Developer",
-    description: "Senior Full-Stack & AI Engineer with 6+ years experience building enterprise SaaS platforms, AI systems, and POS apps using Next.js, .NET Core, Node.js, and TypeScript.",
+    alternateLocale: ["id_ID"],
+    url: "https://andrych17.github.io",
+    title: "Andry Huang — Senior Full-Stack & AI Developer (7+ Years Exp)",
+    description:
+      "Senior Full-Stack & AI Engineer with 7+ years of continuous experience (since September 2019) building 30+ enterprise SaaS platforms, AI systems, and POS apps using Next.js, .NET Core, Node.js, and TypeScript.",
     siteName: "Andry Huang Portfolio",
     images: [
       {
         url: "/img/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Andry Huang - Senior Full-Stack & AI Developer from Indonesia",
+        alt: "Andry Huang - Senior Full-Stack & AI Developer (7+ Years Experience)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
-    description: "Senior Full-Stack & AI Engineer with 6+ years experience building enterprise SaaS platforms, AI systems, and POS apps.",
+    description:
+      "Senior Full-Stack & AI Engineer with 7+ years experience (since Sept 2019) building enterprise SaaS platforms, AI systems, and POS apps.",
     creator: "@andryhuang",
     images: ["/img/og-image.jpg"],
   },
@@ -67,9 +90,16 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
+  other: {
+    "color-scheme": "dark",
+    "theme-color": "#0c0c0c",
+    "format-detection": "telephone=no",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
   },
 };
 
@@ -77,12 +107,34 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://andrych17.github.io/#website",
+      "url": "https://andrych17.github.io",
+      "name": "Andry Huang Portfolio",
+      "description": "Senior Full-Stack & AI Systems Developer portfolio featuring 30+ enterprise SaaS and AI systems.",
+      "publisher": { "@id": "https://andrych17.github.io/#person" },
+      "inLanguage": ["en", "id"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://andrych17.github.io/portofolio?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
       "@type": "ProfilePage",
       "@id": "https://andrych17.github.io/#webpage",
       "url": "https://andrych17.github.io",
       "name": "Andry Huang — Senior Full-Stack & AI Developer",
-      "description": "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Developer.",
-      "mainEntity": { "@id": "https://andrych17.github.io/#person" }
+      "description": "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Developer with 7+ years of experience since September 2019.",
+      "mainEntity": { "@id": "https://andrych17.github.io/#person" },
+      "isPartOf": { "@id": "https://andrych17.github.io/#website" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#home h1", "#home p"]
+      }
     },
     {
       "@type": "Person",
@@ -99,12 +151,81 @@ const jsonLd = {
         "@type": "Organization",
         "name": "MRI Software"
       },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Senior Full-Stack Developer",
+        "occupationLocation": {
+          "@type": "AdministrativeArea",
+          "name": "Surabaya, East Java, Indonesia"
+        },
+        "skills": ".NET Core, Next.js, React, Node.js, AI Agents, Model Context Protocol (MCP), PostgreSQL, Docker, SaaS Architecture"
+      },
       "knowsLanguage": ["en", "id"],
-      "description": "Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia with 6+ years experience building enterprise SaaS platforms, POS systems, and AI workflows.",
+      "description": "Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia with 7+ years of continuous experience (starting September 2019) building enterprise SaaS platforms, POS systems, and AI workflows.",
       "knowsAbout": [
         "Next.js", ".NET Core", "Node.js", "React", "TypeScript",
         "AI Agents", "Model Context Protocol", "OpenAI GPT-4o", "Claude 3.7",
-        "PostgreSQL", "Docker", "REST API", "Microservices"
+        "PostgreSQL", "Docker", "REST API", "Microservices", "POS Hardware Integration"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "AI Capabilities and Limitations",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/exhhy4ripy8p"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Introduction to subagents",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/ziob4haqtfxa"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Introduction to agent skills",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/9d6emc43e68b"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Model Context Protocol: Advanced Topics",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/nucfxrj2cxoy"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Introduction to Model Context Protocol",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/hdv4nqhaequh"
+        }
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Enterprise Full-Stack Web Development (.NET Core / Next.js / TypeScript)"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Agent & MCP Architecture Integration"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "POS & ERP System Engineering with Hardware Integration"
+          }
+        }
       ],
       "address": {
         "@type": "PostalAddress",
@@ -112,6 +233,24 @@ const jsonLd = {
         "addressRegion": "East Java",
         "addressCountry": "ID"
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://andrych17.github.io/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://andrych17.github.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio & Archive",
+          "item": "https://andrych17.github.io/portofolio"
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -123,6 +262,14 @@ const jsonLd = {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Andry Huang specializes in Senior Full-Stack Engineering (.NET Core, Next.js, React, Node.js, TypeScript, PostgreSQL) and AI Systems Integration (Model Context Protocol/MCP, OpenAI GPT-4o, Claude AI Agents, and custom SaaS platforms)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many years of experience does Andry Huang have and what is his track record?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Andry Huang has 7+ years of professional software engineering experience (starting continuously since September 2019). He has architected and delivered 30+ production systems spanning enterprise SaaS (.NET Core, Next.js), large-scale retail POS with hardware/RFID, and AI-driven automation pipelines."
           }
         },
         {
@@ -168,20 +315,18 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#030014] text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--bg)] text-[var(--fg)]`}
       >
-        {/* Single animated aurora background — one instance for the entire page */}
+        <a
+          href="#home"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-[var(--bg)] focus:font-mono focus:text-xs focus:font-bold focus:rounded-lg focus:shadow-xl"
+        >
+          Skip to content
+        </a>
+        <div aria-hidden="true" className="fixed inset-0 -z-10 bg-[var(--bg)]" />
         <div
           aria-hidden="true"
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: -1,
-            background:
-              "linear-gradient(-45deg, #030014, #1a0533, #0c1445, #041c2c, #0a2614, #1a0533)",
-            backgroundSize: "400% 400%",
-            animation: "aurora 15s ease infinite",
-          }}
+          className="grain pointer-events-none fixed inset-0 z-[60] opacity-[0.035] mix-blend-overlay"
         />
         <LanguageProvider>
           {children}

@@ -3,17 +3,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   Heart,
   Sparkles,
   ArrowLeft,
-  Lock,
-  Stars,
-  Flame,
-  Music,
-  Smile,
-  Sun,
   Crown,
   Quote,
 } from "lucide-react";
@@ -22,11 +16,11 @@ export default function RelationshipPage() {
   const [likes, setLikes] = useState(999);
   const [hasLiked, setHasLiked] = useState(false);
   const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const loveNotes = [
     "Senyumanmu selalu jadi alasan terbaik buat tersenyum setiap hari. ✨",
@@ -160,7 +154,7 @@ export default function RelationshipPage() {
               </p>
 
               <p className="text-rose-200 text-sm sm:text-base font-medium leading-relaxed italic">
-                "Setiap hari bersamamu adalah berkah terbaik yang selalu aku syukuri. I'm so proud of you & I love you more than words can say!"
+                &ldquo;Setiap hari bersamamu adalah berkah terbaik yang selalu aku syukuri. I&apos;m so proud of you &amp; I love you more than words can say!&rdquo;
               </p>
 
               <div className="pt-2 flex flex-wrap gap-2 justify-center md:justify-start">
@@ -197,7 +191,7 @@ export default function RelationshipPage() {
               transition={{ duration: 0.4 }}
               className="text-base sm:text-lg font-medium text-rose-100 min-h-[4rem] flex items-center justify-center px-4"
             >
-              "{loveNotes[currentNoteIndex]}"
+              &ldquo;{loveNotes[currentNoteIndex]}&rdquo;
             </motion.p>
           </AnimatePresence>
 
