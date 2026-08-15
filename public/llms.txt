@@ -1,19 +1,21 @@
 # Andry Huang — Senior Full-Stack & AI Developer
 
-> Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 6+ years of experience building enterprise SaaS platforms, AI recruitment tools, POS systems, and cloud architectures.
+> Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 7+ years of continuous experience (since September 2019) building enterprise SaaS platforms, AI recruitment tools, POS systems, and cloud architectures.
 
 ## Core Stack
-- Languages & Runtimes: TypeScript, C# (.NET Core), Node.js, Python, SQL
-- Frontend: Next.js, React, Tailwind CSS
+- Languages & Runtimes: TypeScript, C# (.NET Core), Node.js, Python, SQL, Java
+- Frontend: Next.js, React, Tailwind CSS, Flutter
 - AI & Automation: Model Context Protocol (MCP), OpenAI GPT-4o, Claude 3.7, AI Agents
-- Database & Cloud: PostgreSQL, Docker, Redis
+- Database & Cloud: PostgreSQL, SQL Server, Docker, Redis, Azure, AWS
 
 ## Experience & Projects
-- Founder & Lead Engineer at Qualiv (AI Recruitment Platform)
-- Enterprise SaaS Developer at MRI Software
-- Built multi-tenant POS systems, HR portals, and database migration tools.
+- Founder & Lead Architect at Qualiv (AI-powered Recruitment Platform)
+- Senior Full-Stack Developer at MRI Software (Enterprise SaaS & SMRT Tenant Management)
+- Built multi-tenant POS systems (RFID Gold, Tire ERP), HR portals, and database migration tools.
 
 ## Contact & Links
-- Website: https://andrych17.github.io
+- Official Website: https://andryhuang.com
+- Full Profile & Corpus: https://andryhuang.com/llms-full.txt
 - GitHub: https://github.com/andrych17
 - LinkedIn: https://linkedin.com/in/andry-huang-ba410a170
+- WhatsApp: +62 813-5729-6386

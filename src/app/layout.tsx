@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://andryhuang.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andrych17.github.io"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Andry Huang — Senior Full-Stack & AI Systems Developer (7+ Years Exp)",
     template: "%s | Andry Huang",
@@ -40,23 +42,23 @@ export const metadata: Metadata = {
     "7 Years Experience Developer",
     "Anthropic Certified Developer",
   ],
-  authors: [{ name: "Andry Huang", url: "https://andrych17.github.io" }],
+  authors: [{ name: "Andry Huang", url: SITE_URL }],
   creator: "Andry Huang",
   publisher: "Andry Huang",
   category: "technology",
   classification: "Software Engineering & AI Architecture",
   alternates: {
-    canonical: "https://andrych17.github.io",
+    canonical: SITE_URL,
     languages: {
-      "en-US": "https://andrych17.github.io",
-      "id-ID": "https://andrych17.github.io",
+      "en-US": SITE_URL,
+      "id-ID": SITE_URL,
     },
   },
   openGraph: {
     type: "profile",
     locale: "en_US",
     alternateLocale: ["id_ID"],
-    url: "https://andrych17.github.io",
+    url: SITE_URL,
     title: "Andry Huang — Senior Full-Stack & AI Developer (7+ Years Exp)",
     description:
       "Senior Full-Stack & AI Engineer with 7+ years of continuous experience (since September 2019) building 30+ enterprise SaaS platforms, AI systems, and POS apps using Next.js, .NET Core, Node.js, and TypeScript.",
@@ -111,29 +113,29 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://andrych17.github.io/#website",
-      "url": "https://andrych17.github.io",
+      "@id": `${SITE_URL}/#website`,
+      "url": SITE_URL,
       "name": "Andry Huang Portfolio",
       "description": "Senior Full-Stack & AI Systems Developer portfolio featuring 30+ enterprise SaaS and AI systems.",
-      "publisher": { "@id": "https://andrych17.github.io/#person" },
+      "publisher": { "@id": `${SITE_URL}/#person` },
       "inLanguage": ["en", "id"],
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://andrych17.github.io/portofolio?q={search_term_string}"
+          "urlTemplate": `${SITE_URL}/portofolio?q={search_term_string}`
         },
         "query-input": "required name=search_term_string"
       }
     },
     {
       "@type": "ProfilePage",
-      "@id": "https://andrych17.github.io/#webpage",
-      "url": "https://andrych17.github.io",
+      "@id": `${SITE_URL}/#webpage`,
+      "url": SITE_URL,
       "name": "Andry Huang — Senior Full-Stack & AI Developer",
       "description": "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Developer with 7+ years of experience since September 2019.",
-      "mainEntity": { "@id": "https://andrych17.github.io/#person" },
-      "isPartOf": { "@id": "https://andrych17.github.io/#website" },
+      "mainEntity": { "@id": `${SITE_URL}/#person` },
+      "isPartOf": { "@id": `${SITE_URL}/#website` },
       "speakable": {
         "@type": "SpeakableSpecification",
         "cssSelector": ["#home h1", "#home p"]
@@ -141,10 +143,10 @@ const jsonLd = {
     },
     {
       "@type": "Person",
-      "@id": "https://andrych17.github.io/#person",
+      "@id": `${SITE_URL}/#person`,
       "name": "Andry Huang",
-      "url": "https://andrych17.github.io",
-      "image": "https://andrych17.github.io/img/foto.jpg",
+      "url": SITE_URL,
+      "image": `${SITE_URL}/img/foto.jpg`,
       "sameAs": [
         "https://github.com/andrych17",
         "https://linkedin.com/in/andry-huang-ba410a170"
@@ -239,25 +241,25 @@ const jsonLd = {
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://andrych17.github.io/#breadcrumbs",
+      "@id": `${SITE_URL}/#breadcrumbs`,
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://andrych17.github.io"
+          "item": SITE_URL
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Portfolio & Archive",
-          "item": "https://andrych17.github.io/portofolio"
+          "item": `${SITE_URL}/portofolio`
         }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://andrych17.github.io/#faq",
+      "@id": `${SITE_URL}/#faq`,
       "mainEntity": [
         {
           "@type": "Question",
