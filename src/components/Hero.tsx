@@ -30,29 +30,30 @@ export default function Hero() {
   const roles = lang === "id" ? rolesId : rolesEn;
   const yearsOfExperience = getYearsOfExperience();
 
+  // ponytail: single timer management avoids nested uncleaned timeouts on mobile Chrome background/throttling
   useEffect(() => {
     const role = roles[currentRole];
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          if (displayText.length < role.length) {
-            setDisplayText(role.slice(0, displayText.length + 1));
-          } else {
-            setTimeout(() => setIsDeleting(true), 2000);
-          }
-        } else {
-          if (displayText.length > 0) {
-            setDisplayText(displayText.slice(0, -1));
-          } else {
-            setIsDeleting(false);
-            setCurrentRole((prev) => (prev + 1) % roles.length);
-          }
-        }
-      },
-      isDeleting ? 50 : 100,
-    );
+    let timer: NodeJS.Timeout;
 
-    return () => clearTimeout(timeout);
+    if (!isDeleting && displayText === role) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2000);
+    } else if (isDeleting && displayText === "") {
+      setIsDeleting(false);
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    } else {
+      timer = setTimeout(
+        () => {
+          setDisplayText((prev) =>
+            isDeleting ? role.slice(0, prev.length - 1) : role.slice(0, prev.length + 1)
+          );
+        },
+        isDeleting ? 40 : 80,
+      );
+    }
+
+    return () => clearTimeout(timer);
   }, [displayText, isDeleting, currentRole, roles]);
 
   const socials = [
@@ -102,7 +103,7 @@ export default function Hero() {
         </Reveal>
 
         <div className="mt-8 grid gap-8 md:grid-cols-2 md:justify-items-end">
-          <div />
+          <div className="hidden md:block" />
           <Reveal delay={0.16} className="md:max-w-md">
             <p className="text-[var(--t-body)] leading-relaxed text-[var(--fg-2)]">
               {lang === "id" ? (
@@ -121,9 +122,9 @@ export default function Hero() {
                 </>
               )}
             </p>
-            <p className="mt-4 font-mono text-sm text-[var(--accent)] h-6">
-              {displayText}
-              <span className="animate-pulse">_</span>
+            <p className="mt-4 font-mono text-sm text-[var(--accent)] min-h-[1.5rem] flex items-center" aria-live="polite">
+              <span>{displayText}</span>
+              <span className="animate-pulse ml-0.5 inline-block font-bold">_</span>
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-[var(--line)]">

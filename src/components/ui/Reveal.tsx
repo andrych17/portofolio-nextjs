@@ -17,7 +17,7 @@ export function Reveal({
     <motion.div
       initial={{ clipPath: "inset(0 0 100% 0)", y: "0.4em", opacity: 0 }}
       whileInView={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "0px 0px -40px 0px" }}
       transition={{ duration: 0.62, delay, ease: EASE }}
       className={className}
     >
