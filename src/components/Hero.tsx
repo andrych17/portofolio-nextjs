@@ -2,6 +2,7 @@
 
 import { ArrowDown, Github, Linkedin, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { getYearsOfExperience } from "@/utils/experience";
 import { Reveal } from "./ui/Reveal";
@@ -24,37 +25,18 @@ const rolesId = [
 export default function Hero() {
   const { lang } = useLanguage();
   const [currentRole, setCurrentRole] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
+  const reduced = useReducedMotion();
 
   const roles = lang === "id" ? rolesId : rolesEn;
   const yearsOfExperience = getYearsOfExperience();
 
-  // ponytail: single timer management avoids nested uncleaned timeouts on mobile Chrome background/throttling
+  // ponytail: interval-driven kinetic role cycling eliminates CPU tick loops on mobile
   useEffect(() => {
-    const role = roles[currentRole];
-    let timer: NodeJS.Timeout;
-
-    if (!isDeleting && displayText === role) {
-      timer = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2000);
-    } else if (isDeleting && displayText === "") {
-      setIsDeleting(false);
+    const timer = setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % roles.length);
-    } else {
-      timer = setTimeout(
-        () => {
-          setDisplayText((prev) =>
-            isDeleting ? role.slice(0, prev.length - 1) : role.slice(0, prev.length + 1)
-          );
-        },
-        isDeleting ? 40 : 80,
-      );
-    }
-
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, currentRole, roles]);
+    }, 2800);
+    return () => clearInterval(timer);
+  }, [roles.length]);
 
   const socials = [
     { icon: Github, href: "https://github.com/andrych17", label: "GitHub" },
@@ -68,7 +50,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative flex min-h-[100dvh] flex-col justify-between px-[var(--pad-x)] pt-24 pb-8">
-      {/* Top rail — wordmark, badge, role cycle */}
+      {/* Top rail • wordmark, badge, role cycle */}
       <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--mut)]">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
@@ -122,10 +104,21 @@ export default function Hero() {
                 </>
               )}
             </p>
-            <p className="mt-4 font-mono text-sm text-[var(--accent)] min-h-[1.5rem] flex items-center" aria-live="polite">
-              <span>{displayText}</span>
-              <span className="animate-pulse ml-0.5 inline-block font-bold">_</span>
-            </p>
+            <div className="mt-4 font-mono text-sm text-[var(--accent)] min-h-[1.75rem] flex items-center overflow-hidden" aria-live="polite">
+              <span className="text-[var(--mut)] mr-2 text-xs">/&gt;</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentRole}
+                  initial={reduced ? undefined : { y: 14, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={reduced ? undefined : { y: -14, opacity: 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block font-semibold tracking-wide"
+                >
+                  {roles[currentRole]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
 
             <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-[var(--line)]">
               {[".NET Core", "Next.js", "AI & MCP", "PostgreSQL", "Cloud"].map((tech) => (
@@ -141,7 +134,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom rail — scroll cue, socials, CTAs */}
+      {/* Bottom rail • scroll cue, socials, CTAs */}
       <div className="flex flex-wrap items-end justify-between gap-6 border-t border-[var(--line)] pt-6">
         <a href="#about" className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)]">
           <ArrowDown className="w-3.5 h-3.5" />

@@ -81,7 +81,7 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Categories — numbered accordion rows */}
+        {/* Categories • numbered accordion rows */}
         <Reveal>
           <Label className="mb-6 block">
             {lang === "id" ? "Ekosistem & Kakas Teknologi" : "Technologies I Work With"}

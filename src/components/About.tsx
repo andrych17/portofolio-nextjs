@@ -221,7 +221,7 @@ export default function About() {
                   <ul className="mt-4 space-y-2 border-t border-[var(--line)] pt-4">
                     {exp.achievements.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-xs leading-normal text-[var(--fg-2)]">
-                        <span className="mt-0.5 shrink-0 text-[var(--accent)]">—</span>
+                        <span className="mt-0.5 shrink-0 text-[var(--accent)]">•</span>
                         <span>{item}</span>
                       </li>
                     ))}

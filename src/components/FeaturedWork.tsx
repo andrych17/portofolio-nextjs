@@ -14,7 +14,7 @@ export default function FeaturedWork() {
   return (
     <section id="work" className="relative">
       <SectionHead
-        index={`0${FEATURED_COUNT} — SELECTED`}
+        index={`0${FEATURED_COUNT} • SELECTED`}
         label={lang === "id" ? "Karya Pilihan" : "Featured Work"}
       />
 

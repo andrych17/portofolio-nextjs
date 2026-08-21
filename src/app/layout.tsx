@@ -18,7 +18,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://andryhuang.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Andry Huang — Senior Full-Stack & AI Systems Developer (7+ Years Exp)",
+    default: "Andry Huang • Senior Full-Stack & AI Systems Developer (7+ Years Exp)",
     template: "%s | Andry Huang",
   },
   description:
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["id_ID"],
     url: SITE_URL,
-    title: "Andry Huang — Senior Full-Stack & AI Developer (7+ Years Exp)",
+    title: "Andry Huang • Senior Full-Stack & AI Developer (7+ Years Exp)",
     description:
       "Senior Full-Stack & AI Engineer with 7+ years of continuous experience (since September 2019) building 30+ enterprise SaaS platforms, AI systems, and POS apps using Next.js, .NET Core, Node.js, and TypeScript.",
     siteName: "Andry Huang Portfolio",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andry Huang — Senior Full-Stack & AI Developer from Indonesia",
+    title: "Andry Huang • Senior Full-Stack & AI Developer from Indonesia",
     description:
       "Senior Full-Stack & AI Engineer with 7+ years experience (since Sept 2019) building enterprise SaaS platforms, AI systems, and POS apps.",
     creator: "@andryhuang",
@@ -132,7 +132,7 @@ const jsonLd = {
       "@type": "ProfilePage",
       "@id": `${SITE_URL}/#webpage`,
       "url": SITE_URL,
-      "name": "Andry Huang — Senior Full-Stack & AI Developer",
+      "name": "Andry Huang • Senior Full-Stack & AI Developer",
       "description": "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Developer with 7+ years of experience since September 2019.",
       "mainEntity": { "@id": `${SITE_URL}/#person` },
       "isPartOf": { "@id": `${SITE_URL}/#website` },

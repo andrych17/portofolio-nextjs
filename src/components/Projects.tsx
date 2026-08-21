@@ -60,7 +60,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // ── JOB #1 — PT Tjiwi Kimia ───────────────────────────────
+  // ── JOB #1 • PT Tjiwi Kimia ───────────────────────────────
   {
     id: 101,
     group: "tjiwi",
@@ -147,13 +147,13 @@ export const projects: Project[] = [
     color: "from-rose-500 to-pink-500",
   },
 
-  // ── JOB #2 — Software House (Surabaya) ────────────────────
+  // ── JOB #2 • Software House (Surabaya) ────────────────────
   {
     id: 201,
     group: "tool-mgmt",
     title: "Tool Management System (TMS)",
     description:
-      "Maintained and improved a legacy enterprise Tool Management System. Drove a Java version upgrade, large refactor, and code-review process — significantly reducing incident tickets quarter over quarter.",
+      "Maintained and improved a legacy enterprise Tool Management System. Drove a Java version upgrade, large refactor, and code-review process • significantly reducing incident tickets quarter over quarter.",
     impact:
       "Membersihkan 10.000+ data terkorupsi dari bug legacy code & memangkas insiden tiket high-priority berulang.",
     year: "Mar 2022 – Nov 2022",
@@ -173,7 +173,7 @@ export const projects: Project[] = [
     featured: true,
   },
 
-  // ── JOB #3 — Anacle / MRI Software (Singapore) ────────────
+  // ── JOB #3 • Anacle / MRI Software (Singapore) ────────────
   {
     id: 301,
     group: "anacle",
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     group: "anacle",
     title: "SMRT Tenant Management System",
     description:
-      "Development & maintenance of a mall tenant management platform for SMRT Singapore — leasing, billing, and tenant operations on a SaaS deployment. Newer modules built with Next.js + Nest.js on top of the legacy .NET core.",
+      "Development & maintenance of a mall tenant management platform for SMRT Singapore • leasing, billing, and tenant operations on a SaaS deployment. Newer modules built with Next.js + Nest.js on top of the legacy .NET core.",
     impact:
       "Sukses rilis platform SaaS manajemen penyewa mall SMRT Singapore (digitasi tender, aplikasi tenant, & operasi penyewa).",
     year: "2023 – 2025",
@@ -222,7 +222,7 @@ export const projects: Project[] = [
   {
     id: 303,
     group: "anacle",
-    title: "Simplicity — Facilities Management SaaS",
+    title: "Simplicity • Facilities Management SaaS",
     description:
       "Feature development and ticket-based maintenance on Simplicity, Anacle/MRI's enterprise facilities-management product. International remote team, cross-region releases.",
     impact:
@@ -249,7 +249,7 @@ export const projects: Project[] = [
     group: "anacle",
     title: "Cloud Document Integration (SharePoint / AWS / Azure)",
     description:
-      "Built an integration layer to upload documents from the database into SharePoint, AWS S3, and Azure Blob — with full RBAC, access control, and audit logging. Front-end in Next.js, service layer in Nest.js.",
+      "Built an integration layer to upload documents from the database into SharePoint, AWS S3, and Azure Blob • with full RBAC, access control, and audit logging. Front-end in Next.js, service layer in Nest.js.",
     impact:
       "Engine migrasi dokumen syncing 100.000+ file enterprise ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit logging).",
     year: "2024 – 2025",
@@ -268,12 +268,12 @@ export const projects: Project[] = [
     color: "from-cyan-500 to-teal-500",
   },
 
-  // ── SIDE PROJECTS — Done (Newest to Oldest) ───────────────
+  // ── SIDE PROJECTS • Done (Newest to Oldest) ───────────────
   {
     id: 504,
     group: "freelance",
     status: "done",
-    title: "Qualiv — AI Recruitment Platform (Founder)",
+    title: "Qualiv • AI Recruitment Platform (Founder)",
     description:
       "Founder & Lead Architect. Multi-tenant AI recruitment SaaS platform: CV screening, candidate scoring, and interview workflows powered by OpenAI & Redis queue.",
     longDescription:
@@ -357,7 +357,7 @@ export const projects: Project[] = [
     id: 506,
     group: "freelance",
     status: "done",
-    title: "OpenClaw — AI-Powered VPS Security & Ops Agent",
+    title: "OpenClaw • AI-Powered VPS Security & Ops Agent",
     description:
       "Automated server security and health monitoring agent powered by AI. Performs LLM log anomaly analysis, SSH brute force detection, fail2ban mitigations, system resource thresholds, and real-time Telegram alert reports.",
     longDescription:
@@ -393,7 +393,7 @@ export const projects: Project[] = [
     id: 502,
     group: "freelance",
     status: "done",
-    title: "PT Nagamasban — AI Sales Assistant",
+    title: "PT Nagamasban • AI Sales Assistant",
     description:
       "AI assistant for PT Nagamasban tire distributor: sales recommendation engine & interactive training material for store sales reps.",
     longDescription:
@@ -429,7 +429,7 @@ export const projects: Project[] = [
     id: 501,
     group: "freelance",
     status: "done",
-    title: "Knit and Cro — Online Storefront",
+    title: "Knit and Cro • Online Storefront",
     description:
       "Live storefront for Knit and Cro Pluit: Midtrans payment, dynamic shipping, and transaction management connected to in-store inventory.",
     longDescription:
@@ -463,7 +463,7 @@ export const projects: Project[] = [
     id: 401,
     group: "freelance",
     status: "done",
-    title: "Knit and Cro Pluit — Yarn Store System",
+    title: "Knit and Cro Pluit • Yarn Store System",
     description:
       "Full inventory & sales platform for Knit and Cro yarn store in Pluit, Jakarta. Multi-variant master data, POS cashier, real-time stock opname, and RBAC.",
     longDescription:
@@ -495,7 +495,7 @@ export const projects: Project[] = [
     id: 402,
     group: "freelance",
     status: "done",
-    title: "Wijaya Mas Pluit — Jewelry Store with RFID",
+    title: "Wijaya Mas Pluit • Jewelry Store with RFID",
     description:
       "POS and inventory system for Wijaya Mas jewelry store in Pluit. RFID-based per-item tagging for fast, accurate stock identification.",
     longDescription:
@@ -526,7 +526,7 @@ export const projects: Project[] = [
     id: 403,
     group: "freelance",
     status: "done",
-    title: "Cahaya Terang Surabaya — Tire Shop ERP",
+    title: "Cahaya Terang Surabaya • Tire Shop ERP",
     description:
       "End-to-end management system for Cahaya Terang tire business in Surabaya: sales, purchasing, inventory, and full A/R & A/P ledger tracking.",
     longDescription:
@@ -557,7 +557,7 @@ export const projects: Project[] = [
     id: 404,
     group: "freelance",
     status: "done",
-    title: "Tiga Putra — Snack & Grocery Store",
+    title: "Tiga Putra • Snack & Grocery Store",
     description:
       "End-to-end management system for a snack & grocery wholesale/retail store. Covers PO/SO, Returns, Expiry Date Tracking, and operational reporting.",
     longDescription:
@@ -588,7 +588,7 @@ export const projects: Project[] = [
     id: 405,
     group: "freelance",
     status: "done",
-    title: "Quiz Management App — Community Edition",
+    title: "Quiz Management App • Community Edition",
     description:
       "Volunteer project: a logic-test & quiz assessment platform built for community organizations. Real-time scoring, user management, and analytics dashboard.",
     longDescription:
@@ -1012,7 +1012,7 @@ function EditorialLayout({
   if (items.length === 0) {
     return (
       <div className="text-center py-16 text-gray-500 font-mono text-xs uppercase tracking-[0.3em]">
-        — No entries in this filter —
+        • No entries in this filter •
       </div>
     );
   }
@@ -1560,7 +1560,7 @@ function DialogPanel({
 
                 <div className="mb-6">
                   <h4 className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--mut)] mb-2">
-                    — Tech Stack
+                    • Tech Stack
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
