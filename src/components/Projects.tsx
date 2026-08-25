@@ -431,7 +431,11 @@ export const projects: Project[] = [
     ],
     impact:
       "Mengotomatisasi analisis insiden log dengan AI, memblokir serangan SSH secara real-time, & memberikan ringkasan status operasional server Qualiv ke Telegram.",
-    images: ["/projects/openclaw.png"],
+    images: [
+      "/projects/openclaw_01_telegram_ops_alerts_en.png",
+      "/projects/openclaw_02_telegram_security_incident_en.png",
+      "/projects/openclaw_03_telegram_ai_daily_summary_en.png",
+    ],
     emoji: "🦞",
     icon: Activity,
     tags: [
