@@ -290,10 +290,24 @@ export const projects: Project[] = [
     impact:
       "Mendirikan platform SaaS rekruitmen AI yang mengotomatisasi screening CV, tes logika, dan simulasi wawancara kandidat secara terpusat.",
     images: [
-      "/projects/qualiv_landing.png",
-      "/projects/qualiv_dashboard.png",
-      "/projects/qualiv_kandidat.png",
-      "/projects/qualiv_jobs.png",
+      "/projects/qualiv_01_landing_hero_en.png",
+      "/projects/qualiv_02_ai_hr_screening_en.png",
+      "/projects/qualiv_07_hr_dashboard_overview_en.png",
+      "/projects/qualiv_08_candidates_pipeline_en.png",
+      "/projects/qualiv_09_jobs_management_en.png",
+      "/projects/qualiv_10_create_job_pipeline_en.png",
+      "/projects/qualiv_11_ai_interview_simulation_en.png",
+      "/projects/qualiv_12_interview_calendar_en.png",
+      "/projects/qualiv_13_candidate_logic_assessment_en.png",
+      "/projects/qualiv_14_automated_shortlist_engine_en.png",
+      "/projects/qualiv_15_interview_questions_bank_en.png",
+      "/projects/qualiv_16_ai_usage_token_monitor_en.png",
+      "/projects/qualiv_17_bullmq_queue_worker_en.png",
+      "/projects/qualiv_18_billing_invoices_en.png",
+      "/projects/qualiv_19_subscription_plans_en.png",
+      "/projects/qualiv_20_audit_security_logs_en.png",
+      "/projects/qualiv_21_company_profile_settings_en.png",
+      "/projects/qualiv_22_ai_evaluator_playground_en.png",
     ],
     emoji: "🧠",
     icon: Users,
@@ -335,10 +349,16 @@ export const projects: Project[] = [
     impact:
       "Mempercepat keputusan investasi harian melalui analisis data emiten & portofolio berbasis AI.",
     images: [
-      "/projects/saham_dashboard.png",
-      "/projects/saham_portfolio.png",
-      "/projects/saham_chat.png",
-      "/projects/saham_broker.png",
+      "/projects/saham_01_market_dashboard_en.png",
+      "/projects/saham_02_portfolio_allocation_en.png",
+      "/projects/saham_03_ai_financial_analyst_chat_en.png",
+      "/projects/saham_04_broker_summary_bandarmology_en.png",
+      "/projects/saham_05_stock_chart_fundamentals_en.png",
+      "/projects/saham_06_momentum_radar_en.png",
+      "/projects/saham_07_market_news_ai_sentiment_en.png",
+      "/projects/saham_08_dividend_corporate_calendar_en.png",
+      "/projects/saham_09_commodities_gold_oil_en.png",
+      "/projects/saham_10_crypto_macro_tracker_en.png",
     ],
     emoji: "📉",
     icon: PieChart,
@@ -352,6 +372,45 @@ export const projects: Project[] = [
       "Docker Compose",
     ],
     color: "from-sky-500 to-indigo-500",
+  },
+  {
+    id: 508,
+    group: "freelance",
+    status: "done",
+    title: "Enterprise ERP & AI Solutions • Software Agency",
+    description:
+      "Full-service custom software development suite: industry-specific ERPs for Automotive Tire, Gold/Jewelry RFID, and Textile verticals with custom AI microservices.",
+    longDescription:
+      "Showcase portofolio agensi software enterprise yang mengembangkan sistem ERP spesifik industri (Retail Ban & Fleet, Toko Emas RFID, Tekstil & Lot Celup Benang) serta solusi mikroservis AI untuk klien korporat.",
+    features: [
+      "Arsitektur Enterprise ERP Modular & Skalabel Multi-Tenant",
+      "Solusi Khusus Industri: Otomotif (Ban/Velg), Perhiasan (RFID), & Tekstil (Benang)",
+      "Integrasi AI Microservices (LLM Assistant, CV Parsing, Analisis Sentimen)",
+      "High-Performance Database Layer & Fast Response APIs",
+    ],
+    impact:
+      "Menyediakan solusi digitalisasi end-to-end terintegrasi bagi berbagai sektor industri manufaktur dan retail.",
+    images: [
+      "/projects/agency_01_landing_hero_en.png",
+      "/projects/agency_02_services_overview_en.png",
+      "/projects/agency_03_ai_solutions_en.png",
+      "/projects/agency_04_tire_pos_erp_en.png",
+      "/projects/agency_05_jewel_pos_erp_en.png",
+      "/projects/agency_06_textile_yarn_erp_en.png",
+      "/projects/agency_07_about_company_en.png",
+    ],
+    emoji: "🏢",
+    icon: Building2,
+    tags: [
+      "Next.js 16",
+      "NestJS",
+      "Enterprise Architecture",
+      "Multi-Tenant ERP",
+      "Tailwind CSS",
+      "TypeScript",
+    ],
+    color: "from-blue-600 to-indigo-600",
+    featured: true,
   },
   {
     id: 506,
@@ -407,7 +466,11 @@ export const projects: Project[] = [
     ],
     impact:
       "Meningkatkan rasio upsell tim sales sebesar 25% dan mempercepat waktu konsultasi pelanggan.",
-    images: ["/projects/ban1.png", "/projects/ban2.png"],
+    images: [
+      "/projects/nagamasban_01_katalog_en.png",
+      "/projects/ban1.png",
+      "/projects/ban2.png",
+    ],
     icon: Sparkles,
     tags: [
       "Next.js 16",
@@ -443,7 +506,11 @@ export const projects: Project[] = [
     ],
     impact:
       "Meningkatkan jangkauan penjualan ke seluruh Indonesia 24/7 tanpa menambah beban operasional toko fisik.",
-    images: ["/projects/retail2.png", "/projects/retail3.png"],
+    images: [
+      "/projects/knitandcro_03_ecommerce_marketplace_orders_en.png",
+      "/projects/retail2.png",
+      "/projects/retail3.png",
+    ],
     icon: ShoppingBag,
     tags: [
       "Laravel 11",
@@ -477,7 +544,16 @@ export const projects: Project[] = [
     ],
     impact:
       "Mengeliminasi selisih stok benang fisik hingga 95% & mempercepat proses checkout kasir.",
-    images: ["/projects/trdretail1.png", "/projects/trdretail2.png"],
+    images: [
+      "/projects/knitandcro_01_retail_dashboard_en.png",
+      "/projects/knitandcro_02_vendors_buyers_en.png",
+      "/projects/knitandcro_04_pos_invoices_history_en.png",
+      "/projects/knitandcro_05_yarn_dye_lot_variants_en.png",
+      "/projects/knitandcro_06_realtime_notifications_en.png",
+      "/projects/knitandcro_07_rbac_account_settings_en.png",
+      "/projects/trdretail1.png",
+      "/projects/trdretail2.png",
+    ],
     icon: Package,
     tags: [
       "Laravel 11",
@@ -509,7 +585,19 @@ export const projects: Project[] = [
     ],
     impact:
       "Memangkas waktu audit stok harian emas dari 2 jam menjadi 3 menit menggunakan pemindaian RFID massal.",
-    images: ["/projects/trdjewel1.png", "/projects/trdjewel2.png"],
+    images: [
+      "/projects/jewel_01_wijayamas_dashboard_en.png",
+      "/projects/jewel_02_gold_diamond_rfid_inventory_en.png",
+      "/projects/jewel_03_karat_categories_en.png",
+      "/projects/jewel_04_daily_gold_rates_forex_en.png",
+      "/projects/jewel_05_visual_photo_catalogue_en.png",
+      "/projects/jewel_06_vip_clients_suppliers_en.png",
+      "/projects/jewel_07_pos_gold_sales_invoices_en.png",
+      "/projects/jewel_08_gold_buyback_scrap_inward_en.png",
+      "/projects/jewel_09_gold_procurement_grn_en.png",
+      "/projects/trdjewel1.png",
+      "/projects/trdjewel2.png",
+    ],
     icon: Gem,
     tags: [
       "Laravel 11",
@@ -540,7 +628,14 @@ export const projects: Project[] = [
     ],
     impact:
       "Memberikan visibilitas real-time terhadap piutang berjalan, mengurangi risiko gagal bayar pelanggan sebesar 40%.",
-    images: ["/projects/trdtire1.png", "/projects/trdtire2.png"],
+    images: [
+      "/projects/tire_01_cahayaterang_dashboard_en.png",
+      "/projects/tire_02_inventory_specs_ring_dot_en.png",
+      "/projects/tire_03_fleet_dealers_suppliers_en.png",
+      "/projects/tire_04_sales_wholesale_orders_en.png",
+      "/projects/trdtire1.png",
+      "/projects/trdtire2.png",
+    ],
     icon: CircleDot,
     tags: [
       "Laravel 11",
@@ -637,8 +732,11 @@ export const projects: Project[] = [
     impact:
       "Mengotomatisasi pencarian & alokasi tempat ibadah Connect Group (CG) komunitas jemaat secara tepat lokasi & efisien.",
     images: [
-      "/projects/gms1.png",
-      "/projects/gms2.png",
+      "/projects/gms_01_interactive_map_search_en.png",
+      "/projects/gms_02_dashboard_en.png",
+      "/projects/gms_04_house_detail_specifications_en.png",
+      "/projects/gms_05_contracts_en.png",
+      "/projects/gms_08_portal_requests_en.png",
     ],
     emoji: "🏡",
     icon: Building2,
