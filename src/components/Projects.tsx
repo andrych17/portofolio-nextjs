@@ -666,7 +666,12 @@ export const projects: Project[] = [
     ],
     impact:
       "Mengoptimalkan rotasi persediaan barang (FIFO) & mempercepat pembuatan nota pesanan grosir.",
-    images: ["/projects/tigaputra.png", "/projects/tigaputra2.png"],
+    images: [
+      "/projects/tigaputra_01_sales_order_invoicing_en.png",
+      "/projects/tigaputra_02_inventory_po_fifo_en.png",
+      "/projects/tigaputra.png",
+      "/projects/tigaputra2.png",
+    ],
     icon: Cookie,
     tags: [
       "Laravel 11",
@@ -685,9 +690,9 @@ export const projects: Project[] = [
     status: "done",
     title: "Quiz Management App • Community Edition",
     description:
-      "Volunteer project: a logic-test & quiz assessment platform built for community organizations. Real-time scoring, user management, and analytics dashboard.",
+      "Volunteer project: a logic-test & quiz assessment platform built for community organizations (GMS Community). Real-time scoring, user management, and analytics dashboard.",
     longDescription:
-      "Platform ujian & kuis interaktif yang dibangun untuk komunitas organisasi & edukasi. Mendukung penilaian ujian otomatis, analitik nilai, dan manajemen peserta.",
+      "Platform ujian & kuis interaktif yang dibangun untuk komunitas organisasi & edukasi (GMS Community). Mendukung penilaian ujian otomatis, analitik nilai, dan manajemen peserta.",
     features: [
       "Pembuatan Bank Soal Kuis & Tes Logika interaktif",
       "Penilaian otomatis real-time dengan leaderboard skor peserta",
@@ -697,6 +702,9 @@ export const projects: Project[] = [
     impact:
       "Memfasilitasi ujian komunitas secara digital tanpa perlu pemeriksa kertas manual.",
     images: [
+      "/projects/quiz_01_interactive_test_session_en.png",
+      "/projects/quiz_02_questions_editor_config_en.png",
+      "/projects/quiz_03_leaderboard_scoring_analytics_en.png",
       "/projects/logic_test.png",
       "/projects/logic_test2.png",
       "/projects/logic_test3.png",
