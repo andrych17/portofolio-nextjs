@@ -507,9 +507,10 @@ export const projects: Project[] = [
     impact:
       "Meningkatkan jangkauan penjualan ke seluruh Indonesia 24/7 tanpa menambah beban operasional toko fisik.",
     images: [
-      "/projects/knitandcro_03_ecommerce_marketplace_orders_en.png",
-      "/projects/retail2.png",
-      "/projects/retail3.png",
+      "/projects/knitandcro_storefront_01_hero_home_en.png",
+      "/projects/knitandcro_storefront_02_studio_collection_en.png",
+      "/projects/knitandcro_storefront_03_about_us_en.png",
+      "/projects/knitandcro_storefront_04_contact_location_en.png",
     ],
     icon: ShoppingBag,
     tags: [
@@ -547,12 +548,11 @@ export const projects: Project[] = [
     images: [
       "/projects/knitandcro_01_retail_dashboard_en.png",
       "/projects/knitandcro_02_vendors_buyers_en.png",
+      "/projects/knitandcro_03_ecommerce_marketplace_orders_en.png",
       "/projects/knitandcro_04_pos_invoices_history_en.png",
       "/projects/knitandcro_05_yarn_dye_lot_variants_en.png",
       "/projects/knitandcro_06_realtime_notifications_en.png",
       "/projects/knitandcro_07_rbac_account_settings_en.png",
-      "/projects/trdretail1.png",
-      "/projects/trdretail2.png",
     ],
     icon: Package,
     tags: [
