@@ -731,7 +731,7 @@ export const projects: Project[] = [
     status: "done",
     title: "CG Home Sharing & Booking Platform",
     description:
-      "Airbnb-style CG (Connect Group) house sharing & booking platform for church communities. Allows home owners to list houses/rooms for CG meetings, surveyor inspection workflow, Leaflet map search, and contract management.",
+      "A volunteer project built for church community organizations: an Airbnb-style Connect Group (CG) room & venue booking platform. Features room reservation scheduling, Leaflet map search, surveyor inspection workflow, and usage contract management.",
     longDescription:
       "Platform manajemen & peminjaman rumah Connect Group (CG) berbasis lokasi (Airbnb-style) untuk komunitas jemaat. Memungkinkan jemaat pemilik rumah (Home Owner) mendaftarkan lokasi rumah/ruangan untuk kegiatan CG, workflow verifikasi oleh Surveyor, pencarian peta interaktif Leaflet, serta manajemen kontrak & alokasi penggunaan ruangan.",
     features: [
