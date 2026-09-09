@@ -19,6 +19,7 @@ export default function Navbar() {
     { name: lang === "id" ? "Tentang" : "About", href: "/#about", page: "/" },
     { name: lang === "id" ? "Keahlian" : "Skills", href: "/#skills", page: "/" },
     { name: lang === "id" ? "Portofolio" : "Portfolio", href: "/portofolio", page: "/portofolio" },
+    { name: lang === "id" ? "Pengajuan" : "Request", href: "/pengajuan", page: "/pengajuan" },
     { name: lang === "id" ? "Sertifikasi" : "Certifications", href: "/#certifications", page: "/" },
     { name: lang === "id" ? "Kontak" : "Contact", href: "/#contact", page: "/" },
   ];
