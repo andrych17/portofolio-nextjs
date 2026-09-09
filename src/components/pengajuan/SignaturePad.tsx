@@ -1,16 +1,18 @@
 "use client";
 
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { RotateCcw, Trash2, Check } from "lucide-react";
+import { RotateCcw, Trash2, Check, PenTool } from "lucide-react";
 
 interface SignaturePadProps {
   onSignatureChange: (dataUrl: string | null) => void;
   height?: number;
+  strokeColor?: string;
 }
 
 export default function SignaturePad({
   onSignatureChange,
-  height = 200,
+  height = 190,
+  strokeColor = "#be123c", // Deep romantic rose
 }: SignaturePadProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -33,19 +35,18 @@ export default function SignaturePad({
     ctx.scale(dpr, dpr);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    ctx.strokeStyle = "#ffffff";
-    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = 3;
 
     // Save initial blank state
     setHistory([]);
     setHasDrawn(false);
     onSignatureChange(null);
-  }, [onSignatureChange]);
+  }, [onSignatureChange, strokeColor]);
 
   useEffect(() => {
     initCanvas();
     const handleResize = () => {
-      // Re-init on window resize
       initCanvas();
     };
     window.addEventListener("resize", handleResize);
@@ -147,18 +148,18 @@ export default function SignaturePad({
   };
 
   return (
-    <div className="w-full space-y-2">
-      <div className="flex items-center justify-between text-xs text-[var(--mut)]">
-        <span className="flex items-center gap-1.5 font-mono">
-          <span className="inline-block w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
-          Area Tanda Tangan Digital (Sentuh / Mouse)
+    <div className="w-full space-y-2.5">
+      <div className="flex items-center justify-between text-xs text-stone-500">
+        <span className="flex items-center gap-1.5 font-medium text-rose-700">
+          <PenTool className="w-3.5 h-3.5 text-rose-500" />
+          Area Tanda Tangan Layar Sentuh / Mouse
         </span>
         <div className="flex items-center gap-2">
           {history.length > 0 && (
             <button
               type="button"
               onClick={undo}
-              className="px-2.5 py-1 text-xs rounded border border-[var(--line)] bg-[var(--bg-2)] hover:text-[var(--fg)] hover:border-[var(--fg-2)] flex items-center gap-1 transition-colors cursor-pointer"
+              className="px-3 py-1 text-xs rounded-lg border border-rose-200 bg-white hover:bg-rose-50 text-rose-700 flex items-center gap-1 transition-colors cursor-pointer shadow-sm"
             >
               <RotateCcw className="w-3 h-3" />
               Undo
@@ -167,19 +168,19 @@ export default function SignaturePad({
           <button
             type="button"
             onClick={clearCanvas}
-            className="px-2.5 py-1 text-xs rounded border border-[var(--line)] bg-[var(--bg-2)] hover:text-[var(--accent)] hover:border-[var(--accent)] flex items-center gap-1 transition-colors cursor-pointer"
+            className="px-3 py-1 text-xs rounded-lg border border-rose-200 bg-white hover:bg-rose-50 text-rose-600 hover:text-rose-700 flex items-center gap-1 transition-colors cursor-pointer shadow-sm"
           >
             <Trash2 className="w-3 h-3" />
-            Hapus
+            Hapus / Ulang
           </button>
         </div>
       </div>
 
-      <div className="relative rounded-lg border-2 border-dashed border-[var(--line-strong)] bg-[#111111] overflow-hidden">
+      <div className="relative rounded-2xl border-2 border-dashed border-rose-300 bg-[#fffafb] hover:border-rose-400 transition-colors overflow-hidden shadow-inner">
         <canvas
           ref={canvasRef}
           style={{ height: `${height}px`, touchAction: "none" }}
-          className="w-full block cursor-crosshair"
+          className="w-full block cursor-crosshair bg-transparent"
           onMouseDown={startDrawing}
           onMouseMove={draw}
           onMouseUp={stopDrawing}
@@ -190,18 +191,21 @@ export default function SignaturePad({
         />
 
         {!hasDrawn && (
-          <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center text-center p-4 text-[var(--mut)]">
-            <p className="text-sm font-medium tracking-wide">Tanda tangan di sini</p>
-            <p className="text-xs mt-1 text-[var(--mut)] opacity-70">
-              Gunakan mouse, stylus, atau jari Anda di dalam kotak ini
+          <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center text-center p-4 text-rose-400/70">
+            <span className="text-2xl mb-1">✍️</span>
+            <p className="text-sm font-semibold text-rose-600 tracking-wide">
+              Bubuhkan tanda tangan cinta di sini yaa
+            </p>
+            <p className="text-xs text-rose-400 mt-0.5">
+              Gunakan jari Anda di layar HP / mouse komputer
             </p>
           </div>
         )}
 
         {hasDrawn && (
-          <div className="absolute bottom-2 right-2 pointer-events-none">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">
-              <Check className="w-2.5 h-2.5" /> Terekam
+          <div className="absolute bottom-3 right-3 pointer-events-none">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full bg-rose-100 text-rose-700 border border-rose-300 shadow-sm">
+              <Check className="w-3 h-3" /> Tanda Tangan Siap
             </span>
           </div>
         )}
