@@ -1,100 +1,109 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FileText,
+  Heart,
+  Sparkles,
+  RotateCcw,
   CheckCircle2,
-  AlertCircle,
   Plus,
   Trash2,
-  Database,
   Printer,
   Calendar,
   User,
-  Building2,
+  Crown,
   DollarSign,
   Tag,
   PenTool,
-  Loader2,
-  RefreshCw,
-  Eye,
-  ExternalLink,
+  PartyPopper,
+  Share2,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import SignaturePad from "./SignaturePad";
-import { ItemPengajuan, PengajuanRecord } from "@/lib/db";
+import LoveAnimation from "./LoveAnimation";
+
+export interface ItemPengajuan {
+  id: string;
+  nama: string;
+  spesifikasi?: string;
+  qty: number;
+  harga: number;
+  subtotal: number;
+}
+
+export interface PengajuanDocument {
+  id: string;
+  nomor_pengajuan: string;
+  pemohon: string;
+  approver: string;
+  judul: string;
+  keperluan: string;
+  items: ItemPengajuan[];
+  total_harga: number;
+  tanda_tangan: string;
+  catatan_cinta: string;
+  approved_at: string;
+}
 
 const DEFAULT_ITEMS: ItemPengajuan[] = [
   {
     id: "item-1",
-    nama: "Mechanical Keyboard (TKL / Ergonomic)",
-    spesifikasi: "Koneksi USB/Wireless, tactile switches, wrist rest support",
+    nama: "Mechanical Keyboard Ergonomis ⌨️",
+    spesifikasi: "Biar ketikan coding makin empuk, ga pegal, dan makin semangat cari cuan",
     qty: 1,
     harga: 350000,
     subtotal: 350000,
   },
   {
     id: "item-2",
-    nama: "USB Desk Fan / Workstation Mini Cooler",
-    spesifikasi: "3-speed, silent motor 5V, sudut rotasi adjustable",
+    nama: "Kipas Meja USB / Desk Cooler ❄️",
+    spesifikasi: "Biar meja kerja tetap sejuk, adem, dan kepala ga panas waktu mikir logic",
     qty: 1,
     harga: 150000,
     subtotal: 150000,
   },
 ];
 
+const STORAGE_KEY = "pengajuan_gracia_tersayang";
+const COOKIE_NAME = "gracia_approval_status";
+
 export default function PengajuanClient() {
-  const [activeTab, setActiveTab] = useState<"form" | "history">("form");
+  const [showLoveAnimation, setShowLoveAnimation] = useState(false);
+  const [savedDocument, setSavedDocument] = useState<PengajuanDocument | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   // Form State
   const [nomorPengajuan, setNomorPengajuan] = useState("");
-  const [pemohon, setPemohon] = useState("Andry Huang");
-  const [divisi, setDivisi] = useState("Software Engineering");
-  const [judul, setJudul] = useState("Pengadaan Keyboard & Kipas Meja Workstation");
+  const [pemohon, setPemohon] = useState("Andry Huang 👨‍💻");
+  const [approver, setApprover] = useState("Gracia Tersayang ❤️ (Head of Finance & Love)");
+  const [judul, setJudul] = useState("Surat Pengajuan Pembelian Keyboard & Kipas Meja");
   const [keperluan, setKeperluan] = useState(
-    "Penggantian perangkat input keyboard kerja dan penambahan kipas workstation untuk meningkatkan kenyamanan, ergonomi, dan sirkulasi udara saat coding harian."
+    "Untuk kenyamanan ergonomi saat coding harian dan menjaga sirkulasi udara workstation tetap sejuk. Dengan disetujuinya pengajuan ini, pemohon berjanji akan semakin rajin dan sayang kepada Gracia selamanya! 🥰"
   );
   const [items, setItems] = useState<ItemPengajuan[]>(DEFAULT_ITEMS);
   const [signatureData, setSignatureData] = useState<string | null>(null);
-  const [namaPenandatangan, setNamaPenandatangan] = useState("Andry Huang");
-  const [jabatanPenandatangan, setJabatanPenandatangan] = useState("Lead Developer / Pemohon");
-  const [catatan, setCatatan] = useState("Target pembelian dari official store marketplace lokal (estimasi tiba 1-2 hari).");
+  const [catatanCinta, setCatatanCinta] = useState("Disetujui dengan penuh cinta & kasih sayang! Jangan lupa istirahat yaa sayang 💕");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Status & List State
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
-  const [records, setRecords] = useState<PengajuanRecord[]>([]);
-  const [isLoadingRecords, setIsLoadingRecords] = useState(false);
-  const [selectedRecord, setSelectedRecord] = useState<PengajuanRecord | null>(null);
-
-  // Generate unique nomor pengajuan on mount
+  // Initialize data from Cookie/LocalStorage
   useEffect(() => {
+    setIsClient(true);
     const today = new Date();
     const dateStr = today.toISOString().slice(0, 10).replace(/-/g, "");
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    setNomorPengajuan(`REQ-${dateStr}-${randomSuffix}`);
-  }, []);
+    setNomorPengajuan(`LOVE-REQ-${dateStr}-001`);
 
-  // Fetch records from SQLite
-  const fetchRecords = useCallback(async () => {
-    setIsLoadingRecords(true);
     try {
-      const res = await fetch("/api/pengajuan");
-      const json = await res.json();
-      if (json.success && Array.isArray(json.data)) {
-        setRecords(json.data);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setSavedDocument(parsed);
       }
-    } catch (err) {
-      console.error("Gagal memuat data dari SQLite:", err);
-    } finally {
-      setIsLoadingRecords(false);
+    } catch {
+      // ignore
     }
   }, []);
 
-  useEffect(() => {
-    fetchRecords();
-  }, [fetchRecords]);
-
-  // Recalculate item totals
   const totalHarga = items.reduce((sum, it) => sum + (it.subtotal || 0), 0);
 
   const handleItemChange = (id: string, field: keyof ItemPengajuan, value: string | number) => {
@@ -129,83 +138,63 @@ export default function PengajuanClient() {
     setItems((prev) => prev.filter((it) => it.id !== id));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleApproveAndSave = (e: React.FormEvent) => {
     e.preventDefault();
-    setFeedback(null);
+    setErrorMessage(null);
 
     if (!signatureData) {
-      setFeedback({
-        type: "error",
-        message: "Silakan bubuhkan tanda tangan digital pada area tanda tangan sebelum submit.",
-      });
+      setErrorMessage("Mohon bubuhkan tanda tangan cinta dari Gracia pada kotak tanda tangan terlebih dahulu 💕");
       return;
     }
 
-    if (!nomorPengajuan || !pemohon || !judul || items.length === 0) {
-      setFeedback({
-        type: "error",
-        message: "Mohon lengkapi semua rincian data formulir pengajuan.",
-      });
-      return;
-    }
+    const doc: PengajuanDocument = {
+      id: `doc-${Date.now()}`,
+      nomor_pengajuan: nomorPengajuan,
+      pemohon,
+      approver,
+      judul,
+      keperluan,
+      items,
+      total_harga: totalHarga,
+      tanda_tangan: signatureData,
+      catatan_cinta: catatanCinta,
+      approved_at: new Date().toLocaleString("id-ID", {
+        dateStyle: "full",
+        timeStyle: "short",
+      }),
+    };
 
-    setIsSubmitting(true);
+    // Save to localStorage
     try {
-      const res = await fetch("/api/pengajuan", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nomor_pengajuan: nomorPengajuan,
-          pemohon,
-          divisi,
-          judul,
-          keperluan,
-          items,
-          total_harga: totalHarga,
-          tanda_tangan: signatureData,
-          nama_penandatangan: namaPenandatangan,
-          jabatan_penandatangan: jabatanPenandatangan,
-          status: "Disetujui",
-          catatan,
-        }),
-      });
-
-      const json = await res.json();
-      if (!res.ok || !json.success) {
-        throw new Error(json.error || "Gagal menyimpan pengajuan");
-      }
-
-      setFeedback({
-        type: "success",
-        message: `Pengajuan ${nomorPengajuan} berhasil disimpan ke database SQLite!`,
-      });
-
-      // Refresh data list and auto switch to history
-      await fetchRecords();
-      setTimeout(() => {
-        setActiveTab("history");
-      }, 1200);
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Terjadi kesalahan";
-      setFeedback({ type: "error", message: msg });
-    } finally {
-      setIsSubmitting(false);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(doc));
+      // Save cookie (1 year expiry)
+      document.cookie = `${COOKIE_NAME}=approved; max-age=31536000; path=/; SameSite=Lax`;
+    } catch (err) {
+      console.error("Gagal simpan ke storage:", err);
     }
+
+    setSavedDocument(doc);
+
+    // Trigger Heart Animation
+    setShowLoveAnimation(true);
+    setTimeout(() => {
+      setShowLoveAnimation(false);
+    }, 6000);
+
+    // Scroll smoothly to result
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleDelete = async (id: number) => {
-    if (!confirm("Hapus data pengajuan ini dari SQLite?")) return;
+  const handleResetApproval = () => {
+    if (!confirm("Buka kembali formulir untuk tanda tangan ulang?")) return;
     try {
-      const res = await fetch(`/api/pengajuan?id=${id}`, { method: "DELETE" });
-      if (res.ok) {
-        setRecords((prev) => prev.filter((r) => r.id !== id));
-        if (selectedRecord?.id === id) {
-          setSelectedRecord(null);
-        }
-      }
-    } catch (err) {
-      console.error("Gagal menghapus record:", err);
+      localStorage.removeItem(STORAGE_KEY);
+      document.cookie = `${COOKIE_NAME}=; max-age=0; path=/`;
+    } catch {
+      // ignore
     }
+    setSavedDocument(null);
+    setSignatureData(null);
   };
 
   const formatRupiah = (val: number) => {
@@ -216,116 +205,232 @@ export default function PengajuanClient() {
     }).format(val);
   };
 
-  return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Header Banner */}
-      <div className="mb-8 border-b border-[var(--line)] pb-6">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[var(--accent)] uppercase tracking-wider mb-2">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
-              Sistem Persetujuan & Tanda Tangan Digital
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--fg)]">
-              Pengajuan Pembelian & E-Signature
-            </h1>
-            <p className="text-sm text-[var(--mut)] mt-1.5 max-w-2xl">
-              Modul formulir pengadaan barang (Keyboard & Kipas ~Rp 500.000) dengan tanda tangan kanvas online langsung tersimpan ke database lokal SQLite (<code className="text-[var(--accent)] font-mono text-xs">node:sqlite</code>).
-            </p>
-          </div>
+  if (!isClient) {
+    return null;
+  }
 
-          <div className="flex items-center gap-2 bg-[var(--bg-2)] p-1 rounded-lg border border-[var(--line)]">
-            <button
-              onClick={() => setActiveTab("form")}
-              className={`px-4 py-2 text-xs font-medium rounded-md transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeTab === "form"
-                  ? "bg-[var(--accent)] text-black font-semibold shadow"
-                  : "text-[var(--fg-2)] hover:text-white"
-              }`}
-            >
-              <FileText className="w-3.5 h-3.5" />
-              Buat Pengajuan
-            </button>
-            <button
-              onClick={() => {
-                setActiveTab("history");
-                fetchRecords();
-              }}
-              className={`px-4 py-2 text-xs font-medium rounded-md transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeTab === "history"
-                  ? "bg-[var(--accent)] text-black font-semibold shadow"
-                  : "text-[var(--fg-2)] hover:text-white"
-              }`}
-            >
-              <Database className="w-3.5 h-3.5" />
-              Data SQLite ({records.length})
-            </button>
-          </div>
+  return (
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative">
+      {/* Love Floating Particles */}
+      <LoveAnimation trigger={showLoveAnimation} />
+
+      {/* Hero Header */}
+      <div className="text-center mb-8 space-y-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-950/60 border border-pink-500/40 text-pink-300 text-xs font-medium tracking-wide shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+          <Heart className="w-3.5 h-3.5 fill-pink-500 text-pink-500 animate-pulse" />
+          Dokumen Khusus untuk Gracia Tersayang ❤️
         </div>
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2">
+          Pengajuan Pembelian & E-Restu
+        </h1>
+        <p className="text-sm text-[var(--mut)] max-w-xl mx-auto">
+          Formulir pengadaan perlengkapan workstation (Keyboard & Kipas Meja) seharga total kisaran <strong className="text-pink-400 font-mono">Rp 500.000</strong> dengan persetujuan resmi dan tanda tangan cinta dari Gracia.
+        </p>
       </div>
 
-      {feedback && (
-        <div
-          className={`mb-6 p-4 rounded-lg border flex items-start gap-3 transition-all ${
-            feedback.type === "success"
-              ? "bg-emerald-950/40 border-emerald-800 text-emerald-300"
-              : "bg-red-950/40 border-red-800 text-red-300"
-          }`}
+      {/* JIKA SUDAH DISETUJUI & TERSIMPAN DI COOKIE/STORAGE */}
+      {savedDocument ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="space-y-6"
         >
-          {feedback.type === "success" ? (
-            <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
-          ) : (
-            <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-          )}
-          <div className="text-sm flex-1">{feedback.message}</div>
-          <button
-            onClick={() => setFeedback(null)}
-            className="text-xs opacity-60 hover:opacity-100 cursor-pointer"
-          >
-            ✕
-          </button>
-        </div>
-      )}
+          {/* Banner Selamat */}
+          <div className="relative overflow-hidden rounded-2xl border-2 border-pink-500/50 bg-gradient-to-br from-pink-950/40 via-[#181216] to-[#121212] p-6 sm:p-8 text-center shadow-[0_0_40px_rgba(236,72,153,0.2)]">
+            <div className="absolute top-2 right-3 text-2xl opacity-40">✨</div>
+            <div className="absolute bottom-2 left-3 text-2xl opacity-40">💖</div>
 
-      {/* TAB 1: FORMULIR PENGAJUAN */}
-      {activeTab === "form" && (
-        <form onSubmit={handleSubmit} className="space-y-8">
-          {/* Card 1: Informasi Dokumen */}
-          <div className="bg-[var(--bg-2)] border border-[var(--line)] rounded-xl p-5 sm:p-6 space-y-5">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-pink-500/20 text-pink-400 border border-pink-500/40 mb-4 shadow-inner">
+              <PartyPopper className="w-8 h-8 animate-bounce" />
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-bold text-pink-200">
+              Yaaay! Pengajuan Telah Disetujui 100%! ❤️
+            </h2>
+            <p className="text-sm text-pink-100/80 mt-2 max-w-lg mx-auto">
+              Terima kasih banyak Gracia tersayang! Tanda tangan restu telah tersimpan manis di memori peramban (Cookie & LocalStorage).
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={() => window.print()}
+                className="px-5 py-2.5 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-semibold text-xs flex items-center gap-2 shadow-lg transition-all cursor-pointer"
+              >
+                <Printer className="w-4 h-4" />
+                Cetak / Simpan Surat Restu PDF
+              </button>
+              <button
+                onClick={handleResetApproval}
+                className="px-4 py-2.5 rounded-lg bg-[var(--bg-2)] hover:bg-[#252525] border border-[var(--line)] text-xs text-[var(--fg-2)] flex items-center gap-2 transition-colors cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                Tanda Tangan Ulang
+              </button>
+            </div>
+          </div>
+
+          {/* Lembar Dokumen Resmi */}
+          <div className="bg-[#141414] border border-[var(--line-strong)] rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl relative">
+            <div className="flex flex-wrap items-center justify-between border-b border-[var(--line)] pb-4 gap-2">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-pink-400 block">
+                  Surat Resmi Izin Pengadaan
+                </span>
+                <h3 className="text-xl font-bold text-white mt-0.5">{savedDocument.judul}</h3>
+              </div>
+              <div className="font-mono text-xs bg-black/60 px-3 py-1.5 rounded-md border border-pink-500/30 text-pink-300">
+                {savedDocument.nomor_pengajuan}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-black/30 p-4 rounded-xl border border-[var(--line)]">
+              <div>
+                <span className="text-[var(--mut)] block">Pemohon:</span>
+                <strong className="text-white text-sm">{savedDocument.pemohon}</strong>
+              </div>
+              <div>
+                <span className="text-[var(--mut)] block">Yang Menyetujui (Approver):</span>
+                <strong className="text-pink-300 text-sm flex items-center gap-1">
+                  <Crown className="w-3.5 h-3.5 text-yellow-400" />
+                  {savedDocument.approver}
+                </strong>
+              </div>
+              <div className="sm:col-span-2 pt-2 border-t border-[var(--line)]/50">
+                <span className="text-[var(--mut)] block">Alasan & Keperluan:</span>
+                <p className="text-[var(--fg-2)] mt-0.5 leading-relaxed">{savedDocument.keperluan}</p>
+              </div>
+            </div>
+
+            {/* Rincian Barang Table */}
+            <div>
+              <div className="text-xs font-mono uppercase text-[var(--mut)] mb-2 flex items-center gap-1.5">
+                <Tag className="w-3.5 h-3.5 text-pink-400" /> Rincian Barang yang Disetujui:
+              </div>
+              <div className="border border-[var(--line)] rounded-lg overflow-hidden bg-[#0d0d0d]">
+                <table className="w-full text-xs text-left">
+                  <thead className="bg-[#1a1a1a] text-[var(--mut)] border-b border-[var(--line)]">
+                    <tr>
+                      <th className="p-3">Nama Barang</th>
+                      <th className="p-3 text-center w-16">Qty</th>
+                      <th className="p-3 text-right w-28">Harga</th>
+                      <th className="p-3 text-right w-28">Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[var(--line)]">
+                    {savedDocument.items.map((it, idx) => (
+                      <tr key={idx} className="hover:bg-white/[0.02]">
+                        <td className="p-3">
+                          <div className="font-semibold text-white">{it.nama}</div>
+                          {it.spesifikasi && (
+                            <div className="text-[11px] text-[var(--mut)] mt-0.5">{it.spesifikasi}</div>
+                          )}
+                        </td>
+                        <td className="p-3 text-center font-mono">{it.qty}</td>
+                        <td className="p-3 text-right font-mono">{formatRupiah(it.harga)}</td>
+                        <td className="p-3 text-right font-mono font-medium text-white">
+                          {formatRupiah(it.subtotal)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot className="bg-black/50 border-t-2 border-[var(--line)] font-bold">
+                    <tr>
+                      <td colSpan={3} className="p-3 text-right text-[var(--fg-2)]">
+                        TOTAL ANGGARAN:
+                      </td>
+                      <td className="p-3 text-right font-mono text-pink-400 text-base">
+                        {formatRupiah(savedDocument.total_harga)}
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+            {/* Kotak Pengesahan & Tanda Tangan */}
+            <div className="border-2 border-pink-500/30 rounded-xl p-5 bg-gradient-to-r from-pink-950/20 via-black to-pink-950/20 flex flex-wrap items-center justify-between gap-4">
+              <div className="space-y-1.5 text-xs max-w-sm">
+                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold bg-pink-900/60 text-pink-300 border border-pink-700">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Disetujui dengan Penuh Cinta
+                </div>
+                <div className="text-[var(--mut)] text-[11px]">
+                  Disahkan pada: <span className="text-white">{savedDocument.approved_at}</span>
+                </div>
+                {savedDocument.catatan_cinta && (
+                  <div className="p-2.5 rounded bg-pink-950/40 border border-pink-800/50 text-pink-200 text-xs italic mt-2">
+                    &ldquo;{savedDocument.catatan_cinta}&rdquo;
+                  </div>
+                )}
+              </div>
+
+              <div className="text-center sm:text-right">
+                <div className="text-[11px] text-[var(--mut)] mb-1">Tanda Tangan Gracia Tersayang:</div>
+                {savedDocument.tanda_tangan ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={savedDocument.tanda_tangan}
+                    alt="Tanda Tangan Cinta Gracia"
+                    className="h-20 max-w-[180px] object-contain filter invert mx-auto sm:ml-auto border-b-2 border-pink-500/50 pb-1"
+                  />
+                ) : (
+                  <div className="h-20 flex items-center justify-center text-xs text-[var(--mut)]">
+                    (Belum ada tanda tangan)
+                  </div>
+                )}
+                <span className="text-[10px] font-mono text-pink-400/80 block mt-1">
+                  Verified Love Signature 💕
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ) : (
+        /* FORMULIR PENGAJUAN BELUM DI-APPROVE */
+        <form onSubmit={handleApproveAndSave} className="space-y-6">
+          {errorMessage && (
+            <div className="p-4 rounded-xl border border-red-800/80 bg-red-950/50 text-red-300 text-sm flex items-center gap-2">
+              <Heart className="w-4 h-4 text-red-400 shrink-0" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          {/* Card 1: Data Pengajuan */}
+          <div className="bg-[var(--bg-2)] border border-[var(--line)] rounded-xl p-5 sm:p-6 space-y-4 shadow-lg">
             <div className="flex items-center justify-between border-b border-[var(--line)] pb-3">
-              <h2 className="text-base font-semibold text-[var(--fg)] flex items-center gap-2">
-                <Tag className="w-4 h-4 text-[var(--accent)]" />
-                1. Informasi Dasar Dokumen
+              <h2 className="text-base font-semibold text-white flex items-center gap-2">
+                <Tag className="w-4 h-4 text-pink-400" />
+                1. Data Pengajuan & Alasan
               </h2>
-              <span className="text-xs font-mono text-[var(--mut)] bg-black/40 px-2.5 py-1 rounded border border-[var(--line)]">
-                {nomorPengajuan || "Membuat Nomor..."}
+              <span className="text-xs font-mono text-pink-400 bg-pink-950/40 px-2.5 py-1 rounded border border-pink-800/50">
+                {nomorPengajuan}
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-medium text-[var(--fg-2)] mb-1 flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-[var(--mut)]" /> Nama Pemohon
+                  <User className="w-3.5 h-3.5 text-pink-400" /> Pemohon (Yang Butuh Keyboard & Kipas)
                 </label>
                 <input
                   type="text"
                   value={pemohon}
                   onChange={(e) => setPemohon(e.target.value)}
                   required
-                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
+                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-pink-500 focus:outline-none"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-[var(--fg-2)] mb-1 flex items-center gap-1.5">
-                  <Building2 className="w-3.5 h-3.5 text-[var(--mut)]" /> Divisi / Departemen
+                  <Crown className="w-3.5 h-3.5 text-yellow-400" /> Penerima / Approver (Pengambil Keputusan)
                 </label>
                 <input
                   type="text"
-                  value={divisi}
-                  onChange={(e) => setDivisi(e.target.value)}
+                  value={approver}
+                  onChange={(e) => setApprover(e.target.value)}
                   required
-                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
+                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-pink-500 focus:outline-none font-medium text-pink-200"
                 />
               </div>
 
@@ -338,37 +443,37 @@ export default function PengajuanClient() {
                   value={judul}
                   onChange={(e) => setJudul(e.target.value)}
                   required
-                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
+                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-pink-500 focus:outline-none"
                 />
               </div>
 
               <div className="sm:col-span-2">
                 <label className="block text-xs font-medium text-[var(--fg-2)] mb-1">
-                  Latar Belakang / Keperluan Pengadaan
+                  Alasan & Rayuan untuk Gracia Tersayang ❤️
                 </label>
                 <textarea
-                  rows={2}
+                  rows={3}
                   value={keperluan}
                   onChange={(e) => setKeperluan(e.target.value)}
-                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none resize-none"
+                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-pink-500 focus:outline-none resize-none leading-relaxed"
                 />
               </div>
             </div>
           </div>
 
-          {/* Card 2: Rincian Barang & Anggaran */}
-          <div className="bg-[var(--bg-2)] border border-[var(--line)] rounded-xl p-5 sm:p-6 space-y-4">
+          {/* Card 2: Rincian Barang & Anggaran ~500rb an */}
+          <div className="bg-[var(--bg-2)] border border-[var(--line)] rounded-xl p-5 sm:p-6 space-y-4 shadow-lg">
             <div className="flex items-center justify-between border-b border-[var(--line)] pb-3">
-              <h2 className="text-base font-semibold text-[var(--fg)] flex items-center gap-2">
-                <DollarSign className="w-4 h-4 text-[var(--accent)]" />
-                2. Rincian Barang & Estimasi Biaya
+              <h2 className="text-base font-semibold text-white flex items-center gap-2">
+                <DollarSign className="w-4 h-4 text-emerald-400" />
+                2. Rincian Barang & Anggaran
               </h2>
               <button
                 type="button"
                 onClick={addItem}
-                className="px-2.5 py-1 text-xs rounded border border-[var(--line)] bg-[#111111] hover:border-[var(--accent)] text-[var(--fg)] flex items-center gap-1 transition-colors cursor-pointer"
+                className="px-2.5 py-1 text-xs rounded border border-[var(--line)] bg-[#111111] hover:border-pink-400 text-[var(--fg)] flex items-center gap-1 transition-colors cursor-pointer"
               >
-                <Plus className="w-3 h-3 text-[var(--accent)]" />
+                <Plus className="w-3 h-3 text-pink-400" />
                 Tambah Item
               </button>
             </div>
@@ -377,11 +482,11 @@ export default function PengajuanClient() {
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr className="border-b border-[var(--line)] text-[var(--mut)]">
-                    <th className="py-2 px-2">Nama Barang & Spek</th>
-                    <th className="py-2 px-2 w-20 text-center">Qty</th>
-                    <th className="py-2 px-2 w-32 text-right">Harga Satuan</th>
+                    <th className="py-2 px-2">Nama Barang & Alasan</th>
+                    <th className="py-2 px-2 w-16 text-center">Qty</th>
+                    <th className="py-2 px-2 w-28 text-right">Harga Satuan</th>
                     <th className="py-2 px-2 w-32 text-right">Subtotal</th>
-                    <th className="py-2 px-2 w-10 text-center">Aksi</th>
+                    <th className="py-2 px-2 w-8 text-center"></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[var(--line)]/50">
@@ -394,14 +499,14 @@ export default function PengajuanClient() {
                           onChange={(e) => handleItemChange(item.id, "nama", e.target.value)}
                           placeholder="Nama Barang"
                           required
-                          className="w-full bg-[#111111] border border-[var(--line)] rounded px-2 py-1 text-xs text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
+                          className="w-full bg-[#111111] border border-[var(--line)] rounded px-2.5 py-1.5 text-xs text-white focus:border-pink-500 focus:outline-none"
                         />
                         <input
                           type="text"
                           value={item.spesifikasi || ""}
                           onChange={(e) => handleItemChange(item.id, "spesifikasi", e.target.value)}
-                          placeholder="Spesifikasi / Catatan (opsional)"
-                          className="w-full bg-transparent border-0 text-[11px] text-[var(--mut)] px-1 focus:outline-none focus:text-[var(--fg)]"
+                          placeholder="Catatan / spesifikasi"
+                          className="w-full bg-transparent border-0 text-[11px] text-[var(--mut)] px-1 focus:outline-none focus:text-pink-300"
                         />
                       </td>
                       <td className="py-2 px-2 align-top">
@@ -411,7 +516,7 @@ export default function PengajuanClient() {
                           value={item.qty}
                           onChange={(e) => handleItemChange(item.id, "qty", Math.max(1, parseInt(e.target.value) || 1))}
                           required
-                          className="w-full text-center bg-[#111111] border border-[var(--line)] rounded px-2 py-1 text-xs text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
+                          className="w-full text-center bg-[#111111] border border-[var(--line)] rounded px-2 py-1.5 text-xs text-white focus:border-pink-500 focus:outline-none"
                         />
                       </td>
                       <td className="py-2 px-2 align-top">
@@ -422,13 +527,13 @@ export default function PengajuanClient() {
                           value={item.harga}
                           onChange={(e) => handleItemChange(item.id, "harga", Math.max(0, parseInt(e.target.value) || 0))}
                           required
-                          className="w-full text-right bg-[#111111] border border-[var(--line)] rounded px-2 py-1 text-xs text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none font-mono"
+                          className="w-full text-right bg-[#111111] border border-[var(--line)] rounded px-2 py-1.5 text-xs text-white focus:border-pink-500 focus:outline-none font-mono"
                         />
                       </td>
-                      <td className="py-2 px-2 text-right font-mono font-medium text-[var(--fg)] align-top pt-3">
+                      <td className="py-2 px-2 text-right font-mono font-medium text-white align-top pt-3">
                         {formatRupiah(item.subtotal)}
                       </td>
-                      <td className="py-2 px-2 text-center align-top pt-2">
+                      <td className="py-2 px-2 text-center align-top pt-2.5">
                         <button
                           type="button"
                           onClick={() => removeItem(item.id)}
@@ -444,9 +549,9 @@ export default function PengajuanClient() {
                 <tfoot>
                   <tr className="border-t-2 border-[var(--line)] font-semibold text-sm">
                     <td colSpan={3} className="py-3 px-2 text-right text-[var(--fg-2)]">
-                      Total Estimasi Anggaran:
+                      Total Estimasi Biaya:
                     </td>
-                    <td className="py-3 px-2 text-right text-[var(--accent)] font-mono text-base">
+                    <td className="py-3 px-2 text-right text-pink-400 font-mono text-base font-bold">
                       {formatRupiah(totalHarga)}
                     </td>
                     <td />
@@ -456,362 +561,48 @@ export default function PengajuanClient() {
             </div>
           </div>
 
-          {/* Card 3: Tanda Tangan Digital & Otorisasi */}
-          <div className="bg-[var(--bg-2)] border border-[var(--line)] rounded-xl p-5 sm:p-6 space-y-5">
+          {/* Card 3: Kotak Tanda Tangan Khusus Gracia */}
+          <div className="bg-[var(--bg-2)] border-2 border-pink-500/40 rounded-xl p-5 sm:p-6 space-y-4 shadow-[0_0_25px_rgba(236,72,153,0.15)]">
             <div className="flex items-center justify-between border-b border-[var(--line)] pb-3">
-              <h2 className="text-base font-semibold text-[var(--fg)] flex items-center gap-2">
-                <PenTool className="w-4 h-4 text-[var(--accent)]" />
-                3. Otorisasi & Tanda Tangan Digital (Canvas Pad)
+              <h2 className="text-base font-semibold text-pink-200 flex items-center gap-2">
+                <PenTool className="w-4 h-4 text-pink-400" />
+                3. Kotak Tanda Tangan & Restu dari Gracia Tersayang 💕
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-medium text-[var(--fg-2)] mb-1">
-                  Nama Penandatangan
-                </label>
-                <input
-                  type="text"
-                  value={namaPenandatangan}
-                  onChange={(e) => setNamaPenandatangan(e.target.value)}
-                  required
-                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-medium text-[var(--fg-2)] mb-1">
-                  Jabatan / Peran
-                </label>
-                <input
-                  type="text"
-                  value={jabatanPenandatangan}
-                  onChange={(e) => setJabatanPenandatangan(e.target.value)}
-                  required
-                  className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
-                />
-              </div>
-            </div>
+            <p className="text-xs text-[var(--fg-2)]">
+              Silakan Gracia tanda tangan langsung di dalam kotak berikut menggunakan jari di layar HP / mouse:
+            </p>
 
             {/* Signature Canvas */}
-            <div className="pt-2">
-              <SignaturePad onSignatureChange={setSignatureData} height={180} />
-            </div>
+            <SignaturePad onSignatureChange={setSignatureData} height={190} />
 
             <div>
-              <label className="block text-xs font-medium text-[var(--fg-2)] mb-1">
-                Catatan Tambahan (Opsional)
+              <label className="block text-xs font-medium text-[var(--fg-2)] mb-1 flex items-center gap-1.5">
+                <Heart className="w-3.5 h-3.5 text-pink-400 fill-pink-400" /> Pesan Cinta / Syarat dari Gracia:
               </label>
               <input
                 type="text"
-                value={catatan}
-                onChange={(e) => setCatatan(e.target.value)}
-                placeholder="Misal: Link toko, opsi warna, atau urgensi pengiriman"
-                className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
+                value={catatanCinta}
+                onChange={(e) => setCatatanCinta(e.target.value)}
+                placeholder="Misal: Boleh beli, tapi jangan lupa temenin jalan-jalan yaa ❤️"
+                className="w-full bg-[#111111] border border-[var(--line)] rounded-md px-3 py-2 text-sm text-[var(--fg)] focus:border-pink-500 focus:outline-none"
               />
             </div>
           </div>
 
-          {/* Submit Action */}
-          <div className="flex items-center justify-end gap-3 pt-2">
+          {/* Tombol Eksekusi Beri Restu */}
+          <div className="pt-2">
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="px-6 py-3 rounded-lg bg-[var(--accent)] text-black font-semibold text-sm hover:brightness-110 active:scale-98 transition-all flex items-center gap-2 cursor-pointer shadow-lg disabled:opacity-50"
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 hover:from-pink-500 hover:to-rose-400 text-white font-bold text-base shadow-[0_0_30px_rgba(244,114,182,0.4)] hover:shadow-[0_0_40px_rgba(244,114,182,0.6)] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Menyimpan ke SQLite...
-                </>
-              ) : (
-                <>
-                  <CheckCircle2 className="w-4 h-4" />
-                  Simpan & Tanda Tangani Pengajuan
-                </>
-              )}
+              <Sparkles className="w-5 h-5 animate-spin" />
+              Beri Restu & Tanda Tangani Pengajuan ❤️
+              <Heart className="w-5 h-5 fill-white" />
             </button>
           </div>
         </form>
-      )}
-
-      {/* TAB 2: RIWAYAT & DATABASE SQLITE */}
-      {activeTab === "history" && (
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div className="text-xs text-[var(--mut)]">
-              Tersimpan secara lokal di <code className="text-[var(--accent)] font-mono">data/pengajuan.db</code>
-            </div>
-            <button
-              onClick={fetchRecords}
-              disabled={isLoadingRecords}
-              className="px-3 py-1.5 text-xs rounded border border-[var(--line)] bg-[var(--bg-2)] hover:border-[var(--fg-2)] flex items-center gap-1.5 transition-colors cursor-pointer"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 ${isLoadingRecords ? "animate-spin" : ""}`} />
-              Refresh Data
-            </button>
-          </div>
-
-          {records.length === 0 ? (
-            <div className="border border-dashed border-[var(--line-strong)] rounded-xl p-12 text-center bg-[var(--bg-2)]/40">
-              <Database className="w-10 h-10 text-[var(--mut)] mx-auto mb-3 opacity-60" />
-              <p className="text-sm font-medium text-[var(--fg)]">Belum ada pengajuan tersimpan di SQLite</p>
-              <p className="text-xs text-[var(--mut)] mt-1">
-                Silakan buat pengajuan pertama Anda dengan tanda tangan digital.
-              </p>
-              <button
-                onClick={() => setActiveTab("form")}
-                className="mt-4 px-4 py-2 text-xs font-semibold rounded-md bg-[var(--accent)] text-black hover:brightness-110 cursor-pointer"
-              >
-                Buat Pengajuan Sekarang
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {records.map((rec) => {
-                let parsedItems: ItemPengajuan[] = [];
-                try {
-                  parsedItems = JSON.parse(rec.items);
-                } catch {
-                  parsedItems = [];
-                }
-
-                return (
-                  <div
-                    key={rec.id}
-                    className="bg-[var(--bg-2)] border border-[var(--line)] hover:border-[var(--line-strong)] rounded-xl p-5 space-y-4 flex flex-col justify-between transition-all"
-                  >
-                    <div className="space-y-3">
-                      <div className="flex items-start justify-between gap-2">
-                        <span className="font-mono text-xs text-[var(--accent)] bg-black/50 px-2 py-0.5 rounded border border-[var(--line)]">
-                          {rec.nomor_pengajuan}
-                        </span>
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">
-                          {rec.status}
-                        </span>
-                      </div>
-
-                      <h3 className="text-sm font-bold text-[var(--fg)] leading-snug">
-                        {rec.judul}
-                      </h3>
-
-                      <div className="text-xs space-y-1 text-[var(--mut)]">
-                        <div className="flex items-center gap-1.5">
-                          <User className="w-3 h-3" /> Pemohon: <strong className="text-[var(--fg-2)]">{rec.pemohon}</strong> ({rec.divisi})
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Calendar className="w-3 h-3" /> Waktu: {rec.created_at || "Baru saja"}
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <DollarSign className="w-3 h-3" /> Total: <span className="font-mono text-[var(--accent)] font-semibold">{formatRupiah(rec.total_harga)}</span>
-                        </div>
-                      </div>
-
-                      {/* Items Preview */}
-                      <div className="bg-black/30 rounded p-2 text-[11px] space-y-1 border border-[var(--line)]/50">
-                        <div className="text-[10px] uppercase font-mono text-[var(--mut)]">Item ({parsedItems.length}):</div>
-                        {parsedItems.map((it, idx) => (
-                          <div key={idx} className="flex justify-between text-[var(--fg-2)]">
-                            <span className="truncate max-w-[200px]">{it.qty}x {it.nama}</span>
-                            <span className="font-mono">{formatRupiah(it.subtotal)}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Signature Preview */}
-                      <div className="border border-[var(--line)] rounded bg-[#0e0e0e] p-2 flex items-center justify-between">
-                        <div className="text-[10px] text-[var(--mut)]">
-                          <div>Tanda Tangan Digital:</div>
-                          <div className="font-medium text-[var(--fg-2)]">{rec.nama_penandatangan}</div>
-                        </div>
-                        {rec.tanda_tangan ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={rec.tanda_tangan}
-                            alt="Tanda tangan"
-                            className="h-10 max-w-[120px] object-contain filter invert opacity-90"
-                          />
-                        ) : (
-                          <span className="text-[10px] text-[var(--mut)]">Tidak ada tanda tangan</span>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="pt-3 border-t border-[var(--line)] flex items-center justify-between gap-2">
-                      <button
-                        onClick={() => setSelectedRecord(rec)}
-                        className="px-3 py-1.5 text-xs rounded bg-[#1f1f1f] hover:bg-[#282828] text-[var(--fg)] flex items-center gap-1.5 transition-colors cursor-pointer"
-                      >
-                        <Eye className="w-3.5 h-3.5 text-[var(--accent)]" />
-                        Lihat Dokumen
-                      </button>
-
-                      <button
-                        onClick={() => rec.id && handleDelete(rec.id)}
-                        className="p-1.5 text-[var(--mut)] hover:text-red-400 transition-colors cursor-pointer"
-                        title="Hapus record"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* MODAL / DOCUMENT PREVIEW */}
-      {selectedRecord && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#141414] border border-[var(--line-strong)] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl relative">
-            <button
-              onClick={() => setSelectedRecord(null)}
-              className="absolute top-4 right-4 text-[var(--mut)] hover:text-white text-lg p-1 cursor-pointer"
-            >
-              ✕
-            </button>
-
-            {/* Document Header */}
-            <div className="border-b-2 border-[var(--line-strong)] pb-4">
-              <div className="flex items-center justify-between mb-2">
-                <div className="text-xs font-mono uppercase tracking-widest text-[var(--accent)]">
-                  Dokumen Permohonan Pengadaan
-                </div>
-                <div className="font-mono text-xs bg-black px-2.5 py-1 rounded border border-[var(--line)]">
-                  {selectedRecord.nomor_pengajuan}
-                </div>
-              </div>
-              <h2 className="text-xl font-bold text-white">{selectedRecord.judul}</h2>
-              <p className="text-xs text-[var(--mut)] mt-1">
-                Dibuat pada: {selectedRecord.created_at || "N/A"}
-              </p>
-            </div>
-
-            {/* Submitter & Department Info */}
-            <div className="grid grid-cols-2 gap-4 text-xs bg-black/40 p-3 rounded-lg border border-[var(--line)]">
-              <div>
-                <span className="text-[var(--mut)] block">Pemohon:</span>
-                <span className="font-semibold text-white">{selectedRecord.pemohon}</span>
-              </div>
-              <div>
-                <span className="text-[var(--mut)] block">Divisi:</span>
-                <span className="font-semibold text-white">{selectedRecord.divisi}</span>
-              </div>
-              <div className="col-span-2">
-                <span className="text-[var(--mut)] block">Keperluan:</span>
-                <span className="text-[var(--fg-2)]">{selectedRecord.keperluan || "-"}</span>
-              </div>
-            </div>
-
-            {/* Items Table */}
-            <div>
-              <div className="text-xs font-mono uppercase text-[var(--mut)] mb-2">
-                Rincian Barang & Biaya:
-              </div>
-              <div className="border border-[var(--line)] rounded-lg overflow-hidden">
-                <table className="w-full text-xs text-left">
-                  <thead className="bg-[#1a1a1a] text-[var(--mut)] border-b border-[var(--line)]">
-                    <tr>
-                      <th className="p-2.5">Item</th>
-                      <th className="p-2.5 text-center w-16">Qty</th>
-                      <th className="p-2.5 text-right w-28">Harga</th>
-                      <th className="p-2.5 text-right w-28">Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--line)]">
-                    {(() => {
-                      try {
-                        const itemsList: ItemPengajuan[] = JSON.parse(selectedRecord.items);
-                        return itemsList.map((it, idx) => (
-                          <tr key={idx} className="hover:bg-white/[0.02]">
-                            <td className="p-2.5">
-                              <div className="font-medium text-white">{it.nama}</div>
-                              {it.spesifikasi && (
-                                <div className="text-[10px] text-[var(--mut)]">{it.spesifikasi}</div>
-                              )}
-                            </td>
-                            <td className="p-2.5 text-center font-mono">{it.qty}</td>
-                            <td className="p-2.5 text-right font-mono">{formatRupiah(it.harga)}</td>
-                            <td className="p-2.5 text-right font-mono font-medium text-white">
-                              {formatRupiah(it.subtotal)}
-                            </td>
-                          </tr>
-                        ));
-                      } catch {
-                        return (
-                          <tr>
-                            <td colSpan={4} className="p-2.5 text-center text-[var(--mut)]">
-                              {selectedRecord.items}
-                            </td>
-                          </tr>
-                        );
-                      }
-                    })()}
-                  </tbody>
-                  <tfoot className="bg-[#1a1a1a] border-t-2 border-[var(--line)] font-bold">
-                    <tr>
-                      <td colSpan={3} className="p-2.5 text-right text-[var(--fg-2)]">
-                        TOTAL:
-                      </td>
-                      <td className="p-2.5 text-right font-mono text-[var(--accent)] text-sm">
-                        {formatRupiah(selectedRecord.total_harga)}
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </div>
-
-            {/* Signature & Approval Block */}
-            <div className="border border-[var(--line)] rounded-xl p-4 bg-black/30 flex items-center justify-between">
-              <div className="text-xs space-y-1">
-                <div className="text-[10px] font-mono uppercase text-[var(--mut)]">Status & Pengesahan:</div>
-                <div className="text-emerald-400 font-semibold flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Disetujui Secara Digital
-                </div>
-                <div className="text-[var(--mut)] text-[11px] pt-1">
-                  Penandatangan: <strong className="text-white">{selectedRecord.nama_penandatangan}</strong>
-                </div>
-                <div className="text-[10px] text-[var(--mut)]">{selectedRecord.jabatan_penandatangan}</div>
-              </div>
-
-              <div className="text-center">
-                {selectedRecord.tanda_tangan ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={selectedRecord.tanda_tangan}
-                    alt="Tanda Tangan Digital"
-                    className="h-16 max-w-[160px] object-contain filter invert border-b border-[var(--line)] pb-1"
-                  />
-                ) : (
-                  <div className="h-16 flex items-center justify-center text-xs text-[var(--mut)]">
-                    (Tidak ada ttd)
-                  </div>
-                )}
-                <span className="text-[9px] font-mono text-[var(--mut)]">Digital Signature Verified</span>
-              </div>
-            </div>
-
-            {/* Actions */}
-            <div className="flex items-center justify-end gap-3 pt-2">
-              <button
-                onClick={() => window.print()}
-                className="px-4 py-2 text-xs rounded-md bg-[#222222] hover:bg-[#2c2c2c] text-white flex items-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <Printer className="w-3.5 h-3.5" />
-                Cetak / Simpan PDF
-              </button>
-              <button
-                onClick={() => setSelectedRecord(null)}
-                className="px-4 py-2 text-xs rounded-md bg-[var(--accent)] text-black font-semibold hover:brightness-110 transition-colors cursor-pointer"
-              >
-                Tutup
-              </button>
-            </div>
-          </div>
-        </div>
       )}
     </div>
   );
