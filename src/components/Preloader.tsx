@@ -21,7 +21,7 @@ export default function Preloader() {
     setVisible(true);
 
     const start = performance.now();
-    const duration = 1400; // Smooth 1.4s cinematic count
+    const duration = 2200; // Cinematic 2.2s intro pacing
     let raf: number;
 
     const tick = (now: number) => {
@@ -37,7 +37,7 @@ export default function Preloader() {
       } else {
         sessionStorage.setItem(SESSION_KEY, "1");
         document.body.style.overflow = "";
-        setTimeout(() => setVisible(false), 350);
+        setTimeout(() => setVisible(false), 450);
       }
     };
     raf = requestAnimationFrame(tick);
