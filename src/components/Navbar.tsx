@@ -61,35 +61,42 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-colors duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
           isOpen
             ? "bg-[var(--bg)] border-b border-[var(--line)]"
             : scrolled
-            ? "border-b border-[var(--line)] bg-[var(--bg)]/90 backdrop-blur-md"
-            : "bg-transparent"
+            ? "py-3 px-4 sm:px-6"
+            : "py-5 px-[var(--pad-x)]"
         }`}
       >
-        <div className="px-[var(--pad-x)]">
-          <div className="flex items-center justify-between h-16">
+        <div
+          className={`transition-all duration-300 ${
+            scrolled && !isOpen
+              ? "max-w-5xl mx-auto rounded-full border border-white/10 bg-[var(--bg-2)]/80 backdrop-blur-xl shadow-[0_16px_36px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.12)] px-6"
+              : "w-full"
+          }`}
+        >
+          <div className="flex items-center justify-between h-14">
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg)] hover:text-[var(--accent)] transition-colors"
+              className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg)] hover:text-[var(--accent)] transition-colors group"
             >
-              Portfolio
+              <span className="w-2 h-2 rounded-full bg-[var(--accent)] group-hover:scale-125 transition-transform" />
+              <span>Portfolio</span>
             </Link>
 
             {/* Desktop Navigation & Lang Switcher */}
-            <div className="hidden md:flex items-center gap-8">
-              <div className="flex gap-6">
+            <div className="hidden md:flex items-center gap-7">
+              <div className="flex gap-5">
                 {navItems.map((item) => {
                   const isActive = item.page === pathname;
                   return (
                     <RollLink
                       key={item.name}
                       href={item.href}
-                      className={`font-mono text-xs uppercase tracking-[0.14em] py-3 ${
-                        isActive ? "text-[var(--accent)]" : "text-[var(--fg-2)]"
+                      className={`font-mono text-xs uppercase tracking-[0.14em] py-2 transition-colors ${
+                        isActive ? "text-[var(--accent)] font-semibold" : "text-[var(--fg-2)] hover:text-[var(--fg)]"
                       }`}
                     >
                       {item.name}
@@ -98,15 +105,17 @@ export default function Navbar() {
                 })}
               </div>
 
+              <div className="h-4 w-px bg-white/10" />
+
               <button
                 onClick={toggleLang}
-                className="flex items-center gap-1.5 font-mono text-xs py-3 cursor-pointer hover:opacity-80 transition-opacity"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 font-mono text-xs cursor-pointer hover:bg-white/10 transition-colors"
                 title="Switch Language / Ganti Bahasa"
               >
                 <Globe className="w-3.5 h-3.5 text-[var(--mut)]" />
-                <span className={lang === "id" ? "text-[var(--accent)] font-semibold" : "text-[var(--mut)]"}>ID</span>
+                <span className={lang === "id" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>ID</span>
                 <span className="text-[var(--mut)]">/</span>
-                <span className={lang === "en" ? "text-[var(--accent)] font-semibold" : "text-[var(--mut)]"}>EN</span>
+                <span className={lang === "en" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>EN</span>
               </button>
             </div>
 

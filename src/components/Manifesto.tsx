@@ -9,27 +9,37 @@ export default function Manifesto() {
   const yearsOfExperience = getYearsOfExperience();
 
   return (
-    <section className="bg-[var(--bg-2)] py-[var(--sec-sm)] px-[var(--pad-x)]">
-      <Reveal>
-        <p
-          className="mx-auto max-w-5xl font-medium tracking-[-0.02em] text-[var(--fg)]"
-          style={{ fontSize: "var(--t-h2)", lineHeight: 1.05 }}
-        >
-          {lang === "id" ? (
-            <>
-              Halo! Saya <span className="text-[var(--accent)]">Andry Huang</span>, seorang Fullstack Engineer
-              dengan {yearsOfExperience}+ tahun pengalaman dalam membangun & mengelola platform SaaS berskala
-              besar, aplikasi web modern, serta solusi terintegrasi cloud & AI.
-            </>
-          ) : (
-            <>
-              Hi! I&apos;m <span className="text-[var(--accent)]">Andry Huang</span>, a Fullstack Engineer with{" "}
-              {yearsOfExperience}+ years of experience building and maintaining large-scale SaaS platforms, web
-              applications, and cloud-integrated solutions.
-            </>
-          )}
-        </p>
-      </Reveal>
+    <section className="relative py-[var(--sec-sm)] px-[var(--pad-x)] overflow-hidden">
+      <div className="glow-orb-orange w-[380px] h-[380px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 pointer-events-none" />
+      <div className="max-w-5xl mx-auto p-8 md:p-12 rounded-3xl glass-panel border border-white/10 shadow-2xl relative z-10">
+        <Reveal>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent)] font-semibold block mb-4">
+            {lang === "id" ? "// FILOSOFI & PENDEKATAN" : "// PHILOSOPHY & CRAFT"}
+          </span>
+          <p
+            className="font-semibold tracking-tight text-[var(--fg)] leading-[1.15]"
+            style={{ fontSize: "var(--t-h3)" }}
+          >
+            {lang === "id" ? (
+              <>
+                Membangun arsitektur perangkat lunak yang{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--fg)] via-[var(--accent)] to-[var(--accent)]">
+                  tahan uji, terukur, dan berdampak nyata
+                </span>
+                . Menggabungkan kedisiplinan backend enterprise, UI/UX modern berkecepatan tinggi, serta otomatisasi AI terintegrasi.
+              </>
+            ) : (
+              <>
+                Engineering software architectures that are{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--fg)] via-[var(--accent)] to-[var(--accent)]">
+                  resilient, scalable, and high-impact
+                </span>
+                . Bridging deep enterprise backend discipline with high-velocity modern frontend and production-ready AI systems.
+              </>
+            )}
+          </p>
+        </Reveal>
+      </div>
     </section>
   );
 }

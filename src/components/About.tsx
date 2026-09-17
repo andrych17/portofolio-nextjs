@@ -150,49 +150,53 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative">
+    <section id="about" className="relative overflow-hidden">
+      {/* Ambient background glow */}
+      <div className="glow-orb-orange w-[450px] h-[450px] top-1/4 -right-20 opacity-50 pointer-events-none" />
+      <div className="glow-orb-violet w-[500px] h-[500px] bottom-10 -left-24 opacity-40 pointer-events-none" />
+
       <SectionHead index="01" label={lang === "id" ? "Tentang Saya" : "About Me"} />
 
-      <div className="px-[var(--pad-x)] py-[var(--sec-sm)]">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="px-[var(--pad-x)] py-[var(--sec-sm)] relative z-10">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
           {/* Photo + bio + badges */}
           <Reveal>
-            <div className="relative w-full max-w-sm aspect-square overflow-hidden rounded-2xl border border-[var(--line)] shadow-2xl">
-              <Image
-                src="/img/foto.jpg"
-                alt="Andry Huang"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-                priority
-              />
+            <div className="p-2 rounded-3xl bg-white/[0.03] border border-white/10 shadow-2xl max-w-sm">
+              <div className="relative w-full aspect-square overflow-hidden rounded-2xl border border-white/10">
+                <Image
+                  src="/img/foto.jpg"
+                  alt="Andry Huang"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  priority
+                />
+              </div>
             </div>
 
             <p className="mt-8 max-w-prose text-[var(--t-body)] leading-relaxed text-[var(--fg-2)]">
               {lang === "id" ? (
                 <>
-                  Senior Fullstack & AI Engineer dengan 7+ tahun pengalaman merancang dan membangun platform
-                  enterprise SaaS, sistem terdistribusi, dan aplikasi AI produksi. Keahlian utama: .NET Core,
-                  Next.js, Node.js, NestJS, optimasi kueri SQL performa tinggi, dan pipeline LLM RAG.
-                  Berpengalaman dalam tim remote internasional dan pengiriman arsitektur konkurensi tinggi yang aman.
+                  Senior Fullstack & AI Engineer dengan <span className="text-[var(--fg)] font-semibold">7+ tahun pengalaman</span> merancang dan membangun platform
+                  enterprise SaaS, sistem terdistribusi, dan aplikasi AI produksi. Keahlian utama: <span className="text-[var(--accent)] font-medium">.NET Core, Next.js, Node.js, NestJS, optimasi SQL performa tinggi, dan pipeline LLM RAG</span>.
+                  Berpengalaman dalam tim remote internasional dan pengiriman arsitektur berkonkurensi tinggi.
                 </>
               ) : (
                 <>
-                  Senior Fullstack & AI Engineer with 7+ years of experience architecting and building enterprise
-                  SaaS platforms, distributed systems, and production AI tools. Core stack: .NET Core, Next.js,
-                  Node.js, NestJS, SQL performance tuning, and LLM RAG pipelines. Proven background delivering
+                  Senior Fullstack & AI Engineer with <span className="text-[var(--fg)] font-semibold">7+ years of experience</span> architecting and building enterprise
+                  SaaS platforms, distributed systems, and production AI tools. Core stack: <span className="text-[var(--accent)] font-medium">.NET Core, Next.js, Node.js, NestJS, SQL performance tuning, and LLM RAG pipelines</span>. Proven background delivering
                   secure, high-concurrency architectures with international remote engineering teams.
                 </>
               )}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-6 font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)]">
-              <span className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5" aria-hidden />
+            <div className="mt-6 flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)]">
+              <span className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5">
+                <MapPin className="w-3.5 h-3.5 text-[var(--accent)]" aria-hidden />
                 Surabaya, Indonesia
               </span>
-              <span className="flex items-center gap-2">
-                <GraduationCap className="w-3.5 h-3.5" aria-hidden />
-                S1 Teknik Informatika (Computer Science)
+              <span className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5">
+                <GraduationCap className="w-3.5 h-3.5 text-[var(--accent)]" aria-hidden />
+                S1 Teknik Informatika (UBAYA)
               </span>
             </div>
 
@@ -201,29 +205,38 @@ export default function About() {
                 href="/Andry_Huang_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--accent)] text-[var(--bg)] font-mono text-xs font-semibold uppercase tracking-[0.1em] hover:opacity-90 transition-opacity"
+                className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--accent)] text-[var(--bg)] font-mono text-xs font-bold uppercase tracking-[0.1em] shadow-lg hover:shadow-[0_0_20px_rgba(255,77,0,0.4)] transition-all active:scale-95"
               >
                 <FileText className="w-4 h-4" aria-hidden />
-                {lang === "id" ? "Lihat / Unduh CV (PDF)" : "View / Download CV (PDF)"}
+                <span>{lang === "id" ? "Unduh CV (PDF)" : "Download CV (PDF)"}</span>
+                <span className="w-5 h-5 rounded-full bg-black/15 flex items-center justify-center transition-transform group-hover:translate-x-0.5">
+                  ↓
+                </span>
               </a>
               <a
                 href="/Andry_Huang_CV.docx"
                 download
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--line)] bg-white/5 text-[var(--fg-2)] font-mono text-xs uppercase tracking-[0.1em] hover:bg-white/10 hover:text-[var(--fg)] transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 bg-white/5 text-[var(--fg-2)] font-mono text-xs uppercase tracking-[0.1em] hover:bg-white/10 hover:text-[var(--fg)] hover:border-white/20 transition-all"
               >
-                <Download className="w-4 h-4" aria-hidden />
+                <Download className="w-4 h-4 text-[var(--mut)]" aria-hidden />
                 {lang === "id" ? "Format DOCX" : "DOCX Format"}
               </a>
             </div>
           </Reveal>
 
           {/* Feature list */}
-          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-8">
+          <div className="grid sm:grid-cols-2 gap-4">
             {features.map((feature, index) => (
               <Reveal key={feature.title} delay={index * 0.06}>
-                <feature.icon className="w-5 h-5 text-[var(--accent)] mb-3" aria-hidden />
-                <h3 className="font-medium text-[var(--fg)] mb-1.5">{feature.title}</h3>
-                <p className="text-sm text-[var(--mut)] leading-relaxed">{feature.description}</p>
+                <div className="p-5 rounded-2xl glass-card border border-white/10 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 text-[var(--accent)]">
+                      <feature.icon className="w-4.5 h-4.5" aria-hidden />
+                    </div>
+                    <h3 className="font-semibold text-[var(--fg)] mb-1.5 text-base">{feature.title}</h3>
+                    <p className="text-xs text-[var(--mut)] leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
               </Reveal>
             ))}
           </div>

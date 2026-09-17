@@ -57,10 +57,13 @@ export default function Skills() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="skills" className="relative">
+    <section id="skills" className="relative overflow-hidden">
+      <div className="glow-orb-violet w-[450px] h-[450px] top-1/3 -left-28 opacity-40 pointer-events-none" />
+      <div className="glow-orb-orange w-[500px] h-[500px] bottom-10 -right-24 opacity-40 pointer-events-none" />
+
       <SectionHead index="02" label={lang === "id" ? "Keahlian & Teknologi" : "Skills & Stack"} />
 
-      <div className="px-[var(--pad-x)] py-[var(--sec-sm)]">
+      <div className="px-[var(--pad-x)] py-[var(--sec-sm)] relative z-10">
         {/* Track record */}
         <Reveal>
           <Label className="mb-6 block">
@@ -70,11 +73,15 @@ export default function Skills() {
         <div className="mb-16 border-t border-[var(--line)]">
           {skills.map((skill, i) => (
             <Reveal key={skill.name} delay={i * 0.03}>
-              <div className="flex items-center justify-between gap-4 border-b border-[var(--line)] py-4">
-                <span className="text-sm md:text-base text-[var(--fg-2)]">{skill.name}</span>
+              <div className="group flex items-center justify-between gap-4 border-b border-[var(--line)] py-4 hover:bg-white/[0.02] px-2 rounded-lg transition-colors">
+                <span className="text-sm md:text-base text-[var(--fg-2)] group-hover:text-[var(--fg)] transition-colors">
+                  {skill.name}
+                </span>
                 <div className="flex items-center gap-4 shrink-0">
                   <span className="font-mono text-xs tabular-nums text-[var(--mut)]">{skill.pct}%</span>
-                  <span className="font-mono text-xs text-[var(--fg)]">{skill.years}</span>
+                  <span className="font-mono text-xs text-[var(--fg)] px-2.5 py-0.5 rounded-full border border-white/10 bg-white/5">
+                    {skill.years}
+                  </span>
                 </div>
               </div>
             </Reveal>
@@ -91,29 +98,31 @@ export default function Skills() {
           {skillCategories.map((category, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={category.title} className="border-b border-[var(--line)]">
+              <div key={category.title} className="border-b border-[var(--line)] transition-colors">
                 <button
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center gap-4 py-5 text-left"
+                  className="flex w-full items-center gap-4 py-5 text-left group cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <Index n={index + 1} className="w-8 shrink-0" />
-                  <span className="flex-1 text-lg md:text-xl font-medium text-[var(--fg)]">{category.title}</span>
-                  <span className="font-mono text-xs text-[var(--mut)] tabular-nums hidden sm:inline">
-                    {String(category.skills.length).padStart(2, "0")}
+                  <span className="flex-1 text-lg md:text-xl font-medium text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors">
+                    {category.title}
+                  </span>
+                  <span className="font-mono text-xs text-[var(--mut)] tabular-nums hidden sm:inline px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                    {String(category.skills.length).padStart(2, "0")} skills
                   </span>
                   {isOpen ? (
                     <Minus className="w-4 h-4 text-[var(--accent)]" aria-hidden />
                   ) : (
-                    <Plus className="w-4 h-4 text-[var(--mut)]" aria-hidden />
+                    <Plus className="w-4 h-4 text-[var(--mut)] group-hover:text-[var(--fg)]" aria-hidden />
                   )}
                 </button>
                 {isOpen && (
-                  <div className="flex flex-wrap gap-2 pb-6 pl-12">
+                  <div className="flex flex-wrap gap-2 pb-6 pl-12 pt-2">
                     {category.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="border border-[var(--line)] px-3 py-1 font-mono text-xs uppercase tracking-[0.08em] text-[var(--fg-2)]"
+                        className="border border-white/10 bg-white/[0.04] px-3 py-1.5 rounded-lg font-mono text-xs uppercase tracking-[0.08em] text-[var(--fg-2)] hover:border-[var(--accent)]/50 hover:text-[var(--fg)] hover:bg-white/[0.08] transition-all shadow-sm"
                       >
                         {skill}
                       </span>

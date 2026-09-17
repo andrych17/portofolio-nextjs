@@ -109,10 +109,13 @@ export default function Certifications() {
   const { lang } = useLanguage();
 
   return (
-    <section id="certifications" className="relative">
+    <section id="certifications" className="relative overflow-hidden">
+      <div className="glow-orb-violet w-[500px] h-[500px] top-1/2 -right-32 opacity-35 pointer-events-none" />
+      <div className="glow-orb-orange w-[450px] h-[450px] bottom-10 -left-28 opacity-30 pointer-events-none" />
+
       <SectionHead index="03" label={lang === "id" ? "Sertifikasi & Penghargaan" : "Certifications & Awards"} />
 
-      <div className="px-[var(--pad-x)] py-[var(--sec-sm)]">
+      <div className="px-[var(--pad-x)] py-[var(--sec-sm)] relative z-10">
         {certifications.length === 0 ? (
           <Reveal className="max-w-xl">
             <Award className="w-8 h-8 text-[var(--mut)] mb-4" aria-hidden />
@@ -135,20 +138,20 @@ export default function Certifications() {
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col gap-2 border-b border-[var(--line)] py-5 sm:flex-row sm:items-center sm:gap-6"
+                  className="group flex flex-col gap-2 border-b border-[var(--line)] py-5 px-3 rounded-xl sm:flex-row sm:items-center sm:gap-6 transition-all duration-300 hover:bg-white/[0.03] hover:border-white/20"
                 >
                   <Index n={index + 1} className="w-8 shrink-0" />
-                  <span className="flex-1 text-base font-medium text-[var(--fg)] transition-colors group-hover:text-[var(--accent)]">
+                  <span className="flex-1 text-base font-semibold text-[var(--fg)] transition-colors group-hover:text-[var(--accent)]">
                     {cert.title}
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-[0.1em] text-[var(--mut)] shrink-0">
+                  <span className="font-mono text-xs uppercase tracking-[0.1em] text-[var(--fg-2)] px-2.5 py-0.5 rounded-full border border-white/10 bg-white/5 shrink-0">
                     {cert.issuer}
                   </span>
                   <span className="font-mono text-xs tabular-nums text-[var(--mut)] shrink-0">{cert.date}</span>
                   {cert.link && (
                     <span className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.1em] text-[var(--mut)] shrink-0 group-hover:text-[var(--accent)]">
-                      {lang === "id" ? "Lihat Sertifikat" : "View Certificate"}
-                      <ExternalLink className="w-3.5 h-3.5" aria-hidden />
+                      {lang === "id" ? "Verifikasi" : "Verify"}
+                      <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                     </span>
                   )}
                 </a>

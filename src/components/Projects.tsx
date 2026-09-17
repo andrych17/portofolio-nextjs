@@ -841,7 +841,7 @@ function HeroCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-[var(--line)] hover:border-[var(--accent)]/60 transition-all duration-300 bg-[var(--bg-2)] hover:shadow-[0_0_40px_-10px_rgba(255,77,0,0.25)] cursor-pointer select-none"
+      className="group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/60 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl hover:shadow-[0_0_40px_-10px_rgba(255,77,0,0.3)] cursor-pointer select-none"
     >
       <div className="relative aspect-[16/11] md:aspect-[16/10] w-full overflow-hidden">
         {project.images?.[0] ? (
@@ -879,12 +879,12 @@ function HeroCard({
             </span>
           )}
           {project.year && (
-            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
+            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-white/10 backdrop-blur">
               📅 {project.year}
             </span>
           )}
           {project.status && (
-            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.15em] text-[var(--fg-2)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
+            <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.15em] text-[var(--fg-2)] bg-[var(--bg)]/80 border border-white/10 backdrop-blur">
               {statusLabel(project.status)}
             </span>
           )}
@@ -911,7 +911,7 @@ function HeroCard({
               {project.tags.slice(0, 4).map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--fg-2)] bg-white/5 border border-[var(--line)] rounded"
+                  className="px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--fg-2)] bg-white/5 border border-white/10 rounded-full"
                 >
                   {t}
                 </span>
@@ -922,7 +922,7 @@ function HeroCard({
                 </span>
               )}
             </div>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent)] shrink-0">
+            <span className="hidden md:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent)] shrink-0 font-semibold">
               Open case
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </span>
@@ -953,7 +953,7 @@ function SidebarCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-[var(--line)] hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)] flex min-h-[120px] md:min-h-0 flex-1 cursor-pointer select-none"
+      className="group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl flex min-h-[120px] md:min-h-0 flex-1 cursor-pointer select-none hover:shadow-lg"
     >
       {/* thumbnail */}
       <div className="relative w-28 md:w-40 lg:w-44 shrink-0 overflow-hidden">
@@ -995,7 +995,7 @@ function SidebarCard({
             {project.tags[0]} · {project.tags.length} stack
           </span>
           {project.year ? (
-            <span className="ml-auto font-mono text-[9px] tracking-wider text-[var(--fg-2)] bg-white/5 border border-[var(--line)] px-1.5 py-0.5 rounded shrink-0">
+            <span className="ml-auto font-mono text-[9px] tracking-wider text-[var(--fg-2)] bg-white/5 border border-white/10 px-2 py-0.5 rounded-full shrink-0">
               {project.year}
             </span>
           ) : project.status ? (
@@ -1029,7 +1029,7 @@ function GridCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-2xl overflow-hidden border border-[var(--line)] hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)] flex flex-col h-full cursor-pointer select-none"
+      className="group relative w-full text-left rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl flex flex-col h-full cursor-pointer select-none hover:shadow-xl"
     >
       {/* image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -1060,12 +1060,12 @@ function GridCard({
             </span>
           )}
           {project.year && (
-            <span className="px-2 py-0.5 rounded font-mono text-[9px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
+            <span className="px-2 py-0.5 rounded font-mono text-[9px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-white/10 backdrop-blur">
               📅 {project.year}
             </span>
           )}
           {project.status && (
-            <span className="px-2 py-0.5 rounded font-mono text-[9px] uppercase tracking-[0.15em] text-[var(--fg-2)] bg-[var(--bg)]/80 border border-[var(--line)] backdrop-blur">
+            <span className="px-2 py-0.5 rounded font-mono text-[9px] uppercase tracking-[0.15em] text-[var(--fg-2)] bg-[var(--bg)]/80 border border-white/10 backdrop-blur">
               {statusLabel(project.status)}
             </span>
           )}
@@ -1092,7 +1092,7 @@ function GridCard({
             {project.tags.slice(0, 3).map((t) => (
               <span
                 key={t}
-                className="px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[var(--fg-2)] bg-white/5 border border-[var(--line)] rounded truncate"
+                className="px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[var(--fg-2)] bg-white/5 border border-white/10 rounded-full truncate"
               >
                 {t}
               </span>
