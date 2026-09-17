@@ -22,19 +22,19 @@ export default function Manifesto() {
           >
             {lang === "id" ? (
               <>
-                Membangun arsitektur perangkat lunak yang{" "}
+                Merancang arsitektur backend yang{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--fg)] via-[var(--accent)] to-[var(--accent)]">
-                  tahan uji, terukur, dan berdampak nyata
+                  stabil di production, antarmuka web yang cepat dan presisi
                 </span>
-                . Menggabungkan kedisiplinan backend enterprise, UI/UX modern berkecepatan tinggi, serta otomatisasi AI terintegrasi.
+                , serta solusi AI yang langsung memecahkan masalah operasional nyata.
               </>
             ) : (
               <>
-                Engineering software architectures that are{" "}
+                Engineering reliable backend systems in production,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--fg)] via-[var(--accent)] to-[var(--accent)]">
-                  resilient, scalable, and high-impact
+                  fast and responsive web interfaces
                 </span>
-                . Bridging deep enterprise backend discipline with high-velocity modern frontend and production-ready AI systems.
+                , and pragmatic AI pipelines that solve real operational bottlenecks.
               </>
             )}
           </p>
