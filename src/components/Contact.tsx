@@ -9,6 +9,16 @@ export default function Contact() {
 
   const links = [
     {
+      label: "Email",
+      sub: "andrych17@gmail.com",
+      href: "mailto:andrych17@gmail.com",
+    },
+    {
+      label: "WhatsApp",
+      sub: "+62 81-357-296-386",
+      href: "https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you",
+    },
+    {
       label: "LinkedIn",
       sub: lang === "id" ? "Terhubung dengan saya" : "Connect with me",
       href: "https://linkedin.com/in/andry-huang-ba410a170",
@@ -17,11 +27,6 @@ export default function Contact() {
       label: "GitHub",
       sub: lang === "id" ? "Lihat repositori" : "View repositories",
       href: "https://github.com/andrych17",
-    },
-    {
-      label: "WhatsApp",
-      sub: "+62 81-357-296-386",
-      href: "https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you",
     },
   ];
 

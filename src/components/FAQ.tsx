@@ -51,9 +51,9 @@ export const faqItems: FAQItem[] = [
     questionEn: "What is Qualiv and what is Andry Huang's role in it?",
     questionId: "Apa itu Qualiv dan apa peran Andry Huang di dalamnya?",
     answerEn:
-      "Qualiv is an AI-powered recruitment platform engineered by Andry Huang, featuring automated candidate evaluation pipelines, background analysis, and AI workflows.",
+      "Qualiv is a multi-tenant AI-powered recruitment SaaS platform founded and architected by Andry Huang (Founder & Lead Architect), featuring automated LLM CV screening (PDF/DOCX), candidate logic testing, AI chat/video interview simulations, BullMQ Redis queuing, and integrated Midtrans billing.",
     answerId:
-      "Qualiv adalah platform rekrutmen berbasis AI yang dirancang oleh Andry Huang dengan pipeline evaluasi kandidat otomatis dan alur kerja AI canggih.",
+      "Qualiv adalah platform SaaS rekrutmen berbasis AI multi-tenant yang didirikan dan dirancang oleh Andry Huang (Founder & Lead Architect), dilengkapi screening CV otomatis berbasis LLM (PDF/DOCX), tes logika kandidat, simulasi wawancara chat/video AI, pemrosesan antrean BullMQ Redis, serta billing Midtrans.",
   },
 ];
 

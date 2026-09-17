@@ -29,26 +29,26 @@ const skillCategories = [
       "Agentic Skills & Rules",
       "OpenAI GPT-4o API",
       "Claude Sonnet 3.7",
-      "LLM Vector Embeddings",
+      "RAG & pgvector",
       "Prompt Engineering",
-      "Redis Async Queues",
+      "BullMQ / Redis Queues",
     ],
   },
   {
     title: "Frontend Frameworks",
-    skills: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Laravel Livewire 3", "Alpine.js", "Framer Motion", "Flutter"],
+    skills: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Vue.js / Inertia.js", "Laravel Livewire 3", "Alpine.js", "Flutter"],
   },
   {
     title: "Backend & Systems",
-    skills: [".NET Core 8", "NestJS", "Node.js", "Laravel 11", "Python FastAPI", "Java Spring Boot", "ASP Classic", "RESTful APIs"],
+    skills: [".NET Core 8/9", "ASP.NET Core", "NestJS", "Node.js", "Laravel 11", "Python FastAPI", "Java Spring Boot", "REST & GraphQL"],
   },
   {
     title: "Database & Cloud Storage",
-    skills: ["PostgreSQL", "MySQL 8", "SQL Server", "Prisma ORM", "Redis", "Cloudflare R2", "AWS S3", "Azure Blob"],
+    skills: ["PostgreSQL", "Microsoft SQL Server", "Oracle DB (PL/SQL)", "MySQL 8", "Prisma ORM", "Redis", "Cloudflare R2", "AWS S3", "Azure Blob"],
   },
   {
     title: "DevOps & Integrations",
-    skills: ["Docker", "Git / GitHub", "CI/CD Pipelines", "SonarQube", "RFID Hardware Integration", "Midtrans Payment Gateway", "RajaOngkir Shipping API"],
+    skills: ["Docker & Compose", "Git / GitHub", "CI/CD Pipelines", "SonarQube", "Playwright & Selenium", "RFID Hardware Integration", "Midtrans Payment Gateway"],
   },
 ];
 

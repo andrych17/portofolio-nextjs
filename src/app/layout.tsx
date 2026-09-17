@@ -211,6 +211,48 @@ const jsonLd = {
           "credentialCategory": "Certificate of Completion",
           "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
           "url": "https://verify.skilljar.com/c/hdv4nqhaequh"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Building with the Claude API",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/3ik737t8atvf"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Claude Code in Action",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/opzctbnhdmcs"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Introduction to Claude Cowork",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/zydanea62pwv"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Claude 101",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+          "url": "https://verify.skilljar.com/c/fyrqffssmxur"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "AI Agents with Model Context Protocol",
+          "credentialCategory": "Course Certificate",
+          "recognizedBy": { "@type": "Organization", "name": "Vanderbilt University" },
+          "url": "https://www.coursera.org/account/accomplishments/records/ZI2P1DZ8J56C"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Software Architecture & Design of Modern Large Scale Systems",
+          "credentialCategory": "Certificate of Completion",
+          "recognizedBy": { "@type": "Organization", "name": "Udemy" },
+          "url": "https://www.udemy.com/certificate/UC-ff06e4f9-87de-44cd-b029-c7ad33e03e80/"
         }
       ],
       "makesOffer": [

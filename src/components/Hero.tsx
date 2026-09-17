@@ -9,17 +9,17 @@ import { Reveal } from "./ui/Reveal";
 import { RollLink, RollText } from "./ui/RollLink";
 
 const rolesEn = [
-  "Fullstack Developer",
-  "Backend Specialist",
-  "Frontend Engineer",
-  "Cloud Architect",
+  "Senior Fullstack & AI Engineer",
+  "Backend & SaaS Specialist",
+  "Next.js & Frontend Engineer",
+  "AI Agent & RAG Architect",
 ];
 
 const rolesId = [
-  "Fullstack Developer",
-  "Pengembang Backend",
-  "Frontend Engineer",
-  "Arsitek Cloud",
+  "Senior Fullstack & AI Engineer",
+  "Spesialis Backend & SaaS",
+  "Next.js & Frontend Engineer",
+  "Arsitek AI Agent & RAG",
 ];
 
 export default function Hero() {
@@ -90,17 +90,17 @@ export default function Hero() {
             <p className="text-[var(--t-body)] leading-relaxed text-[var(--fg-2)]">
               {lang === "id" ? (
                 <>
-                  Membangun platform <span className="font-medium text-[var(--fg)]">SaaS berskala besar</span>,{" "}
-                  <span className="font-medium text-[var(--fg)]">aplikasi web modern</span>, dan{" "}
-                  <span className="font-medium text-[var(--fg)]">solusi berbasis cloud & AI</span>.{" "}
-                  Ahli dalam .NET Core, Next.js, React, Node.js, dan teknologi modern.
+                  Membangun platform <span className="font-medium text-[var(--fg)]">enterprise SaaS</span>,{" "}
+                  <span className="font-medium text-[var(--fg)]">sistem terdistribusi</span>, dan{" "}
+                  <span className="font-medium text-[var(--fg)]">pipeline AI RAG produksi</span>.{" "}
+                  Ahli dalam .NET Core, Next.js, React, Node.js, dan arsitektur cloud berkinerja tinggi.
                 </>
               ) : (
                 <>
-                  Building large-scale <span className="font-medium text-[var(--fg)]">SaaS platforms</span>,{" "}
-                  <span className="font-medium text-[var(--fg)]">web applications</span>, and{" "}
-                  <span className="font-medium text-[var(--fg)]">cloud & AI-integrated solutions</span>.{" "}
-                  Skilled in .NET Core, Next.js, React, Node.js, and modern technologies.
+                  Architecting and building <span className="font-medium text-[var(--fg)]">enterprise SaaS platforms</span>,{" "}
+                  <span className="font-medium text-[var(--fg)]">distributed systems</span>, and{" "}
+                  <span className="font-medium text-[var(--fg)]">production AI RAG tools</span>.{" "}
+                  Skilled in .NET Core, Next.js, React, Node.js, and high-concurrency cloud architectures.
                 </>
               )}
             </p>
@@ -121,7 +121,7 @@ export default function Hero() {
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-[var(--line)]">
-              {[".NET Core", "Next.js", "AI & MCP", "PostgreSQL", "Cloud"].map((tech) => (
+              {[".NET Core", "Next.js", "Node.js", "RAG / AI Agents", "PostgreSQL", "Cloud"].map((tech) => (
                 <span
                   key={tech}
                   className="px-2.5 py-0.5 rounded-full border border-[var(--line)] bg-white/5 font-mono text-[10px] uppercase tracking-wider text-[var(--fg-2)]"

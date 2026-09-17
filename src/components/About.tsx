@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Code2, Database, Cloud, Server, Layers, Zap, MapPin, GraduationCap } from "lucide-react";
+import { Code2, Database, Cloud, Server, Layers, Zap, MapPin, GraduationCap, FileText, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "./ui/Reveal";
 import { SectionHead } from "./ui/Label";
@@ -12,11 +12,13 @@ const experiencesEn = [
     title: "Fullstack Developer",
     company: "MRI Software (formerly Anacle Systems), Singapore (Remote)",
     description:
-      "Engineered and maintained enterprise SaaS platforms (Anacle Simplicity & SMRT Tenant Management System) using .NET Core, .NET Framework 4.8, Next.js, and NestJS. Integrated enterprise APIs including Bank APIs and SharePoint.",
+      "Scaled enterprise SaaS platforms (Anacle Simplicity & SMRT Tenant Management System), supporting mall tender submissions, space leasing, tenant applications, and day-to-day operations using .NET Core, .NET Framework 4.8, Next.js, and NestJS.",
     achievements: [
-      "Go-Live SMRT Tenant Management: Delivered enterprise tenant platform digitizing mall tenders, leasing, and tenant operations.",
-      "Go-Live SharePoint Document Migration: Synced 100,000+ enterprise files to SharePoint Graph API, AWS S3, and Azure Blob with RBAC & audit logging.",
-      "SonarQube Security & Quality Pipeline: Spearheaded static code analysis across multiple internal enterprise projects and enforced automated CI/CD quality gates.",
+      "Go-Live SMRT Tenant Management: Scaled enterprise tenant platform digitizing mall tenders, leasing, and tenant operations using .NET Core & Next.js.",
+      "Production RAG Pipelines: Deployed production RAG pipelines using OpenAI API and PostgreSQL (pgvector) for semantic document retrieval, search, and automated executive reporting.",
+      "Go-Live SharePoint Document Migration: Built document migration microservice syncing 100,000+ enterprise files to SharePoint Graph API, AWS S3, and Azure Blob Storage with RBAC & audit logging.",
+      "Automated Regression Testing: Refactored legacy .NET stored procedures and wrote automated regression tests using Selenium & Playwright across core SaaS modules.",
+      "SonarQube Security Pipeline: Led static code analysis across enterprise repositories, fixed security vulnerabilities, configured CI/CD quality gates, and enforced zero-vulnerability deployment standards.",
     ],
   },
   {
@@ -36,22 +38,23 @@ const experiencesEn = [
     title: "Fullstack Developer",
     company: "Software House, Surabaya, Indonesia",
     description:
-      "Developed scalable web apps using Node.js and Next.js, optimizing high-concurrency SQL queries, managing self-hosted Git servers, and configuring Elasticsearch infrastructure.",
+      "Built high-performance web applications using Node.js and Next.js, optimizing complex SQL queries for high-concurrency transactions, managing self-hosted Git servers, and configuring Elasticsearch clusters.",
     achievements: [
-      "Database Cleanup & Recovery: Repaired & cleaned 10,000+ corrupted database records caused by legacy code logic bugs.",
-      "Incident & Ticket Elimination: Resolved core architectural bottlenecks, eliminating recurring high-priority incident tickets.",
+      "Database Recovery & Data Repair: Recovered and repaired 10,000+ corrupted database records by identifying and patching edge-case business logic bugs.",
+      "Infrastructure & Log Indexing: Maintained self-hosted Git servers, configured Elasticsearch clusters for log indexing, and upgraded enterprise Java runtimes.",
+      "Incident & Ticket Elimination: Resolved recurring high-priority incidents by diagnosing and fixing core backend bottlenecks.",
     ],
   },
   {
     period: "Sep 2019 - Feb 2022",
     title: "Full-Stack Developer",
-    company: "PT Tjiwi Kimia, Indonesia",
+    company: "PT Pabrik Kertas Tjiwi Kimia Tbk, Indonesia",
     description:
-      "Developed enterprise web solutions and internal reporting modules for pulp & paper manufacturing using .NET Core, C#, ASP Classic, and SQL Server.",
+      "Developed manufacturing dashboards and reporting systems for pulp & paper production using .NET Core, C#, ASP Classic, and SQL Server.",
     achievements: [
-      "Automated OEE & HWT Metrics Reporting: Built Python/Java WhatsApp bot for real-time production analytics dispatches enabling plant target machine performance.",
-      "Android Barcode Scanner: Deployed native Android app for real-time warehouse inventory stock-in / stock-out tracking.",
-      "COVID-19 Employee Health Survey: Automated company-wide pandemic check-ins & contact tracing web app.",
+      "Automated OEE & HWT Metrics Reporting: Built an automated WhatsApp alert bot using Python, Java, and Selenium, capturing real-time production metrics for plant OEE and HWT targets.",
+      "Android Barcode Scanner: Designed and deployed a native Android Barcode Scanner application for warehouse inventory tracking.",
+      "Enterprise Internal Applications: Delivered an automated COVID-19 employee health check-in platform and digital corporate raffle draw systems.",
     ],
   },
 ];
@@ -62,11 +65,13 @@ const experiencesId = [
     title: "Fullstack Developer",
     company: "MRI Software (formerly Anacle Systems), Singapura (Remote)",
     description:
-      "Mengembangkan & memelihara aplikasi SaaS enterprise (Anacle Simplicity & SMRT Tenant Management System) menggunakan .NET Core, Next.js, dan NestJS. Mengintegrasikan API perbankan & SharePoint.",
+      "Mengembangkan & memelihara platform SaaS enterprise (Anacle Simplicity & SMRT Tenant Management System) menggunakan .NET Core, .NET Framework 4.8, Next.js, dan NestJS.",
     achievements: [
       "Go-Live SMRT Tenant Management: Sukses rilis platform SaaS manajemen penyewa mall SMRT Singapore (digitasi tender, aplikasi tenant, leasing).",
-      "Go-Live SharePoint Document Migration: Engine migrasi dokumen syncing 100.000+ file ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit).",
-      "SonarQube Quality Pipeline: Memimpin analisis kode statis di beberapa proyek enterprise & me-enforce zero-vulnerability quality gates di CI/CD.",
+      "Pipeline RAG Produksi: Mengimplementasikan pipeline RAG berbasis OpenAI API & pgvector untuk pencarian semantik dokumen dan pelaporan otomatis.",
+      "Go-Live SharePoint Document Migration: Microservice migrasi dokumen syncing 100.000+ file ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit).",
+      "Pengujian Regresi Otomatis: Refactoring stored procedure .NET legacy dan membuat automated regression test menggunakan Selenium & Playwright.",
+      "SonarQube Security Pipeline: Memimpin analisis kode statis di beberapa proyek enterprise & menerapkan quality gates CI/CD berstandar zero-vulnerability.",
     ],
   },
   {
@@ -88,20 +93,21 @@ const experiencesId = [
     description:
       "Mengembangkan aplikasi web berbasis Node.js dan Next.js, mengoptimalkan kueri SQL performa tinggi, serta mengelola infrastruktur Elasticsearch & Git server.",
     achievements: [
-      "Database Cleanup & Data Recovery: Memperbaiki & membersihkan 10.000+ data database terkorupsi akibat bug legacy code.",
-      "Incident & Ticket Elimination: Menyelesaikan bottleneck arsitektur utama & mengeliminasi tiket insiden high-priority berulang.",
+      "Database Recovery & Data Repair: Memperbaiki & membersihkan 10.000+ data database terkorupsi akibat bug edge-case legacy code.",
+      "Infrastruktur & Indexing Log: Memelihara server Git mandiri, konfigurasi cluster Elasticsearch untuk log indexing, dan upgrade runtime Java enterprise.",
+      "Incident & Bottleneck Fix: Menyelesaikan bottleneck arsitektur utama & mengeliminasi tiket insiden high-priority berulang.",
     ],
   },
   {
     period: "Sep 2019 - Feb 2022",
     title: "Full-Stack Developer",
-    company: "PT Tjiwi Kimia, Indonesia",
+    company: "PT Pabrik Kertas Tjiwi Kimia Tbk, Indonesia",
     description:
       "Mengembangkan aplikasi web manufaktur dengan .NET Core, C#, ASP Classic, & SQL Server untuk industri kertas & pulp.",
     achievements: [
-      "Automated OEE & HWT Metric Bot: WhatsApp Bot (Python/Selenium) otomatisasi laporan analitik pabrik real-time untuk pencapaian OEE & HWT.",
-      "Android Barcode Scanner: Membangun aplikasi native Android pemindai barcode stok gudang real-time (stock-in/out).",
-      "COVID-19 Health Survey App: Sistem web check-in & contact tracing harian karyawan se-perusahaan.",
+      "Automated OEE & HWT Metric Bot: WhatsApp Bot (Python, Java, Selenium) otomatisasi laporan analitik pabrik real-time untuk pencapaian target OEE & HWT.",
+      "Android Barcode Scanner: Merancang & merilis aplikasi native Android pemindai barcode stok gudang real-time (stock-in/out).",
+      "Enterprise Internal Applications: Sistem web check-in & contact tracing harian karyawan se-perusahaan serta digital corporate raffle draw.",
     ],
   },
 ];
@@ -164,15 +170,17 @@ export default function About() {
             <p className="mt-8 max-w-prose text-[var(--t-body)] leading-relaxed text-[var(--fg-2)]">
               {lang === "id" ? (
                 <>
-                  Ahli dalam .NET Core, Next.js, React, Node.js, optimasi SQL data besar, integrasi API
-                  perbankan/SharePoint, serta arsitektur AI agent & MCP. Berpengalaman dalam tim remote
-                  internasional dan pengembangan produk dari nol hingga rilis produksi.
+                  Senior Fullstack & AI Engineer dengan 7+ tahun pengalaman merancang dan membangun platform
+                  enterprise SaaS, sistem terdistribusi, dan aplikasi AI produksi. Keahlian utama: .NET Core,
+                  Next.js, Node.js, NestJS, optimasi kueri SQL performa tinggi, dan pipeline LLM RAG.
+                  Berpengalaman dalam tim remote internasional dan pengiriman arsitektur konkurensi tinggi yang aman.
                 </>
               ) : (
                 <>
-                  Skilled in .NET Core, .NET Framework, SQL optimization, API integrations, and modern frontend
-                  frameworks such as Next.js and React. Experienced working in remote international teams and
-                  delivering end-to-end features across backend, frontend, and operational environments.
+                  Senior Fullstack & AI Engineer with 7+ years of experience architecting and building enterprise
+                  SaaS platforms, distributed systems, and production AI tools. Core stack: .NET Core, Next.js,
+                  Node.js, NestJS, SQL performance tuning, and LLM RAG pipelines. Proven background delivering
+                  secure, high-concurrency architectures with international remote engineering teams.
                 </>
               )}
             </p>
@@ -186,6 +194,26 @@ export default function About() {
                 <GraduationCap className="w-3.5 h-3.5" aria-hidden />
                 S1 Teknik Informatika (Computer Science)
               </span>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="/Andry_Huang_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--accent)] text-[var(--bg)] font-mono text-xs font-semibold uppercase tracking-[0.1em] hover:opacity-90 transition-opacity"
+              >
+                <FileText className="w-4 h-4" aria-hidden />
+                {lang === "id" ? "Lihat / Unduh CV (PDF)" : "View / Download CV (PDF)"}
+              </a>
+              <a
+                href="/Andry_Huang_CV.docx"
+                download
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[var(--line)] bg-white/5 text-[var(--fg-2)] font-mono text-xs uppercase tracking-[0.1em] hover:bg-white/10 hover:text-[var(--fg)] transition-all"
+              >
+                <Download className="w-4 h-4" aria-hidden />
+                {lang === "id" ? "Format DOCX" : "DOCX Format"}
+              </a>
             </div>
           </Reveal>
 

@@ -122,8 +122,8 @@ export default function AIChatbot() {
 
     if (q.includes("tech") || q.includes("stack") || q.includes("keahlian") || q.includes("skills")) {
       return currentLang === "id"
-        ? `⚡ **Tech Stack & Keahlian Utama Andry**:\n\n• **Backend**: .NET Core 9, C#, Node.js, NestJS, Laravel, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude 3.7, Model Context Protocol (MCP), AI Agents, Selenium Automation\n• **Database & Cloud**: PostgreSQL, MySQL, SQL Server, Redis, Prisma, Docker, Cloudflare R2, AWS.`
-        : `⚡ **Andry's Core Tech Stack & Skills**:\n\n• **Backend**: .NET Core 9, C#, Node.js, NestJS, Laravel, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude 3.7, Model Context Protocol (MCP), AI Agents, Selenium\n• **Database & Cloud**: PostgreSQL, MySQL, SQL Server, Redis, Prisma, Docker, Cloudflare R2, AWS.`;
+        ? `⚡ **Tech Stack & Keahlian Utama Andry**:\n\n• **Backend**: .NET Core 8/9, C#, Node.js, NestJS, Laravel 11/Livewire, Java Spring Boot, Python FastAPI, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Vue.js / Inertia.js, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude 3.7, Model Context Protocol (MCP), Agentic Skills & Rules, pgvector RAG, BullMQ Redis\n• **Database & Cloud**: PostgreSQL, Microsoft SQL Server, Oracle DB (PL/SQL), MySQL 8, Redis, Prisma, Docker, Cloudflare R2, AWS S3.`
+        : `⚡ **Andry's Core Tech Stack & Skills**:\n\n• **Backend**: .NET Core 8/9, C#, Node.js, NestJS, Laravel 11/Livewire, Java Spring Boot, Python FastAPI, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Vue.js / Inertia.js, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude 3.7, Model Context Protocol (MCP), Agentic Skills & Rules, pgvector RAG, BullMQ Redis\n• **Database & Cloud**: PostgreSQL, Microsoft SQL Server, Oracle DB (PL/SQL), MySQL 8, Redis, Prisma, Docker, Cloudflare R2, AWS S3.`;
     }
 
     if (q.includes("cg") || q.includes("church") || q.includes("gereja") || q.includes("booking") || q.includes("sharing")) {
@@ -134,8 +134,8 @@ export default function AIChatbot() {
 
     if (q.includes("kontak") || q.includes("contact") || q.includes("hubungi") || q.includes("email") || q.includes("whatsapp")) {
       return currentLang === "id"
-        ? `📱 **Cara Menghubungi Andry Huang**:\n\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Lokasi**: Surabaya, Indonesia`
-        : `📱 **How to Contact Andry Huang**:\n\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Location**: Surabaya, Indonesia`;
+        ? `📱 **Cara Menghubungi Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Lokasi**: Surabaya, Indonesia`
+        : `📱 **How to Contact Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Location**: Surabaya, Indonesia`;
     }
 
     return currentLang === "id"
