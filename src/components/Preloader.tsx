@@ -7,15 +7,24 @@ const STORAGE_KEY = "portfolio_preloaded";
 // Bumper is 3.1s; this only matters if the video stalls or never fires `ended`.
 const SAFETY_MS = 5200;
 
-// Decide once per page load: first visit on this browser and motion allowed.
+// Decide once per page load: first visit in this tab/session and motion allowed.
 let shouldShowCache: boolean | null = null;
-const readShouldShow = () =>
-  (shouldShowCache ??=
-    !localStorage.getItem(STORAGE_KEY) && !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+const readShouldShow = () => {
+  if (typeof window === "undefined") return false;
+  if (shouldShowCache !== null) return shouldShowCache;
+  try {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const alreadyLoaded = !!sessionStorage.getItem(STORAGE_KEY);
+    shouldShowCache = !alreadyLoaded && !reduced;
+  } catch (e) {
+    shouldShowCache = false;
+  }
+  return shouldShowCache;
+};
 const noopSubscribe = () => () => {};
 
 /**
- * First-visit bumper, same pattern as construction-landing-web's ArchitecturalPreloader:
+ * First-visit bumper per session, same pattern as construction-landing-web's ArchitecturalPreloader:
  * full-screen logo video (signals converge into the "AH" monogram), then the curtain lifts.
  * Any video failure simply ends the preloader — the site must never be blocked by it.
  */
@@ -26,7 +35,9 @@ export default function Preloader() {
 
   useEffect(() => {
     if (!shouldShow) return;
-    localStorage.setItem(STORAGE_KEY, "1");
+    try {
+      sessionStorage.setItem(STORAGE_KEY, "1");
+    } catch (e) {}
     document.body.style.overflow = "hidden";
     const safety = setTimeout(() => setDone(true), SAFETY_MS);
     return () => clearTimeout(safety);
