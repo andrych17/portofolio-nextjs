@@ -82,7 +82,6 @@ export const projects: Project[] = [
       "IIS",
     ],
     color: "from-amber-500 to-orange-500",
-    featured: true,
   },
   {
     id: 102,
@@ -170,7 +169,6 @@ export const projects: Project[] = [
       "Code Refactoring",
     ],
     color: "from-orange-500 to-red-500",
-    featured: true,
   },
 
   // ── JOB #3 • Anacle / MRI Software (Singapore) ────────────
@@ -451,6 +449,7 @@ export const projects: Project[] = [
       "Docker",
     ],
     color: "from-lime-500 to-emerald-600",
+    featured: true,
   },
   {
     id: 502,

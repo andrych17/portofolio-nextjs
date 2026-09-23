@@ -23,11 +23,15 @@ const rolesId = [
 
 const EASE = [0.83, 0, 0.17, 1] as const;
 
-// ponytail: wait out the first-visit preloader (3.1s logo video) so the name rises as the curtain lifts.
-// The preloader's own localStorage flag decides; cached once so later flag writes don't shift timing.
+// Wait out the first-visit preloader (8s video) so the name rises as the curtain lifts.
+// The preloader's own sessionStorage flag decides; cached once so later flag writes don't shift timing.
 let introDelayCache: number | null = null;
-const readIntroDelay = () =>
-  (introDelayCache ??= localStorage.getItem("portfolio_preloaded") ? 0.15 : 3.3);
+const readIntroDelay = () => {
+  if (typeof window === "undefined") return 0;
+  if (introDelayCache !== null) return introDelayCache;
+  const isPreloaded = !!sessionStorage.getItem("portfolio_preloaded");
+  return (introDelayCache = isPreloaded ? 0.15 : 8.2);
+};
 const noopSubscribe = () => () => {};
 
 // Letters rise out of a clipped line, one after another.
@@ -163,10 +167,10 @@ export default function Hero() {
       </motion.div>
 
       {/* Masthead */}
-      <div className="relative z-10 my-auto py-10">
+      <div className="relative z-10 my-auto py-6 sm:py-8">
         <h1
           aria-label="Andry Huang"
-          className="display flex flex-col sm:flex-row sm:gap-[0.22em] text-[var(--fg)] text-[30vw] sm:text-[16vw]"
+          className="display flex flex-col sm:flex-row sm:gap-[0.2em] text-[var(--fg)] text-[clamp(2.5rem,7.5vw,6.25rem)] leading-none tracking-tight"
         >
           {introDelay !== null ? (
             <>

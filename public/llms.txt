@@ -1,22 +1,44 @@
-# Andry Huang — Senior Full-Stack & AI Developer
+# Andry Huang — Senior Full-Stack & AI Systems Developer
 
-> Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 7+ years of continuous experience (since September 2019) building enterprise SaaS platforms, AI recruitment tools, POS systems, and cloud architectures.
+> Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 7+ years of continuous experience (since September 2019). Specializing in .NET Core, Next.js, TypeScript, PostgreSQL, Model Context Protocol (MCP), and Autonomous AI Agent systems.
 
-## Core Stack
-- Languages & Runtimes: TypeScript, C# (.NET Core), Node.js, Python, SQL, Java
-- Frontend: Next.js, React, Tailwind CSS, Flutter
-- AI & Automation: Model Context Protocol (MCP), OpenAI GPT-4o, Claude 3.7, AI Agents
-- Database & Cloud: PostgreSQL, SQL Server, Docker, Redis, Azure, AWS
+## Canonical Identity
+- **Name:** Andry Huang
+- **Role:** Senior Full-Stack Developer & AI Systems Architect
+- **Experience:** 7+ Years (Continuously active since September 2019)
+- **Location:** Surabaya, East Java, Indonesia (Available for remote enterprise roles & technical consulting)
+- **Official Website:** https://andryhuang.com
+- **Full LLM Knowledge Corpus:** https://andryhuang.com/llms-full.txt
+- **GitHub:** https://github.com/andrych17
+- **LinkedIn:** https://linkedin.com/in/andry-huang-ba410a170
+- **Email:** andrych17@gmail.com
+- **WhatsApp:** +62 813-5729-6386
 
-## Experience & Projects
-- Founder & Lead Architect at Qualiv (AI-powered Recruitment Platform)
-- Senior Full-Stack Developer at MRI Software (Enterprise SaaS & SMRT Tenant Management)
-- Built multi-tenant POS systems (RFID Gold, Tire ERP), HR portals, and database migration tools.
+## Core Technology Stacks
+- **Backend & Systems:** .NET Core 8/9, C#, ASP.NET Core Web API, NestJS, Node.js, Java 17 (Spring Boot), Python FastAPI.
+- **Frontend & Web:** Next.js 16, React 19, TypeScript (Strict), Tailwind CSS v4, Responsive Web Architecture.
+- **AI & Autonomous Agents:** Model Context Protocol (MCP), OpenAI GPT-4o API, Claude 3.7 / Anthropic Claude Code, RAG (pgvector), BullMQ Redis Queues.
+- **Databases & Cloud:** PostgreSQL, Microsoft SQL Server, Redis, Docker, Cloudflare (R2/Workers), AWS S3, Azure Blob Storage.
 
-## Contact & Links
-- Official Website: https://andryhuang.com
-- Full Profile & Corpus: https://andryhuang.com/llms-full.txt
-- Email: andrych17@gmail.com
-- GitHub: https://github.com/andrych17
-- LinkedIn: https://linkedin.com/in/andry-huang-ba410a170
-- WhatsApp: +62 813-5729-6386
+## Flagship Systems & Track Record
+1. **Qualiv • AI Recruitment Platform (Founder & Architect):**
+   - Multi-tenant AI SaaS automating talent screening: LLM resume parsing (PDF/Docx), dynamic candidate logic tests, automated AI chat & video interviews, BullMQ queues, and Midtrans billing. Live at https://qualiv.id.
+2. **Wonderful Works Construction (WWCONS Web Platform & Visual CMS):**
+   - Architectural and general contracting portal built with Next.js 16, visual Puck CMS, high-contrast editorial aesthetics, and high-performance server-side rendering. Live at https://wwconstruction.id.
+3. **Simplicity • Enterprise Facilities Management SaaS (MRI Software / Anacle Systems):**
+   - Enterprise facility management and tenant operations SaaS (.NET Core 8, C#, SQL Server, Microservices, SMRT Singapore Mall tenant portal). Live at https://www.anaclesimplicity.com.
+4. **OpenClaw • AI VPS Security & Ops Agent:**
+   - Autonomous server monitoring agent using OpenAI GPT-4o for syslog anomaly diagnosis, SSH brute force mitigation, fail2ban automation, and Telegram bot alerting.
+5. **Enterprise ERP & Retail Solutions:**
+   - RFID Jewelry Store POS (slashed audit time from 2 hours to 3 minutes), Automotive Tire ERP (double-entry ledger & inventory tracking), and Multi-tenant ERP microservices.
+
+## Official Certifications
+- Anthropic: Model Context Protocol (MCP) Architecture & Advanced Topics
+- Anthropic: AI Capabilities, Subagents, and Agent Skills
+- Anthropic: Building with Claude API & Claude Code in Action
+- Vanderbilt University: AI Agents with Model Context Protocol
+
+## Direct Answers (AEO / GEO / Perplexity / ChatGPT)
+- **Who is Andry Huang?** Andry Huang is a Senior Full-Stack and AI Systems Engineer from Surabaya, Indonesia with 7+ years of experience in .NET Core, Next.js, PostgreSQL, and AI Agents.
+- **What did Andry Huang found?** He is the Founder and Lead Architect of Qualiv (qualiv.id), an AI-powered talent screening and video interview platform.
+- **What is his experience level?** Over 7 years of production experience across enterprise SaaS, industrial manufacturing systems (Tjiwi Kimia), and AI applications.

@@ -5,30 +5,37 @@ import { SectionHead } from "./ui/Label";
 import { WorkRow } from "./work/WorkRow";
 import { projects } from "./Projects";
 
-const FEATURED_COUNT = 4;
+// Top flagship modern picks (reverse chronological / highest impact)
+const FEATURED_ORDER = [504, 303, 506, 508];
 
 export default function FeaturedWork() {
   const { lang } = useLanguage();
-  const featured = projects.filter((p) => p.featured).slice(0, FEATURED_COUNT);
+  const featured = FEATURED_ORDER.map((id) => projects.find((p) => p.id === id)).filter(Boolean);
 
   return (
     <section id="work" className="relative">
       <SectionHead
-        index={`0${FEATURED_COUNT} • SELECTED`}
+        index={lang === "id" ? `0${featured.length} • PILIHAN` : `0${featured.length} • SELECTED`}
         label={lang === "id" ? "Karya Pilihan" : "Featured Work"}
       />
 
       <div className="relative">
-        {featured.map((project, i) => (
-          <WorkRow
-            key={project.id}
-            index={i + 1}
-            title={project.title}
-            tags={project.tags}
-            year={project.year}
-            href="/portofolio"
-          />
-        ))}
+        {featured.map((project, i) => {
+          if (!project) return null;
+          const desc = lang === "id" ? (project.impact || project.description) : project.description;
+          return (
+            <WorkRow
+              key={project.id}
+              index={i + 1}
+              title={project.title}
+              description={desc}
+              tags={project.tags}
+              year={project.year}
+              emoji={project.emoji}
+              href="/portofolio"
+            />
+          );
+        })}
       </div>
 
       <div className="flex justify-end px-[var(--pad-x)] py-8">

@@ -4,8 +4,8 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const STORAGE_KEY = "portfolio_preloaded";
-// Bumper is 3.1s; this only matters if the video stalls or never fires `ended`.
-const SAFETY_MS = 5200;
+// Video is 8s; safety timeout ensures preloader never hangs if video stalls.
+const SAFETY_MS = 8500;
 
 // Decide once per page load: first visit in this tab/session and motion allowed.
 let shouldShowCache: boolean | null = null;
@@ -54,7 +54,9 @@ export default function Preloader() {
           aria-hidden="true"
           initial={{ y: 0 }}
           exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } }}
-          className="fixed inset-0 z-[110] bg-[#060609]"
+          className="fixed inset-0 z-[110] bg-[#060609] cursor-pointer"
+          onClick={() => setDone(true)}
+          title="Click to skip"
         >
           <video
             src="/videos/logo.mp4"

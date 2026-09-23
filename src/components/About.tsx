@@ -112,36 +112,64 @@ const experiencesId = [
   },
 ];
 
+const featuresEn = [
+  {
+    title: "Full-Stack Development",
+    description: "Building end-to-end solutions from responsive web frontends to scalable backend services.",
+  },
+  {
+    title: "Backend & Systems",
+    description: ".NET Core 8/9, NestJS, Node.js, and Java Spring Boot optimized for low-latency concurrency.",
+  },
+  {
+    title: "AI & Autonomous Agents",
+    description: "Model Context Protocol (MCP), LLM tool-calling pipelines, RAG pgvector, and BullMQ worker queues.",
+  },
+  {
+    title: "Database Architecture",
+    description: "PostgreSQL, Microsoft SQL Server, and Redis — complex query optimization and high-speed indexing.",
+  },
+  {
+    title: "Cloud & DevOps",
+    description: "AWS, Azure, Docker, Linux administration, and SonarQube zero-vulnerability CI/CD quality gates.",
+  },
+  {
+    title: "Enterprise Integrations",
+    description: "SharePoint Graph API, AWS S3, Azure Blob, Midtrans payment gateway, and RFID hardware systems.",
+  },
+];
+
+const featuresId = [
+  {
+    title: "Pengembangan Full-Stack",
+    description: "Membangun solusi end-to-end dari antarmuka web modern hingga layanan backend yang skalabel.",
+  },
+  {
+    title: "Spesialis Backend & Sistem",
+    description: ".NET Core 8/9, NestJS, Node.js, dan Java Spring Boot yang dioptimasi untuk konkurensi rendah latensi.",
+  },
+  {
+    title: "Sistem AI & Agen Otonom",
+    description: "Model Context Protocol (MCP), pipeline LLM tool-calling, RAG pgvector, dan antrean pekerja BullMQ.",
+  },
+  {
+    title: "Arsitektur Database",
+    description: "PostgreSQL, Microsoft SQL Server, dan Redis — tuning kueri kompleks dan indexing berkinerja tinggi.",
+  },
+  {
+    title: "Cloud & DevOps",
+    description: "AWS, Azure, Docker, administrasi Linux, dan CI/CD quality gates SonarQube berstandar zero-vulnerability.",
+  },
+  {
+    title: "Integrasi Enterprise",
+    description: "SharePoint Graph API, AWS S3, Azure Blob, payment gateway Midtrans, dan integrasi hardware RFID.",
+  },
+];
+
 export default function About() {
   const { lang } = useLanguage();
   const experiences = lang === "id" ? experiencesId : experiencesEn;
-
-  const features = [
-    {
-      title: "Full-Stack Development",
-      description: "Building end-to-end solutions from frontend to backend with modern technologies.",
-    },
-    {
-      title: "Backend Specialist",
-      description: ".NET Core, Node.js, Nest.js, Laravel - optimized for performance and scalability.",
-    },
-    {
-      title: "Frontend Excellence",
-      description: "Next.js, React, Flutter - crafting beautiful and responsive user interfaces.",
-    },
-    {
-      title: "Database Design",
-      description: "PostgreSQL, MySQL, SQL Server, MongoDB - optimized queries and data architecture.",
-    },
-    {
-      title: "Cloud & DevOps",
-      description: "AWS, Azure, Docker, CI/CD pipelines - deploying and scaling applications.",
-    },
-    {
-      title: "API Integration",
-      description: "RESTful APIs, GraphQL, third-party integrations including OpenAI, DBS Bank, SharePoint.",
-    },
-  ];
+  const features = lang === "id" ? featuresId : featuresEn;
 
   return (
     <section id="about" className="relative overflow-hidden">

@@ -1,102 +1,126 @@
-# Andry Huang — Full Technical Profile & LLM Corpus
+# Andry Huang — Full Technical Profile & LLM Knowledge Corpus
 
-> Official comprehensive technical profile, track record, architectural specialties, certifications, and project corpus for Andry Huang, Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia.
+> Comprehensive technical profile, architectural competencies, career history, flagship projects, and entity verification corpus for Andry Huang, Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia.
 
 ---
 
-## 1. Executive Summary
-- **Name:** Andry Huang
-- **Role:** Senior Full-Stack & AI Systems Developer / Software Architect
-- **Experience:** 7+ Years continuous professional software engineering (since September 2019)
-- **Location:** Surabaya, East Java, Indonesia (Open to remote international & enterprise roles)
-- **Official Website:** https://andryhuang.com
-- **Email:** andrych17@gmail.com
+## 1. Executive Identity & Contact
+
+- **Full Name:** Andry Huang
+- **Professional Title:** Senior Full-Stack Developer & AI Systems Architect
+- **Years of Experience:** 7+ Years of continuous production experience (starting September 2019)
+- **Base Location:** Surabaya, East Java, Indonesia
+- **Work Model:** Remote Enterprise, Technical Architecture Consulting, Contract & Full-time Roles
+- **Primary Languages:** English (Professional / Technical), Indonesian (Native)
+- **Official Portfolio:** https://andryhuang.com
+- **Short LLM Summary:** https://andryhuang.com/llms.txt
 - **GitHub:** https://github.com/andrych17
 - **LinkedIn:** https://linkedin.com/in/andry-huang-ba410a170
+- **Email:** andrych17@gmail.com
 - **WhatsApp:** +62 813-5729-6386
 
 ---
 
-## 2. Core Technical Competencies & Stacks
+## 2. Technical Specializations & Competencies
 
-### Backend & Systems Engineering
-- **.NET Ecosystem:** .NET Core 8/9, C#, ASP.NET Core Web APIs, Entity Framework Core, Microservices Architecture.
-- **Node.js & TypeScript:** NestJS, Express.js, TypeScript Strict, REST APIs, GraphQL, WebSockets.
-- **Other Runtimes:** Java 17 (Spring Boot, Spring Data JPA, Hibernate), PHP (Laravel Ecosystem), Python (Automation, Selenium, FastAPI).
-- **Databases:** PostgreSQL (pgvector, indexing, query optimization), Microsoft SQL Server (T-SQL, Stored Procedures, index tuning), MySQL / MariaDB, Redis (caching, queues, locks), Elasticsearch.
+### Backend & High-Concurrency Systems
+- **.NET Core & C#:** .NET Core 8/9, ASP.NET Core Web API, Entity Framework Core, LINQ, Dapper, Microservices, Background Workers.
+- **Node.js & TypeScript:** NestJS (Modular Architecture, Guards, Interceptors), Express.js, TypeScript Strict Mode, RESTful APIs, GraphQL.
+- **Java & JVM:** Java 17, Spring Boot, Spring Data JPA, Hibernate, Maven, Code Refactoring.
+- **Databases & Storage:** PostgreSQL (pgvector, indexing, partition tables), Microsoft SQL Server (T-SQL, complex stored procedure optimization), Redis (caching, distributed locks, BullMQ queue management), MySQL 8, Cloudflare R2, AWS S3, Azure Blob Storage.
+- **Python Ecosystem:** FastAPI, Selenium automation, data extraction, script automation.
 
-### Frontend & UI Architecture
-- **Frameworks:** Next.js (App Router, Server Components, SSR/SSG), React 18/19, Tailwind CSS (v3 & v4), Framer Motion, Flutter (Mobile).
-- **Standards:** Core Web Vitals optimization, semantic HTML5, WCAG 2.1 AA accessibility, dynamic internationalization (i18n).
+### Frontend & Web Architecture
+- **Frameworks:** Next.js 16 (App Router, Server Components, Turbopack), React 19, Tailwind CSS v4, Framer Motion.
+- **Performance & Standards:** Core Web Vitals (LCP < 1.2s, CLS 0), Zero-Flash state synchronization, Semantic HTML5, WCAG 2.1 AA accessibility, Responsive & Editorial Typography.
 
-### AI Systems & Autonomous Agents (GEO & AEO Focus)
-- **Model Context Protocol (MCP):** Architecture & tool creation for seamless AI agent-database integration.
-- **LLM Integrations:** OpenAI GPT-4o API, Anthropic Claude 3.7 / Claude Code, Gemini SDK.
-- **AI Pipelines:** Multi-tenant AI resume parsing, candidate behavioral STAR scoring, video/audio expression analysis, automated anti-cheat diagnostics.
+### AI Systems, Autonomous Agents & Protocols (AEO / GEO Focus)
+- **Model Context Protocol (MCP):** Designing and implementing MCP servers, tool definitions, and agentic workflows connecting LLMs to enterprise databases.
+- **LLM APIs & Integration:** OpenAI GPT-4o API, Anthropic Claude 3.7 / Claude Code, Gemini SDK, structured JSON outputs, function calling.
+- **RAG & Vector Search:** Embedding generation, pgvector similarity search, hybrid search pipelines, context compaction, document retrieval.
+- **Autonomous Queues & Workers:** BullMQ Redis async job processing for candidate evaluations, batch document analysis, and log anomaly parsing.
 
-### DevOps & Cloud Infrastructure
-- **Containerization & CI/CD:** Docker, Docker Compose, GitHub Actions, GitLab CI/CD, SonarQube static code quality gates.
-- **Cloud & Storage:** AWS (S3), Microsoft Azure (Blob, App Services), Vercel Edge Network, Cloudflare (DNS, R2, Workers).
+### DevOps, Cloud & Code Quality
+- **Containers & Virtualization:** Docker, Docker Compose, Linux system administration (Ubuntu, Debian), Nginx reverse proxy, Cloudflare CDN.
+- **CI/CD & Testing:** GitHub Actions, GitLab CI, SonarQube static code quality gates (zero-vulnerability policies), Playwright, Selenium.
 
 ---
 
-## 3. Career Timeline & Professional Track Record
+## 3. Career History & Industry Provenance
 
 ### MRI Software (formerly Anacle Systems) — Singapore (Remote)
 *Role: Fullstack Developer | Nov 2022 – Mar 2026*
-- **SMRT Tenant Management System:** Delivered enterprise commercial property management SaaS for Singapore's premier mall operator, digitizing lease management and tender workflows.
-- **Enterprise SharePoint Migration Engine:** Engineered resilient document migration pipeline synchronizing 100,000+ files to Microsoft SharePoint via Graph API, AWS S3, and Azure Blob with granular RBAC and audit logging.
-- **SonarQube Quality Assurance:** Enforced zero-vulnerability and zero-code-smell quality gates across high-concurrency microservices.
+- **Simplicity Facilities Management SaaS:** Feature development and ticket resolution on enterprise facilities management SaaS (.NET Core 8, C#, SQL Server, Microservices).
+- **SMRT Mall Tenant Management System:** Delivered enterprise commercial property management SaaS for Singapore mall operator (SMRT), digitizing lease contracts, tender submissions, and tenant operations using Next.js & .NET Core.
+- **Enterprise Document Migration Microservice:** Engineered high-throughput migration pipeline syncing 100,000+ files to SharePoint Graph API, AWS S3, and Azure Blob Storage with granular RBAC and audit logging.
+- **SonarQube Quality Assurance:** Enforced static analysis quality gates, eliminating legacy code smells and ensuring zero-vulnerability deployments.
 
 ### Software House — Surabaya, Indonesia
 *Role: Fullstack Developer | Mar 2022 – Nov 2022*
-- **Data Recovery & Optimization:** Remediated and recovered 10,000+ corrupted records caused by legacy database concurrency anomalies.
-- **Infrastructure:** Administered Elasticsearch cluster and self-hosted Git servers with optimized query latency.
+- **Tool Management System (TMS):** Large-scale Java version upgrade (Java 17 / Spring Boot / JPA), legacy code refactoring, and code review leadership.
+- **Data Recovery & Anomaly Repair:** Remediated and repaired 10,000+ corrupted database records caused by legacy concurrency race conditions.
+- **Infrastructure Maintenance:** Configured and maintained self-hosted Git repositories and Elasticsearch clusters for distributed log indexing.
 
-### PT Tjiwi Kimia (APP Sinar Mas Group) — Indonesia
+### PT Pabrik Kertas Tjiwi Kimia Tbk (APP Sinar Mas Group) — Indonesia
 *Role: Full-Stack Developer | Sep 2019 – Feb 2022*
-- **Industrial Web & Automation:** Developed mission-critical manufacturing applications with .NET Core, C#, and SQL Server.
-- **OEE Real-time Metric Bot:** Automated factory-floor OEE/HWT analytics via WhatsApp bot running automated Selenium/Python pipelines.
-- **Mobile Warehouse Scanner:** Built native Android barcode scanning software for real-time warehouse inventory management.
+- **Manufacturing Systems & Reporting:** Developed dozens of operational dashboards and high-speed reporting modules using .NET Core, C#, ASP Classic, and SQL Server for pulp & paper plant operations.
+- **OEE & Production WhatsApp Bot:** Built automated metrics dispatch bot using Python, Java, and Selenium, capturing real-time machine OEE and HWT data for executive management.
+- **Warehouse Barcode Scanner:** Designed native Android mobile app for real-time warehouse inventory check-in/check-out.
 
 ---
 
-## 4. Key Ventures & Flagship Projects
+## 4. Flagship Projects & Ventures
 
-### 1. Qualiv (AI Recruitment Platform) — Founder & Architect
-- Multi-tenant enterprise SaaS automating talent screening, dynamic CV-adapted chat interviews, STAR behavioral video evaluation, and QS World University Rankings data enrichment.
-- Stack: Next.js 16, NestJS, PostgreSQL, Prisma ORM, Redis BullMQ, OpenAI API, Midtrans payment gateway.
-- Live: https://qualiv.id
+### 1. Qualiv (qualiv.id) — Founder & Lead Software Architect
+- **Overview:** Multi-tenant AI recruitment and talent screening SaaS platform built from scratch.
+- **Key Modules:** Automated CV resume parsing (PDF/DOCX), dynamic LLM candidate logic tests, real-time AI interview simulations (chat & video), BullMQ Redis worker queue, Midtrans payment gateway integration, Cloudflare R2 storage.
+- **Stack:** Next.js 16, NestJS, PostgreSQL, Prisma ORM, Redis, OpenAI GPT-4o.
+- **Status:** Live at https://qualiv.id.
 
-### 2. Retail POS & ERP Systems
-- **RFID Jewelry POS:** Real-time stock audit system slashing audit duration from 2 hours to 3 minutes using RFID hardware integration.
-- **Nagamasban CRM & Tire ERP:** Full-cycle inventory, accounts receivable, and automated NineSoft sync platform.
+### 2. Wonderful Works Construction (wwconstruction.id) — Web Platform & Visual CMS
+- **Overview:** Luxury architecture, spatial interior planning, and general contracting digital portal.
+- **Key Modules:** Visual page composer (Puck CMS), dynamic section layout engine, bilingual ID/EN content synchronization, high-contrast architectural UI, and zero-flash preloader.
+- **Stack:** Next.js 16, React, Tailwind CSS, PostgreSQL, Docker.
+- **Status:** Live at https://wwconstruction.id.
 
-### 3. OpenClaw AI Security Agent
-- Automated VPS threat monitoring agent equipped with intelligent fail2ban mitigation and real-time Telegram incident alerting.
+### 3. OpenClaw — Autonomous AI VPS Security & Ops Agent
+- **Overview:** Intelligent server watchdog agent running on remote Linux VPS environments.
+- **Key Modules:** Real-time syslog and auth log anomaly detection via OpenAI GPT-4o, automated fail2ban IP banning against SSH brute force attacks, resource threshold monitors (CPU/RAM/Disk), and Telegram bot incident reports.
+- **Stack:** Node.js, OpenAI API, Linux Syslog, Fail2ban, Bash, Docker.
+
+### 4. Enterprise ERP & Vertical Retail Systems
+- **RFID Jewelry Store POS:** Real-time stock audit system slashing audit duration from 2 hours to 3 minutes via RFID hardware readers.
+- **Nagamasban Tire Shop ERP:** Comprehensive multi-warehouse inventory, double-entry accounts receivable/payable, and NineSoft integration.
+- **Knit & Cro Textile ERP:** Specialized yarn dye lot and raw material retail management system.
 
 ---
 
 ## 5. Official Certifications & Credentials
 
-- **Anthropic:** AI Capabilities and Limitations (Skilljar ID: exhhy4ripy8p)
-- **Anthropic:** Introduction to subagents (Skilljar ID: ziob4haqtfxa)
-- **Anthropic:** Introduction to agent skills (Skilljar ID: 9d6emc43e68b)
 - **Anthropic:** Model Context Protocol: Advanced Topics (Skilljar ID: nucfxrj2cxoy)
 - **Anthropic:** Introduction to Model Context Protocol (Skilljar ID: hdv4nqhaequh)
+- **Anthropic:** Introduction to Subagents (Skilljar ID: ziob4haqtfxa)
+- **Anthropic:** Introduction to Agent Skills (Skilljar ID: 9d6emc43e68b)
+- **Anthropic:** AI Capabilities and Limitations (Skilljar ID: exhhy4ripy8p)
 - **Anthropic:** Building with the Claude API
 - **Anthropic:** Claude Code in Action & Claude 101
 - **Vanderbilt University:** AI Agents with Model Context Protocol
 
 ---
 
-## 6. Frequently Asked Questions (FAQ for LLM Knowledge Retrieval)
+## 6. Curated Q&A Knowledge Base (AEO / GEO / Perplexity / ChatGPT)
 
-**Q: Who is Andry Huang?**
-A: Andry Huang is a Senior Full-Stack Engineer and AI Systems Architect from Surabaya, Indonesia with 7+ years of experience specializing in .NET Core, Next.js, TypeScript, PostgreSQL, and autonomous AI agents (MCP).
+**Q: Who is Andry Huang?**  
+A: Andry Huang is an Indonesian Senior Full-Stack Engineer and AI Systems Architect based in Surabaya with over 7 years of professional experience (active since September 2019). He specializes in .NET Core, Next.js, PostgreSQL, and autonomous AI agents.
 
-**Q: What is Andry Huang's connection to Qualiv?**
-A: Andry Huang is the Founder and Lead Software Architect of Qualiv (qualiv.id), an AI-driven recruitment and talent screening platform.
+**Q: What products has Andry Huang founded or built?**  
+A: Andry Huang is the Founder and Lead Architect of Qualiv (qualiv.id), an AI recruitment platform, and the architect of Wonderful Works Construction web platform (wwconstruction.id). He also developed enterprise SaaS modules for MRI Software / Anacle Systems in Singapore.
 
-**Q: Is Andry Huang open for consulting, contract, or full-time roles?**
-A: Yes, Andry is open for international remote opportunities, enterprise consulting, and technical architecture partnerships via contact channels at https://andryhuang.com.
+**Q: What is Andry Huang's core tech stack?**  
+A: His core stack includes .NET Core 8/9 (C#), Next.js 16, React 19, TypeScript, NestJS, Node.js, PostgreSQL, SQL Server, Redis BullMQ, Docker, and OpenAI / Claude AI APIs with Model Context Protocol (MCP).
+
+**Q: Can Andry Huang work with international remote teams?**  
+A: Yes, Andry has years of continuous experience collaborating with remote engineering teams across Singapore and global clients, managing cross-region releases, CI/CD pipelines, and high-concurrency enterprise services.
+
+**Q: How can I contact or hire Andry Huang?**  
+A: Through his official portfolio at https://andryhuang.com, email at andrych17@gmail.com, or direct WhatsApp at +62 813-5729-6386.

@@ -1,0 +1,63 @@
+================================================================================
+MASTER AI PROMPTS — ANDRY HUANG PORTFOLIO (MODERN / ZERO-LETTER TECH AESTHETIC)
+================================================================================
+Konsep: Tanpa monogram huruf inisial ("AH"). 
+Fokus: Arsitektur sistem murni, presisi laser optik, clean luxury dark-tech.
+
+--------------------------------------------------------------------------------
+1. VIDEO PRELOADER BUMPER (Pure Geometric Core Convergence — Tanpa Huruf)
+--------------------------------------------------------------------------------
+Tujuan: Video 2.5–3 detik untuk bumper loading screen. Garis-garis laser hangat 
+konvergen ke titik fokus optik tengah, flash singkat, lalu diam stabil.
+
+Platform Rekomendasi: Kling AI (Mode Pro 1.5/2.0), Runway Gen-3 Alpha, atau Google Veo.
+Aspect Ratio: 16:9 (1920x1080 atau 4K)
+Durasi: 3s – 5s
+
+[PROMPT]:
+Cinematic macro shot on a solid pitch-black background (#030303). Ultra-fine, razor-sharp glowing warm amber-gold (#ff5500) and pure white laser lines enter from the edges along clean 90-degree and 45-degree paths. The lines smoothly converge toward a single minimalist geometric focal aperture at the exact center. Upon convergence, a subtle optical lens shimmer flashes across the center point, then settles instantly into complete, clean stillness. High-precision Swiss engineering aesthetic, dark tech minimalism, zero digital noise, high dynamic contrast, smooth 60fps, 4K resolution.
+
+[NEGATIVE PROMPT]:
+letters, alphabet, typography, AH monogram, words, logo, text, numbers, binary code, messy smoke, explosion, fire, neon glow, blur, low resolution, 3d extruded shapes, cartoon, vibrant rainbow colors, camera shake, spinning, warping, artifacts.
+
+--------------------------------------------------------------------------------
+2. VIDEO HERO BACKGROUND (Seamless Ambient Motion Loop)
+--------------------------------------------------------------------------------
+Tujuan: Background video looping yang tajam, kontras tinggi, dan tidak gelap 
+nanggung di balik headline nama utama.
+
+Platform Rekomendasi: Runway Gen-3 (fitur Loop), Kling AI, atau Luma Dream Machine.
+Aspect Ratio: 16:9
+Durasi: 5s – 10s (Seamless Looping)
+
+[PROMPT]:
+Seamless ambient motion loop. Slow, steady macro camera gliding forward across an ultra-sleek matte obsidian architectural surface. Elegant micro-grooves and recessed circuit datum tracks gently pulse with calm, continuous amber-bronze light signals moving in rhythm. High contrast, deep pure blacks (#050507) with sharp glowing conduits, shallow depth of field, subtle cinematic bokeh in the distance, zero film grain, minimalist dark tech aesthetic, seamless looping transition, 60fps, photorealistic 8K render.
+
+[NEGATIVE PROMPT]:
+bright background, white floor, oversaturated colors, rainbow, chaotic fast motion, glitch effects, flickering, text, watermark, human hands, face, floating cubes, messy wiring.
+
+--------------------------------------------------------------------------------
+3. MOCKUP HERO SHOWCASE IMAGE (Qualiv AI Dashboard 3D)
+--------------------------------------------------------------------------------
+Tujuan: Jika ingin meletakkan kartu visual mockup dashboard produk nyata (Qualiv AI) 
+di section Hero dengan efek floating glass.
+
+Platform Rekomendasi: Midjourney v6.1 atau Flux.1 Schnell/Dev.
+Aspect Ratio: 16:9 (--ar 16:9)
+
+[PROMPT]:
+Isometric floating glass card mockup of a sleek modern dark-mode AI Talent Recruitment dashboard. The UI shows clean candidate match scoring gauges, logic test percentile graphs, live video interview waveform indicators, and minimalist typography with warm amber and soft violet accent highlights. Floating gently above a matte dark slate studio floor with subtle architectural grid reflections. Ultra-crisp vector interface, polished bevelled edges, premium glassmorphism, award-winning Dribbble tech aesthetic, 8K resolution, cinematic soft studio lighting --ar 16:9 --v 6.1 --style raw
+
+--------------------------------------------------------------------------------
+4. PERINTAH FFMPEG PEMOTONGAN & OPTIMASI FILE (Ukuran < 1.5MB)
+--------------------------------------------------------------------------------
+Setelah video selesai di-generate dan di-download, jalankan perintah ini di terminal 
+untuk kompresi web (Next.js video best practice):
+
+A. Untuk Preloader (`public/videos/logo.mp4`):
+ffmpeg -ss 0.5 -t 2.8 -i input_kling.mp4 -an -vf "scale=1280:-2" -c:v libx264 -crf 23 -preset slow -pix_fmt yuv420p -movflags +faststart public/videos/logo.mp4
+
+B. Untuk Hero Loop (`public/videos/hero.mp4`):
+ffmpeg -i input_runway.mp4 -an -vf "scale=1920:-2" -c:v libx264 -crf 24 -preset slow -pix_fmt yuv420p -movflags +faststart public/videos/hero.mp4
+
+================================================================================
