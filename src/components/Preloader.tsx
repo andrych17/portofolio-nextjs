@@ -33,6 +33,14 @@ export default function Preloader() {
   const [done, setDone] = useState(false);
   const visible = shouldShow && !done;
 
+  const [videoSrc, setVideoSrc] = useState("/videos/logo.mp4");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches) {
+      setVideoSrc("/videos/logo-mobile.mp4");
+    }
+  }, []);
+
   useEffect(() => {
     if (!shouldShow) return;
     try {
@@ -59,7 +67,8 @@ export default function Preloader() {
           title="Click to skip"
         >
           <video
-            src="/videos/logo.mp4"
+            key={videoSrc}
+            src={videoSrc}
             autoPlay
             muted
             playsInline
@@ -67,7 +76,14 @@ export default function Preloader() {
             onEnded={() => setDone(true)}
             onError={() => setDone(true)}
             className="h-full w-full object-contain"
-          />
+          >
+            <source src="/videos/logo-mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
+            <source src="/videos/logo.mp4" type="video/mp4" />
+          </video>
+          <div className="pointer-events-none absolute bottom-6 right-6 flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-white/40 uppercase">
+            <span>Skip</span>
+            <span aria-hidden>→</span>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
