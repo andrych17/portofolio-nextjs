@@ -7,7 +7,7 @@ export function Label({
 }) {
   return (
     <span
-      className={`font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--mut)] ${className}`}
+      className={`font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)] ${className}`}
     >
       {children}
     </span>

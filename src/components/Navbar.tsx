@@ -74,7 +74,7 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg)] hover:text-[var(--accent)] transition-colors group"
+              className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--fg)] hover:text-[var(--accent)] transition-colors group"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--accent)] group-hover:scale-125 transition-transform" />
               <span>Portfolio</span>
@@ -90,7 +90,7 @@ export default function Navbar() {
                     <RollLink
                       key={item.name}
                       href={item.href}
-                      className={`font-mono text-xs uppercase tracking-[0.14em] py-2 transition-colors ${
+                      className={`font-mono text-xs uppercase tracking-[0.12em] py-2 transition-colors ${
                         isActive ? "text-[var(--accent)] font-semibold" : "text-[var(--fg-2)] hover:text-[var(--fg)]"
                       }`}
                     >

@@ -74,7 +74,7 @@ export default function FeaturedWork() {
       <div className="flex justify-end px-[var(--pad-x)] py-8">
         <a
           href="/portofolio"
-          className="group inline-flex min-h-11 items-center gap-3 border-b border-[var(--fg)] font-mono text-xs uppercase tracking-[0.14em] text-[var(--fg)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          className="group inline-flex min-h-11 items-center gap-3 border-b border-[var(--fg)] font-mono text-xs uppercase tracking-[0.12em] text-[var(--fg)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
         >
           <span>{lang === "id" ? `Lihat Semua Karya (${projects.length})` : `Explore All Work (${projects.length})`}</span>
           <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>

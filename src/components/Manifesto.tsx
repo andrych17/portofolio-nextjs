@@ -51,7 +51,7 @@ export default function Manifesto() {
   return (
     <section className="relative border-t border-[var(--line)]">
       <div className="px-[var(--pad-x)] py-[var(--sec-sm)]">
-        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--mut)]">
+        <span className="block font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)]">
           {lang === "id" ? "// FILOSOFI & PENDEKATAN" : "// PHILOSOPHY & CRAFT"}
         </span>
 

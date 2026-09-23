@@ -21,7 +21,6 @@ const rolesId = [
   "Arsitek AI Agent & RAG",
 ];
 
-const STACK = [".NET Core", "Next.js", "Node.js", "RAG / AI Agents", "PostgreSQL", "Cloud"];
 const EASE = [0.83, 0, 0.17, 1] as const;
 
 // ponytail: wait out the first-visit preloader (3.1s logo video) so the name rises as the curtain lifts.
@@ -127,7 +126,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(12,12,12,0.9) 0%, rgba(12,12,12,0.55) 30%, rgba(12,12,12,0.6) 60%, rgba(12,12,12,0.95) 100%)",
+            "linear-gradient(to bottom, rgba(12,12,12,0.9) 0%, rgba(12,12,12,0.6) 30%, rgba(12,12,12,0.72) 58%, rgba(12,12,12,0.96) 100%)",
         }}
       />
 
@@ -152,17 +151,15 @@ export default function Hero() {
       {/* Meta rail */}
       <motion.div
         {...fadeUp(0)}
-        className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--mut)]"
+        className="relative z-10 flex flex-col gap-2 sm:flex-row sm:justify-between font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)]"
       >
         <span className="flex items-center gap-2 text-[var(--fg-2)]">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden />
           {lang === "id" ? "Terbuka Untuk Kolaborasi & Proyek" : "Open to Work & Collaboration"}
         </span>
-        <span className="sm:text-right md:text-left md:pl-3">
+        <span>
           {lang === "id" ? `${yearsOfExperience}+ Tahun Pengalaman` : `${yearsOfExperience}+ Years of Experience`}
         </span>
-        <span className="hidden md:block md:pl-3">Senior Fullstack & AI Engineer</span>
-        <span className="hidden md:block md:pl-3 text-right">Surabaya, ID</span>
       </motion.div>
 
       {/* Masthead */}
@@ -223,9 +220,6 @@ export default function Hero() {
                 </>
               )}
             </p>
-            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--mut)]">
-              {STACK.join("  /  ")}
-            </p>
           </motion.div>
         </div>
       </div>
@@ -238,7 +232,7 @@ export default function Hero() {
       >
         <a
           href="#about"
-          className="flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)] transition-colors hover:text-[var(--fg)]"
+          className="flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)] transition-colors hover:text-[var(--fg)]"
         >
           <ArrowDown className="h-3.5 w-3.5" aria-hidden />
           {lang === "id" ? "Gulir Ke Bawah" : "Scroll Down"}
@@ -254,7 +248,7 @@ export default function Hero() {
               className="inline-flex items-center gap-1.5 py-2"
             >
               <social.icon className="h-3.5 w-3.5 text-[var(--mut)]" aria-hidden />
-              <RollText className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--fg-2)]">
+              <RollText className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--fg-2)]">
                 {social.label}
               </RollText>
             </a>
@@ -273,7 +267,7 @@ export default function Hero() {
           </a>
           <RollLink
             href="#contact"
-            className="px-3 py-3 font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)] hover:text-[var(--fg)]"
+            className="px-3 py-3 font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)] hover:text-[var(--fg)]"
           >
             {lang === "id" ? "Hubungi Saya" : "Let's Talk"}
           </RollLink>

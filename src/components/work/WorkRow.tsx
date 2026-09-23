@@ -35,7 +35,7 @@ export function WorkRow({ index, title, tags, year, href, onHover }: WorkRowProp
         {title}
       </span>
 
-      <span className="relative col-start-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--mut)] md:col-start-auto md:truncate">
+      <span className="relative col-start-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)] md:col-start-auto md:truncate">
         {tags.slice(0, 3).join(" / ")}
       </span>
 

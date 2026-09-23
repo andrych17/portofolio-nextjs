@@ -30,7 +30,7 @@ export default function Footer() {
     <footer className="overflow-hidden border-t border-[var(--line)] px-[var(--pad-x)] pt-12">
       <div className="grid gap-10 md:grid-cols-3 md:gap-8 mb-10">
         <div>
-          <a href="#home" className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg)]">
+          <a href="#home" className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--fg)]">
             Portfolio
           </a>
           <p className="mt-4 text-sm text-[var(--mut)] max-w-xs">
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--mut)] mb-4">
+          <span className="block font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)] mb-4">
             {lang === "id" ? "Navigasi Cepat" : "Quick Links"}
           </span>
           <div className="flex flex-col gap-2 items-start">
@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--mut)] mb-4">
+          <span className="block font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)] mb-4">
             {lang === "id" ? "Sosial Media" : "Connect"}
           </span>
           <div className="flex flex-col gap-3 items-start">
@@ -76,12 +76,12 @@ export default function Footer() {
       </div>
 
       <div className="pt-8 border-t border-[var(--line)] flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)]">
+        <p className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)]">
           © {currentYear} Andry Huang
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)] hover:text-[var(--fg)] transition-colors py-2"
+          className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)] hover:text-[var(--fg)] transition-colors py-2"
         >
           {lang === "id" ? "Kembali ke Atas ↑" : "Back to Top ↑"}
         </button>

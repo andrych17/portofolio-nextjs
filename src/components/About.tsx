@@ -179,7 +179,7 @@ export default function About() {
               )}
             </p>
 
-            <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--mut)]">
+            <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)]">
               <MapPin className="h-3.5 w-3.5 text-[var(--accent)]" aria-hidden />
               Surabaya, Indonesia
               <span aria-hidden>/</span>
@@ -214,7 +214,7 @@ export default function About() {
             {features.map((feature, index) => (
               <Reveal key={feature.title} delay={index * 0.05}>
                 <li className="group grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-[var(--line)] py-6">
-                  <span className="pt-1 font-mono text-[11px] tabular-nums text-[var(--mut)] transition-colors group-hover:text-[var(--accent)]">
+                  <span className="pt-1 font-mono text-xs tabular-nums text-[var(--mut)] transition-colors group-hover:text-[var(--accent)]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -242,16 +242,23 @@ export default function About() {
                 <p className="mt-1 text-sm text-[var(--mut)]">{exp.company}</p>
               </div>
               <div>
-                <p className="text-sm leading-relaxed text-[var(--fg-2)]">{exp.description}</p>
+                <p className="max-w-2xl text-base leading-relaxed text-[var(--fg-2)]">{exp.description}</p>
                 {exp.achievements && exp.achievements.length > 0 && (
-                  <ul className="mt-4 space-y-2 border-t border-[var(--line)] pt-4">
-                    {exp.achievements.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs leading-normal text-[var(--fg-2)]">
-                        <span className="mt-0.5 shrink-0 text-[var(--accent)]">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  // Native disclosure: achievements stay in the DOM (SEO) but no longer flood the page.
+                  <details className="group mt-4 border-t border-[var(--line)] pt-3">
+                    <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--fg-2)] transition-colors hover:text-[var(--fg)] [&::-webkit-details-marker]:hidden">
+                      <span aria-hidden className="text-[var(--accent)] transition-transform group-open:rotate-45">+</span>
+                      {lang === "id" ? `Pencapaian utama (${exp.achievements.length})` : `Key achievements (${exp.achievements.length})`}
+                    </summary>
+                    <ul className="mt-3 space-y-3">
+                      {exp.achievements.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-sm leading-relaxed text-[var(--fg-2)]">
+                          <span aria-hidden className="mt-2 h-1 w-1 shrink-0 bg-[var(--accent)]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
                 )}
               </div>
             </div>
@@ -264,6 +271,6 @@ export default function About() {
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--mut)]">{children}</h3>
+    <h3 className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)]">{children}</h3>
   );
 }

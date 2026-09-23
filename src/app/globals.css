@@ -6,7 +6,7 @@
   --bg-2: #151515;
   --fg: #d8d8d4;
   --fg-2: #c8c8c3;
-  --mut: #7b7b76;
+  --mut: #9a9a94; /* 6.9:1 on --bg; #7b7b76 was 4.6:1 and failed over the hero video */
   --line: rgba(216, 216, 212, 0.15);
   --line-strong: rgba(216, 216, 212, 0.28);
   --accent: #ff4d00;
