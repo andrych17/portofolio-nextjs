@@ -11,13 +11,13 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  lang: "id",
+  lang: "en",
   setLang: () => {},
   toggleLang: () => {},
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Language>("id");
+  const [lang, setLangState] = useState<Language>("en");
 
   useEffect(() => {
     const saved = localStorage.getItem("portfolio_lang") as Language;
