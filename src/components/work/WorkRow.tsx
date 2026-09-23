@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Index } from "../ui/Label";
 
@@ -12,51 +10,43 @@ interface WorkRowProps {
   tags: string[];
   year?: string;
   href: string;
-  image?: string;
+  onHover?: (active: boolean) => void;
 }
 
-export function WorkRow({ index, title, tags, year, href, image }: WorkRowProps) {
-  const [hovered, setHovered] = useState(false);
-
+export function WorkRow({ index, title, tags, year, href, onHover }: WorkRowProps) {
   return (
     <Link
       href={href}
-      className="group relative flex items-center gap-4 border-b border-[var(--line)] px-[var(--pad-x)] py-7 transition-all duration-300 hover:bg-white/[0.03] md:min-h-[92px]"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => onHover?.(true)}
+      onMouseLeave={() => onHover?.(false)}
+      onFocus={() => onHover?.(true)}
+      onBlur={() => onHover?.(false)}
+      className="group relative grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 gap-y-2 border-b border-[var(--line)] px-[var(--pad-x)] py-7 md:grid-cols-[3rem_1fr_14rem_10rem_2rem] md:py-9"
     >
-      <Index n={index} className="w-8 shrink-0" />
+      {/* Hover wash rises from the bottom edge */}
+      <span
+        aria-hidden
+        className="absolute inset-0 origin-bottom scale-y-0 bg-[var(--bg-2)] transition-transform duration-500 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:scale-y-100"
+      />
 
-      <span className="flex-1 min-w-0 truncate text-lg md:text-2xl font-bold text-[var(--fg)] transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[var(--accent)]">
+      <Index n={index} className="relative transition-colors group-hover:text-[var(--accent)]" />
+
+      <span className="display relative min-w-0 break-words text-[clamp(1.6rem,1rem+2.6vw,3.75rem)] leading-[0.92] text-[var(--fg)] transition-transform duration-500 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:translate-x-3">
         {title}
       </span>
 
-      <span className="hidden md:block shrink-0 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--mut)] max-w-[28ch] truncate px-3 py-1 rounded-full bg-white/5 border border-white/10">
-        {tags.slice(0, 3).join(" · ")}
+      <span className="relative col-start-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--mut)] md:col-start-auto md:truncate">
+        {tags.slice(0, 3).join(" / ")}
       </span>
 
       {year && (
-        <span className="hidden sm:block shrink-0 font-mono text-xs tabular-nums text-[var(--mut)]">
-          {year}
-        </span>
+        <span className="relative hidden whitespace-nowrap font-mono text-xs tabular-nums text-[var(--mut)] md:block">{year}</span>
       )}
 
-      <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-[var(--accent)] group-hover:border-[var(--accent)] group-hover:scale-110">
-        <ArrowUpRight className="w-4 h-4 text-[var(--fg-2)] transition-colors group-hover:text-[var(--bg)]" />
-      </div>
-
-      {image && (
-        <div
-          aria-hidden
-          className={`pointer-events-none absolute right-[var(--pad-x)] top-1/2 hidden -translate-y-1/2 overflow-hidden rounded-2xl border border-white/20 shadow-2xl transition-all duration-500 ease-out lg:block ${
-            hovered ? "w-[240px] h-[150px] opacity-100 scale-100 rotate-1" : "w-0 h-[150px] opacity-0 scale-95"
-          }`}
-          style={{ marginRight: "14ch" }}
-        >
-          <Image src={image} alt="" fill sizes="240px" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        </div>
-      )}
+      <ArrowUpRight
+        aria-hidden
+        className="relative col-start-3 row-start-1 h-5 w-5 justify-self-end text-[var(--mut)] transition-all duration-300 group-hover:rotate-45 group-hover:text-[var(--accent)] md:col-start-auto md:row-start-auto"
+      />
     </Link>
   );
 }

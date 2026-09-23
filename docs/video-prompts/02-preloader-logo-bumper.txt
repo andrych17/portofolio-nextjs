@@ -1,0 +1,73 @@
+VIDEO 02 — Preloader: Monogram "AH" terbentuk dari sinyal
+Meniru loading ww.cons (construction-landing-web/ArchitecturalPreloader.tsx):
+video bumper logo full-screen ±2.5 detik → tirai naik → situs tampil.
+
+Cerita: sama dengan video hero 01 (Signal Paths). Pulsa sinyal oranye datang dari
+tepi frame lewat jalur-jalur lurus seperti trace sirkuit, bertemu di tengah, lalu
+menggambar monogram — seperti sistem yang "boot" dan menyusun identitas Anda.
+Preloader → hero jadi satu bahasa visual.
+
+MODE: Frames to Video (first frame + last frame). BUKAN text-to-video.
+
+Unggah (ada di folder ini):
+  First frame : logo-first-frame-16x9.png   (hitam polos #060609)
+  Last frame  : logo-end-frame-16x9.png     (monogram "AH" asli)
+Durasi: 8 detik.
+
+Kenapa first + last frame: bagian tengah boleh liar (sinyal, garis cahaya),
+tapi frame TERAKHIR dikunci ke gambar logo asli — jadi hasil akhirnya pasti
+identik dengan monogram di favicon. Prompt tidak menyebut huruf/bentuk; menyebut
+bentuk justru memancing model menggambar ulang.
+
+
+=== PROMPT ========================================================
+
+Total darkness. Thin lines of hot orange light (#ff4d00) enter from the edges of
+the frame and travel inward along straight paths with clean 90-degree and
+45-degree turns, like signals racing along the traces of a circuit board,
+leaving faint glowing trails behind them. The signals converge at the center
+of the frame, where they draw the strokes of the final mark with precise,
+confident motion, like a laser plotter. The trails behind fade out, the mark
+glows briefly brighter, then a single clean white highlight sweeps once across
+it from left to right, and everything settles into complete stillness and
+holds. Deep black background throughout, no background change. Precise,
+engineered, premium tech-noir brand ident. Subtle 35mm film grain. One
+continuous take, no cuts.
+
+
+=== NEGATIVE PROMPT ===============================================
+
+extra letters, extra strokes, wrong letters, text, typography, words, wordmark,
+numbers, binary digits, code, circuit board texture remaining at the end,
+watermark, logo morphing after it forms, wobbling, melting, liquid distortion,
+rotation, spinning, flipping, 3d extrusion, bouncing, elastic motion, camera
+shake, fast zoom, background change, light background, smoke clouds, fire
+flames, explosion, fireworks, confetti, blue, cyan, pink, green, rainbow,
+neon tubes, heavy lens flare, glitch effect, cartoon, 3d render look
+
+
+=== CATATAN =======================================================
+
+1. Yang wajib sempurna: 2–3 detik TERAKHIR (logo sudah jadi & diam), latar kembali
+   hitam polos tanpa sisa jalur. Cek frame terakhir identik dengan logo-end-frame.
+   Bagian tengah (sinyal bergerak) boleh abstrak.
+
+2. Potong untuk preloader (±2.8 detik): ambil dari saat garis cahaya mulai
+   bergerak sampai logo diam, biasanya detik ~3.5 s/d ~6.3:
+
+   ffmpeg -ss 3.5 -t 2.8 -i hasil_flow.mp4 -an -vf scale=1280:-2 -c:v libx264 \
+     -crf 24 -preset slow -pix_fmt yuv420p -movflags +faststart public/videos/logo.mp4
+
+   Durasi potongan ikut timing video — kirim video mentahnya, saya pilih titik potong.
+   Target ≤ 800 KB.
+
+3. Kalau logo di frame terakhir tidak identik, generate ulang.
+
+
+
+=== PEMASANGAN (saya kerjakan setelah video dikirim) ==============
+
+- video full-screen `autoPlay muted playsInline preload="auto"`, latar #060609
+- selesai → tirai naik (y: -100%, ease [0.76, 0, 0.24, 1]), sama seperti ww.cons
+- `onError` → fallback ke preloader sekarang (monogram + counter %)
+- `prefers-reduced-motion` → preloader dilewati; tetap sekali per sesi

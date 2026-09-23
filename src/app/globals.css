@@ -38,6 +38,8 @@
 }
 
 body {
+  /* Font variables live on <body>, so the family must be set here, not on <html>. */
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   background: var(--bg);
   color: var(--fg);
   overflow-x: hidden;
@@ -100,7 +102,44 @@ html {
 }
 
 /* =============================================
-   AMBIENT GRID & SPATIAL LIGHTING
+   DISPLAY TYPE — condensed Archivo, used for huge headlines
+   ============================================= */
+.display {
+  font-family: var(--font-archivo), var(--font-geist-sans), sans-serif;
+  font-stretch: 72%;
+  /* next/font's @font-face omits the stretch range, so drive the axis directly. */
+  font-variation-settings: "wdth" 72;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.82;
+}
+
+.serif-accent {
+  font-family: var(--font-instrument), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+/* =============================================
+   MARQUEE — duplicated track, translate -50%
+   ============================================= */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* =============================================
+   AMBIENT GRID (preloader)
    ============================================= */
 .ambient-grid {
   background-size: 48px 48px;
@@ -109,49 +148,7 @@ html {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-.glow-orb-orange {
-  position: absolute;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(255, 77, 0, 0.16) 0%, rgba(255, 77, 0, 0.04) 45%, transparent 70%);
-  filter: blur(60px);
-  pointer-events: none;
-}
 
-.glow-orb-violet {
-  position: absolute;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 70%);
-  filter: blur(70px);
-  pointer-events: none;
-}
-
-/* =============================================
-   GLASS & DOUBLE-BEZEL CARDS (Awwwards-Tier)
-   ============================================= */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.025);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
-}
-
-.glass-card {
-  background: rgba(21, 21, 21, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card:hover {
-  border-color: rgba(255, 77, 0, 0.35);
-  box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
-    0 12px 30px -10px rgba(255, 77, 0, 0.12);
-  transform: translateY(-2px);
-}
 
 /* =============================================
    ROLL — stacked text, translateY hover swap
@@ -201,6 +198,12 @@ html {
   }
   .animate-pulse-halo {
     animation: none;
+  }
+  .scroll-word {
+    opacity: 1 !important;
+  }
+  .motion-video {
+    display: none;
   }
   * {
     animation-duration: 0.01ms !important;

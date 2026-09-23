@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, Github, Linkedin, MessageCircle } from "lucide-react";
+import { Github, Linkedin, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { RollLink, RollText } from "./ui/RollLink";
 
@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-[var(--line)] px-[var(--pad-x)] py-12">
+    <footer className="overflow-hidden border-t border-[var(--line)] px-[var(--pad-x)] pt-12">
       <div className="grid gap-10 md:grid-cols-3 md:gap-8 mb-10">
         <div>
           <a href="#home" className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg)]">
@@ -76,10 +76,8 @@ export default function Footer() {
       </div>
 
       <div className="pt-8 border-t border-[var(--line)] flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm text-[var(--mut)] flex items-center gap-1.5">
-          © {currentYear} {lang === "id" ? "Dibuat dengan" : "Made with"}
-          <Heart className="w-3.5 h-3.5 text-[var(--accent)] fill-[var(--accent)]" aria-hidden />
-          {lang === "id" ? "oleh Andry Huang" : "by Andry Huang"}
+        <p className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)]">
+          © {currentYear} Andry Huang
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -88,6 +86,11 @@ export default function Footer() {
           {lang === "id" ? "Kembali ke Atas ↑" : "Back to Top ↑"}
         </button>
       </div>
+
+      {/* Closing wordmark, cropped by the viewport bottom */}
+      <p aria-hidden className="display mt-10 -mb-[0.16em] select-none whitespace-nowrap text-center text-[18.5vw] text-[var(--bg-2)]">
+        Andry Huang
+      </p>
     </footer>
   );
 }

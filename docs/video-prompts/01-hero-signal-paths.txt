@@ -1,0 +1,58 @@
+VIDEO 01 — Hero: Signal Paths (UTAMA)
+Latar full-bleed Hero, di belakang "ANDRY HUANG".
+
+Cerita: "saya membangun sistem tempat data mengalir". Makro papan sirkuit hitam
+di kegelapan; pulsa cahaya oranye mengalir di jalur-jalurnya dan bermuara ke satu
+inti — seperti request yang melewati service-service lalu diproses. Merepresentasikan
+backend, sistem terdistribusi, dan pipeline data/AI tanpa klise kode di layar.
+Garis-garis lurus sirkuit juga selaras dengan garis kolom hairline di hero.
+
+Mode: text-to-video · 16:9 · 8 detik · tanpa aset.
+
+
+=== PROMPT ========================================================
+
+Extreme macro shot looking straight down at a matte black circuit board in
+near-total darkness. Fine copper traces run in clean straight lines and 45-degree
+angles across the board, barely visible as dark metallic lines. Small pulses of
+hot orange light (#ff4d00) travel along the traces from the edges of the frame,
+following the paths, splitting at junctions and merging again, all flowing
+calmly toward a small dark processor die in the center of the frame, which
+glows softly warmer each time a pulse arrives. A faint cool violet reflection
+catches the metallic edges far from the center. Very shallow depth of field:
+the center is sharp, the edges melt into soft blur and black. Slow, calm,
+precise, rhythmic, like a system handling traffic. Very low overall brightness,
+deep blacks, photorealistic macro photography, subtle 35mm film grain. Locked-off
+camera with an almost imperceptible slow push in. One continuous take, no cuts,
+no text, no people. 16:9.
+
+
+=== NEGATIVE PROMPT ===============================================
+
+text, letters, numbers, part numbers, chip markings, labels, silkscreen text,
+logos, brand names, watermark, green PCB, blue PCB, bright solder, colorful
+components, blue light, cyan, pink, green glow, rainbow, neon overload,
+sparks, fire, smoke, electric arcs, lightning, explosion, glitch effect,
+matrix code, binary digits, holograms, UI screens, monitors, people, hands,
+fast motion, chaotic motion, strobing, camera shake, whip pan, zoom burst,
+overexposed, bright areas, cartoon, illustration, 3d render look, low resolution
+
+
+=== KENAPA DITOLAK ================================================
+
+tulisan di chip / PCB   : PCB asli penuh kode part — Veo menambahkannya jadi huruf acak
+PCB hijau / biru        : merusak palet hitam + satu aksen oranye
+kode matrix / hologram  : klise "hacker" yang justru terlihat template
+percikan / busur listrik: jadi dramatis murahan; alirannya harus tenang seperti sistem sehat
+
+
+=== CATATAN =======================================================
+
+1. Pulsa oranye harus terasa "teratur", seperti trafik yang ditangani dengan baik —
+   bukan kacau. Kalau semrawut, generate ulang.
+2. Inti (processor) sebaiknya di tengah frame; di HP hanya bagian tengah yang terlihat.
+3. Cek frame per frame: tidak boleh ada tulisan/angka di papan atau chip.
+4. Kalau terlalu terang di situs:
+   -vf "scale=1920:-2,eq=brightness=-0.06:saturation=0.9"
+
+Target: public/videos/hero.mp4 · ≤ 3 MB.

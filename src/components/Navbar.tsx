@@ -65,17 +65,11 @@ export default function Navbar() {
           isOpen
             ? "bg-[var(--bg)] border-b border-[var(--line)]"
             : scrolled
-            ? "py-3 px-4 sm:px-6"
-            : "py-5 px-[var(--pad-x)]"
+            ? "py-1 px-[var(--pad-x)] bg-[var(--bg)]/80 backdrop-blur-md border-b border-[var(--line)]"
+            : "py-5 px-[var(--pad-x)] border-b border-transparent"
         }`}
       >
-        <div
-          className={`transition-all duration-300 ${
-            scrolled && !isOpen
-              ? "max-w-5xl mx-auto rounded-full border border-white/10 bg-[var(--bg-2)]/80 backdrop-blur-xl shadow-[0_16px_36px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.12)] px-6"
-              : "w-full"
-          }`}
-        >
+        <div className="w-full">
           <div className="flex items-center justify-between h-14">
             <Link
               href="/"
@@ -90,7 +84,8 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-7">
               <div className="flex gap-5">
                 {navItems.map((item) => {
-                  const isActive = item.page === pathname;
+                  // Hash links on "/" are sections, not pages — only real routes get the active state.
+                  const isActive = !item.href.includes("#") && item.page === pathname;
                   return (
                     <RollLink
                       key={item.name}
@@ -158,7 +153,7 @@ export default function Navbar() {
             {/* Nav list */}
             <div className="flex flex-col">
               {navItems.map((item, index) => {
-                const isActive = item.page === pathname;
+                const isActive = !item.href.includes("#") && item.page === pathname;
                 return (
                   <motion.div
                     key={item.name}

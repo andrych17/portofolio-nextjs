@@ -110,8 +110,6 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="relative overflow-hidden">
-      <div className="glow-orb-violet w-[500px] h-[500px] top-1/2 -right-32 opacity-35 pointer-events-none" />
-      <div className="glow-orb-orange w-[450px] h-[450px] bottom-10 -left-28 opacity-30 pointer-events-none" />
 
       <SectionHead index="03" label={lang === "id" ? "Sertifikasi & Penghargaan" : "Certifications & Awards"} />
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Code2, Database, Cloud, Server, Layers, Zap, MapPin, GraduationCap, FileText, Download } from "lucide-react";
+import { MapPin, GraduationCap, FileText, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "./ui/Reveal";
 import { SectionHead } from "./ui/Label";
@@ -118,32 +118,26 @@ export default function About() {
 
   const features = [
     {
-      icon: Code2,
       title: "Full-Stack Development",
       description: "Building end-to-end solutions from frontend to backend with modern technologies.",
     },
     {
-      icon: Server,
       title: "Backend Specialist",
       description: ".NET Core, Node.js, Nest.js, Laravel - optimized for performance and scalability.",
     },
     {
-      icon: Layers,
       title: "Frontend Excellence",
       description: "Next.js, React, Flutter - crafting beautiful and responsive user interfaces.",
     },
     {
-      icon: Database,
       title: "Database Design",
       description: "PostgreSQL, MySQL, SQL Server, MongoDB - optimized queries and data architecture.",
     },
     {
-      icon: Cloud,
       title: "Cloud & DevOps",
       description: "AWS, Azure, Docker, CI/CD pipelines - deploying and scaling applications.",
     },
     {
-      icon: Zap,
       title: "API Integration",
       description: "RESTful APIs, GraphQL, third-party integrations including OpenAI, DBS Bank, SharePoint.",
     },
@@ -151,26 +145,22 @@ export default function About() {
 
   return (
     <section id="about" className="relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="glow-orb-orange w-[450px] h-[450px] top-1/4 -right-20 opacity-50 pointer-events-none" />
-      <div className="glow-orb-violet w-[500px] h-[500px] bottom-10 -left-24 opacity-40 pointer-events-none" />
 
       <SectionHead index="01" label={lang === "id" ? "Tentang Saya" : "About Me"} />
 
       <div className="px-[var(--pad-x)] py-[var(--sec-sm)] relative z-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
-          {/* Photo + bio + badges */}
+          {/* Photo + bio */}
           <Reveal>
-            <div className="p-2 rounded-3xl bg-white/[0.03] border border-white/10 shadow-2xl max-w-sm">
-              <div className="relative w-full aspect-square overflow-hidden rounded-2xl border border-white/10">
-                <Image
-                  src="/img/foto.jpg"
-                  alt="Andry Huang"
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  priority
-                />
-              </div>
+            <div className="group relative aspect-[4/5] w-full max-w-sm overflow-hidden bg-[var(--bg-2)]">
+              <Image
+                src="/img/foto.jpg"
+                alt="Andry Huang"
+                fill
+                sizes="(max-width: 1024px) 90vw, 384px"
+                className="object-cover grayscale contrast-[1.08] transition-[filter,transform] duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:scale-[1.03] group-hover:grayscale-0"
+                priority
+              />
             </div>
 
             <p className="mt-8 max-w-prose text-[var(--t-body)] leading-relaxed text-[var(--fg-2)]">
@@ -189,57 +179,52 @@ export default function About() {
               )}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.14em] text-[var(--mut)]">
-              <span className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5">
-                <MapPin className="w-3.5 h-3.5 text-[var(--accent)]" aria-hidden />
-                Surabaya, Indonesia
-              </span>
-              <span className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5">
-                <GraduationCap className="w-3.5 h-3.5 text-[var(--accent)]" aria-hidden />
-                S1 Teknik Informatika (UBAYA)
-              </span>
-            </div>
+            <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--mut)]">
+              <MapPin className="h-3.5 w-3.5 text-[var(--accent)]" aria-hidden />
+              Surabaya, Indonesia
+              <span aria-hidden>/</span>
+              <GraduationCap className="h-3.5 w-3.5 text-[var(--accent)]" aria-hidden />
+              S1 Teknik Informatika (UBAYA)
+            </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-6">
               <a
                 href="/Andry_Huang_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--accent)] text-[var(--bg)] font-mono text-xs font-bold uppercase tracking-[0.1em] shadow-lg hover:shadow-[0_0_20px_rgba(255,77,0,0.4)] transition-all active:scale-95"
+                className="group inline-flex min-h-11 items-center gap-3 rounded-full bg-[var(--fg)] px-5 font-mono text-xs font-bold uppercase tracking-[0.1em] text-[var(--bg)] transition-colors duration-300 hover:bg-[var(--accent)] active:scale-[0.97]"
               >
-                <FileText className="w-4 h-4" aria-hidden />
+                <FileText className="h-4 w-4" aria-hidden />
                 <span>{lang === "id" ? "Unduh CV (PDF)" : "Download CV (PDF)"}</span>
-                <span className="w-5 h-5 rounded-full bg-black/15 flex items-center justify-center transition-transform group-hover:translate-x-0.5">
-                  ↓
-                </span>
+                <span aria-hidden className="transition-transform group-hover:translate-y-0.5">↓</span>
               </a>
               <a
                 href="/Andry_Huang_CV.docx"
                 download
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 bg-white/5 text-[var(--fg-2)] font-mono text-xs uppercase tracking-[0.1em] hover:bg-white/10 hover:text-[var(--fg)] hover:border-white/20 transition-all"
+                className="inline-flex min-h-11 items-center gap-2 border-b border-[var(--line-strong)] font-mono text-xs uppercase tracking-[0.1em] text-[var(--fg-2)] transition-colors hover:border-[var(--fg)] hover:text-[var(--fg)]"
               >
-                <Download className="w-4 h-4 text-[var(--mut)]" aria-hidden />
+                <Download className="h-4 w-4 text-[var(--mut)]" aria-hidden />
                 {lang === "id" ? "Format DOCX" : "DOCX Format"}
               </a>
             </div>
           </Reveal>
 
-          {/* Feature list */}
-          <div className="grid sm:grid-cols-2 gap-4">
+          {/* Capabilities — numbered index rows, not icon cards */}
+          <ol className="border-t border-[var(--line)]">
             {features.map((feature, index) => (
-              <Reveal key={feature.title} delay={index * 0.06}>
-                <div className="p-5 rounded-2xl glass-card border border-white/10 h-full flex flex-col justify-between">
+              <Reveal key={feature.title} delay={index * 0.05}>
+                <li className="group grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-[var(--line)] py-6">
+                  <span className="pt-1 font-mono text-[11px] tabular-nums text-[var(--mut)] transition-colors group-hover:text-[var(--accent)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <div>
-                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 text-[var(--accent)]">
-                      <feature.icon className="w-4.5 h-4.5" aria-hidden />
-                    </div>
-                    <h3 className="font-semibold text-[var(--fg)] mb-1.5 text-base">{feature.title}</h3>
-                    <p className="text-xs text-[var(--mut)] leading-relaxed">{feature.description}</p>
+                    <h3 className="display text-[clamp(1.5rem,1rem+1.6vw,2.5rem)] text-[var(--fg)]">{feature.title}</h3>
+                    <p className="mt-2 max-w-md text-sm leading-relaxed text-[var(--mut)]">{feature.description}</p>
                   </div>
-                </div>
+                </li>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
 

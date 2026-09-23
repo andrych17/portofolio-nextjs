@@ -58,8 +58,6 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative overflow-hidden">
-      <div className="glow-orb-violet w-[450px] h-[450px] top-1/3 -left-28 opacity-40 pointer-events-none" />
-      <div className="glow-orb-orange w-[500px] h-[500px] bottom-10 -right-24 opacity-40 pointer-events-none" />
 
       <SectionHead index="02" label={lang === "id" ? "Keahlian & Teknologi" : "Skills & Stack"} />
 

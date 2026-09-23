@@ -31,9 +31,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative overflow-hidden">
-      <div className="glow-orb-orange w-[550px] h-[550px] -bottom-20 -left-20 opacity-40 pointer-events-none" />
-      <div className="glow-orb-violet w-[500px] h-[500px] top-10 -right-20 opacity-30 pointer-events-none" />
+    <section id="contact" className="relative">
 
       <SectionHead index="05" label={lang === "id" ? "Kontak & Pertanyaan" : "Contact & Inquiries"} />
 
@@ -45,12 +43,9 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="group inline-block"
           >
-            <h2
-              className="font-bold uppercase leading-[0.9] tracking-[-0.03em] text-[var(--fg)] transition-all group-hover:text-[var(--accent)]"
-              style={{ fontSize: "var(--t-display)" }}
-            >
+            <h2 className="display text-[clamp(3.5rem,1rem+10.5vw,13rem)] text-[var(--fg)] transition-colors duration-500 group-hover:text-[var(--accent)]">
               {lang === "id" ? "Hubungi Saya" : "Get In Touch"}
-              <span className="inline-block text-[var(--accent)] ml-2 group-hover:translate-x-3 transition-transform">
+              <span aria-hidden className="ml-[0.15em] inline-block text-[var(--accent)] transition-transform duration-500 group-hover:translate-x-4">
                 →
               </span>
             </h2>
@@ -72,14 +67,17 @@ export default function Contact() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-6 border-b border-[var(--line)] py-6 px-3 rounded-2xl transition-all duration-300 hover:bg-white/[0.03]"
+                className="group relative flex items-center gap-6 border-b border-[var(--line)] py-6"
               >
                 <Index n={index + 1} className="w-8 shrink-0" />
-                <span className="flex-1 text-xl md:text-2xl font-bold text-[var(--fg)] transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[var(--accent)]">
+                <span className="display flex-1 text-[clamp(1.75rem,1rem+2vw,3rem)] text-[var(--fg)] transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[var(--accent)]">
                   {link.label}
                 </span>
-                <span className="font-mono text-xs text-[var(--fg-2)] px-3 py-1 rounded-full border border-white/10 bg-white/5">
+                <span className="hidden font-mono text-xs text-[var(--mut)] transition-colors group-hover:text-[var(--fg)] sm:block">
                   {link.sub}
+                </span>
+                <span aria-hidden className="text-[var(--mut)] transition-all duration-300 group-hover:-rotate-45 group-hover:text-[var(--accent)]">
+                  →
                 </span>
               </a>
             </Reveal>
