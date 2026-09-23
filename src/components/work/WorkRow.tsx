@@ -10,17 +10,12 @@ interface WorkRowProps {
   tags: string[];
   year?: string;
   href: string;
-  onHover?: (active: boolean) => void;
 }
 
-export function WorkRow({ index, title, tags, year, href, onHover }: WorkRowProps) {
+export function WorkRow({ index, title, tags, year, href }: WorkRowProps) {
   return (
     <Link
       href={href}
-      onMouseEnter={() => onHover?.(true)}
-      onMouseLeave={() => onHover?.(false)}
-      onFocus={() => onHover?.(true)}
-      onBlur={() => onHover?.(false)}
       className="group relative grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 gap-y-2 border-b border-[var(--line)] px-[var(--pad-x)] py-7 md:grid-cols-[3rem_1fr_14rem_10rem_2rem] md:py-9"
     >
       {/* Hover wash rises from the bottom edge */}
@@ -50,3 +45,4 @@ export function WorkRow({ index, title, tags, year, href, onHover }: WorkRowProp
     </Link>
   );
 }
+

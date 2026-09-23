@@ -18,8 +18,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Manifesto />
-      <FeaturedWork />
       <About />
+      <FeaturedWork />
       <Skills />
       <Certifications />
       <FAQ />
