@@ -24,10 +24,10 @@ const rolesId = [
 const EASE = [0.83, 0, 0.17, 1] as const;
 
 // ponytail: wait out the first-visit preloader (3.1s logo video) so the name rises as the curtain lifts.
-// The preloader's own sessionStorage flag decides; cached once so later flag writes don't shift timing.
+// The preloader's own localStorage flag decides; cached once so later flag writes don't shift timing.
 let introDelayCache: number | null = null;
 const readIntroDelay = () =>
-  (introDelayCache ??= sessionStorage.getItem("portfolio_preloaded") ? 0.15 : 3.3);
+  (introDelayCache ??= localStorage.getItem("portfolio_preloaded") ? 0.15 : 3.3);
 const noopSubscribe = () => () => {};
 
 // Letters rise out of a clipped line, one after another.

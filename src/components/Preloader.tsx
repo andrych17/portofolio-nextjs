@@ -3,15 +3,15 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const SESSION_KEY = "portfolio_preloaded";
+const STORAGE_KEY = "portfolio_preloaded";
 // Bumper is 3.1s; this only matters if the video stalls or never fires `ended`.
 const SAFETY_MS = 5200;
 
-// Decide once per page load: first visit this session and motion allowed.
+// Decide once per page load: first visit on this browser and motion allowed.
 let shouldShowCache: boolean | null = null;
 const readShouldShow = () =>
   (shouldShowCache ??=
-    !sessionStorage.getItem(SESSION_KEY) && !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    !localStorage.getItem(STORAGE_KEY) && !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 const noopSubscribe = () => () => {};
 
 /**
@@ -26,7 +26,7 @@ export default function Preloader() {
 
   useEffect(() => {
     if (!shouldShow) return;
-    sessionStorage.setItem(SESSION_KEY, "1");
+    localStorage.setItem(STORAGE_KEY, "1");
     document.body.style.overflow = "hidden";
     const safety = setTimeout(() => setDone(true), SAFETY_MS);
     return () => clearTimeout(safety);
