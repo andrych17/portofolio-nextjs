@@ -25,10 +25,10 @@ const experiencesEn = [
     title: "Freelance Fullstack & AI Engineer",
     company: "Self-employed, Surabaya (Remote)",
     description:
-      "AI products and business systems for clients and for myself: Qualiv, Nagamasban AI, OpenClaw, Stock Portfolio AI, Wonderful Works, and Laravel ERP/POS systems for local retailers.",
+      "AI products and business systems for clients and for myself: Qualiv, Nagamasban AI, OpenClaw, Stock Portfolio AI, Wonderful Works, the Knit and Cro online shop, and POS systems for retail stores.",
     achievements: [
       "Build AI products end to end, from architecture to production: Qualiv, an AI recruitment SaaS, and an AI tire-recommendation assistant for PT Nagamasban.",
-      "Deliver client systems: the Wonderful Works website and CMS, and Laravel ERP/POS systems for tire, jewelry (RFID), yarn, and grocery retailers.",
+      "Build POS and inventory systems for retail stores (yarn, RFID jewelry, grocery, tire), plus the Knit and Cro online shop and the Wonderful Works website and CMS.",
     ],
   },
   {
@@ -77,10 +77,10 @@ const experiencesId = [
     title: "Freelance Fullstack & AI Engineer",
     company: "Mandiri, Surabaya (Remote)",
     description:
-      "Produk AI dan sistem bisnis untuk klien maupun untuk saya sendiri: Qualiv, Nagamasban AI, OpenClaw, Stock Portfolio AI, Wonderful Works, dan ERP/POS Laravel untuk toko retail lokal.",
+      "Produk AI dan sistem bisnis untuk klien maupun untuk saya sendiri: Qualiv, Nagamasban AI, OpenClaw, Stock Portfolio AI, Wonderful Works, online shop Knit and Cro, dan sistem POS untuk toko retail.",
     achievements: [
       "Membangun produk AI dari arsitektur sampai production: Qualiv, SaaS rekrutmen berbasis AI, dan asisten rekomendasi ban berbasis AI untuk PT Nagamasban.",
-      "Mengerjakan sistem klien: website dan CMS Wonderful Works, serta ERP/POS Laravel untuk toko ban, toko emas (RFID), toko benang, dan toko grosir.",
+      "Membangun sistem POS dan inventaris untuk toko retail (toko benang, toko emas dengan RFID, toko grosir, toko ban), ditambah online shop Knit and Cro serta website dan CMS Wonderful Works.",
     ],
   },
   {
