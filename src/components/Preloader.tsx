@@ -33,14 +33,6 @@ export default function Preloader() {
   const [done, setDone] = useState(false);
   const visible = shouldShow && !done;
 
-  const [videoSrc, setVideoSrc] = useState("/videos/logo.mp4");
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches) {
-      setVideoSrc("/videos/logo-mobile.mp4");
-    }
-  }, []);
-
   const handleDone = () => {
     setDone(true);
     document.body.style.overflow = "";
@@ -79,9 +71,9 @@ export default function Preloader() {
           onClick={handleDone}
           title="Click to skip"
         >
+          {/* One portrait welcome video for every screen; object-contain letterboxes it on desktop. */}
           <video
-            key={videoSrc}
-            src={videoSrc}
+            src="/videos/logo.mp4"
             autoPlay
             muted
             playsInline
@@ -89,10 +81,7 @@ export default function Preloader() {
             onEnded={handleDone}
             onError={handleDone}
             className="h-full w-full object-contain"
-          >
-            <source src="/videos/logo-mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
-            <source src="/videos/logo.mp4" type="video/mp4" />
-          </video>
+          />
           <div className="pointer-events-none absolute bottom-6 right-6 flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-white/40 uppercase">
             <span>Skip</span>
             <span aria-hidden>→</span>
