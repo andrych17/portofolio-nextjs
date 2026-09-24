@@ -41,18 +41,31 @@ export default function Preloader() {
     }
   }, []);
 
+  const handleDone = () => {
+    setDone(true);
+    document.body.style.overflow = "";
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("portfolio:preloader-done"));
+    }
+  };
+
   useEffect(() => {
     if (!shouldShow) return;
     try {
       sessionStorage.setItem(STORAGE_KEY, "1");
     } catch (e) {}
     document.body.style.overflow = "hidden";
-    const safety = setTimeout(() => setDone(true), SAFETY_MS);
+    const safety = setTimeout(handleDone, SAFETY_MS);
     return () => clearTimeout(safety);
   }, [shouldShow]);
 
   useEffect(() => {
-    if (done) document.body.style.overflow = "";
+    if (done) {
+      document.body.style.overflow = "";
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("portfolio:preloader-done"));
+      }
+    }
   }, [done]);
 
   return (
@@ -63,7 +76,7 @@ export default function Preloader() {
           initial={{ y: 0 }}
           exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } }}
           className="fixed inset-0 z-[110] bg-[#060609] cursor-pointer"
-          onClick={() => setDone(true)}
+          onClick={handleDone}
           title="Click to skip"
         >
           <video
@@ -73,8 +86,8 @@ export default function Preloader() {
             muted
             playsInline
             preload="auto"
-            onEnded={() => setDone(true)}
-            onError={() => setDone(true)}
+            onEnded={handleDone}
+            onError={handleDone}
             className="h-full w-full object-contain"
           >
             <source src="/videos/logo-mobile.mp4" media="(max-width: 768px)" type="video/mp4" />

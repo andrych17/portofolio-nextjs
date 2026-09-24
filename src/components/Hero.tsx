@@ -23,19 +23,48 @@ const rolesId = [
 
 const EASE = [0.83, 0, 0.17, 1] as const;
 
-// Wait out the first-visit preloader (4s video) so the name rises as the curtain lifts.
-// The preloader's own sessionStorage flag decides; cached once so later flag writes don't shift timing.
-let introDelayCache: number | null = null;
-const readIntroDelay = () => {
-  if (typeof window === "undefined") return 0;
-  if (introDelayCache !== null) return introDelayCache;
-  const isPreloaded = !!sessionStorage.getItem("portfolio_preloaded");
-  return (introDelayCache = isPreloaded ? 0.15 : 4.2);
+// Preloader coordination:
+// If already preloaded in this session or reduced motion, animate immediately (0.15s).
+// Otherwise, wait until the preloader curtain lifts (via event 'portfolio:preloader-done').
+let isPreloadedCache: boolean | null = null;
+const checkAlreadyPreloaded = () => {
+  if (typeof window === "undefined") return false;
+  if (isPreloadedCache !== null) return isPreloadedCache;
+  try {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const preloaded = !!sessionStorage.getItem("portfolio_preloaded");
+    return (isPreloadedCache = preloaded || reduced);
+  } catch (e) {
+    return (isPreloadedCache = true);
+  }
 };
-const noopSubscribe = () => () => {};
+
+let preloaderDoneGlobal = false;
+const subscribePreloader = (callback: () => void) => {
+  if (typeof window === "undefined") return () => {};
+  const handler = () => {
+    preloaderDoneGlobal = true;
+    callback();
+  };
+  window.addEventListener("portfolio:preloader-done", handler);
+  return () => window.removeEventListener("portfolio:preloader-done", handler);
+};
+const getPreloaderSnapshot = () => {
+  return checkAlreadyPreloaded() || preloaderDoneGlobal;
+};
 
 // Letters rise out of a clipped line, one after another.
-function RiseWord({ word, delay, reduced }: { word: string; delay: number; reduced: boolean | null }) {
+function RiseWord({
+  word,
+  delay,
+  reduced,
+  isReady,
+}: {
+  word: string;
+  delay: number;
+  reduced: boolean | null;
+  isReady: boolean;
+}) {
   return (
     <span aria-hidden className="inline-flex shrink-0 overflow-hidden pb-[0.04em]">
       {word.split("").map((ch, i) => (
@@ -43,7 +72,7 @@ function RiseWord({ word, delay, reduced }: { word: string; delay: number; reduc
           key={i}
           className="inline-block"
           initial={reduced ? false : { y: "105%" }}
-          animate={{ y: 0 }}
+          animate={isReady ? { y: 0 } : { y: "105%" }}
           transition={{ duration: 0.9, delay: delay + i * 0.035, ease: EASE }}
         >
           {ch}
@@ -56,12 +85,24 @@ function RiseWord({ word, delay, reduced }: { word: string; delay: number; reduc
 export default function Hero() {
   const { lang } = useLanguage();
   const [currentRole, setCurrentRole] = useState(0);
-  const introDelay = useSyncExternalStore(noopSubscribe, readIntroDelay, () => null);
+  const isReady = useSyncExternalStore(subscribePreloader, getPreloaderSnapshot, () => false);
+  const isPreloaded = checkAlreadyPreloaded();
+  const baseDelay = isPreloaded ? 0.15 : 0.05;
   const reduced = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
 
   const roles = lang === "id" ? rolesId : rolesEn;
   const yearsOfExperience = getYearsOfExperience();
+
+  // Safety fallback in case preloader event was missed
+  useEffect(() => {
+    if (!isReady) {
+      const fallback = setTimeout(() => {
+        preloaderDoneGlobal = true;
+      }, 5000);
+      return () => clearTimeout(fallback);
+    }
+  }, [isReady]);
 
   // ponytail: interval-driven kinetic role cycling eliminates CPU tick loops on mobile
   useEffect(() => {
@@ -95,8 +136,8 @@ export default function Hero() {
       ? {}
       : {
           initial: { opacity: 0, y: 16 },
-          animate: introDelay === null ? undefined : { opacity: 1, y: 0 },
-          transition: { duration: 0.7, delay: (introDelay ?? 0) + d, ease: EASE },
+          animate: isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
+          transition: { duration: 0.7, delay: baseDelay + d, ease: EASE },
         };
 
   return (
@@ -172,17 +213,8 @@ export default function Hero() {
           aria-label="Andry Huang"
           className="display flex flex-col sm:flex-row sm:gap-[0.2em] text-[var(--fg)] text-[clamp(2.5rem,7.5vw,6.25rem)] leading-none tracking-tight"
         >
-          {introDelay !== null ? (
-            <>
-              <RiseWord word="ANDRY" delay={introDelay} reduced={reduced} />
-              <RiseWord word="HUANG" delay={introDelay + 0.12} reduced={reduced} />
-            </>
-          ) : (
-            // Placeholder keeps layout stable before the delay is known.
-            <span aria-hidden className="invisible">
-              ANDRY HUANG
-            </span>
-          )}
+          <RiseWord word="ANDRY" delay={baseDelay} reduced={reduced} isReady={isReady} />
+          <RiseWord word="HUANG" delay={baseDelay + 0.12} reduced={reduced} isReady={isReady} />
         </h1>
 
         <div className="mt-10 grid gap-8 border-t border-[var(--line)] pt-6 md:grid-cols-4 md:gap-0">
