@@ -71,9 +71,10 @@ export default function Preloader() {
           onClick={handleDone}
           title="Click to skip"
         >
-          {/* One portrait welcome video for every screen; object-contain letterboxes it on desktop. */}
+          {/* Landscape video (1920x1080) on desktop, portrait (1080x1920) on phones.
+              ponytail: native <source media> picks the file, no JS. Browsers that ignore
+              `media` on video sources take the first match, so desktop is listed first as the safe fallback. */}
           <video
-            src="/videos/logo.mp4"
             autoPlay
             muted
             playsInline
@@ -81,7 +82,11 @@ export default function Preloader() {
             onEnded={handleDone}
             onError={handleDone}
             className="h-full w-full object-contain"
-          />
+          >
+            <source src="/videos/logo.mp4?v=2" media="(min-width: 769px)" type="video/mp4" />
+            {/* With <source> children the error fires here, not on <video>; the last source failing means none can play. */}
+            <source src="/videos/logo-mobile.mp4?v=2" type="video/mp4" onError={handleDone} />
+          </video>
           <div className="pointer-events-none absolute bottom-6 right-6 flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-white/40 uppercase">
             <span>Skip</span>
             <span aria-hidden>→</span>
