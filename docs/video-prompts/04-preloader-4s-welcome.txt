@@ -1,0 +1,55 @@
+================================================================================
+VIDEO PROMPT: PRELOADER 4 DETIK (WELCOME TO PORTFOLIO / ANDRY HUANG)
+================================================================================
+Durasi Target: 4.0 Detik
+Format: 16:9 (1920x1080) / Landscape & 9:16 (1080x1920) untuk Mobile
+Engine: Google Flow (Veo 3.1) / Kling AI / Runway Gen-3
+
+--------------------------------------------------------------------------------
+STRUKTUR TIMING 4 DETIK:
+--------------------------------------------------------------------------------
+- Detik 0.0 – 2.0 : Laser sinyal oranye (#ff4d00) & amber masuk dari sudut-sudut frame, bergerak presisi 90°/45° menuju center.
+- Detik 2.0 – 3.2 : Sinyal konvergen membentuk inti / mark, optical shimmer putih tipis menyapu mark.
+- Detik 3.2 – 4.0 : Mark stabil sempurna di atas latar pitch-black (#060609), siap transisi curtain reveal.
+
+--------------------------------------------------------------------------------
+PROMPT VARIASI 1: LASER ENGRAVING / TYPOGRAPHY TRACING (Teks Jadi Bintang Utama)
+--------------------------------------------------------------------------------
+[Deskripsi]: Garis laser oranye menggambar teks "WELCOME TO MY PORTFOLIO" dan "by Andry Huang" secara presisi di tengah layar hitam.
+
+[PROMPT]:
+Cinematic macro dark-tech title reveal, 4 seconds duration. Solid pitch-black background (#060609). A sharp focused orange laser beam (#ff4d00) moves across the center of the frame, precisely tracing and drawing crisp, glowing typography: "WELCOME TO MY PORTFOLIO" in clean, spaced uppercase sans-serif letters, followed by a smaller elegant subtext "by Andry Huang". As the laser finishes tracing each character, the amber glow settles into a clean, razor-sharp warm white and orange finish. At 3.0 seconds, a soft optical highlight glides horizontally across the completed text. High dynamic range, deep rich blacks, 60fps, 4K resolution, ultra-clean Swiss typography aesthetic.
+
+[NEGATIVE PROMPT]:
+misspelling, incorrect letters, blurry text, messy fire, smoke clouds, explosion, cartoon, 3D bubble fonts, rainbow colors, blue glow, dirty background, camera shake, low quality.
+
+--------------------------------------------------------------------------------
+PROMPT VARIASI 2: MINIMALIST AMBIENT PULSE + TITLE CARD (Gaya Luxury Dark Tech)
+--------------------------------------------------------------------------------
+[Deskripsi]: Teks sudah ada di tengah secara elegan dan samar, lalu pulsa cahaya oranye menyinari teks dari gelap gulita hingga terang sempurna.
+
+[PROMPT]:
+Minimalist editorial dark-tech intro, 4 seconds. Deep black studio space (#060609). In the exact center, ultra-sharp minimalist typography appears from total darkness: "WELCOME TO MY PORTFOLIO" with wide letter tracking, and beneath it in subtle muted grey "by Andry Huang". Fine glowing amber circuit lines (#ff4d00) pulse along the baseline of the text. A single smooth wave of light sweeps through the typography, bringing the characters into crystal-clear illumination, before softly settling into a steady glow. Elegant luxury tech aesthetic, zero camera wobble, 60fps, 8K ultra detail.
+
+[NEGATIVE PROMPT]:
+typo, warped fonts, shaky camera, chaotic particles, smoke, glitch distortion, 3D extruded blocks, bright background, oversaturated colors.
+
+--------------------------------------------------------------------------------
+PROMPT VARIASI 3: FRAMES TO VIDEO / IMAGE TO VIDEO (Paling Anti-Gagal & 100% Bebas Typo)
+--------------------------------------------------------------------------------
+Mode: Frames to Video di Google Flow (Veo 3.1) atau Kling AI
+Unggah:
+  First Frame: logo-first-frame-16x9.png   (Hitam polos #060609)
+  Last Frame : welcome-end-frame-16x9.png  (Teks "WELCOME TO MY PORTFOLIO / by Andry Huang")
+
+[PROMPT]:
+Total darkness. Delicate energetic orange (#ff4d00) and warm amber signal traces glide inward from the boundaries of the frame along orthogonal circuit tracks. The light traces converge precisely at the center and draw the strokes of the final typography: "WELCOME TO MY PORTFOLIO" and "by Andry Huang". The text illuminates cleanly, settles into sharp perfection matching the end frame at 3.0 seconds, and holds steady on pure black background (#060609). One continuous take, no cuts, 60fps.
+
+[NEGATIVE PROMPT]:
+typo, extra letters, distorted font, shaking camera, blur, explosion, smoke, colorful lighting.
+
+--------------------------------------------------------------------------------
+CARA POTONG & KOMPRESI FFMPEG KE 4 DETIK (< 800 KB):
+--------------------------------------------------------------------------------
+ffmpeg -ss 0.0 -t 4.0 -i hasil_veo.mp4 -an -vf "scale=1280:-2" -c:v libx264 -crf 23 -preset slow -pix_fmt yuv420p -movflags +faststart public/videos/logo.mp4
+================================================================================

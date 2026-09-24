@@ -4,8 +4,8 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const STORAGE_KEY = "portfolio_preloaded";
-// Video is 8s; safety timeout ensures preloader never hangs if video stalls.
-const SAFETY_MS = 8500;
+// Video is 4s; safety timeout ensures preloader never hangs if video stalls.
+const SAFETY_MS = 4500;
 
 // Decide once per page load: first visit in this tab/session and motion allowed.
 let shouldShowCache: boolean | null = null;

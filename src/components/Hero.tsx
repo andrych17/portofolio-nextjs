@@ -23,14 +23,14 @@ const rolesId = [
 
 const EASE = [0.83, 0, 0.17, 1] as const;
 
-// Wait out the first-visit preloader (8s video) so the name rises as the curtain lifts.
+// Wait out the first-visit preloader (4s video) so the name rises as the curtain lifts.
 // The preloader's own sessionStorage flag decides; cached once so later flag writes don't shift timing.
 let introDelayCache: number | null = null;
 const readIntroDelay = () => {
   if (typeof window === "undefined") return 0;
   if (introDelayCache !== null) return introDelayCache;
   const isPreloaded = !!sessionStorage.getItem("portfolio_preloaded");
-  return (introDelayCache = isPreloaded ? 0.15 : 8.2);
+  return (introDelayCache = isPreloaded ? 0.15 : 4.2);
 };
 const noopSubscribe = () => () => {};
 

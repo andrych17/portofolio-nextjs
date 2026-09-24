@@ -9,6 +9,7 @@ di jalur sirkuit. Preloader dan hero memakai bahasa visual yang sama.
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | `01-hero-signal-paths.txt` | Text to Video · 16:9 · 8 dtk | — | `public/videos/hero.mp4` |
 | 2 | `02-preloader-logo-bumper.txt` | Frames to Video · 16:9 · 8 dtk | First: `logo-first-frame-16x9.png` · Last: `logo-end-frame-16x9.png` | `public/videos/logo.mp4` |
+| 3 | `04-preloader-4s-welcome.txt` | Frames to Video · 16:9 · 4 dtk | First: `logo-first-frame-16x9.png` · Last: `welcome-end-frame-16x9.png` | `public/videos/logo.mp4` |
 
 Salin blok `PROMPT` + `NEGATIVE PROMPT` dari tiap file. Kirim video **mentah**
 (belum dipotong/dikompres) — kompresi, potong preloader, poster, dan pemasangan saya kerjakan.
