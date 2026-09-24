@@ -66,10 +66,10 @@ export const projects: Project[] = [
     group: "tjiwi",
     title: "Internal Reporting System",
     description:
-      "Developed dozens of internal reports with heavily optimized SQL queries for a large pulp & paper manufacturer. Cut long-running report times from minutes to seconds. Mixed ASP Classic with .NET for newer modules.",
+      "Wrote dozens of internal reports for a large pulp & paper manufacturer and tuned their SQL so long-running reports finish in seconds instead of minutes. Older pages ran on ASP Classic; newer modules on .NET.",
     impact:
-      "Mengoptimalkan kueri laporan data besar dari hitungan menit menjadi detik untuk operasional pabrik kertas & pulp.",
-    year: "2017 – 2021",
+      "Laporan data besar untuk operasional pabrik yang dulu makan beberapa menit sekarang selesai dalam hitungan detik.",
+    year: "2019 – 2022",
     emoji: "📊",
     icon: FileBarChart,
     tags: [
@@ -88,9 +88,9 @@ export const projects: Project[] = [
     group: "tjiwi",
     title: "WhatsApp Scheduler Bot",
     description:
-      "Selenium-based scheduler that auto-captures dashboard screenshots and pushes them via WhatsApp Web to stakeholders on a fixed cadence.",
+      "Selenium scheduler that screenshots production dashboards and sends them to stakeholders through WhatsApp Web on a fixed schedule.",
     impact:
-      "Otomatisasi pengiriman laporan analitik produksi real-time (OEE & HWT) via WhatsApp Web ke jajaran manajemen.",
+      "Laporan produksi (OEE & HWT) terkirim otomatis ke manajemen lewat WhatsApp Web sesuai jadwal.",
     year: "2020 – 2021",
     emoji: "🤖",
     icon: Bot,
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     description:
       "Mobile app for stationery & inventory management with barcode scanning to track stock-in / stock-out at the warehouse counter.",
     impact:
-      "Digitalisasi pemindaian barcode stok gudang real-time untuk mempercepat pencatatan stock-in/out.",
+      "Stok masuk dan keluar gudang cukup dicatat dengan scan barcode.",
     year: "2019 – 2020",
     emoji: "📱",
     icon: ScanLineIcon,
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     description:
       "Internal web app to monitor employee health status during the pandemic, used company-wide for daily check-ins and contact-tracing reports.",
     impact:
-      "Digunakan se-perusahaan untuk daily check-in kesehatan karyawan & contact tracing selama masa pandemi.",
+      "Dipakai seluruh karyawan untuk check-in kesehatan harian dan contact tracing selama pandemi.",
     year: "2020",
     emoji: "🩺",
     icon: HeartPulse,
@@ -152,9 +152,9 @@ export const projects: Project[] = [
     group: "tool-mgmt",
     title: "Tool Management System (TMS)",
     description:
-      "Maintained and improved a legacy enterprise Tool Management System. Drove a Java version upgrade, large refactor, and code-review process • significantly reducing incident tickets quarter over quarter.",
+      "Maintained a legacy enterprise Tool Management System. Led a Java version upgrade, a large refactor, and a code-review process that cut incident tickets quarter over quarter.",
     impact:
-      "Membersihkan 10.000+ data terkorupsi dari bug legacy code & memangkas insiden tiket high-priority berulang.",
+      "Memperbaiki 10.000+ record yang rusak akibat bug lama dan mengurangi insiden high-priority yang berulang.",
     year: "Mar 2022 – Nov 2022",
     emoji: "🛠️",
     icon: Wrench,
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     description:
       "Set up and rolled out SonarQube across multiple internal .NET projects. Defined quality gates, integrated with CI/CD, and onboarded teams onto the platform.",
     impact:
-      "Pelopor analisis kode statis di beberapa proyek enterprise & me-enforce zero-vulnerability quality gates di CI/CD.",
+      "Memperkenalkan analisis kode statis ke beberapa proyek enterprise dan memasang quality gate CI/CD yang memblokir deploy jika ada celah keamanan baru.",
     year: "2023 – 2024",
     emoji: "🛡️",
     icon: ShieldCheck,
@@ -199,9 +199,9 @@ export const projects: Project[] = [
     group: "anacle",
     title: "SMRT Tenant Management System",
     description:
-      "Development & maintenance of a mall tenant management platform for SMRT Singapore • leasing, billing, and tenant operations on a SaaS deployment. Newer modules built with Next.js + Nest.js on top of the legacy .NET core.",
+      "Developed and maintained SMRT Singapore's mall tenant management platform: leasing, billing, and tenant operations, deployed as SaaS. Newer modules use Next.js and NestJS on top of the legacy .NET core.",
     impact:
-      "Sukses rilis platform SaaS manajemen penyewa mall SMRT Singapore (digitasi tender, aplikasi tenant, & operasi penyewa).",
+      "Membawa platform manajemen penyewa mall SMRT Singapore sampai go-live: tender, aplikasi tenant, dan operasional penyewa.",
     year: "2023 – 2025",
     emoji: "🏬",
     icon: Store,
@@ -222,7 +222,7 @@ export const projects: Project[] = [
     group: "anacle",
     title: "Simplicity • Facilities Management SaaS",
     description:
-      "Feature development and ticket-based maintenance on Simplicity, Anacle/MRI's enterprise facilities-management product. International remote team, cross-region releases.",
+      "Feature development and ticket-based maintenance on Simplicity, Anacle/MRI's enterprise facilities-management product, in an international remote team shipping cross-region releases.",
     impact:
       "Mengembangkan & memelihara modul SaaS enterprise facilities management untuk klien internasional.",
     year: "2023 – Mar 2026",
@@ -247,9 +247,9 @@ export const projects: Project[] = [
     group: "anacle",
     title: "Cloud Document Integration (SharePoint / AWS / Azure)",
     description:
-      "Built an integration layer to upload documents from the database into SharePoint, AWS S3, and Azure Blob • with full RBAC, access control, and audit logging. Front-end in Next.js, service layer in Nest.js.",
+      "Built an integration layer that uploads documents from the database to SharePoint, AWS S3, and Azure Blob, with RBAC and audit logging. Next.js front end, NestJS service layer.",
     impact:
-      "Engine migrasi dokumen syncing 100.000+ file enterprise ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit logging).",
+      "Memigrasikan 100.000+ file ke SharePoint (Graph API), AWS S3, dan Azure Blob, lengkap dengan RBAC dan audit log.",
     year: "2024 – 2025",
     emoji: "☁️",
     icon: Cloud,
@@ -268,14 +268,65 @@ export const projects: Project[] = [
 
   // ── SIDE PROJECTS • Done (Newest to Oldest) ───────────────
   {
+    id: 509,
+    group: "freelance",
+    status: "done",
+    title: "Wonderful Works • Architecture & General Contractor",
+    description:
+      "Company website and CMS for a Surabaya architecture and contracting firm. Staff can edit pages in a drag-and-drop composer and manage bilingual content, project photos, and users from an admin panel.",
+    longDescription:
+      "Website profil dan portofolio proyek untuk Wonderful Works Construction, firma arsitektur dan kontraktor di Surabaya. Staf bisa menyusun halaman lewat page composer drag-and-drop, lalu mengelola konten ID/EN, foto proyek, dan user dari admin panel. Deploy berjalan otomatis lewat Docker dan Jenkins.",
+    features: [
+      "Page composer drag-and-drop (Puck) untuk menyusun layout halaman tanpa coding",
+      "Admin panel dengan login JWT (httpOnly cookie) + bcrypt dan manajemen user untuk superadmin",
+      "Konten dwibahasa (ID/EN) di PostgreSQL lewat Prisma, divalidasi dengan Zod",
+      "Upload gambar, galeri, dan video hero secara drag-and-drop; gambar dioptimasi dengan sharp",
+      "Galeri proyek interaktif untuk desain arsitektur, interior, dan general contracting",
+      "SEO: metadata dinamis, sitemap, OpenGraph, dan JSON-LD LocalBusiness",
+      "Pipeline Jenkins yang menjalankan migrasi database dan Docker Compose saat deploy",
+    ],
+    impact:
+      "Tim Wonderful Works bisa memperbarui proyek, halaman, dan foto sendiri tanpa menunggu developer.",
+    images: [
+      "/projects/wwconstruction_01_landing_hero_en.png",
+      "/projects/wwconstruction_02_architectural_services_en.png",
+      "/projects/wwconstruction_03_portfolio_projects_en.png",
+      "/projects/wwconstruction_04_about_leadership_en.png",
+      "/projects/wwconstruction_05_contact_consultation_en.png",
+      "/projects/wwconstruction_preview_desktop.png",
+      "/projects/wwconstruction_06_luxury_residence_hq.jpg",
+      "/projects/wwconstruction_07_jotun_showroom_hq.jpg",
+    ],
+    emoji: "🏗️",
+    icon: Building2,
+    tags: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS v4",
+      "Framer Motion",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Puck Visual CMS",
+      "JWT Auth",
+      "Bilingual ID/EN",
+      "SEO & JSON-LD",
+      "Docker",
+      "Jenkins CI/CD",
+    ],
+    color: "from-amber-500 to-orange-600",
+    liveUrl: "https://wwconstruction.id",
+    liveLabel: "wwconstruction.id",
+    featured: true,
+  },
+  {
     id: 504,
     group: "freelance",
     status: "done",
     title: "Qualiv • AI Recruitment Platform (Founder)",
     description:
-      "Founder & Lead Architect. Multi-tenant AI recruitment SaaS platform: CV screening, candidate scoring, and interview workflows powered by OpenAI & Redis queue.",
+      "Founder & Lead Architect. Multi-tenant AI recruitment SaaS: CV screening, candidate scoring, and interview workflows on OpenAI and a Redis queue.",
     longDescription:
-      "Founder & Lead Architect dari Qualiv (qualiv.id). Platform SaaS rekruitmen berbasis AI multi-tenant yang dibangun dari nol (end-to-end architecture & product design) untuk mengotomatisasi seleksi berkas CV, tes logika kandidat, simulasi wawancara chat/video AI, penilaian kualifikasi pelamar, dan pembuatan ringkasan asesmen secara obyektif.",
+      "Founder & Lead Architect dari Qualiv (qualiv.id), SaaS rekrutmen multi-tenant yang saya bangun dari nol, dari arsitektur sampai desain produk. Qualiv menyaring CV, menjalankan tes logika, mensimulasikan wawancara chat/video dengan AI, menilai kecocokan pelamar, dan membuat ringkasan asesmen.",
     features: [
       "Screening & Parsing CV otomatis berbasis LLM (PDF/Docx)",
       "Simulasi Wawancara AI Chat & Video Interview (LLM Interviewer)",
@@ -283,10 +334,10 @@ export const projects: Project[] = [
       "Sistem Penilaian & Match Score kandidat terhadap kualifikasi posisi",
       "Pemrosesan Antrean Berkas Massal (Redis Queue)",
       "Sistem Langganan & Billing Midtrans terintegrasi",
-      "Penyimpanan Dokumen Aman Cloudflare R2 & Postgres Storage",
+      "Penyimpanan dokumen di Cloudflare R2 dan PostgreSQL",
     ],
     impact:
-      "Mendirikan platform SaaS rekruitmen AI yang mengotomatisasi screening CV, tes logika, dan simulasi wawancara kandidat secara terpusat.",
+      "Tim HR bisa menyaring CV, menguji logika, dan mewawancarai kandidat dari satu tempat.",
     images: [
       "/projects/qualiv_01_landing_hero_en.png",
       "/projects/qualiv_02_ai_hr_screening_en.png",
@@ -336,7 +387,7 @@ export const projects: Project[] = [
     description:
       "Personal AI assistant for stock portfolio management: holdings tracking, allocation insights, and LLM-assisted analysis of positions.",
     longDescription:
-      "Asisten pribadi manajemen portofolio saham berbasis AI yang menganalisis alokasi aset, laporan keuangan emiten, serta memberikan rangkuman sentimen pasar secara otomatis.",
+      "Asisten pribadi untuk portofolio saham: melacak alokasi aset, lalu memakai AI untuk merangkum laporan keuangan emiten dan sentimen pasar.",
     features: [
       "Pelacakan Kepemilikan Saham (Holdings) & Alokasi Portofolio real-time",
       "Rangkuman AI Laporan Keuangan Emiten & Sentimen Berita Pasar",
@@ -345,7 +396,7 @@ export const projects: Project[] = [
       "Chatbot Asisten Analisis Saham Pribadi terintegrasi LLM",
     ],
     impact:
-      "Mempercepat keputusan investasi harian melalui analisis data emiten & portofolio berbasis AI.",
+      "Data emiten, posisi, dan ringkasan AI ada di satu tempat untuk keputusan trading harian.",
     images: [
       "/projects/saham_01_market_dashboard_en.png",
       "/projects/saham_02_portfolio_allocation_en.png",
@@ -375,19 +426,18 @@ export const projects: Project[] = [
     id: 508,
     group: "freelance",
     status: "done",
-    title: "Enterprise ERP & AI Solutions • Software Agency",
+    title: "ERP & AI Solutions • Software Agency",
     description:
-      "Full-service custom software development suite: industry-specific ERPs for Automotive Tire, Gold/Jewelry RFID, and Textile verticals with custom AI microservices.",
+      "Company site for a software agency that builds industry-specific ERP and POS systems for tire retail, RFID jewelry stores, and yarn shops, plus AI add-ons.",
     longDescription:
-      "Showcase portofolio agensi software enterprise yang mengembangkan sistem ERP spesifik industri (Retail Ban & Fleet, Toko Emas RFID, Tekstil & Lot Celup Benang) serta solusi mikroservis AI untuk klien korporat.",
+      "Website agensi software yang membuat sistem ERP dan POS khusus industri: retail ban & fleet, toko emas dengan RFID, dan toko benang (termasuk lot celup), ditambah layanan AI.",
     features: [
-      "Arsitektur Enterprise ERP Modular & Skalabel Multi-Tenant",
-      "Solusi Khusus Industri: Otomotif (Ban/Velg), Perhiasan (RFID), & Tekstil (Benang)",
-      "Integrasi AI Microservices (LLM Assistant, CV Parsing, Analisis Sentimen)",
-      "High-Performance Database Layer & Fast Response APIs",
+      "ERP modular multi-tenant",
+      "Modul khusus industri: otomotif (ban/velg), perhiasan (RFID), dan tekstil (benang)",
+      "Layanan AI: asisten LLM, parsing CV, dan analisis sentimen",
     ],
     impact:
-      "Menyediakan solusi digitalisasi end-to-end terintegrasi bagi berbagai sektor industri manufaktur dan retail.",
+      "Toko ban, toko emas, dan toko benang memakai sistem yang mengikuti alur kerja mereka sendiri.",
     images: [
       "/projects/agency_01_landing_hero_en.png",
       "/projects/agency_02_services_overview_en.png",
@@ -401,8 +451,7 @@ export const projects: Project[] = [
     icon: Building2,
     tags: [
       "Next.js 16",
-      "NestJS",
-      "Enterprise Architecture",
+      "Laravel",
       "Multi-Tenant ERP",
       "Tailwind CSS",
       "TypeScript",
@@ -416,9 +465,9 @@ export const projects: Project[] = [
     status: "done",
     title: "OpenClaw • AI-Powered VPS Security & Ops Agent",
     description:
-      "Automated server security and health monitoring agent powered by AI. Performs LLM log anomaly analysis, SSH brute force detection, fail2ban mitigations, system resource thresholds, and real-time Telegram alert reports.",
+      "Agent that watches server security and health. An LLM explains log anomalies; the agent detects SSH brute-force attempts, bans them through Fail2ban, checks resource thresholds, and sends Telegram alerts.",
     longDescription:
-      "Agen pemantau keamanan & operasional server cerdas berbasis AI (OpenClaw) yang berjalan di VPS remote (seperti server Qualiv & Netadm). Mengintegrasikan LLM untuk analisis anomali log otomatis, kecerdasan deteksi insiden, audit keamanan SSH, mitigasi serangan brute force (fail2ban), pemantauan CPU/Memori/Disk, serta pengiriman laporan insiden otomatis via Telegram Bot.",
+      "OpenClaw berjalan di VPS remote seperti server Qualiv dan Netadm. LLM membaca syslog dan auth log untuk mencari akar masalah, Fail2ban memblokir IP yang mencoba brute force SSH, dan laporan insiden dikirim lewat Telegram. OpenClaw juga memantau CPU, RAM, dan disk.",
     features: [
       "Analisis Anomali Log Berbasis AI (LLM Diagnosis Akar Masalah Syslog & Auth Logs)",
       "Audit Otomatis Keamanan SSH & Deteksi Serangan Brute Force (Auth Logs)",
@@ -428,7 +477,7 @@ export const projects: Project[] = [
       "Audit Kerentanan Konfigurasi Service, Package Updates, & Gateway Proxies",
     ],
     impact:
-      "Mengotomatisasi analisis insiden log dengan AI, memblokir serangan SSH secara real-time, & memberikan ringkasan status operasional server Qualiv ke Telegram.",
+      "Serangan SSH diblokir otomatis, dan ringkasan status server Qualiv masuk ke Telegram setiap hari.",
     images: [
       "/projects/openclaw_01_telegram_ops_alerts_en.png",
       "/projects/openclaw_02_telegram_security_incident_en.png",
@@ -461,14 +510,14 @@ export const projects: Project[] = [
     longDescription:
       "Asisten AI cerdas untuk tim sales distributor ban PT Nagamasban. Merekomendasikan tipe & merk ban yang paling sesuai dengan kendaraan, gaya mengemudi, dan budget pelanggan secara presisi.",
     features: [
-      "AI Recommendation Engine berbasis LLM (OpenAI GPT-4o)",
+      "Rekomendasi ban lewat semantic search (OpenAI embeddings + pgvector)",
       "Pencocokan spesifikasi ban berdasarkan merk/tipe mobil & ukuran velg",
       "Modul Training & Script Sales interaktif untuk staf toko baru",
       "Pencarian cepat katalog ban dengan rekomendasi alternatif stok",
       "Dashboard Admin untuk pembaruan basis pengetahuan & harga ban",
     ],
     impact:
-      "Meningkatkan rasio upsell tim sales sebesar 25% dan mempercepat waktu konsultasi pelanggan.",
+      "Sales baru bisa merekomendasikan ban yang cocok dengan kendaraan dan budget pelanggan.",
     images: [
       "/projects/nagamasban_01_katalog_en.png",
       "/projects/ban1.png",
@@ -478,8 +527,8 @@ export const projects: Project[] = [
     tags: [
       "Next.js 16",
       "NestJS",
-      "OpenAI GPT-4o API",
-      "Vector Embeddings",
+      "OpenAI API",
+      "pgvector",
       "TypeScript",
       "Tailwind CSS",
       "AI/ML",
@@ -508,7 +557,7 @@ export const projects: Project[] = [
       "Sinkronisasi Stok otomatis antara toko online & gudang fisik",
     ],
     impact:
-      "Meningkatkan jangkauan penjualan ke seluruh Indonesia 24/7 tanpa menambah beban operasional toko fisik.",
+      "Toko fisik di Pluit bisa menerima pesanan dari seluruh Indonesia kapan saja.",
     images: [
       "/projects/knitandcro_storefront_01_hero_home_en.png",
       "/projects/knitandcro_storefront_02_studio_collection_en.png",
@@ -547,7 +596,7 @@ export const projects: Project[] = [
       "Role-Based Access Control (RBAC) untuk Owner, Kasir, & Gudang",
     ],
     impact:
-      "Mengeliminasi selisih stok benang fisik hingga 95% & mempercepat proses checkout kasir.",
+      "Selisih stok benang terlihat setiap stock opname, dan kasir bisa mencari varian warna dan lot dengan cepat.",
     images: [
       "/projects/knitandcro_01_retail_dashboard_en.png",
       "/projects/knitandcro_02_vendors_buyers_en.png",
@@ -587,7 +636,7 @@ export const projects: Project[] = [
       "Otorisasi bertingkat untuk Owner, Staf Toko, & Auditor Stok",
     ],
     impact:
-      "Memangkas waktu audit stok harian emas dari 2 jam menjadi 3 menit menggunakan pemindaian RFID massal.",
+      "Audit stok emas harian cukup dengan pemindaian RFID massal, tanpa scan barcode satu per satu.",
     images: [
       "/projects/jewel_01_wijayamas_dashboard_en.png",
       "/projects/jewel_02_gold_diamond_rfid_inventory_en.png",
@@ -630,7 +679,7 @@ export const projects: Project[] = [
       "Manajemen multi-gudang dan histori mutasi barang",
     ],
     impact:
-      "Memberikan visibilitas real-time terhadap piutang berjalan, mengurangi risiko gagal bayar pelanggan sebesar 40%.",
+      "Pemilik bisa melihat piutang berjalan dan jatuh tempo giro kapan saja.",
     images: [
       "/projects/tire_01_cahayaterang_dashboard_en.png",
       "/projects/tire_02_inventory_specs_ring_dot_en.png",
@@ -659,16 +708,16 @@ export const projects: Project[] = [
     description:
       "End-to-end management system for a snack & grocery wholesale/retail store. Covers PO/SO, Returns, Expiry Date Tracking, and operational reporting.",
     longDescription:
-      "Sistem manajemen usaha grosir & eceran sembako/snack Tiga Putra. Mengelola siklus pengadaan barang (PO), penjualan grosir/eceran (SO), retur barang rusak/kadaluarsa, serta analisis keuntungan operasional.",
+      "Sistem manajemen usaha grosir & eceran sembako/snack Tiga Putra. Mengelola siklus pengadaan barang (PO), penjualan grosir/eceran (SO), retur barang rusak/kedaluwarsa, serta analisis keuntungan operasional.",
     features: [
       "Manajemen Purchase Order (PO) & Sales Order (SO) grosir/retail",
       "Sistem Retur Penjualan & Pembelian otomatis memotong saldo stok/hutang",
-      "Stock Opname & Pelacakan tanggal kadaluarsa (Expiry Date / FIFO)",
+      "Stock opname dan pelacakan tanggal kedaluwarsa (FIFO)",
       "Cetak Nota / Invois faktur dan surat jalan pengiriman",
       "Otorisasi role pengguna (Owner, Admin, Kasir, & Gudang)",
     ],
     impact:
-      "Mengoptimalkan rotasi persediaan barang (FIFO) & mempercepat pembuatan nota pesanan grosir.",
+      "Barang keluar sesuai urutan kedaluwarsa (FIFO), dan nota grosir dibuat lebih cepat.",
     images: [
       "/projects/tigaputra_01_sales_order_invoicing_en.png",
       "/projects/tigaputra_02_inventory_po_fifo_en.png",
@@ -703,7 +752,7 @@ export const projects: Project[] = [
       "Dashboard analitik distribusi nilai & statistik jawaban peserta",
     ],
     impact:
-      "Memfasilitasi ujian komunitas secara digital tanpa perlu pemeriksa kertas manual.",
+      "Ujian komunitas berjalan digital dan dinilai otomatis, tanpa koreksi kertas.",
     images: [
       "/projects/quiz_01_interactive_test_session_en.png",
       "/projects/quiz_02_questions_editor_config_en.png",
@@ -741,7 +790,7 @@ export const projects: Project[] = [
       "Integrasi Single Sign-On (SSO) & Verifikasi Nomor Induk Jemaat (NIJ)",
     ],
     impact:
-      "Mengotomatisasi pencarian & alokasi tempat ibadah Connect Group (CG) komunitas jemaat secara tepat lokasi & efisien.",
+      "Jemaat bisa mencari rumah CG terdekat lewat peta, dan admin mengatur jadwal serta kontrak pemakaian rumah di satu sistem.",
     images: [
       "/projects/gms_01_interactive_map_search_en.png",
       "/projects/gms_02_dashboard_en.png",
@@ -767,28 +816,26 @@ export const projects: Project[] = [
     id: 507,
     group: "freelance",
     status: "done",
-    title: "AI Portfolio Assistant & Interactive Chatbot",
+    title: "AI Portfolio Assistant",
     description:
-      "Interactive RAG-powered portfolio chatbot allowing visitors and recruiters to query career history, tech stack, and project architecture in real time.",
+      "Chat assistant on this site that answers recruiters' questions about my work history, stack, and projects. It calls the DeepSeek API with a curated profile as context.",
     longDescription:
-      "Asisten chatbot portofolio cerdas berbasis RAG (Retrieval-Augmented Generation) yang terintegrasi di website portofolio andryhuang.com. Memungkinkan pengunjung & recruiter bertanya tentang riwayat karir, penguasaan tech stack, arsitektur project, hingga detail pengalaman kerja secara real-time.",
+      "Chatbot di andryhuang.com yang menjawab pertanyaan recruiter soal riwayat kerja, tech stack, dan project saya. Chatbot memanggil DeepSeek API dengan profil yang sudah dikurasi sebagai konteks.",
     features: [
-      "RAG Architecture & Context Retrieval berbasis Vector Embeddings",
-      "Jawaban Real-Time berbasis riwayat karir & arsitektur project CV",
-      "Interaksi Chatbot Melayang (Floating UI) interaktif",
-      "Streaming Response & optimasi token prompt LLM",
+      "Profil karier & project dikurasi di system prompt, jadi jawaban tetap sesuai CV",
+      "Tombol chat melayang (floating) di halaman utama dan halaman portofolio",
+      "Menjawab dalam bahasa yang dipakai pengunjung (ID/EN)",
     ],
     impact:
-      "Memberikan pengalaman eksplorasi portofolio interaktif bagi recruiter & pengunjung website.",
+      "Recruiter bisa bertanya langsung tanpa harus membaca seluruh CV.",
     emoji: "🤖",
     icon: Bot,
     tags: [
       "Next.js 16",
-      "OpenAI API",
-      "Vector Embeddings",
+      "DeepSeek API",
+      "Prompt Engineering",
       "Tailwind CSS v4",
       "TypeScript",
-      "RAG Architecture",
     ],
     color: "from-cyan-500 to-purple-500",
     liveUrl: "https://andryhuang.com",

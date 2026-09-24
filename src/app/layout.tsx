@@ -33,11 +33,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://andryhuang.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Andry Huang • Senior Full-Stack & AI Systems Developer (7+ Years Exp)",
+    default: "Andry Huang • Senior Full-Stack & AI Engineer (7+ Years)",
     template: "%s | Andry Huang",
   },
   description:
-    "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Engineer based in Surabaya, Indonesia with 7+ years of continuous experience (since September 2019). Specializing in .NET Core, Next.js, AI Agents, Model Context Protocol (MCP), and PostgreSQL.",
+    "Portfolio of Andry Huang, Senior Full-Stack & AI Engineer in Surabaya, Indonesia, working since September 2019. .NET Core, Next.js, PostgreSQL, AI agents, and Model Context Protocol (MCP).",
   keywords: [
     "Full-Stack Developer Indonesia",
     "Senior Web Developer Surabaya",
@@ -74,24 +74,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["id_ID"],
     url: SITE_URL,
-    title: "Andry Huang • Senior Full-Stack & AI Developer (7+ Years Exp)",
+    title: "Andry Huang • Senior Full-Stack & AI Engineer (7+ Years)",
     description:
-      "Senior Full-Stack & AI Engineer with 7+ years of continuous experience (since September 2019) building 30+ enterprise SaaS platforms, AI systems, and POS apps using Next.js, .NET Core, Node.js, and TypeScript.",
+      "Senior Full-Stack & AI Engineer, working since September 2019. Enterprise SaaS for MRI Software, the Qualiv AI recruitment platform, and retail POS systems, built with Next.js, .NET Core, Node.js, and TypeScript.",
     siteName: "Andry Huang Portfolio",
     images: [
       {
         url: "/img/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Andry Huang - Senior Full-Stack & AI Developer (7+ Years Experience)",
+        alt: "Andry Huang, Senior Full-Stack & AI Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andry Huang • Senior Full-Stack & AI Developer from Indonesia",
+    title: "Andry Huang • Senior Full-Stack & AI Engineer from Indonesia",
     description:
-      "Senior Full-Stack & AI Engineer with 7+ years experience (since Sept 2019) building enterprise SaaS platforms, AI systems, and POS apps.",
+      "Senior Full-Stack & AI Engineer in Indonesia. 7+ years building enterprise SaaS, AI tools, and POS systems.",
     creator: "@andryhuang",
     images: ["/img/og-image.jpg"],
   },
@@ -135,7 +135,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#website`,
       "url": SITE_URL,
       "name": "Andry Huang Portfolio",
-      "description": "Senior Full-Stack & AI Systems Developer portfolio featuring 30+ enterprise SaaS and AI systems.",
+      "description": "Portfolio of Andry Huang, Senior Full-Stack & AI Engineer: 20+ SaaS, AI, and POS projects.",
       "publisher": { "@id": `${SITE_URL}/#person` },
       "inLanguage": ["en", "id"],
       "potentialAction": {
@@ -151,8 +151,8 @@ const jsonLd = {
       "@type": "ProfilePage",
       "@id": `${SITE_URL}/#webpage`,
       "url": SITE_URL,
-      "name": "Andry Huang • Senior Full-Stack & AI Developer",
-      "description": "Official portfolio of Andry Huang, Senior Full-Stack & AI Systems Developer with 7+ years of experience since September 2019.",
+      "name": "Andry Huang • Senior Full-Stack & AI Engineer",
+      "description": "Portfolio of Andry Huang, Senior Full-Stack & AI Engineer with 7+ years of experience since September 2019.",
       "mainEntity": { "@id": `${SITE_URL}/#person` },
       "isPartOf": { "@id": `${SITE_URL}/#website` },
       "speakable": {
@@ -170,11 +170,7 @@ const jsonLd = {
         "https://github.com/andrych17",
         "https://linkedin.com/in/andry-huang-ba410a170"
       ],
-      "jobTitle": "Senior Full-Stack & AI Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "MRI Software"
-      },
+      "jobTitle": "Senior Full-Stack & AI Engineer",
       "hasOccupation": {
         "@type": "Occupation",
         "name": "Senior Full-Stack Developer",
@@ -185,10 +181,10 @@ const jsonLd = {
         "skills": ".NET Core, Next.js, React, Node.js, AI Agents, Model Context Protocol (MCP), PostgreSQL, Docker, SaaS Architecture"
       },
       "knowsLanguage": ["en", "id"],
-      "description": "Senior Full-Stack & AI Systems Developer based in Surabaya, Indonesia with 7+ years of continuous experience (starting September 2019) building enterprise SaaS platforms, POS systems, and AI workflows.",
+      "description": "Senior Full-Stack & AI Engineer in Surabaya, Indonesia, working since September 2019 on enterprise SaaS, POS systems, and AI workflows.",
       "knowsAbout": [
         "Next.js", ".NET Core", "Node.js", "React", "TypeScript",
-        "AI Agents", "Model Context Protocol", "OpenAI GPT-4o", "Claude 3.7",
+        "AI Agents", "Model Context Protocol", "OpenAI GPT-4o", "Anthropic Claude API",
         "PostgreSQL", "Docker", "REST API", "Microservices", "POS Hardware Integration"
       ],
       "hasCredential": [
@@ -327,7 +323,7 @@ const jsonLd = {
           "name": "What primary tech stack and services does Andry Huang specialize in?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Andry Huang specializes in Senior Full-Stack Engineering (.NET Core, Next.js, React, Node.js, TypeScript, PostgreSQL) and AI Systems Integration (Model Context Protocol/MCP, OpenAI GPT-4o, Claude AI Agents, and custom SaaS platforms)."
+            "text": "Full-stack work in .NET Core, Next.js, React, Node.js, TypeScript, and PostgreSQL, plus AI integration: Model Context Protocol (MCP), the OpenAI and Claude APIs, and agent workflows. Andry also builds custom SaaS platforms."
           }
         },
         {
@@ -335,7 +331,7 @@ const jsonLd = {
           "name": "How many years of experience does Andry Huang have and what is his track record?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Andry Huang has 7+ years of professional software engineering experience (starting continuously since September 2019). He has architected and delivered 30+ production systems spanning enterprise SaaS (.NET Core, Next.js), large-scale retail POS with hardware/RFID, and AI-driven automation pipelines."
+            "text": "7+ years, starting September 2019. The work covers enterprise SaaS for MRI Software (.NET Core, Next.js), retail POS systems with RFID hardware, and AI automation such as Qualiv. This site lists 20+ of those projects."
           }
         },
         {
@@ -343,7 +339,7 @@ const jsonLd = {
           "name": "Is Andry Huang available for project collaboration or full-time roles?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes! Andry is available for high-impact software engineering projects, technical architecture consulting, and remote enterprise roles."
+            "text": "Yes. Andry is open to remote full-time roles, freelance projects, and architecture consulting."
           }
         },
         {
@@ -351,7 +347,7 @@ const jsonLd = {
           "name": "Where is Andry Huang located and can he work remotely?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Andry is based in Surabaya, East Java, Indonesia, and has extensive experience working with distributed global teams across different time zones."
+            "text": "Andry lives in Surabaya, East Java, Indonesia, and worked remotely for MRI Software in Singapore for more than 3 years."
           }
         },
         {
@@ -359,7 +355,7 @@ const jsonLd = {
           "name": "What is Qualiv and what is Andry Huang's role in it?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Qualiv is an AI-powered recruitment platform engineered by Andry Huang, featuring automated candidate evaluation pipelines, background analysis, and AI workflows."
+            "text": "Qualiv is a multi-tenant AI recruitment SaaS that Andry founded and built as Lead Architect. It screens CVs (PDF/DOCX) with an LLM, runs candidate logic tests and AI chat/video interview simulations, processes jobs on a BullMQ/Redis queue, and bills through Midtrans."
           }
         }
       ]

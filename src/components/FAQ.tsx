@@ -19,41 +19,41 @@ export const faqItems: FAQItem[] = [
     questionEn: "What primary tech stack and services does Andry Huang specialize in?",
     questionId: "Apa keahlian utama dan layanan teknis yang ditawarkan Andry Huang?",
     answerEn:
-      "Andry Huang specializes in Senior Full-Stack Engineering (.NET Core, Next.js, React, Node.js, TypeScript, PostgreSQL) and AI Systems Integration (Model Context Protocol/MCP, OpenAI GPT-4o, Claude AI Agents, and custom SaaS platforms).",
+      "Full-stack work in .NET Core, Next.js, React, Node.js, TypeScript, and PostgreSQL, plus AI integration: Model Context Protocol (MCP), the OpenAI and Claude APIs, and agent workflows. Andry also builds custom SaaS platforms.",
     answerId:
-      "Andry Huang berfokus pada Senior Full-Stack Engineering (.NET Core, Next.js, React, Node.js, TypeScript, PostgreSQL) dan Integrasi AI Systems (Model Context Protocol/MCP, OpenAI GPT-4o, Claude AI Agents, serta pengembangan platform SaaS).",
+      "Full-stack dengan .NET Core, Next.js, React, Node.js, TypeScript, dan PostgreSQL, serta integrasi AI: Model Context Protocol (MCP), API OpenAI dan Claude, dan agent workflow. Andry juga membangun platform SaaS custom.",
   },
   {
     questionEn: "Is Andry Huang available for project collaboration or full-time roles?",
     questionId: "Apakah Andry Huang terbuka untuk proyek freelance, konsultasi, atau peran full-time?",
     answerEn:
-      "Yes! Andry is available for high-impact software engineering projects, technical architecture consulting, and remote enterprise roles.",
+      "Yes. Andry is open to remote full-time roles, freelance projects, and architecture consulting.",
     answerId:
-      "Ya! Andry terbuka untuk proyek rekayasa perangkat lunak berdampak tinggi, konsultasi arsitektur sistem teknis, dan peluang kolaborasi tim enterprise secara remote.",
+      "Ya. Andry terbuka untuk peran full-time remote, proyek freelance, dan konsultasi arsitektur sistem.",
   },
   {
     questionEn: "Where is Andry Huang located and can he work remotely?",
     questionId: "Di mana lokasi Andry Huang dan apakah bisa bekerja secara remote?",
     answerEn:
-      "Andry is based in Surabaya, East Java, Indonesia, and has extensive experience working with distributed global teams across different time zones.",
+      "Andry lives in Surabaya, East Java, Indonesia, and worked remotely for MRI Software in Singapore for more than 3 years.",
     answerId:
-      "Andry berdomisili di Surabaya, Jawa Timur, Indonesia, dan berpengalaman bekerja secara remote dengan tim terdistribusi lintas zona waktu.",
+      "Andry tinggal di Surabaya, Jawa Timur, dan pernah bekerja remote selama lebih dari 3 tahun untuk MRI Software di Singapura.",
   },
   {
     questionEn: "How many years of experience does Andry Huang have and what is his track record?",
     questionId: "Berapa tahun pengalaman Andry Huang dan bagaimana rekam jejak profesionalnya?",
     answerEn:
-      "Andry Huang has 7+ years of professional software engineering experience (starting continuously since September 2019). He has architected and delivered 30+ production systems spanning enterprise SaaS (.NET Core, Next.js), large-scale retail POS with hardware/RFID, and AI-driven automation pipelines.",
+      "7+ years, starting September 2019. The work covers enterprise SaaS for MRI Software (.NET Core, Next.js), retail POS systems with RFID hardware, and AI automation such as Qualiv. This site lists 20+ of those projects.",
     answerId:
-      "Andry Huang memiliki 7+ tahun pengalaman rekayasa perangkat lunak profesional (dimulai sejak September 2019). Beliau telah merancang dan meluncurkan 30+ sistem produksi mulai dari SaaS enterprise (.NET Core, Next.js), retail POS skala besar dengan hardware/RFID, hingga pipeline otomatisasi berbasis AI.",
+      "7+ tahun, sejak September 2019. Pengalamannya mencakup SaaS enterprise untuk MRI Software (.NET Core, Next.js), sistem POS retail dengan hardware RFID, dan otomasi AI seperti Qualiv. Lebih dari 20 project tersebut ada di website ini.",
   },
   {
     questionEn: "What is Qualiv and what is Andry Huang's role in it?",
     questionId: "Apa itu Qualiv dan apa peran Andry Huang di dalamnya?",
     answerEn:
-      "Qualiv is a multi-tenant AI-powered recruitment SaaS platform founded and architected by Andry Huang (Founder & Lead Architect), featuring automated LLM CV screening (PDF/DOCX), candidate logic testing, AI chat/video interview simulations, BullMQ Redis queuing, and integrated Midtrans billing.",
+      "Qualiv is a multi-tenant AI recruitment SaaS that Andry founded and built as Lead Architect. It screens CVs (PDF/DOCX) with an LLM, runs candidate logic tests and AI chat/video interview simulations, processes jobs on a BullMQ/Redis queue, and bills through Midtrans.",
     answerId:
-      "Qualiv adalah platform SaaS rekrutmen berbasis AI multi-tenant yang didirikan dan dirancang oleh Andry Huang (Founder & Lead Architect), dilengkapi screening CV otomatis berbasis LLM (PDF/DOCX), tes logika kandidat, simulasi wawancara chat/video AI, pemrosesan antrean BullMQ Redis, serta billing Midtrans.",
+      "Qualiv adalah SaaS rekrutmen multi-tenant berbasis AI yang didirikan dan dirancang Andry sebagai Lead Architect. Qualiv menyaring CV (PDF/DOCX) dengan LLM, menjalankan tes logika dan simulasi wawancara chat/video AI, memproses antrean dengan BullMQ/Redis, dan menagih lewat Midtrans.",
   },
 ];
 
@@ -70,7 +70,7 @@ export default function FAQ() {
           <p className="text-[var(--mut)] text-sm md:text-base">
             {lang === "id"
               ? "Informasi ringkas mengenai keahlian, ketersediaan kerja, dan proyek utama Andry Huang."
-              : "Quick answers regarding Andry Huang's expertise, work availability, and featured projects."}
+              : "Short answers about Andry's skills, availability, and main projects."}
           </p>
         </Reveal>
 

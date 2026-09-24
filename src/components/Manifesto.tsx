@@ -8,14 +8,14 @@ type Part = { text: string; accent?: boolean };
 
 const COPY: Record<"id" | "en", Part[]> = {
   id: [
-    { text: "Merancang arsitektur backend yang" },
-    { text: "stabil di production, antarmuka web yang cepat dan presisi", accent: true },
-    { text: ", serta solusi AI yang langsung memecahkan masalah operasional nyata." },
+    { text: "Backend yang tahan di production," },
+    { text: "antarmuka web yang cepat", accent: true },
+    { text: ", dan AI yang mengerjakan pekerjaan nyata, seperti menyaring CV atau mencocokkan ban dengan mobil pelanggan." },
   ],
   en: [
-    { text: "Engineering reliable backend systems in production," },
-    { text: "fast and responsive web interfaces", accent: true },
-    { text: ", and pragmatic AI pipelines that solve real operational bottlenecks." },
+    { text: "Backends that hold up in production," },
+    { text: "web interfaces that load fast", accent: true },
+    { text: ", and AI that does real work, like screening CVs or matching tires to a customer's car." },
   ],
 };
 
@@ -52,7 +52,7 @@ export default function Manifesto() {
     <section className="relative border-t border-[var(--line)]">
       <div className="px-[var(--pad-x)] py-[var(--sec-sm)]">
         <span className="block font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)]">
-          {lang === "id" ? "// FILOSOFI & PENDEKATAN" : "// PHILOSOPHY & CRAFT"}
+          {lang === "id" ? "// YANG SAYA BANGUN" : "// WHAT I BUILD"}
         </span>
 
         <p

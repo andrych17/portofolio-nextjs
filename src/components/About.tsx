@@ -12,25 +12,23 @@ const experiencesEn = [
     title: "Fullstack Developer",
     company: "MRI Software (formerly Anacle Systems), Singapore (Remote)",
     description:
-      "Scaled enterprise SaaS platforms (Anacle Simplicity & SMRT Tenant Management System), supporting mall tender submissions, space leasing, tenant applications, and day-to-day operations using .NET Core, .NET Framework 4.8, Next.js, and NestJS.",
+      "Built features for Anacle Simplicity and the SMRT Tenant Management System through go-live: mall tender submissions, space leasing, tenant applications, and daily operations. Stack: .NET Core, .NET Framework 4.8, Next.js, NestJS.",
     achievements: [
-      "Go-Live SMRT Tenant Management: Scaled enterprise tenant platform digitizing mall tenders, leasing, and tenant operations using .NET Core & Next.js.",
-      "Production RAG Pipelines: Deployed production RAG pipelines using OpenAI API and PostgreSQL (pgvector) for semantic document retrieval, search, and automated executive reporting.",
-      "Go-Live SharePoint Document Migration: Built document migration microservice syncing 100,000+ enterprise files to SharePoint Graph API, AWS S3, and Azure Blob Storage with RBAC & audit logging.",
-      "Automated Regression Testing: Refactored legacy .NET stored procedures and wrote automated regression tests using Selenium & Playwright across core SaaS modules.",
-      "SonarQube Security Pipeline: Led static code analysis across enterprise repositories, fixed security vulnerabilities, configured CI/CD quality gates, and enforced zero-vulnerability deployment standards.",
+      "Shipped production RAG pipelines on the OpenAI API and PostgreSQL (pgvector) for semantic document search and automated executive reports.",
+      "Wrote a microservice that migrated 100,000+ files to SharePoint (Graph API), AWS S3, and Azure Blob Storage, with RBAC and audit logging.",
+      "Refactored legacy stored procedures and wrote regression tests in Selenium and Playwright for core SaaS modules.",
+      "Led the SonarQube rollout across enterprise repositories, fixed the security vulnerabilities it flagged, and set CI/CD quality gates that block deployments with new vulnerabilities.",
     ],
   },
   {
     period: "2021 - Present",
-    title: "Freelance & Side Projects",
-    company: "Multiple Clients & Personal SaaS",
+    title: "Freelance Fullstack & AI Engineer",
+    company: "Self-employed, Surabaya (Remote)",
     description:
-      "Designed and developed multiple POS, ERP, and AI platforms (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI, Grocery POS, Tire Shop ERP, Jewelry Store with RFID).",
+      "AI products and business systems for clients and for myself: Qualiv, Nagamasban AI, OpenClaw, Stock Portfolio AI, Wonderful Works, and Laravel ERP/POS systems for local retailers.",
     achievements: [
-      "Qualiv Founder & Architect: Multi-tenant AI recruitment SaaS with LLM CV screening, candidate logic tests, and real-time AI interview simulation.",
-      "Enterprise Retail Solutions: Delivered RFID jewelry POS (reduced stock audit from 2 hrs to 3 mins), tire shop double-entry ERP, and yarn store e-commerce.",
-      "OpenClaw Security Agent: Autonomous AI server security agent with LLM log anomaly diagnosis, SSH fail2ban, and Telegram alerts.",
+      "Build AI products end to end, from architecture to production: Qualiv, an AI recruitment SaaS, and an AI tire-recommendation assistant for PT Nagamasban.",
+      "Deliver client systems: the Wonderful Works website and CMS, and Laravel ERP/POS systems for tire, jewelry (RFID), yarn, and grocery retailers.",
     ],
   },
   {
@@ -38,11 +36,11 @@ const experiencesEn = [
     title: "Fullstack Developer",
     company: "Software House, Surabaya, Indonesia",
     description:
-      "Built high-performance web applications using Node.js and Next.js, optimizing complex SQL queries for high-concurrency transactions, managing self-hosted Git servers, and configuring Elasticsearch clusters.",
+      "Maintained a legacy enterprise Tool Management System (TMS) in Java, Spring Boot, and Oracle. Led a Java version upgrade, a large refactor, and a code-review process, and optimized complex SQL queries.",
     achievements: [
-      "Database Recovery & Data Repair: Recovered and repaired 10,000+ corrupted database records by identifying and patching edge-case business logic bugs.",
-      "Infrastructure & Log Indexing: Maintained self-hosted Git servers, configured Elasticsearch clusters for log indexing, and upgraded enterprise Java runtimes.",
-      "Incident & Ticket Elimination: Resolved recurring high-priority incidents by diagnosing and fixing core backend bottlenecks.",
+      "Tracked down the edge-case business-logic bugs that were corrupting data, patched them, and repaired 10,000+ corrupted records.",
+      "Maintained self-hosted Git servers and set up Elasticsearch clusters for log indexing.",
+      "Traced recurring high-priority incidents to backend bottlenecks and fixed them, cutting incident tickets quarter over quarter.",
     ],
   },
   {
@@ -50,11 +48,12 @@ const experiencesEn = [
     title: "Full-Stack Developer",
     company: "PT Pabrik Kertas Tjiwi Kimia Tbk, Indonesia",
     description:
-      "Developed manufacturing dashboards and reporting systems for pulp & paper production using .NET Core, C#, ASP Classic, and SQL Server.",
+      "Built manufacturing dashboards and reports for pulp & paper production in .NET Core, C#, ASP Classic, and SQL Server.",
     achievements: [
-      "Automated OEE & HWT Metrics Reporting: Built an automated WhatsApp alert bot using Python, Java, and Selenium, capturing real-time production metrics for plant OEE and HWT targets.",
-      "Android Barcode Scanner: Designed and deployed a native Android Barcode Scanner application for warehouse inventory tracking.",
-      "Enterprise Internal Applications: Delivered an automated COVID-19 employee health check-in platform and digital corporate raffle draw systems.",
+      "Tuned report queries so long-running reports finish in seconds instead of minutes.",
+      "Automated plant reporting with a WhatsApp bot (Python, Java, Selenium) that sends scheduled dashboard snapshots of OEE and HWT production metrics.",
+      "Shipped a native Android barcode scanner app for warehouse stock-in and stock-out.",
+      "Developed internal apps, including a company-wide daily COVID-19 health check-in and a digital company raffle draw.",
     ],
   },
 ];
@@ -65,25 +64,23 @@ const experiencesId = [
     title: "Fullstack Developer",
     company: "MRI Software (formerly Anacle Systems), Singapura (Remote)",
     description:
-      "Mengembangkan & memelihara platform SaaS enterprise (Anacle Simplicity & SMRT Tenant Management System) menggunakan .NET Core, .NET Framework 4.8, Next.js, dan NestJS.",
+      "Mengembangkan fitur Anacle Simplicity dan SMRT Tenant Management System sampai go-live: pengajuan tender mall, sewa ruang, aplikasi tenant, dan operasional harian. Stack: .NET Core, .NET Framework 4.8, Next.js, NestJS.",
     achievements: [
-      "Go-Live SMRT Tenant Management: Sukses rilis platform SaaS manajemen penyewa mall SMRT Singapore (digitasi tender, aplikasi tenant, leasing).",
-      "Pipeline RAG Produksi: Mengimplementasikan pipeline RAG berbasis OpenAI API & pgvector untuk pencarian semantik dokumen dan pelaporan otomatis.",
-      "Go-Live SharePoint Document Migration: Microservice migrasi dokumen syncing 100.000+ file ke SharePoint Graph API, AWS S3, & Azure Blob (RBAC & audit).",
-      "Pengujian Regresi Otomatis: Refactoring stored procedure .NET legacy dan membuat automated regression test menggunakan Selenium & Playwright.",
-      "SonarQube Security Pipeline: Memimpin analisis kode statis di beberapa proyek enterprise & menerapkan quality gates CI/CD berstandar zero-vulnerability.",
+      "Membangun pipeline RAG produksi dengan OpenAI API dan PostgreSQL (pgvector) untuk pencarian dokumen semantik dan laporan eksekutif otomatis.",
+      "Membuat microservice yang memigrasikan 100.000+ file ke SharePoint (Graph API), AWS S3, dan Azure Blob Storage, lengkap dengan RBAC dan audit log.",
+      "Refactor stored procedure lama dan menulis regression test dengan Selenium dan Playwright untuk modul inti SaaS.",
+      "Memimpin rollout SonarQube di repository enterprise, memperbaiki celah keamanan yang ditemukan, dan memasang quality gate CI/CD yang memblokir deploy jika ada celah baru.",
     ],
   },
   {
     period: "2021 - Sekarang",
-    title: "Freelance & Side Projects",
-    company: "Berbagai Klien & SaaS Mandiri",
+    title: "Freelance Fullstack & AI Engineer",
+    company: "Mandiri, Surabaya (Remote)",
     description:
-      "Merancang & membangun berbagai platform POS, ERP, dan aplikasi AI (Qualiv AI Recruitment, Stock Portfolio AI, Nagamasban AI Sales Assistant, E-Commerce, POS Toko Benang, POS Emas RFID).",
+      "Produk AI dan sistem bisnis untuk klien maupun untuk saya sendiri: Qualiv, Nagamasban AI, OpenClaw, Stock Portfolio AI, Wonderful Works, dan ERP/POS Laravel untuk toko retail lokal.",
     achievements: [
-      "Qualiv Founder & Architect: Platform SaaS rekruitmen AI multi-tenant untuk screening CV, tes logika kandidat, & simulasi wawancara AI.",
-      "Solusi Retail Enterprise: Mengembangkan POS Emas RFID (memangkas audit stok dari 2 jam ke 3 menit), ERP Ban A/R & A/P, dan E-Commerce benang.",
-      "OpenClaw Security Agent: Agen keamanan VPS berbasis AI otomatis dengan fail2ban & notifikasi insiden Telegram.",
+      "Membangun produk AI dari arsitektur sampai production: Qualiv, SaaS rekrutmen berbasis AI, dan asisten rekomendasi ban berbasis AI untuk PT Nagamasban.",
+      "Mengerjakan sistem klien: website dan CMS Wonderful Works, serta ERP/POS Laravel untuk toko ban, toko emas (RFID), toko benang, dan toko grosir.",
     ],
   },
   {
@@ -91,11 +88,11 @@ const experiencesId = [
     title: "Fullstack Developer",
     company: "Software House, Surabaya, Indonesia",
     description:
-      "Mengembangkan aplikasi web berbasis Node.js dan Next.js, mengoptimalkan kueri SQL performa tinggi, serta mengelola infrastruktur Elasticsearch & Git server.",
+      "Memelihara Tool Management System (TMS) enterprise lama dengan Java, Spring Boot, dan Oracle. Memimpin upgrade versi Java, refactor besar, dan proses code review, serta mengoptimalkan query SQL yang kompleks.",
     achievements: [
-      "Database Recovery & Data Repair: Memperbaiki & membersihkan 10.000+ data database terkorupsi akibat bug edge-case legacy code.",
-      "Infrastruktur & Indexing Log: Memelihara server Git mandiri, konfigurasi cluster Elasticsearch untuk log indexing, dan upgrade runtime Java enterprise.",
-      "Incident & Bottleneck Fix: Menyelesaikan bottleneck arsitektur utama & mengeliminasi tiket insiden high-priority berulang.",
+      "Melacak bug edge-case di logika bisnis yang merusak data, menambalnya, lalu memperbaiki 10.000+ record yang rusak.",
+      "Memelihara Git server self-hosted dan menyiapkan cluster Elasticsearch untuk indexing log.",
+      "Menelusuri insiden high-priority yang berulang sampai ke bottleneck backend dan memperbaikinya, sehingga tiket insiden turun tiap kuartal.",
     ],
   },
   {
@@ -103,11 +100,12 @@ const experiencesId = [
     title: "Full-Stack Developer",
     company: "PT Pabrik Kertas Tjiwi Kimia Tbk, Indonesia",
     description:
-      "Mengembangkan aplikasi web manufaktur dengan .NET Core, C#, ASP Classic, & SQL Server untuk industri kertas & pulp.",
+      "Membangun dashboard dan laporan produksi pulp & kertas dengan .NET Core, C#, ASP Classic, dan SQL Server.",
     achievements: [
-      "Automated OEE & HWT Metric Bot: WhatsApp Bot (Python, Java, Selenium) otomatisasi laporan analitik pabrik real-time untuk pencapaian target OEE & HWT.",
-      "Android Barcode Scanner: Merancang & merilis aplikasi native Android pemindai barcode stok gudang real-time (stock-in/out).",
-      "Enterprise Internal Applications: Sistem web check-in & contact tracing harian karyawan se-perusahaan serta digital corporate raffle draw.",
+      "Tuning query laporan sehingga laporan yang biasanya berjalan beberapa menit selesai dalam hitungan detik.",
+      "Mengotomatiskan laporan pabrik lewat bot WhatsApp (Python, Java, Selenium) yang mengirim snapshot dashboard metrik produksi OEE dan HWT sesuai jadwal.",
+      "Merilis aplikasi Android native untuk scan barcode stok masuk dan keluar gudang.",
+      "Membuat aplikasi internal, termasuk check-in kesehatan COVID-19 harian untuk seluruh karyawan dan undian doorprize digital perusahaan.",
     ],
   },
 ];
@@ -115,11 +113,11 @@ const experiencesId = [
 const featuresEn = [
   {
     title: "Full-Stack Development",
-    description: "Building end-to-end solutions from responsive web frontends to scalable backend services.",
+    description: "Next.js frontends, backend APIs, and the SQL underneath, built end to end.",
   },
   {
     title: "Backend & Systems",
-    description: ".NET Core 8/9, NestJS, Node.js, and Java Spring Boot optimized for low-latency concurrency.",
+    description: ".NET Core 8/9, NestJS, Node.js, and Java Spring Boot.",
   },
   {
     title: "AI & Autonomous Agents",
@@ -127,11 +125,11 @@ const featuresEn = [
   },
   {
     title: "Database Architecture",
-    description: "PostgreSQL, Microsoft SQL Server, and Redis — complex query optimization and high-speed indexing.",
+    description: "Query tuning and indexing on PostgreSQL and SQL Server, plus Redis.",
   },
   {
     title: "Cloud & DevOps",
-    description: "AWS, Azure, Docker, Linux administration, and SonarQube zero-vulnerability CI/CD quality gates.",
+    description: "AWS, Azure, Docker, Linux administration, and SonarQube quality gates in CI/CD.",
   },
   {
     title: "Enterprise Integrations",
@@ -142,23 +140,23 @@ const featuresEn = [
 const featuresId = [
   {
     title: "Pengembangan Full-Stack",
-    description: "Membangun solusi end-to-end dari antarmuka web modern hingga layanan backend yang skalabel.",
+    description: "Frontend Next.js, API backend, sampai SQL di bawahnya, dikerjakan end-to-end.",
   },
   {
     title: "Spesialis Backend & Sistem",
-    description: ".NET Core 8/9, NestJS, Node.js, dan Java Spring Boot yang dioptimasi untuk konkurensi rendah latensi.",
+    description: ".NET Core 8/9, NestJS, Node.js, dan Java Spring Boot.",
   },
   {
     title: "Sistem AI & Agen Otonom",
-    description: "Model Context Protocol (MCP), pipeline LLM tool-calling, RAG pgvector, dan antrean pekerja BullMQ.",
+    description: "Model Context Protocol (MCP), pipeline LLM tool-calling, RAG pgvector, dan worker queue BullMQ.",
   },
   {
     title: "Arsitektur Database",
-    description: "PostgreSQL, Microsoft SQL Server, dan Redis — tuning kueri kompleks dan indexing berkinerja tinggi.",
+    description: "Tuning query dan indexing di PostgreSQL dan SQL Server, ditambah Redis.",
   },
   {
     title: "Cloud & DevOps",
-    description: "AWS, Azure, Docker, administrasi Linux, dan CI/CD quality gates SonarQube berstandar zero-vulnerability.",
+    description: "AWS, Azure, Docker, administrasi Linux, dan quality gate SonarQube di CI/CD.",
   },
   {
     title: "Integrasi Enterprise",

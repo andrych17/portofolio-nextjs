@@ -242,17 +242,18 @@ export default function Hero() {
             <p className="max-w-xl text-[var(--t-body)] leading-relaxed text-[var(--fg-2)]">
               {lang === "id" ? (
                 <>
-                  Membangun platform <span className="text-[var(--fg)]">enterprise SaaS</span>,{" "}
-                  <span className="text-[var(--fg)]">sistem terdistribusi</span>, dan{" "}
-                  <span className="text-[var(--accent)]">pipeline AI RAG produksi</span>. Ahli dalam .NET Core,
-                  Next.js, React, Node.js, dan arsitektur cloud berkinerja tinggi.
+                  Lebih dari 3 tahun membangun <span className="text-[var(--fg)]">enterprise SaaS</span> secara
+                  remote untuk MRI Software di Singapura, lalu mendirikan{" "}
+                  <span className="text-[var(--fg)]">Qualiv</span>, platform rekrutmen berbasis AI. Stack utama saya
+                  .NET Core, Next.js, dan NestJS, termasuk{" "}
+                  <span className="text-[var(--accent)]">fitur RAG dan LLM di production</span>.
                 </>
               ) : (
                 <>
-                  Architecting and building <span className="text-[var(--fg)]">enterprise SaaS platforms</span>,{" "}
-                  <span className="text-[var(--fg)]">distributed systems</span>, and{" "}
-                  <span className="text-[var(--accent)]">production AI RAG tools</span>. Skilled in .NET Core,
-                  Next.js, React, Node.js, and high-concurrency cloud architectures.
+                  I spent 3+ years building <span className="text-[var(--fg)]">enterprise SaaS</span> remotely for
+                  MRI Software in Singapore, then founded <span className="text-[var(--fg)]">Qualiv</span>, an AI
+                  recruitment platform. I work mostly in .NET Core, Next.js, and NestJS, and ship{" "}
+                  <span className="text-[var(--accent)]">RAG and LLM features to production</span>.
                 </>
               )}
             </p>

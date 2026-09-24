@@ -7,16 +7,16 @@ import AIChatbot from "@/components/AIChatbot";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://andryhuang.com";
 
 export const metadata: Metadata = {
-  title: "Archive & Portfolio (30+ Projects) • Andry Huang",
+  title: "Archive & Portfolio (20+ Projects) • Andry Huang",
   description:
-    "Explore 30+ enterprise SaaS platforms, AI agent architectures, retail POS systems, and full-stack web applications engineered by Andry Huang with 7+ years of experience.",
+    "20+ projects by Andry Huang: enterprise SaaS, AI agents, retail POS systems, and full-stack web apps from 7+ years of work.",
   alternates: {
     canonical: `${SITE_URL}/portofolio`,
   },
   openGraph: {
     title: "Archive & Portfolio • Andry Huang",
     description:
-      "Complete archive of 30+ software engineering projects spanning .NET Core, Next.js, AI MCP, POS, and PostgreSQL.",
+      "Archive of 20+ projects in .NET Core, Next.js, AI/MCP, POS, and PostgreSQL.",
     url: `${SITE_URL}/portofolio`,
   },
 };

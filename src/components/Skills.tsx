@@ -28,7 +28,7 @@ const skillCategories = [
       "Model Context Protocol (MCP)",
       "Agentic Skills & Rules",
       "OpenAI GPT-4o API",
-      "Claude Sonnet 3.7",
+      "Anthropic Claude API",
       "RAG & pgvector",
       "Prompt Engineering",
       "BullMQ / Redis Queues",

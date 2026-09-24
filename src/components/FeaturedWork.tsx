@@ -6,7 +6,7 @@ import { WorkRow } from "./work/WorkRow";
 import { projects } from "./Projects";
 
 // Top flagship modern picks (reverse chronological / highest impact)
-const FEATURED_ORDER = [504, 303, 506, 508];
+const FEATURED_ORDER = [509, 504, 303, 506, 508];
 
 export default function FeaturedWork() {
   const { lang } = useLanguage();
