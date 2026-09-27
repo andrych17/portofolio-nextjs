@@ -81,7 +81,7 @@ export default function Preloader() {
             preload="auto"
             onEnded={handleDone}
             onError={handleDone}
-            className="h-full w-full object-contain"
+            className="h-full w-full object-cover object-center"
           >
             <source src="/videos/logo.mp4?v=2" media="(min-width: 769px)" type="video/mp4" />
             {/* With <source> children the error fires here, not on <video>; the last source failing means none can play. */}
