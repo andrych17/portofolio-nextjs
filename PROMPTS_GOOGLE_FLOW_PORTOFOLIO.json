@@ -1,0 +1,88 @@
+{
+  "title": "Andry Huang — Senior Fullstack & AI Systems Architect Portfolio (1-Minute Video)",
+  "format": "Vertical 9:16",
+  "target_duration": "64s (8 Clips x 8s)",
+  "download_dir": "/home/spil/projects/personal/portofolio-nextjs/videos",
+  "style_lock": "STYLE: stylized 3D animation, Pixar-grade cinematic rendering meets high-end dark tech aesthetic, soft global illumination, shallow depth of field, subtle volumetric rim light, clean modern developer workspace, brand palette — deep obsidian navy #0B0F19, electric royal blue #0052FF, cyber cyan #00A2FF, sleek slate #F8FAFC. Vertical 9:16 framing, subject centered in safe area, no text overlay baked into frame. Plain unbranded matte laptop bezels and studio displays. All UI cards float as translucent holographic glass panels.",
+  "negative_prompt": "no text overlay baked into video frame, no subtitles baked in, no watermark, no Apple or third-party corporate logos, no extra fingers, no uncanny realistic distorted human skin, no chaotic messy background, no horror dark mood, no jittery camera shake",
+  "characters": [
+    {
+      "name": "Andry",
+      "prompt": "Character reference sheet, 9:16, minimalist studio background in obsidian navy #0B0F19. A 30-year-old Indonesian male software engineer named Andry Huang: modern dark-framed rectangular eyeglasses, stylish neat dark hair with side part, confident and calm intelligent expression, wearing a premium tailored charcoal tech crewneck sweatshirt over a subtle dark undershirt. Five poses: looking intently at floating code holograms, typing smoothly on a matte laptop, turning to camera with a warm confident smile, arms lightly crossed explaining architecture, gesturing toward a glowing system node. Consistent facial proportions across all poses, subsurface scattering skin, Pixar-grade stylized 3D render."
+    }
+  ],
+  "scenes": [
+    {
+      "scene_num": 1,
+      "timecode": "00:00 - 00:08",
+      "title": "The Hook (Beyond Basic Web)",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. Dark high-end developer studio at night. Extreme close-up of a sleek floating terminal holographic screen emitting electric blue and cyan light. Fast terminal logs compilation, glowing agent swarm routing nodes. Indonesian engineer Andry Huang in modern glasses reflected sharply in the screen glass, eyes focused and analytical. Deep obsidian navy background, soft volumetric rim light on his shoulder, shallow depth of field. Stylized 3D Pixar-grade render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. Beat 1, 0 to 2 seconds: extreme close-up on the glowing terminal screen where code lines execute with hyper-fast cyan sparks. Beat 2, 2 to 8 seconds: camera smoothly dollies back and tilts up to reveal Andry sitting at his clean minimalist wooden desk, one hand on the trackpad, watching multi-agent architecture holograms expand outward. Camera: smooth dolly out and upward tilt. Lighting: cyan and electric blue screen glow as key light, warm tungsten ambient rim light behind. Dialogue (Indonesian, confident, clear, spoken at second two): \"Banyak yang bisa bikin website biasa. Tapi berapa banyak yang bangun AI-native enterprise system skala production?\" Audio: subtle futuristic digital chime, typing keyboard click, low ambient drone. Music: pulsing modern electronic bass enters.",
+      "dialogue": "Andry: \"Banyak yang bisa bikin website biasa. Tapi berapa banyak yang bangun AI-native enterprise system skala production?\"",
+      "overlay": "Senior Full-Stack & AI Systems Architect"
+    },
+    {
+      "scene_num": 2,
+      "timecode": "00:08 - 00:16",
+      "title": "The Identity (7+ Years Track Record)",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. Medium shot of Andry standing beside his desk. A floating minimalist dark-mode portfolio card (andryhuang.com) hovers beside him in mid-air, displaying an elegant editorial typography layout with a 7+ Years Experience badge and verified cloud architecture icons (.NET Core, Next.js, PostgreSQL). Deep navy ambient room, subtle cyan rim light tracing Andry's silhouette, Pixar-grade stylized 3D render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. Andry turns toward the camera with a relaxed, confident posture and gestures subtly toward the floating holographic timeline card. The card unfolds into interactive milestone nodes with crisp magnetic snaps. Camera: gentle handheld arc from left to center. Lighting: holographic card casts soft blue reflections on Andry's face. Dialogue (Indonesian, warm and authentic, spoken at second one): \"Halo, saya Andry Huang. Lebih dari 7 tahun membangun SaaS, arsitektur enterprise, dan autonomous AI agent.\" Audio: holographic card expand whoosh, crisp UI ticks. Music: synth arpeggio builds with steady tempo.",
+      "dialogue": "Andry: \"Halo, saya Andry Huang. Lebih dari 7 tahun membangun SaaS, arsitektur enterprise, dan autonomous AI agent.\"",
+      "overlay": "7+ Years Shipping Production Systems"
+    },
+    {
+      "scene_num": 3,
+      "timecode": "00:16 - 00:24",
+      "title": "Flagship 1: Qualiv AI Recruitment Platform",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. Close-up on a floating multi-panel UI of Qualiv AI Recruitment platform. Hundreds of PDF resumes flow into a glowing cyan funnel and emerge as clean ranked candidate cards with STAR interview evaluation scores. Andry stands in the background watching the automated pipeline run autonomously. Electric blue volumetric light shafts, deep navy tech world, Pixar-grade stylized 3D render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. Floating Qualiv UI elements assemble in mid-air. An AI agent orb scans CVs at high speed, highlighting skills and outputting top 5% shortlisted candidates into a golden card column. Andry nods in approval. Camera: slow push-in focusing on the dynamic sorting animation, then panning slightly to Andry's smiling profile. Lighting: electric blue and emerald success green rim light. Dialogue (Indonesian, energetic, spoken at second one): \"Seperti Qualiv: platform recruitment berbasis AI yang memproses ratusan CV dan adaptive STAR interview secara otomatis.\" Audio: paper parsing zip sound, gentle confirmation chime. Music: energetic rhythmic kick and bassline.",
+      "dialogue": "Andry: \"Seperti Qualiv: platform recruitment berbasis AI yang memproses ratusan CV dan adaptive STAR interview secara otomatis.\"",
+      "overlay": "Qualiv.id • Founder & Lead Architect"
+    },
+    {
+      "scene_num": 4,
+      "timecode": "00:24 - 00:32",
+      "title": "Flagship 2: OpenClaw AI Autonomous VPS Security",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. Modern high-security server room aesthetic. A translucent holographic shield matrix floats in front of Andry. Anomaly logs and threat alerts flash briefly purple, then instantly resolve to safe emerald shields as an autonomous agent script activates. Andry calmly adjusts his glasses. Deep obsidian atmosphere, cyan laser guidelines, Pixar-grade stylized 3D render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. The holographic server topology pulses. A red anomaly spike appears on the network graph; an AI agent node rapidly routes to it and neutralizes the brute force attempt with fail2ban automation, turning the perimeter calm cyan. Andry taps a floating terminal key to commit the fix. Camera: dynamic 45-degree angle dolly in. Lighting: purple warning glow fades into tranquil electric blue. Dialogue (Indonesian, sharp and authoritative): \"Hingga OpenClaw: agent AI otonom untuk mendiagnosis syslog server dan mengamankan VPS secara real-time.\" Audio: digital alert pulse resolving to smooth system chime. Music: driving tech beat with subtle sub-bass.",
+      "dialogue": "Andry: \"Hingga OpenClaw: agent AI otonom untuk mendiagnosis syslog server dan mengamankan VPS secara real-time.\"",
+      "overlay": "OpenClaw • Autonomous VPS Security Agent"
+    },
+    {
+      "scene_num": 5,
+      "timecode": "00:32 - 00:40",
+      "title": "Enterprise Foundation (.NET, NestJS & Cloud)",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. Architectural blueprint perspective. A 3D isometric exploded view of an enterprise cloud infrastructure: high-throughput BullMQ queues, PostgreSQL database clusters, and .NET Core microservice containers interconnected by glowing data pipes. Andry stands reviewing the system flow. Deep navy, golden ledger lines, Pixar-grade stylized 3D render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. The isometric architecture layers lock together with hydraulic precision. Data packets flow seamlessly through queue pipelines without bottleneck. Andry sweeps his hand across the architecture, bringing an RFID retail ERP and facilities SaaS into view. Camera: smooth crane shot sweeping down from high angle to eye level. Lighting: warm golden and crisp cyan highlights across blueprint lines. Dialogue (Indonesian, measured, professional): \"Fondasi saya berakar dari sistem enterprise: .NET Core, NestJS, BullMQ Redis, hingga database jutaan transaksi.\" Audio: heavy mechanical lock sound, low smooth hum of high-scale servers. Music: confident melodic synth layer.",
+      "dialogue": "Andry: \"Fondasi saya berakar dari sistem enterprise: .NET Core, NestJS, BullMQ Redis, hingga database jutaan transaksi.\"",
+      "overlay": "Enterprise SaaS & Distributed Architecture"
+    },
+    {
+      "scene_num": 6,
+      "timecode": "00:40 - 00:48",
+      "title": "Engineering Philosophy (Zero Slop, Pure Impact)",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. Close-up over Andry's hands typing swiftly on a sleek matte laptop. The screen shows pristine TypeScript code formatted cleanly with zero boilerplate. Floating code chips with labels 'Clean Code', 'Token-Optimized', 'Multi-Tenant Isolation' orbit gently. Andry's expression is focused, thoughtful, and proud of the craft. Pixar-grade stylized 3D render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. Andry's fingers glide across the keyboard. Code compiles in sub-seconds with green checkmarks. He pauses, leans back comfortably, and glances at the clean architecture diagram with satisfaction. Camera: intimate medium close-up with soft background blur. Lighting: gentle screen illumination with soft golden lamp backlight. Dialogue (Indonesian, reflective and strong, spoken at second one): \"Filosofi saya: bukan cuma nulis kode banyak. Tapi membangun sistem yang cepat, hemat resource, dan beri dampak nyata buat bisnis.\" Audio: tactile mechanical keyboard typing, soft exhale, gentle confirmation chord. Music: warm emotional piano chord under the electronic beat.",
+      "dialogue": "Andry: \"Filosofi saya: bukan cuma nulis kode banyak. Tapi membangun sistem yang cepat, hemat resource, dan beri dampak nyata buat bisnis.\"",
+      "overlay": "Zero Slop • High Performance • Business Impact"
+    },
+    {
+      "scene_num": 7,
+      "timecode": "00:48 - 00:56",
+      "title": "Interactive Portfolio Showcase",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. High-angle perspective showing a sleek smartphone and ultra-wide monitor side by side running andryhuang.com. The interface is responsive, dark-themed, showcasing interactive AI Chatbot, live project cards, and bilingual EN/ID toggling. Andry is visible smiling in the background. Soft diffused studio lighting, deep indigo backdrop, Pixar-grade stylized 3D render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. A simulated finger scrolls smoothly through the portfolio on the phone screen with silky 120fps motion. The AI Chatbot on the portfolio answers a technical query instantly with streaming text. Andry points toward the screen with an inviting gesture. Camera: slow tilt down from Andry to the glowing phone screen. Lighting: bright screen glow emphasizing responsive UI details. Dialogue (Indonesian, friendly and inviting): \"Semua project, live demo, dan arsitektur lengkap bisa langsung Anda coba di web portfolio saya.\" Audio: smooth screen swipe whoosh, subtle UI tap sounds. Music: upbeat and inspiring build-up.",
+      "dialogue": "Andry: \"Semua project, live demo, dan arsitektur lengkap bisa langsung Anda coba di web portfolio saya.\"",
+      "overlay": "Explore Live Projects & AI Demos"
+    },
+    {
+      "scene_num": 8,
+      "timecode": "00:56 - 01:04",
+      "title": "Call to Action & Outro",
+      "first_frame_nano_banana": "Vertical 9:16 cinematic still. Medium hero shot of Andry standing centered in his modern studio, smiling warmly and directly at the camera. In front of him, a floating premium translucent badge card displays: 'andryhuang.com' in bold modern typography, alongside icons for GitHub, LinkedIn, and WhatsApp. Atmospheric bokeh lights in blue and gold behind him. Pixar-grade stylized 3D render.",
+      "veo_video_prompt": "8-second vertical 9:16 shot. Andry gently closes his laptop, looks up, and delivers his closing call to action with warmth and confidence. The floating 'andryhuang.com' badge glows softly with an electric blue pulse. Camera: subtle push-in to a locked confident hero framing. Lighting: cinematic warm key light, electric blue rim light highlighting the CTA badge. Dialogue (Indonesian, inviting, professional): \"Butuh partner teknis untuk scale produk AI atau arsitektur enterprise Anda? Let's connect di andryhuang.com.\" Audio: soft laptop close click, rising harmonic chime. Music: major chord resolution with crisp modern tech outro.",
+      "dialogue": "Andry: \"Butuh partner teknis untuk scale produk AI atau arsitektur enterprise Anda? Let's connect di andryhuang.com.\"",
+      "overlay": "andryhuang.com • Open for Senior Roles & Consulting"
+    }
+  ]
+}
