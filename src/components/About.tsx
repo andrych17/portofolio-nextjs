@@ -184,7 +184,7 @@ export default function About() {
                 alt="Andry Huang"
                 fill
                 sizes="(max-width: 1024px) 90vw, 384px"
-                className="object-cover grayscale contrast-[1.08] transition-[filter,transform] duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:scale-[1.03] group-hover:grayscale-0"
+                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:scale-[1.03]"
                 priority
               />
             </div>
