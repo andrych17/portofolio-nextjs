@@ -1,9 +1,8 @@
 "use client";
 
-import { Award, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionHead, Index } from "./ui/Label";
-import { Reveal } from "./ui/Reveal";
+import { Title } from "./ui/Title";
 
 interface Certification {
   id: number;
@@ -107,57 +106,50 @@ export const certifications: Certification[] = [
 
 export default function Certifications() {
   const { lang } = useLanguage();
+  const id = lang === "id";
+  const fromAnthropic = certifications.filter((c) => c.issuer === "Anthropic").length;
 
   return (
-    <section id="certifications" className="relative overflow-hidden">
+    <section id="certifications" data-stage="certifications" className="ah-sec ah-side-right">
+      <Title
+        no="04"
+        meta={
+          id
+            ? `${certifications.length} sertifikat · ${fromAnthropic} dari Anthropic`
+            : `${certifications.length} certificates · ${fromAnthropic} from Anthropic`
+        }
+      >
+        {id ? "Sertifikasi" : "Certified"}
+      </Title>
 
-      <SectionHead index="03" label={lang === "id" ? "Sertifikasi & Penghargaan" : "Certifications & Awards"} />
-
-      <div className="px-[var(--pad-x)] py-[var(--sec-sm)] relative z-10">
-        {certifications.length === 0 ? (
-          <Reveal className="max-w-xl">
-            <Award className="w-8 h-8 text-[var(--mut)] mb-4" aria-hidden />
-            <h3 className="text-xl font-medium text-[var(--fg)] mb-2">
-              {lang === "id" ? "Sertifikasi Segera Hadir" : "Certifications Coming Soon"}
-            </h3>
-            <p className="text-[var(--mut)]">
-              {lang === "id"
-                ? "Sertifikasi profesional dan penghargaan akan ditampilkan di sini."
-                : "Professional certifications and awards will be displayed here."}
-              <br />
-              {lang === "id" ? "Nantikan pembaruannya!" : "Stay tuned for updates!"}
-            </p>
-          </Reveal>
-        ) : (
-          <div className="border-t border-[var(--line)]">
-            {certifications.map((cert, index) => (
-              <Reveal key={cert.id} delay={Math.min(index * 0.03, 0.3)}>
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col gap-2 border-b border-[var(--line)] py-5 px-3 rounded-xl sm:flex-row sm:items-center sm:gap-6 transition-all duration-300 hover:bg-white/[0.03] hover:border-white/20"
-                >
-                  <Index n={index + 1} className="w-8 shrink-0" />
-                  <span className="flex-1 text-base font-semibold text-[var(--fg)] transition-colors group-hover:text-[var(--accent)]">
-                    {cert.title}
-                  </span>
-                  <span className="font-mono text-xs uppercase tracking-[0.1em] text-[var(--fg-2)] px-2.5 py-0.5 rounded-full border border-white/10 bg-white/5 shrink-0">
-                    {cert.issuer}
-                  </span>
-                  <span className="font-mono text-xs tabular-nums text-[var(--mut)] shrink-0">{cert.date}</span>
-                  {cert.link && (
-                    <span className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.1em] text-[var(--mut)] shrink-0 group-hover:text-[var(--accent)]">
-                      {lang === "id" ? "Verifikasi" : "Verify"}
-                      <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-                    </span>
-                  )}
+      <ul className="ah-certs">
+        {certifications.map((c) => {
+          const body = (
+            <>
+              <span className="ah-mono ah-cert-issuer">{c.issuer}</span>
+              <span className="ah-cert-title">{c.title.replace(/^Certificate of completion: /, "")}</span>
+              <span className="ah-mono ah-cert-date">{c.date}</span>
+              {c.link && (
+                <span className="ah-mono ah-cert-go">
+                  {id ? "Verifikasi" : "Verify"}
+                  <ArrowUpRight size={14} strokeWidth={1.75} aria-hidden="true" />
+                </span>
+              )}
+            </>
+          );
+          return (
+            <li key={c.id}>
+              {c.link ? (
+                <a className="ah-cert" href={c.link} target="_blank" rel="noopener noreferrer">
+                  {body}
                 </a>
-              </Reveal>
-            ))}
-          </div>
-        )}
-      </div>
+              ) : (
+                <div className="ah-cert">{body}</div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

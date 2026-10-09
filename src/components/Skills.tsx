@@ -1,136 +1,84 @@
 "use client";
 
-import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionHead, Index, Label } from "./ui/Label";
-import { Reveal } from "./ui/Reveal";
+import { EASE, Title } from "./ui/Title";
 
-const skills = [
-  { name: ".NET Core & Enterprise Systems", years: "7+ Yrs", pct: 100 },
-  { name: "SQL Server & PostgreSQL Databases", years: "7+ Yrs", pct: 100 },
-  { name: "TypeScript / JavaScript", years: "6+ Yrs", pct: 85 },
-  { name: "Next.js / React Architecture", years: "5+ Yrs", pct: 75 },
-  { name: "Node.js / Nest.js Backend", years: "5+ Yrs", pct: 75 },
-  { name: "Laravel / PHP Ecosystem", years: "5+ Yrs", pct: 75 },
-  { name: "AI & LLM Systems (OpenAI / Claude)", years: "3+ Yrs", pct: 50 },
-  { name: "AI Agent Protocols (MCP & Workflows)", years: "3+ Yrs", pct: 50 },
+const MAX_YEARS = 7;
+
+const TRACK = [
+  { name: ".NET Core & enterprise systems", years: 7 },
+  { name: "SQL Server & PostgreSQL", years: 7 },
+  { name: "TypeScript / JavaScript", years: 6 },
+  { name: "Next.js / React", years: 5 },
+  { name: "Node.js / NestJS", years: 5 },
+  { name: "Laravel / PHP", years: 5 },
+  { name: "AI & LLM systems (OpenAI, Claude)", years: 3 },
+  { name: "AI agents & MCP workflows", years: 2 },
 ];
 
-const skillCategories = [
-  {
-    title: "AI Development & Coding Tools",
-    skills: ["Google Antigravity (AGY)", "Claude Code", "OpenCode", "CommandCode", "Cursor", "CodeX", "GLM"],
-  },
-  {
-    title: "AI Protocols & Architecture",
-    skills: [
-      "Model Context Protocol (MCP)",
-      "Agentic Skills & Rules",
-      "OpenAI GPT-4o API",
-      "Anthropic Claude API",
-      "RAG & pgvector",
-      "Prompt Engineering",
-      "BullMQ / Redis Queues",
-    ],
-  },
-  {
-    title: "Frontend Frameworks",
-    skills: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Vue.js / Inertia.js", "Laravel Livewire 3", "Alpine.js", "Flutter"],
-  },
-  {
-    title: "Backend & Systems",
-    skills: [".NET Core 8/9", "ASP.NET Core", "NestJS", "Node.js", "Laravel 11", "Python FastAPI", "Java Spring Boot", "REST & GraphQL"],
-  },
-  {
-    title: "Database & Cloud Storage",
-    skills: ["PostgreSQL", "Microsoft SQL Server", "Oracle DB (PL/SQL)", "MySQL 8", "Prisma ORM", "Redis", "Cloudflare R2", "AWS S3", "Azure Blob"],
-  },
-  {
-    title: "DevOps & Integrations",
-    skills: ["Docker & Compose", "Git / GitHub", "CI/CD Pipelines", "SonarQube", "Playwright & Selenium", "RFID Hardware Integration", "Midtrans Payment Gateway"],
-  },
+const GROUPS = [
+  { en: "Backend", id: "Backend", items: [".NET Core 8/9 · C#", "ASP.NET Core Web API", "EF Core · Dapper", "NestJS · Express", "Laravel 11 · PHP", "Java 17 · Spring Boot", "FastAPI"] },
+  { en: "Data", id: "Data", items: ["PostgreSQL · pgvector", "SQL Server · T-SQL", "Oracle · PL/SQL", "MySQL 8", "Redis · BullMQ", "Prisma"] },
+  { en: "Frontend", id: "Frontend", items: ["Next.js 16 · App Router", "React 19", "TypeScript strict", "Tailwind CSS v4", "Vue · Inertia", "Livewire 3 · Alpine", "Framer Motion", "three.js", "Flutter"] },
+  { en: "AI systems", id: "Sistem AI", items: ["MCP servers & tools", "Agent workflows", "Claude API", "OpenAI GPT-4o", "Gemini SDK", "RAG · hybrid search", "Structured outputs"] },
+  { en: "AI tooling", id: "Tool AI", items: ["Claude Code", "Google Antigravity", "Cursor", "Codex", "OpenCode"] },
+  { en: "Ops", id: "Ops", items: ["Docker · Compose", "Linux · Nginx", "Cloudflare · R2", "AWS S3 · Azure Blob", "GitHub Actions · GitLab CI", "SonarQube", "Playwright · Selenium", "RFID hardware", "Midtrans"] },
 ];
 
 export default function Skills() {
   const { lang } = useLanguage();
-  const [openIndex, setOpenIndex] = useState(0);
+  const id = lang === "id";
 
   return (
-    <section id="skills" className="relative overflow-hidden">
+    <section id="skills" data-stage="skills" className="ah-sec ah-side-right">
+      <Title no="03" meta={id ? "Dipakai di production sejak 2019" : "In production since 2019"}>
+        Stack
+      </Title>
 
-      <SectionHead index="02" label={lang === "id" ? "Keahlian & Teknologi" : "Skills & Stack"} />
+      {/* The list watches the viewport, not the bars: a bar at scaleX(0) has no area to intersect. */}
+      <motion.ol
+        className="ah-track"
+        aria-label={id ? "Lama pengalaman per teknologi" : "Years with each technology"}
+        initial="off"
+        whileInView="on"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        {TRACK.map((t, i) => (
+          <li key={t.name}>
+            <span className="ah-track-name">{t.name}</span>
+            <span className="ah-bar" aria-hidden="true">
+              <motion.i
+                style={{ width: `${(t.years / MAX_YEARS) * 100}%` }}
+                variants={{ off: { scaleX: 0 }, on: { scaleX: 1 } }}
+                transition={{ duration: 0.9, delay: i * 0.06, ease: EASE }}
+              />
+            </span>
+            <span className="ah-mono ah-track-years">{id ? `${t.years}+ thn` : `${t.years}+ yrs`}</span>
+          </li>
+        ))}
+      </motion.ol>
 
-      <div className="px-[var(--pad-x)] py-[var(--sec-sm)] relative z-10">
-        {/* Track record */}
-        <Reveal>
-          <Label className="mb-6 block">
-            {lang === "id" ? "Pengalaman Teknis (Track Record)" : "Technical Experience (Track Record)"}
-          </Label>
-        </Reveal>
-        <div className="mb-16 border-t border-[var(--line)]">
-          {skills.map((skill, i) => (
-            <Reveal key={skill.name} delay={i * 0.03}>
-              <div className="group flex items-center justify-between gap-4 border-b border-[var(--line)] py-4 hover:bg-white/[0.02] px-2 rounded-lg transition-colors">
-                <span className="text-sm md:text-base text-[var(--fg-2)] group-hover:text-[var(--fg)] transition-colors">
-                  {skill.name}
-                </span>
-                <div className="flex items-center gap-4 shrink-0">
-                  <span className="font-mono text-xs tabular-nums text-[var(--mut)]">{skill.pct}%</span>
-                  <span className="font-mono text-xs text-[var(--fg)] px-2.5 py-0.5 rounded-full border border-white/10 bg-white/5">
-                    {skill.years}
-                  </span>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Categories • numbered accordion rows */}
-        <Reveal>
-          <Label className="mb-6 block">
-            {lang === "id" ? "Ekosistem & Kakas Teknologi" : "Technologies I Work With"}
-          </Label>
-        </Reveal>
-        <div className="border-t border-[var(--line)]">
-          {skillCategories.map((category, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div key={category.title} className="border-b border-[var(--line)] transition-colors">
-                <button
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center gap-4 py-5 text-left group cursor-pointer"
-                  aria-expanded={isOpen}
-                >
-                  <Index n={index + 1} className="w-8 shrink-0" />
-                  <span className="flex-1 text-lg md:text-xl font-medium text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors">
-                    {category.title}
-                  </span>
-                  <span className="font-mono text-xs text-[var(--mut)] tabular-nums hidden sm:inline px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
-                    {String(category.skills.length).padStart(2, "0")} skills
-                  </span>
-                  {isOpen ? (
-                    <Minus className="w-4 h-4 text-[var(--accent)]" aria-hidden />
-                  ) : (
-                    <Plus className="w-4 h-4 text-[var(--mut)] group-hover:text-[var(--fg)]" aria-hidden />
-                  )}
-                </button>
-                {isOpen && (
-                  <div className="flex flex-wrap gap-2 pb-6 pl-12 pt-2">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="border border-white/10 bg-white/[0.04] px-3 py-1.5 rounded-lg font-mono text-xs uppercase tracking-[0.08em] text-[var(--fg-2)] hover:border-[var(--accent)]/50 hover:text-[var(--fg)] hover:bg-white/[0.08] transition-all shadow-sm"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+      <div className="ah-groups">
+        {GROUPS.map((g, i) => (
+          <motion.div
+            key={g.en}
+            className="ah-group"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "0px 0px -8% 0px" }}
+            transition={{ duration: 0.6, delay: i * 0.05, ease: EASE }}
+          >
+            <h3 className="ah-group-name">
+              <span>{g[lang]}</span>
+            </h3>
+            <ul>
+              {g.items.map((it) => (
+                <li key={it}>{it}</li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

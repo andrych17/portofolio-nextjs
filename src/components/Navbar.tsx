@@ -1,248 +1,165 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe, ArrowUpRight, Github, Linkedin, MessageCircle, Gamepad2 } from "lucide-react";
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { RollLink } from "./ui/RollLink";
+import { wib } from "@/utils/timeline";
+import { useActiveSection, type SectionId } from "./stage/active";
+
+const ITEMS: { key: SectionId | "archive"; en: string; id: string; href: string }[] = [
+  { key: "career", en: "Career", id: "Karier", href: "/#career" },
+  { key: "work", en: "Works", id: "Karya", href: "/#work" },
+  { key: "skills", en: "Stack", id: "Stack", href: "/#skills" },
+  { key: "certifications", en: "Certified", id: "Sertifikasi", href: "/#certifications" },
+  { key: "contact", en: "Contact", id: "Kontak", href: "/#contact" },
+  { key: "archive", en: "Archive", id: "Arsip", href: "/portofolio" },
+];
+
+const WHATSAPP =
+  "https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you";
+
+const everyFewSeconds = (cb: () => void) => {
+  const t = window.setInterval(cb, 10_000);
+  return () => window.clearInterval(t);
+};
+
+// Empty on the server so the first client render can't mismatch on the time.
+function useSurabayaClock(): string {
+  return useSyncExternalStore(everyFewSeconds, () => wib(new Date()), () => "");
+}
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
   const { lang, toggleLang } = useLanguage();
+  const pathname = usePathname();
+  const active = useActiveSection();
+  const clock = useSurabayaClock();
+  const [open, setOpen] = useState(false);
+  const [hover, setHover] = useState<number | null>(null);
+  const burger = useRef<HTMLButtonElement>(null);
+  const first = useRef<HTMLAnchorElement>(null);
+  const id = lang === "id";
+  const onHome = pathname === "/";
 
-  const navItems = [
-    { name: lang === "id" ? "Beranda" : "Home", href: "/#home", page: "/" },
-    { name: lang === "id" ? "Tentang" : "About", href: "/#about", page: "/" },
-    { name: lang === "id" ? "Keahlian" : "Skills", href: "/#skills", page: "/" },
-    { name: lang === "id" ? "Portofolio" : "Portfolio", href: "/portofolio", page: "/portofolio" },
-    { name: lang === "id" ? "Sertifikasi" : "Certifications", href: "/#certifications", page: "/" },
-    { name: lang === "id" ? "Kontak" : "Contact", href: "/#contact", page: "/" },
-  ];
+  const current = (key: (typeof ITEMS)[number]["key"]) => (key === "archive" ? pathname === "/portofolio" : onHome && key === active);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (!open) return;
+    const toggle = burger.current;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    first.current?.focus();
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+      toggle?.focus({ preventScroll: true });
+    };
+  }, [open]);
 
-  // Lock body scroll when mobile drawer is open
-  useEffect(() => {
-    if (isOpen) {
-      const prevOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = prevOverflow;
-      };
-    }
-  }, [isOpen]);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    setIsOpen(false);
-    const hashIndex = href.indexOf("#");
-    if (hashIndex === -1) return;
-    const targetPath = href.slice(0, hashIndex) || "/";
-    if (targetPath !== pathname) return;
-    e.preventDefault();
-    const hash = href.slice(hashIndex);
-    setTimeout(() => {
-      const element = document.querySelector(hash);
-      if (element) {
-        const navHeight = 64;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo({ top: elementPosition - navHeight, behavior: "smooth" });
-      }
-    }, 100);
-  };
+  const selected = hover ?? ITEMS.findIndex((it) => current(it.key));
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-          isOpen
-            ? "bg-[var(--bg)] border-b border-[var(--line)]"
-            : scrolled
-            ? "py-1 px-[var(--pad-x)] bg-[var(--bg)]/80 backdrop-blur-md border-b border-[var(--line)]"
-            : "py-5 px-[var(--pad-x)] border-b border-transparent"
-        }`}
-      >
-        <div className="w-full">
-          <div className="flex items-center justify-between h-14">
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--fg)] hover:text-[var(--accent)] transition-colors group"
-            >
-              <span className="w-2 h-2 rounded-full bg-[var(--accent)] group-hover:scale-125 transition-transform" />
-              <span>Portfolio</span>
-            </Link>
+      {/* On the home hero the big menu is the navigation, so the top links wait until you scroll past it. */}
+      <header className="ah-nav" data-hero={(onHome && active === "home" && !open) || undefined}>
+        <Link href="/" className="ah-brand" onClick={() => setOpen(false)}>
+          <span className="ah-brand-name">Andry Huang</span>
+          <span className="ah-mono">Full-stack · AI systems</span>
+        </Link>
 
-            {/* Desktop Navigation & Lang Switcher */}
-            <div className="hidden md:flex items-center gap-7">
-              <div className="flex gap-5">
-                {navItems.map((item) => {
-                  // Hash links on "/" are sections, not pages — only real routes get the active state.
-                  const isActive = !item.href.includes("#") && item.page === pathname;
-                  return (
-                    <RollLink
-                      key={item.name}
-                      href={item.href}
-                      className={`font-mono text-xs uppercase tracking-[0.12em] py-2 transition-colors ${
-                        isActive ? "text-[var(--accent)] font-semibold" : "text-[var(--fg-2)] hover:text-[var(--fg)]"
-                      }`}
-                    >
-                      {item.name}
-                    </RollLink>
-                  );
-                })}
-              </div>
-
-              <div className="h-4 w-px bg-white/10" />
-
-              {/* Skewed slab echoes the /play menu it opens */}
+        <nav className="ah-nav-links" aria-label={id ? "Navigasi utama" : "Main"}>
+          {ITEMS.map((it) => {
+            const on = current(it.key);
+            return (
               <Link
-                href="/play"
-                className="group relative px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bg)]"
+                key={it.key}
+                href={it.href}
+                className="ah-nav-link"
+                data-on={on || undefined}
+                aria-current={on ? (it.key === "archive" ? "page" : "location") : undefined}
               >
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 -skew-x-12 bg-[var(--accent)] transition-colors duration-200 group-hover:bg-[var(--fg)]"
-                />
-                <span className="relative">{lang === "id" ? "Mode game" : "Game mode"}</span>
+                <span>{id ? it.id : it.en}</span>
               </Link>
+            );
+          })}
+        </nav>
 
-              <button
-                onClick={toggleLang}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 font-mono text-xs cursor-pointer hover:bg-white/10 transition-colors"
-                title="Switch Language / Ganti Bahasa"
-              >
-                <Globe className="w-3.5 h-3.5 text-[var(--mut)]" />
-                <span className={lang === "id" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>ID</span>
-                <span className="text-[var(--mut)]">/</span>
-                <span className={lang === "en" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>EN</span>
-              </button>
-            </div>
-
-            {/* Mobile Right Bar */}
-            <div className="flex md:hidden items-center gap-2">
-              <button
-                onClick={toggleLang}
-                className="flex items-center gap-1 px-2.5 py-2 font-mono text-xs rounded-lg border border-[var(--line)] bg-white/5 active:scale-95 transition-transform cursor-pointer"
-                aria-label="Toggle language"
-              >
-                <Globe className="w-3.5 h-3.5 text-[var(--mut)]" />
-                <span className={lang === "id" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>ID</span>
-                <span className="text-[var(--mut)]">/</span>
-                <span className={lang === "en" ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"}>EN</span>
-              </button>
-
-              <button
-                className="text-[var(--fg)] p-2.5 rounded-lg border border-[var(--line)] bg-white/5 active:scale-95 transition-transform cursor-pointer"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label={isOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isOpen}
-              >
-                {isOpen ? <X size={20} className="text-[var(--accent)]" /> : <Menu size={20} />}
-              </button>
-            </div>
-          </div>
+        <div className="ah-nav-right">
+          <span className="ah-mono ah-clock" aria-label={clock ? `Surabaya ${clock} WIB` : undefined}>
+            {clock && (
+              <>
+                Surabaya <b>{clock}</b> WIB
+              </>
+            )}
+          </span>
+          <button
+            type="button"
+            className="ah-lang"
+            onClick={toggleLang}
+            aria-label={id ? "Switch to English" : "Ganti ke Bahasa Indonesia"}
+          >
+            <span data-on={id || undefined}>ID</span>
+            <span data-on={!id || undefined}>EN</span>
+          </button>
+          <a className="ah-nav-cv" href="/Andry_Huang_CV.pdf" target="_blank" rel="noopener noreferrer">
+            CV
+          </a>
+          <button
+            ref={burger}
+            type="button"
+            className="ah-burger"
+            aria-expanded={open}
+            aria-controls="ah-overlay"
+            aria-label={open ? (id ? "Tutup menu" : "Close menu") : id ? "Buka menu" : "Open menu"}
+            onClick={() => {
+              setHover(null);
+              setOpen((o) => !o);
+            }}
+          >
+            {open ? <X size={22} strokeWidth={1.5} /> : <Menu size={22} strokeWidth={1.5} />}
+          </button>
         </div>
       </header>
 
-      {/* Mobile Full-Screen Navigation Drawer */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="md:hidden fixed inset-x-0 top-16 bottom-0 z-[90] bg-[var(--bg)] flex flex-col justify-between overflow-y-auto px-[var(--pad-x)] py-6"
-          >
-            {/* Nav list */}
-            <div className="flex flex-col">
-              {navItems.map((item, index) => {
-                const isActive = !item.href.includes("#") && item.page === pathname;
-                return (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.04, duration: 0.25 }}
-                    className="border-b border-[var(--line)]"
+      {open && (
+        <div id="ah-overlay" className="ah-overlay" role="dialog" aria-modal="true" aria-label="Menu">
+          <div className="ah-overlay-band" aria-hidden="true" />
+          <nav className="ah-menu ah-overlay-menu" aria-label={id ? "Navigasi utama" : "Main"}>
+            <ul>
+              {ITEMS.map((it, i) => (
+                <li key={it.key} style={{ "--i": i } as CSSProperties}>
+                  <Link
+                    ref={i === 0 ? first : undefined}
+                    href={it.href}
+                    className="ah-item"
+                    data-on={i === selected || undefined}
+                    onPointerEnter={() => setHover(i)}
+                    onFocus={() => setHover(i)}
+                    onClick={() => setOpen(false)}
                   >
-                    <Link
-                      href={item.href}
-                      className={`flex items-center justify-between py-4 text-2xl font-medium tracking-tight transition-colors ${
-                        isActive ? "text-[var(--accent)]" : "text-[var(--fg)] hover:text-[var(--accent)]"
-                      }`}
-                      onClick={(e) => handleNavClick(e, item.href)}
-                    >
-                      <div className="flex items-baseline gap-3">
-                        <span className="font-mono text-xs text-[var(--mut)] tabular-nums">
-                          0{index + 1}
-                        </span>
-                        <span>{item.name}</span>
-                      </div>
-                      <ArrowUpRight className="w-4 h-4 text-[var(--mut)]" />
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Bottom Drawer Actions */}
-            <div className="mt-8 pt-6 border-t border-[var(--line)] flex flex-col gap-4">
-              <a
-                href="https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[var(--accent)] text-[var(--bg)] font-semibold text-sm tracking-wide shadow-lg active:scale-98 transition-transform"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span>{lang === "id" ? "Hubungi via WhatsApp" : "Chat on WhatsApp"}</span>
-              </a>
-
-              <Link
-                href="/play"
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white/5 text-[var(--fg)] font-semibold text-sm tracking-wide active:scale-98 transition-transform"
-              >
-                <Gamepad2 className="w-4 h-4 text-[var(--accent)]" />
-                <span>{lang === "id" ? "Buka mode game" : "Open game mode"}</span>
-              </Link>
-
-              <div className="flex items-center justify-between text-xs font-mono text-[var(--mut)] pt-2">
-                <div className="flex items-center gap-4">
-                  <a
-                    href="https://github.com/andrych17"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-[var(--fg-2)] hover:text-[var(--accent)] py-1"
-                  >
-                    <Github className="w-3.5 h-3.5" />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/andry-huang-ba410a170"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-[var(--fg-2)] hover:text-[var(--accent)] py-1"
-                  >
-                    <Linkedin className="w-3.5 h-3.5" />
-                    <span>LinkedIn</span>
-                  </a>
-                </div>
-                <span>Surabaya, ID</span>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                    <span className="ah-slab ah-slab-back" aria-hidden="true" />
+                    <span className="ah-slab ah-slab-front" aria-hidden="true" />
+                    <span className="ah-cursor" aria-hidden="true" />
+                    <span className="ah-label">{id ? it.id : it.en}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="ah-overlay-foot">
+            <a href="mailto:andrych17@gmail.com" className="ah-mono">
+              andrych17@gmail.com
+            </a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="ah-mono">
+              WhatsApp
+            </a>
+            {clock && <span className="ah-mono">Surabaya {clock} WIB</span>}
+          </div>
+        </div>
+      )}
     </>
   );
 }

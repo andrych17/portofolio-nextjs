@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen min-h-[100dvh] bg-[var(--bg)] text-[var(--fg)]">
+    <main className="ah-home ah-archive">
       <Navbar />
-      <div className="pt-20">
+      <div>
         <Projects />
       </div>
       <Footer />

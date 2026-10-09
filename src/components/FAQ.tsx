@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionHead, Index } from "./ui/Label";
-import { Reveal } from "./ui/Reveal";
+import { Title } from "./ui/Title";
 
 export interface FAQItem {
   questionEn: string;
@@ -59,62 +56,42 @@ export const faqItems: FAQItem[] = [
 
 export default function FAQ() {
   const { lang } = useLanguage();
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(0);
+  const id = lang === "id";
 
   return (
-    <section id="faq" className="relative">
-      <SectionHead index="04" label={lang === "id" ? "Pertanyaan Yang Sering Diajukan" : "Frequently Asked Questions"} />
+    <section id="faq" data-stage="faq" className="ah-sec ah-side-left">
+      <Title no="05" meta={id ? "Keahlian, ketersediaan, proyek" : "Skills, availability, projects"}>
+        FAQ
+      </Title>
 
-      <div className="px-[var(--pad-x)] py-[var(--sec-sm)]">
-        <Reveal className="mb-12 max-w-2xl">
-          <p className="text-[var(--mut)] text-sm md:text-base">
-            {lang === "id"
-              ? "Informasi ringkas mengenai keahlian, ketersediaan kerja, dan proyek utama Andry Huang."
-              : "Short answers about Andry's skills, availability, and main projects."}
-          </p>
-        </Reveal>
-
-        <div className="border-t border-[var(--line)]">
-          {faqItems.map((item, index) => {
-            const isOpen = openIndex === index;
-            const question = lang === "id" ? item.questionId : item.questionEn;
-            const answer = lang === "id" ? item.answerId : item.answerEn;
-
-            return (
-              <div key={index} className="border-b border-[var(--line)]">
+      <div className="ah-faq">
+        {faqItems.map((item, i) => {
+          const on = open === i;
+          return (
+            // Closed answers stay in the DOM (collapsed in CSS) so the FAQPage JSON-LD matches visible content.
+            <div key={item.questionEn} className="ah-qa" data-on={on || undefined}>
+              <h3>
                 <button
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center gap-4 py-6 text-left"
-                  aria-expanded={isOpen}
+                  type="button"
+                  className="ah-q"
+                  aria-expanded={on}
+                  aria-controls={`faq-${i}`}
+                  onClick={() => setOpen(on ? null : i)}
                 >
-                  <Index n={index + 1} className="w-8 shrink-0" />
-                  <span className="flex-1 text-base md:text-lg font-medium text-[var(--fg)]">{question}</span>
-                  {isOpen ? (
-                    <Minus className="w-4 h-4 shrink-0 text-[var(--accent)]" aria-hidden />
-                  ) : (
-                    <Plus className="w-4 h-4 shrink-0 text-[var(--mut)]" aria-hidden />
-                  )}
+                  <span className="ah-mono">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="ah-q-text">{id ? item.questionId : item.questionEn}</span>
+                  <span className="ah-q-sign" aria-hidden="true" />
                 </button>
-
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.83, 0, 0.17, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <p className="max-w-prose pb-6 pl-12 text-sm md:text-base leading-relaxed text-[var(--fg-2)]">
-                        {answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+              </h3>
+              <div className="ah-a" id={`faq-${i}`}>
+                <div>
+                  <p>{id ? item.answerId : item.answerEn}</p>
+                </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

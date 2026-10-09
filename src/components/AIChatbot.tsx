@@ -63,8 +63,8 @@ export default function AIChatbot() {
       sender: "bot",
       text:
         currentLang === "id"
-          ? `Halo! Saya **Andry AI Assistant** 🤖. Tanya saya apa saja tentang **Andry Huang** (pengalaman ${yearsExp}+ tahun, keahlian teknis, platform AI Qualiv, atau cara berkolaborasi)!`
-          : `Hi there! I am **Andry AI Assistant** 🤖. Ask me anything about **Andry Huang** (${yearsExp}+ years exp, tech stack, Qualiv AI platform, or how to get in touch)!`,
+          ? `Halo! Saya **Andry AI Assistant**. Tanya saya apa saja tentang **Andry Huang** (pengalaman ${yearsExp}+ tahun, keahlian teknis, platform AI Qualiv, atau cara berkolaborasi)!`
+          : `Hi there! I am **Andry AI Assistant**. Ask me anything about **Andry Huang** (${yearsExp}+ years exp, tech stack, Qualiv AI platform, or how to get in touch)!`,
       time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     }),
     [yearsExp],
@@ -88,19 +88,19 @@ export default function AIChatbot() {
   }, [messages, isTyping]);
 
   const quickPromptsId = [
-    "🚀 Siapa itu Andry Huang?",
-    "🧠 Ceritakan tentang Qualiv AI Platform",
-    "💻 Apa saja Tech Stack utama Andry?",
-    "⛪ Apa itu project CG Home Sharing?",
-    "📱 Bagaimana cara menghubungi Andry?",
+    "Siapa itu Andry Huang?",
+    "Ceritakan tentang Qualiv AI Platform",
+    "Apa saja Tech Stack utama Andry?",
+    "Apa itu project CG Home Sharing?",
+    "Bagaimana cara menghubungi Andry?",
   ];
 
   const quickPromptsEn = [
-    "🚀 Who is Andry Huang?",
-    "🧠 Tell me about Qualiv AI Platform",
-    "💻 What is Andry's primary Tech Stack?",
-    "⛪ What is CG Home Sharing project?",
-    "📱 How can I contact Andry?",
+    "Who is Andry Huang?",
+    "Tell me about Qualiv AI Platform",
+    "What is Andry's primary Tech Stack?",
+    "What is CG Home Sharing project?",
+    "How can I contact Andry?",
   ];
 
   const quickPrompts = lang === "id" ? quickPromptsId : quickPromptsEn;
@@ -110,38 +110,38 @@ export default function AIChatbot() {
 
     if (q.includes("siapa") || q.includes("who is") || q.includes("profil") || q.includes("about")) {
       return currentLang === "id"
-        ? `👨‍💻 **Andry Huang** adalah **Senior Full-Stack & AI Systems Developer** berlokasi di **Surabaya, Indonesia** dengan **${yearsExp}+ tahun pengalaman**.\n\nSaat ini beliau bekerja sebagai Fullstack Developer di **MRI Software, Singapura (Remote)** dan juga merupakan **Founder & Lead Architect Qualiv** (qualiv.id).`
-        : `👨‍💻 **Andry Huang** is a **Senior Full-Stack & AI Systems Developer** based in **Surabaya, Indonesia** with **${yearsExp}+ years of experience**.\n\nHe currently works as a Fullstack Developer at **MRI Software, Singapore (Remote)** and is the **Founder & Lead Architect of Qualiv** (qualiv.id).`;
+        ? `**Andry Huang** adalah **Senior Full-Stack & AI Systems Developer** berlokasi di **Surabaya, Indonesia** dengan **${yearsExp}+ tahun pengalaman**.\n\nSaat ini beliau bekerja sebagai Fullstack Developer di **MRI Software, Singapura (Remote)** dan juga merupakan **Founder & Lead Architect Qualiv** (qualiv.id).`
+        : `**Andry Huang** is a **Senior Full-Stack & AI Systems Developer** based in **Surabaya, Indonesia** with **${yearsExp}+ years of experience**.\n\nHe currently works as a Fullstack Developer at **MRI Software, Singapore (Remote)** and is the **Founder & Lead Architect of Qualiv** (qualiv.id).`;
     }
 
     if (q.includes("qualiv")) {
       return currentLang === "id"
-        ? `🧠 **Qualiv (qualiv.id)** adalah platform SaaS rekruitmen berbasis AI multi-tenant yang didirikan dan dirancang oleh Andry Huang dari nol.\n\n✨ **Fitur Utama Qualiv**:\n• Screening & Parsing CV otomatis berbasis LLM (PDF/Docx)\n• Simulasi Wawancara AI Chat & Video Interview (LLM Interviewer)\n• Tes Logika & Asesmen Keterampilan Kandidat Otomatis\n• Redis Queue untuk pemrosesan masal\n• Billing Midtrans & Cloudflare R2 storage.`
-        : `🧠 **Qualiv (qualiv.id)** is a multi-tenant AI recruitment SaaS platform founded & architected by Andry Huang from scratch.\n\n✨ **Key Features**:\n• LLM CV Screening & Parsing (PDF/Docx)\n• AI Chat & Video Interview Simulations (LLM Interviewer)\n• Automated Candidate Logic & Skill Testing\n• Redis Queue mass background processing\n• Midtrans Billing & Cloudflare R2 storage.`;
+        ? `**Qualiv (qualiv.id)** adalah platform SaaS rekruitmen berbasis AI multi-tenant yang didirikan dan dirancang oleh Andry Huang dari nol.\n\n**Fitur Utama Qualiv**:\n• Screening & Parsing CV otomatis berbasis LLM (PDF/Docx)\n• Simulasi Wawancara AI Chat & Video Interview (LLM Interviewer)\n• Tes Logika & Asesmen Keterampilan Kandidat Otomatis\n• Redis Queue untuk pemrosesan masal\n• Billing Midtrans & Cloudflare R2 storage.`
+        : `**Qualiv (qualiv.id)** is a multi-tenant AI recruitment SaaS platform founded & architected by Andry Huang from scratch.\n\n**Key Features**:\n• LLM CV Screening & Parsing (PDF/Docx)\n• AI Chat & Video Interview Simulations (LLM Interviewer)\n• Automated Candidate Logic & Skill Testing\n• Redis Queue mass background processing\n• Midtrans Billing & Cloudflare R2 storage.`;
     }
 
     if (q.includes("wwconstruction") || q.includes("wonderful works") || q.includes("konstruksi") || q.includes("arsitektur")) {
       return currentLang === "id"
-        ? `🏗️ **Wonderful Works Construction ([wwconstruction.id](https://wwconstruction.id))** adalah website profil perusahaan & CMS kustom untuk firma arsitektur serta kontraktor umum di Surabaya.\n\n✨ **Fitur & Keunggulan**:\n• Visual page composer drag-and-drop (Puck) untuk menyusun halaman tanpa coding\n• Admin panel dengan autentikasi JWT & manajemen user\n• Konten dwibahasa (Bahasa Indonesia & English) di PostgreSQL via Prisma\n• SEO JSON-LD & deploy otomatis Docker + Jenkins.`
-        : `🏗️ **Wonderful Works Construction ([wwconstruction.id](https://wwconstruction.id))** is a company website and custom CMS for an architecture & general contracting firm in Surabaya.\n\n✨ **Key Features**:\n• Drag-and-drop visual page composer (Puck) for code-free page layouts\n• Admin panel with JWT auth & user management\n• Bilingual content (Indonesian & English) stored in PostgreSQL via Prisma\n• JSON-LD SEO & automated Docker + Jenkins deployment.`;
+        ? `**Wonderful Works Construction ([wwconstruction.id](https://wwconstruction.id))** adalah website profil perusahaan & CMS kustom untuk firma arsitektur serta kontraktor umum di Surabaya.\n\n**Fitur & Keunggulan**:\n• Visual page composer drag-and-drop (Puck) untuk menyusun halaman tanpa coding\n• Admin panel dengan autentikasi JWT & manajemen user\n• Konten dwibahasa (Bahasa Indonesia & English) di PostgreSQL via Prisma\n• SEO JSON-LD & deploy otomatis Docker + Jenkins.`
+        : `**Wonderful Works Construction ([wwconstruction.id](https://wwconstruction.id))** is a company website and custom CMS for an architecture & general contracting firm in Surabaya.\n\n**Key Features**:\n• Drag-and-drop visual page composer (Puck) for code-free page layouts\n• Admin panel with JWT auth & user management\n• Bilingual content (Indonesian & English) stored in PostgreSQL via Prisma\n• JSON-LD SEO & automated Docker + Jenkins deployment.`;
     }
 
     if (q.includes("tech") || q.includes("stack") || q.includes("keahlian") || q.includes("skills")) {
       return currentLang === "id"
-        ? `⚡ **Tech Stack & Keahlian Utama Andry**:\n\n• **Backend**: .NET Core 8/9, C#, Node.js, NestJS, Laravel 11/Livewire, Java Spring Boot, Python FastAPI, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Vue.js / Inertia.js, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude API, Model Context Protocol (MCP), Agentic Skills & Rules, pgvector RAG, BullMQ Redis\n• **Database & Cloud**: PostgreSQL, Microsoft SQL Server, Oracle DB (PL/SQL), MySQL 8, Redis, Prisma, Docker, Cloudflare R2, AWS S3.`
-        : `⚡ **Andry's Core Tech Stack & Skills**:\n\n• **Backend**: .NET Core 8/9, C#, Node.js, NestJS, Laravel 11/Livewire, Java Spring Boot, Python FastAPI, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Vue.js / Inertia.js, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude API, Model Context Protocol (MCP), Agentic Skills & Rules, pgvector RAG, BullMQ Redis\n• **Database & Cloud**: PostgreSQL, Microsoft SQL Server, Oracle DB (PL/SQL), MySQL 8, Redis, Prisma, Docker, Cloudflare R2, AWS S3.`;
+        ? `**Tech Stack & Keahlian Utama Andry**:\n\n• **Backend**: .NET Core 8/9, C#, Node.js, NestJS, Laravel 11/Livewire, Java Spring Boot, Python FastAPI, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Vue.js / Inertia.js, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude API, Model Context Protocol (MCP), Agentic Skills & Rules, pgvector RAG, BullMQ Redis\n• **Database & Cloud**: PostgreSQL, Microsoft SQL Server, Oracle DB (PL/SQL), MySQL 8, Redis, Prisma, Docker, Cloudflare R2, AWS S3.`
+        : `**Andry's Core Tech Stack & Skills**:\n\n• **Backend**: .NET Core 8/9, C#, Node.js, NestJS, Laravel 11/Livewire, Java Spring Boot, Python FastAPI, REST APIs & GraphQL\n• **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Vue.js / Inertia.js, Flutter\n• **AI & Automation**: OpenAI GPT-4o API, Anthropic Claude API, Model Context Protocol (MCP), Agentic Skills & Rules, pgvector RAG, BullMQ Redis\n• **Database & Cloud**: PostgreSQL, Microsoft SQL Server, Oracle DB (PL/SQL), MySQL 8, Redis, Prisma, Docker, Cloudflare R2, AWS S3.`;
     }
 
     if (q.includes("cg") || q.includes("church") || q.includes("gereja") || q.includes("booking") || q.includes("sharing")) {
       return currentLang === "id"
-        ? `🏡 **CG Home Sharing & Booking Platform** adalah proyek pelayanan volunteer untuk komunitas gereja.\n\nFitur-fiturnya meliputi listing rumah/ruangan kegiatan CG gaya Airbnb, peta interaktif Leaflet dengan filter wilayah BPS, workflow inspeksi kelayakan oleh Surveyor, verifikasi Nomor Induk Jemaat (NIJ), dan kalender peminjaman.`
-        : `🏡 **CG Home Sharing & Booking Platform** is a volunteer church project for church communities.\n\nKey features include Airbnb-style Connect Group house listing, Leaflet interactive map with BPS regional filters, Surveyor inspection workflow, Member ID (NIJ) verification, and booking calendars.`;
+        ? `**CG Home Sharing & Booking Platform** adalah proyek pelayanan volunteer untuk komunitas gereja.\n\nFitur-fiturnya meliputi listing rumah/ruangan kegiatan CG gaya Airbnb, peta interaktif Leaflet dengan filter wilayah BPS, workflow inspeksi kelayakan oleh Surveyor, verifikasi Nomor Induk Jemaat (NIJ), dan kalender peminjaman.`
+        : `**CG Home Sharing & Booking Platform** is a volunteer church project for church communities.\n\nKey features include Airbnb-style Connect Group house listing, Leaflet interactive map with BPS regional filters, Surveyor inspection workflow, Member ID (NIJ) verification, and booking calendars.`;
     }
 
     if (q.includes("kontak") || q.includes("contact") || q.includes("hubungi") || q.includes("email") || q.includes("whatsapp")) {
       return currentLang === "id"
-        ? `📱 **Cara Menghubungi Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Lokasi**: Surabaya, Indonesia`
-        : `📱 **How to Contact Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Location**: Surabaya, Indonesia`;
+        ? `**Cara Menghubungi Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Lokasi**: Surabaya, Indonesia`
+        : `**How to Contact Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Location**: Surabaya, Indonesia`;
     }
 
     return currentLang === "id"

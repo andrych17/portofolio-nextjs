@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { useRef, useState, useMemo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import {
   X,
@@ -34,6 +34,7 @@ import {
   Search,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { Title } from "./ui/Title";
 
 export type ProjectStatus = "done" | "in-progress" | "terminated";
 export type GroupKey = "tjiwi" | "tool-mgmt" | "anacle" | "freelance";
@@ -867,6 +868,50 @@ const statusLabel = (s: ProjectStatus) =>
 
 const fmt = (n: number) => (n < 10 ? `0${n}` : `${n}`);
 
+/** Seeded random in [0, 1): the same title always produces the same cover. */
+function seeded(text: string) {
+  let h = 2166136261;
+  for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), 16777619);
+  return () => {
+    h = (h + 0x6d2b79f5) | 0;
+    let x = Math.imul(h ^ (h >>> 15), 1 | h);
+    x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x;
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Cover for projects without screenshots: a band and a few slabs composed from the title, with the initials outlined on top. */
+function Cover({ title }: { title: string }) {
+  const rand = seeded(title);
+  const initials = title
+    .split(/[\s&/·-]+/)
+    .filter((w) => /^[A-Za-z0-9]/.test(w))
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("");
+  const y1 = 48 + rand() * 38;
+  const y2 = 6 + rand() * 46;
+  const thick = 9 + rand() * 11;
+  const slabs = [0, 1, 2].map(() => ({ x: rand() * 68, y: 6 + rand() * 80, w: 16 + rand() * 30, h: 3 + rand() * 5, o: 0.07 + rand() * 0.12 }));
+  const side = ["start", "center", "end"][Math.floor(rand() * 3)];
+  return (
+    <div className="ah-cover" aria-hidden="true" style={{ "--j": side } as React.CSSProperties}>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+        {slabs.map((sl, i) => (
+          <polygon
+            key={i}
+            points={`${sl.x + 4},${sl.y} ${sl.x + sl.w + 4},${sl.y} ${sl.x + sl.w},${sl.y + sl.h} ${sl.x},${sl.y + sl.h}`}
+            fill="#e9e6dc"
+            opacity={sl.o}
+          />
+        ))}
+        <polygon points={`0,${y1} 100,${y2} 100,${y2 + thick} 0,${y1 + thick}`} fill="#ff4d00" />
+      </svg>
+      <span>{initials}</span>
+    </div>
+  );
+}
+
 function HeroCard({
   project,
   number,
@@ -887,7 +932,7 @@ function HeroCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/60 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl hover:shadow-[0_0_40px_-10px_rgba(255,77,0,0.3)] cursor-pointer select-none"
+      className="ah-card group relative w-full text-left rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/60 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl hover:shadow-[0_0_40px_-10px_rgba(255,77,0,0.3)] cursor-pointer select-none"
     >
       <div className="relative aspect-[16/11] md:aspect-[16/10] w-full overflow-hidden">
         {project.images?.[0] ? (
@@ -900,17 +945,11 @@ function HeroCard({
             priority
           />
         ) : (
-          <div
-            className={`absolute inset-0 bg-gradient-to-br ${project.color} flex items-center justify-center`}
-          >
-            <span className="text-7xl md:text-9xl drop-shadow-lg">
-              {project.emoji ?? "💼"}
-            </span>
-          </div>
+          <Cover title={project.title} />
         )}
 
         {/* deep gradient for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/80 to-transparent" />
 
         {/* index numeral */}
         <div className="absolute top-4 right-4 md:top-6 md:right-6 font-mono text-[10px] md:text-xs tracking-[0.3em] text-[var(--mut)]">
@@ -921,12 +960,12 @@ function HeroCard({
         <div className="absolute top-4 left-4 md:top-6 md:left-6 flex flex-col items-start gap-2">
           {project.featured && (
             <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)] bg-[var(--bg)]/90 border border-[var(--accent)]/40 backdrop-blur">
-              ★ Editor&apos;s Pick
+              Editor&apos;s pick
             </span>
           )}
           {project.year && (
             <span className="px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-white/10 backdrop-blur">
-              📅 {project.year}
+              {project.year}
             </span>
           )}
           {project.status && (
@@ -938,7 +977,7 @@ function HeroCard({
 
         {/* bottom content */}
         <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-          <div className="flex items-center gap-2.5 mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent)]">
+          <div className="flex w-fit items-center gap-2.5 mb-3 py-1 pr-2.5 bg-[var(--bg)]/85 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent)]">
             <span className="inline-block w-6 h-px bg-[var(--accent)]" />
             <project.icon className="w-3.5 h-3.5" />
             <span>Lead Project</span>
@@ -999,7 +1038,7 @@ function SidebarCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl flex min-h-[120px] md:min-h-0 flex-1 cursor-pointer select-none hover:shadow-lg"
+      className="ah-card group relative w-full text-left rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl flex min-h-[120px] md:min-h-0 flex-1 cursor-pointer select-none hover:shadow-lg"
     >
       {/* thumbnail */}
       <div className="relative w-28 md:w-40 lg:w-44 shrink-0 overflow-hidden">
@@ -1012,11 +1051,7 @@ function SidebarCard({
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
           />
         ) : (
-          <div
-            className={`absolute inset-0 bg-gradient-to-br ${project.color} flex items-center justify-center`}
-          >
-            <span className="text-3xl md:text-4xl">{project.emoji ?? "💼"}</span>
-          </div>
+          <Cover title={project.title} />
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[var(--bg-2)]/80" />
       </div>
@@ -1075,7 +1110,7 @@ function GridCard({
           onOpen(project);
         }
       }}
-      className="group relative w-full text-left rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl flex flex-col h-full cursor-pointer select-none hover:shadow-xl"
+      className="ah-card group relative w-full text-left rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)]/50 transition-all duration-300 bg-[var(--bg-2)]/80 backdrop-blur-xl flex flex-col h-full cursor-pointer select-none hover:shadow-xl"
     >
       {/* image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -1088,11 +1123,7 @@ function GridCard({
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
           />
         ) : (
-          <div
-            className={`absolute inset-0 bg-gradient-to-br ${project.color} flex items-center justify-center`}
-          >
-            <span className="text-5xl md:text-6xl">{project.emoji ?? "💼"}</span>
-          </div>
+          <Cover title={project.title} />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-2)] via-[var(--bg-2)]/30 to-transparent" />
 
@@ -1102,12 +1133,12 @@ function GridCard({
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
           {project.featured && (
             <span className="px-2 py-0.5 rounded font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--accent)] bg-[var(--bg)]/90 border border-[var(--accent)]/40 backdrop-blur">
-              ★ Pick
+              Pick
             </span>
           )}
           {project.year && (
             <span className="px-2 py-0.5 rounded font-mono text-[9px] tracking-[0.15em] text-[var(--fg)] bg-[var(--bg)]/80 border border-white/10 backdrop-blur">
-              📅 {project.year}
+              {project.year}
             </span>
           )}
           {project.status && (
@@ -1239,8 +1270,6 @@ const popularTags = [
 
 export default function Projects() {
   const { lang } = useLanguage();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeGroup, setActiveGroup] = useState<GroupKey>("freelance");
   const [freelanceStatus, setFreelanceStatus] = useState<
     "all" | "done" | "in-progress"
@@ -1306,118 +1335,78 @@ export default function Projects() {
   const filterKey = `${activeGroup}-${freelanceStatus}-${searchQuery}-${selectedTag}`;
 
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className="py-12 md:py-20 relative overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-        {/* ── Editorial Header ─────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-10 md:mb-14"
-        >
-          <div className="flex items-center gap-3 mb-4 md:mb-5">
-            <span className="h-px w-8 md:w-12 bg-[var(--line)]" />
-            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-[var(--accent)]">
-              {lang === "id" ? `Karya Pilihan · Indeks 01–${fmt(totalCount)}` : `Selected Works · Index 01–${fmt(totalCount)}`}
-            </span>
-            <span className="h-px flex-1 bg-[var(--line)]" />
-          </div>
+    <section id="projects" className="ah-arch">
+      <div className="ah-arch-inner">
+        {/* ── Header ───────────────────────────────────── */}
+        <header className="ah-arch-head">
+          <Title no={fmt(totalCount)} meta={lang === "id" ? "Karya pilihan · indeks" : "Selected works · index"}>
+            {lang === "id" ? "Arsip" : "Archive"}
+          </Title>
+          <p className="ah-arch-lede">
+            {lang === "id"
+              ? "Pengalaman kerja full-time dan proyek mandiri dalam empat bab. Klik proyek untuk detail lengkap."
+              : "Four chapters of full-time work and side projects. Each entry opens the full case."}
+          </p>
+        </header>
 
-          <div className="grid md:grid-cols-12 items-end gap-4 md:gap-6">
-            <h2 className="md:col-span-9 text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight uppercase text-[var(--fg)]">
-              {lang === "id" ? "Arsip " : "The "}
-              <span className="italic font-light text-[var(--accent)]">
-                {lang === "id" ? "Portofolio" : "Archive"}
-              </span>
-            </h2>
-            <p className="md:col-span-3 text-sm md:text-[13px] text-[var(--mut)] leading-relaxed md:text-right">
-              {lang === "id"
-                ? "Pengalaman kerja profesional full-time dan side projects. Klik project untuk detail lengkap."
-                : "Three chapters of full-time work and side projects. Each entry opens for the full case."}
-            </p>
-          </div>
-        </motion.div>
-
-        {/* ── Live Search & Stack Pills Bar (Wrap, 100% Vertical-Friendly) ────── */}
-        <div className="mb-6 flex flex-col gap-4">
-          <div className="relative w-full">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--mut)] pointer-events-none" />
+        {/* ── Search + stack filters ───────────────────── */}
+        <div className="ah-arch-controls">
+          <div className="ah-search">
+            <Search className="ah-search-icon" size={16} strokeWidth={1.75} aria-hidden="true" />
             <input
-              type="text"
+              type="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label={lang === "id" ? "Cari proyek" : "Search projects"}
               placeholder={
                 lang === "id"
-                  ? "Cari nama proyek, stack (.NET, Next.js, AI, POS, ERP, SQL)..."
-                  : "Search projects, stack (.NET, Next.js, AI, POS, ERP, SQL)..."
+                  ? "Cari nama proyek atau stack (.NET, Next.js, AI, POS, ERP, SQL)"
+                  : "Search projects or stack (.NET, Next.js, AI, POS, ERP, SQL)"
               }
-              className="w-full pl-10 pr-10 py-3 rounded-xl bg-[var(--bg-2)] border border-[var(--line)] text-[var(--fg)] placeholder:text-[var(--mut)] text-sm focus:outline-none focus:border-[var(--accent)] transition-colors shadow-sm"
             />
             {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-[var(--mut)] hover:text-[var(--fg)] cursor-pointer"
-                aria-label="Clear search"
-              >
-                <X className="w-4 h-4" />
+              <button type="button" className="ah-search-clear" onClick={() => setSearchQuery("")} aria-label={lang === "id" ? "Hapus pencarian" : "Clear search"}>
+                <X size={16} strokeWidth={1.75} aria-hidden="true" />
               </button>
             )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--mut)] mr-1">
-              {lang === "id" ? "Filter:" : "Filter:"}
-            </span>
+          <div className="ah-chips" role="group" aria-label={lang === "id" ? "Filter stack" : "Stack filter"}>
+            <span className="ah-mono">Filter</span>
             {popularTags.map((tag) => {
               const active = selectedTag === tag.key;
               return (
-                <button
-                  key={tag.key}
-                  onClick={() => setSelectedTag(tag.key)}
-                  className={`px-3 py-1.5 rounded-lg font-mono text-[11px] uppercase tracking-wider transition-all border cursor-pointer ${
-                    active
-                      ? "bg-[var(--accent)] text-[var(--bg)] border-[var(--accent)] font-bold shadow-md scale-105"
-                      : "bg-[var(--bg-2)] text-[var(--fg-2)] border-[var(--line)] hover:border-[var(--line-strong)] hover:text-[var(--fg)]"
-                  }`}
-                >
-                  {lang === "id" ? tag.labelId : tag.labelEn}
+                <button key={tag.key} type="button" className="ah-chip" data-on={active || undefined} aria-pressed={active} onClick={() => setSelectedTag(tag.key)}>
+                  <span>{lang === "id" ? tag.labelId : tag.labelEn}</span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* ── Search Active Notice or Group Tabs ─────────── */}
+        {/* ── Active filter notice, or the four chapters ─ */}
         {isFiltering ? (
-          <div className="mb-8 flex items-center justify-between py-3 px-4 rounded-xl bg-white/5 border border-[var(--line)]">
-            <span className="font-mono text-xs text-[var(--fg-2)]">
+          <div className="ah-notice" role="status">
+            <span className="ah-mono">
               {lang === "id"
-                ? `Menampilkan ${filteredProjects.length} proyek dari filter/pencarian`
-                : `Showing ${filteredProjects.length} projects matching filter/search`}
+                ? `${filteredProjects.length} proyek cocok dengan filter`
+                : `${filteredProjects.length} projects match the filter`}
             </span>
             <button
+              type="button"
+              className="ah-mono ah-notice-reset"
               onClick={() => {
                 setSearchQuery("");
                 setSelectedTag("all");
               }}
-              className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] hover:underline cursor-pointer font-medium"
             >
-              {lang === "id" ? "Reset Filter ✕" : "Reset Filters ✕"}
+              {lang === "id" ? "Reset filter" : "Reset filters"}
+              <X size={14} strokeWidth={1.75} aria-hidden="true" />
             </button>
           </div>
         ) : (
           <>
-            {/* ── Group Grid (Responsive Cards, No Side-Scroll) ──────── */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15, duration: 0.4 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6"
-            >
+            <div className="ah-tabs" role="group" aria-label={lang === "id" ? "Bab karier" : "Career chapters"}>
               {groups.map((g, i) => {
                 const Icon = g.icon;
                 const active = activeGroup === g.key;
@@ -1425,76 +1414,45 @@ export default function Projects() {
                 return (
                   <button
                     key={g.key}
+                    type="button"
+                    className="ah-tab"
+                    data-on={active || undefined}
+                    aria-pressed={active}
                     onClick={() => {
                       setActiveGroup(g.key);
                       setFreelanceStatus("all");
                     }}
-                    className={`relative p-4 rounded-xl text-left transition-all cursor-pointer border flex flex-col justify-between gap-3 ${
-                      active
-                        ? "bg-white/10 border-[var(--accent)] text-[var(--fg)] shadow-lg scale-[1.02]"
-                        : "bg-[var(--bg-2)] border-[var(--line)] text-[var(--mut)] hover:border-[var(--line-strong)] hover:text-[var(--fg-2)]"
-                    }`}
                   >
-                    <div className="flex items-center justify-between w-full">
-                      <span
-                        className={`font-mono text-xs tracking-widest ${
-                          active ? "text-[var(--accent)] font-bold" : "text-[var(--mut)]"
-                        }`}
-                      >
-                        0{i + 1}
-                      </span>
-                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-[var(--line)] text-[var(--fg-2)]">
-                        {count} {lang === "id" ? "Proyek" : "Projects"}
-                      </span>
-                    </div>
-
-                    <div>
-                      <div className="text-sm md:text-base font-bold tracking-tight text-[var(--fg)]">
-                        {g.label}
-                      </div>
-                      <div className="text-xs text-[var(--mut)] mt-1 flex items-center gap-1.5">
-                        <Icon className="w-3.5 h-3.5 text-[var(--accent)] shrink-0" />
-                        <span className="truncate">{g.sub}</span>
-                      </div>
-                    </div>
+                    <span className="ah-mono ah-tab-no">{fmt(i + 1)}</span>
+                    <span className="ah-tab-name">{g.label}</span>
+                    <span className="ah-mono ah-tab-sub">
+                      <Icon className="ah-tab-icon" />
+                      {g.sub}
+                    </span>
+                    <span className="ah-mono ah-tab-count">
+                      {count} {lang === "id" ? "proyek" : "projects"}
+                    </span>
                   </button>
                 );
               })}
-            </motion.div>
+            </div>
 
-            {/* ── Sub-filter (Freelance) ───────────────────── */}
             {activeGroup === "freelance" && (
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-wrap items-center justify-between mb-6 gap-3 pt-2"
-              >
-                <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--mut)]">
-                  {lang === "id" ? "Status Pengerjaan:" : "Project Status:"}
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {freelanceFilters.map((f) => {
-                    const active = freelanceStatus === f.key;
-                    return (
-                      <button
-                        key={f.key}
-                        onClick={() => setFreelanceStatus(f.key)}
-                        className={`px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider rounded-lg border transition-all cursor-pointer ${
-                          active
-                            ? "text-[var(--bg)] bg-[var(--accent)] border-[var(--accent)] font-bold shadow-sm"
-                            : "text-[var(--mut)] bg-[var(--bg-2)] border-[var(--line)] hover:border-[var(--line-strong)] hover:text-[var(--fg-2)]"
-                        }`}
-                      >
-                        {f.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </motion.div>
+              <div className="ah-chips ah-status" role="group" aria-label={lang === "id" ? "Status pengerjaan" : "Project status"}>
+                <span className="ah-mono">{lang === "id" ? "Status" : "Status"}</span>
+                {freelanceFilters.map((f) => {
+                  const active = freelanceStatus === f.key;
+                  return (
+                    <button key={f.key} type="button" className="ah-chip" data-on={active || undefined} aria-pressed={active} onClick={() => setFreelanceStatus(f.key)}>
+                      <span>{f.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
             )}
           </>
         )}
+
 
         {/* ── Editorial Grid ───────────────────────────── */}
         <AnimatePresence mode="wait">
@@ -1512,15 +1470,12 @@ export default function Projects() {
           </motion.div>
         </AnimatePresence>
 
-        {/* ── Footer rule ──────────────────────────────── */}
-        <div className="mt-14 md:mt-20 pt-6 border-t border-white/10 flex items-center justify-between gap-4 text-gray-500">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em]">
-            {lang === "id" ? "Akhir indeks" : "End of index"}
-          </span>
-          <span className="text-[10px] md:text-xs italic">
+        <div className="ah-arch-end">
+          <span className="ah-mono">{lang === "id" ? "Akhir indeks" : "End of index"}</span>
+          <span>
             {lang === "id"
-              ? "... dan banyak project internal lainnya di SaaS enterprise, manufaktur & retail."
-              : "... and many more internal projects across SaaS, manufacturing & retail."}
+              ? "dan banyak proyek internal lain di SaaS enterprise, manufaktur, dan retail."
+              : "and many more internal projects across SaaS, manufacturing and retail."}
           </span>
         </div>
       </div>
@@ -1576,7 +1531,7 @@ function DialogPanel({
         exit={{ y: "100%", opacity: 0 }}
         transition={{ type: "tween", duration: 0.25, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full md:max-w-3xl bg-gray-950 md:rounded-3xl rounded-t-3xl border border-white/10 shadow-2xl max-h-[92vh] md:max-h-[88vh] overflow-hidden flex flex-col"
+        className="ah-dialog relative w-full md:max-w-3xl bg-gray-950 md:rounded-3xl rounded-t-3xl border border-white/10 shadow-2xl max-h-[92vh] md:max-h-[88vh] overflow-hidden flex flex-col"
       >
             <div className="md:hidden flex justify-center pt-2.5 pb-1">
               <span className="w-10 h-1 rounded-full bg-white/20" />
@@ -1592,7 +1547,7 @@ function DialogPanel({
 
             <div className="overflow-y-auto">
               <div
-                className={`relative w-full aspect-video bg-gradient-to-br ${project.color}`}
+                className="relative w-full aspect-video bg-[var(--bg-2)]"
               >
                 {project.images?.length ? (
                   <>
@@ -1646,20 +1601,18 @@ function DialogPanel({
                     )}
                   </>
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-7xl">{project.emoji ?? "💼"}</span>
-                  </div>
+                  <Cover title={project.title} />
                 )}
 
                 <div className="absolute top-3 left-3 flex flex-wrap gap-2">
                   {project.featured && (
                     <span className="px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)] bg-[var(--bg)]/90 border border-[var(--accent)]/40 backdrop-blur">
-                      ★ Editor&apos;s Pick
+                      Editor&apos;s pick
                     </span>
                   )}
                   {project.year && (
                     <span className="px-2.5 py-1 bg-[var(--bg)]/80 backdrop-blur rounded-full font-mono text-[10px] tracking-[0.15em] text-[var(--fg)] border border-[var(--line)]">
-                      📅 {project.year}
+                      {project.year}
                     </span>
                   )}
                   {project.status && (
@@ -1704,11 +1657,11 @@ function DialogPanel({
                 )}
 
                 {project.impact && (
-                  <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-transparent border border-emerald-500/30">
-                    <h4 className="text-[11px] font-mono uppercase tracking-[0.25em] text-emerald-400 mb-1 flex items-center gap-1.5">
-                      ★ {lang === "id" ? "Hasil / Business Impact" : "Business Impact / Results"}
+                  <div className="ah-impact mb-6 p-4">
+                    <h4 className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--accent)] mb-1 flex items-center gap-1.5">
+                      {lang === "id" ? "Hasil / Business Impact" : "Business Impact / Results"}
                     </h4>
-                    <p className="text-xs md:text-sm text-emerald-200 leading-relaxed font-medium">
+                    <p className="text-xs md:text-sm text-[var(--fg)] leading-relaxed font-medium">
                       {project.impact}
                     </p>
                   </div>

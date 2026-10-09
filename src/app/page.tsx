@@ -1,31 +1,33 @@
+import { MotionConfig } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import Stage from "@/components/stage/Stage";
 import Hero from "@/components/Hero";
-import Manifesto from "@/components/Manifesto";
-import FeaturedWork from "@/components/FeaturedWork";
-import About from "@/components/About";
+import Career from "@/components/Career";
+import Works from "@/components/Works";
 import Skills from "@/components/Skills";
 import Certifications from "@/components/Certifications";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import AIChatbot from "@/components/AIChatbot";
-import Preloader from "@/components/Preloader";
 
 export default function Home() {
   return (
-    <main className="min-h-screen min-h-[100dvh] bg-[var(--bg)] text-[var(--fg)]">
-      <Preloader />
-      <Navbar />
-      <Hero />
-      <Manifesto />
-      <About />
-      <FeaturedWork />
-      <Skills />
-      <Certifications />
-      <FAQ />
-      <Contact />
-      <Footer />
-      <AIChatbot />
-    </main>
+    // "user": framer drops transforms for reduced-motion visitors, with no server/client branch to mismatch
+    <MotionConfig reducedMotion="user">
+      <main className="ah-home">
+        <Stage />
+        <Navbar />
+        <Hero />
+        <Career />
+        <Works />
+        <Skills />
+        <Certifications />
+        <FAQ />
+        <Contact />
+        <Footer />
+        <AIChatbot />
+      </main>
+    </MotionConfig>
   );
 }

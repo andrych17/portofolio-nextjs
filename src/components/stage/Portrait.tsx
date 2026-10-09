@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { stage, type SectionId } from "./active";
 
 // Halftone point-cloud bust built at runtime from the profile photo.
 // The photo has a flat backdrop, so a flood fill from the edges is enough to cut it out.
@@ -111,17 +112,20 @@ function sample(img: HTMLImageElement): Sample {
   return { pos: new Float32Array(pos), lum: new Float32Array(lum), seed: new Float32Array(seed), edge: new Float32Array(edge), pitch };
 }
 
-export interface PortraitProps {
-  docked: boolean;
-  pulse: number;
-  still: boolean;
-}
+// Where the bust stands while each section is mid-screen. x is a fraction of the visible half-width.
+type Pose = { x: number; dim: number; turn: number; scatter: number };
+const POSES: Record<SectionId, Pose> = {
+  home: { x: -0.6, dim: 1, turn: 0.12, scatter: 0 },
+  career: { x: 0.62, dim: 0.32, turn: -0.35, scatter: 0 },
+  work: { x: 0, dim: 0, turn: 0.5, scatter: 1.3 },
+  skills: { x: -0.62, dim: 0.3, turn: 0.4, scatter: 0 },
+  certifications: { x: -0.62, dim: 0, turn: 0.4, scatter: 0.5 },
+  faq: { x: 0.62, dim: 0, turn: -0.35, scatter: 0.7 },
+  contact: { x: 0.52, dim: 0.85, turn: -0.3, scatter: 0 },
+};
 
-type Api = { setDocked(v: boolean): void; sweep(): void };
-
-export default function Portrait({ docked, pulse, still }: PortraitProps) {
+export default function Portrait({ still }: { still: boolean }) {
   const host = useRef<HTMLDivElement>(null);
-  const api = useRef<Api | null>(null);
 
   useEffect(() => {
     const el = host.current;
@@ -130,7 +134,7 @@ export default function Portrait({ docked, pulse, still }: PortraitProps) {
     try {
       renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: "high-performance" });
     } catch {
-      return; // no WebGL: the menu still works without the bust
+      return; // no WebGL: the page reads fine without the bust
     }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     el.appendChild(renderer.domElement);
@@ -146,7 +150,7 @@ export default function Portrait({ docked, pulse, still }: PortraitProps) {
       uPx: { value: 1 },
       uSize: { value: 0.01 },
       uSweep: { value: -1 },
-      uScatter: { value: still ? 0 : 1.8 },
+      uScatter: { value: still ? 0 : 1.8 }, // the intro: points fly in and assemble
       uHalfH: { value: BUST_H / 2 },
       uDim: { value: 1 },
       uPaper: { value: new THREE.Color("#e9e6dc") },
@@ -158,14 +162,21 @@ export default function Portrait({ docked, pulse, still }: PortraitProps) {
     points.frustumCulled = false; // geometry arrives after the first frame and the shader moves points outside it anyway
     group.add(points);
 
-    const state = { docked: false, sweepT: -1, pointer: new THREE.Vector2(), aspect: 1 };
-    api.current = {
-      setDocked: (v) => { state.docked = v; },
-      sweep: () => { state.sweepT = 0; },
-    };
+    const state = { active: stage.active(), sweepT: -1, pointer: new THREE.Vector2(), aspect: 1, w: 0, h: 0 };
+    let seen = stage.pulses();
+    const unsubscribe = stage.subscribe(() => {
+      state.active = stage.active();
+      if (stage.pulses() !== seen) {
+        seen = stage.pulses();
+        if (!still) state.sweepT = 0;
+      }
+    });
 
     const resize = () => {
       const w = el.clientWidth, h = el.clientHeight;
+      if (w === state.w && h === state.h) return; // mobile toolbars fire resize without changing the lvh box
+      state.w = w;
+      state.h = h;
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
@@ -196,24 +207,28 @@ export default function Portrait({ docked, pulse, still }: PortraitProps) {
     const tick = () => {
       raf = requestAnimationFrame(tick);
       const dt = Math.min(clock.getDelta(), 0.05);
-      const k = 1 - Math.exp(-dt * 4);
+      const k = still ? 1 : 1 - Math.exp(-dt * 4);
       const halfW = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z * state.aspect;
       const narrow = state.aspect < 0.9;
+      const pose = POSES[state.active];
 
-      const tx = narrow ? 0 : state.docked ? halfW * 0.62 : -halfW * 0.34;
+      // phones: the bust stays centred behind the text, so it only dims
+      const tx = narrow ? 0 : pose.x * halfW;
       const ty = narrow ? -0.05 : -0.2;
-      const dim = state.docked ? (narrow ? 0.14 : 0.3) : narrow ? 0.55 : 1;
-      const turn = state.docked && !narrow ? -0.35 : 0.12;
+      const dim = narrow ? pose.dim * 0.5 : pose.dim;
+      const turn = narrow ? 0.12 : pose.turn;
 
       group.position.x += (tx - group.position.x) * k;
       group.position.y += (ty - group.position.y) * k;
       group.rotation.y += (turn + state.pointer.x * 0.3 - group.rotation.y) * k;
       group.rotation.x += (state.pointer.y * 0.1 - group.rotation.x) * k;
       uniforms.uDim.value += (dim - uniforms.uDim.value) * k;
+      // Works, certificates and FAQ are text-first: once the bust has faded out there is nothing to draw.
+      if (dim < 0.01 && uniforms.uDim.value < 0.01) return;
 
       if (!still) {
         uniforms.uTime.value += dt;
-        uniforms.uScatter.value += (0 - uniforms.uScatter.value) * (1 - Math.exp(-dt * 2.6));
+        uniforms.uScatter.value += (pose.scatter - uniforms.uScatter.value) * (1 - Math.exp(-dt * 2.6));
         if (state.sweepT >= 0) {
           state.sweepT += dt / 0.75;
           uniforms.uSweep.value = -0.15 + state.sweepT * 1.3;
@@ -226,6 +241,7 @@ export default function Portrait({ docked, pulse, still }: PortraitProps) {
 
     return () => {
       cancelAnimationFrame(raf);
+      unsubscribe();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       img.onload = null;
@@ -233,14 +249,8 @@ export default function Portrait({ docked, pulse, still }: PortraitProps) {
       mat.dispose();
       renderer.dispose();
       renderer.domElement.remove();
-      api.current = null;
     };
   }, [still]);
 
-  useEffect(() => api.current?.setDocked(docked), [docked]);
-  useEffect(() => {
-    if (pulse && !still) api.current?.sweep();
-  }, [pulse, still]);
-
-  return <div ref={host} aria-hidden="true" className="pl-portrait" />;
+  return <div ref={host} aria-hidden="true" className="ah-portrait" />;
 }
