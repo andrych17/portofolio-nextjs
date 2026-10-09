@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe, ArrowUpRight, Github, Linkedin, MessageCircle } from "lucide-react";
+import { Menu, X, Globe, ArrowUpRight, Github, Linkedin, MessageCircle, Gamepad2 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
@@ -102,6 +102,18 @@ export default function Navbar() {
 
               <div className="h-4 w-px bg-white/10" />
 
+              {/* Skewed slab echoes the /play menu it opens */}
+              <Link
+                href="/play"
+                className="group relative px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bg)]"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 -skew-x-12 bg-[var(--accent)] transition-colors duration-200 group-hover:bg-[var(--fg)]"
+                />
+                <span className="relative">{lang === "id" ? "Mode game" : "Game mode"}</span>
+              </Link>
+
               <button
                 onClick={toggleLang}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 font-mono text-xs cursor-pointer hover:bg-white/10 transition-colors"
@@ -194,6 +206,15 @@ export default function Navbar() {
                 <MessageCircle className="w-4 h-4" />
                 <span>{lang === "id" ? "Hubungi via WhatsApp" : "Chat on WhatsApp"}</span>
               </a>
+
+              <Link
+                href="/play"
+                onClick={() => setIsOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white/5 text-[var(--fg)] font-semibold text-sm tracking-wide active:scale-98 transition-transform"
+              >
+                <Gamepad2 className="w-4 h-4 text-[var(--accent)]" />
+                <span>{lang === "id" ? "Buka mode game" : "Open game mode"}</span>
+              </Link>
 
               <div className="flex items-center justify-between text-xs font-mono text-[var(--mut)] pt-2">
                 <div className="flex items-center gap-4">
