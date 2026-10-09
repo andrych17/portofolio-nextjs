@@ -220,7 +220,7 @@
 }
 .ah-hero-copy { grid-column: 2; grid-row: 1; align-self: center; min-width: 0; }
 .ah-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--mut); animation: ah-up 0.6s 0.2s var(--ah-ease) backwards; }
-.ah-intro { max-width: 40rem; margin-top: 0.6rem; font-family: var(--font-geist-sans), sans-serif; font-size: clamp(0.98rem, 1.15vw, 1.1rem); font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; text-wrap: balance; animation: ah-up 0.6s 0.3s var(--ah-ease) backwards; }
+.ah-intro { max-width: 46rem; margin-top: 0.6rem; font-family: var(--font-geist-sans), sans-serif; font-size: clamp(0.98rem, 1.15vw, 1.1rem); font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; text-wrap: balance; animation: ah-up 0.6s 0.3s var(--ah-ease) backwards; }
 .ah-eyebrow i { width: 0.42rem; height: 0.42rem; background: var(--accent); transform: rotate(45deg); }
 
 .ah-name { margin-top: 0.7rem; font-size: clamp(3rem, 7.6vw, 8.6rem); line-height: 0.82; letter-spacing: -0.03em; }

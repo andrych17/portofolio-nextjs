@@ -44,8 +44,8 @@ export default function Hero() {
         </span>
         <p className="ah-intro">
           {id
-            ? "Saya software engineer yang membangun SaaS enterprise, ERP, dan sistem LLM."
-            : "I'm a software engineer building enterprise SaaS, ERPs and LLM systems."}
+            ? `Saya software engineer dengan ${years}+ tahun membangun SaaS enterprise, ERP, dan sistem LLM.`
+            : `I'm a software engineer with ${years}+ years building enterprise SaaS, ERPs and LLM systems.`}
         </p>
         <h1 className="ah-name" aria-label="Andry Huang">
           {NAME.map((word, w) => (
