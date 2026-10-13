@@ -172,7 +172,7 @@ export const projects: Project[] = [
     color: "from-orange-500 to-red-500",
   },
 
-  // ── JOB #3 • Anacle / MRI Software (Singapore) ────────────
+  // ── JOB #3 • Anacle Systems Ltd (Singapore) ────────────
   {
     id: 301,
     group: "anacle",
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     group: "anacle",
     title: "Simplicity • Facilities Management SaaS",
     description:
-      "Feature development and ticket-based maintenance on Simplicity, Anacle/MRI's enterprise facilities-management product, in an international remote team shipping cross-region releases.",
+      "Feature development and ticket-based maintenance on Simplicity, Anacle's enterprise facilities-management product, in an international remote team shipping cross-region releases.",
     impact:
       "Mengembangkan & memelihara modul SaaS enterprise facilities management untuk klien internasional.",
     year: "2023 – Mar 2026",
@@ -852,7 +852,7 @@ const groups: {
   icon: React.ComponentType<{ className?: string }>;
 }[] = [
   { key: "freelance", label: "Side Projects", sub: "Client & Personal", icon: ShoppingCart },
-  { key: "anacle", label: "Anacle / MRI", sub: "Singapore SaaS", icon: Building2 },
+  { key: "anacle", label: "Anacle Systems Ltd", sub: "Singapore SaaS", icon: Building2 },
   { key: "tool-mgmt", label: "Software House", sub: "Surabaya, ID", icon: Wrench },
   { key: "tjiwi", label: "Tjiwi Kimia", sub: "Manufacturing", icon: Factory },
 ];

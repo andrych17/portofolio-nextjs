@@ -44,7 +44,7 @@ export default function Contact() {
         <div className="v2-contact-main">
           <p className="v2-eyebrow" data-r="up">
             <i />
-            07 · {id ? "Kontak" : "Contact"} · Surabaya, UTC+7
+            06 · {id ? "Kontak" : "Contact"} · Surabaya, UTC+7
           </p>
           <Words as="h2" className="v2-h v2-h-xl" r="words" text={id ? "Mari bangun yang berjalan berikutnya." : "Let's build what runs next."} />
           <p className="v2-lede v2-soft" data-r="up">

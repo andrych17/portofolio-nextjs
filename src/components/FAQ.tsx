@@ -32,17 +32,17 @@ export const faqItems: FAQItem[] = [
     questionEn: "Where is Andry Huang located and can he work remotely?",
     questionId: "Di mana lokasi Andry Huang dan apakah bisa bekerja secara remote?",
     answerEn:
-      "Andry lives in Surabaya, East Java, Indonesia, and worked remotely for MRI Software in Singapore for more than 3 years.",
+      "Andry lives in Surabaya, East Java, Indonesia, and worked remotely for Anacle Systems Ltd in Singapore for more than 3 years.",
     answerId:
-      "Andry tinggal di Surabaya, Jawa Timur, dan pernah bekerja remote selama lebih dari 3 tahun untuk MRI Software di Singapura.",
+      "Andry tinggal di Surabaya, Jawa Timur, dan pernah bekerja remote selama lebih dari 3 tahun untuk Anacle Systems Ltd di Singapura.",
   },
   {
     questionEn: "How many years of experience does Andry Huang have and what is his track record?",
     questionId: "Berapa tahun pengalaman Andry Huang dan bagaimana rekam jejak profesionalnya?",
     answerEn:
-      "7+ years, starting September 2019. The work covers enterprise SaaS for MRI Software (.NET Core, Next.js), retail POS systems with RFID hardware, and AI automation such as Qualiv. This site lists 20+ of those projects.",
+      "7+ years, starting September 2019. The work covers enterprise SaaS for Anacle Systems Ltd (.NET Core, Next.js), retail POS systems with RFID hardware, and AI automation such as Qualiv. This site lists 20+ of those projects.",
     answerId:
-      "7+ tahun, sejak September 2019. Pengalamannya mencakup SaaS enterprise untuk MRI Software (.NET Core, Next.js), sistem POS retail dengan hardware RFID, dan otomasi AI seperti Qualiv. Lebih dari 20 project tersebut ada di website ini.",
+      "7+ tahun, sejak September 2019. Pengalamannya mencakup SaaS enterprise untuk Anacle Systems Ltd (.NET Core, Next.js), sistem POS retail dengan hardware RFID, dan otomasi AI seperti Qualiv. Lebih dari 20 project tersebut ada di website ini.",
   },
   {
     questionEn: "What is Qualiv and what is Andry Huang's role in it?",

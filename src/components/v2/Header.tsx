@@ -12,7 +12,7 @@ import TransitionLink from "./TransitionLink";
 import { CONTACTS, SECTIONS } from "./sections";
 
 // The open list on the first screen of the home page (the full menu has every section).
-const QUICK = SECTIONS.filter((s) => ["career", "work", "projects", "skills", "contact", "archive"].includes(s.section));
+const QUICK = SECTIONS.filter((s) => ["career", "work", "skills", "contact", "archive"].includes(s.section));
 
 /**
  * Floating bar, as on the reference site: on the first screen of the home page the menu sits open under

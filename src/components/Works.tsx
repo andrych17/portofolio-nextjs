@@ -35,7 +35,7 @@ export interface Work {
 export const WORKS: Work[] = [
   {
     name: "SMRT Tenant System",
-    role: { en: "MRI Software · for SMRT Singapore", id: "MRI Software · untuk SMRT Singapura" },
+    role: { en: "Anacle Systems Ltd · for SMRT Singapore", id: "Anacle Systems Ltd · untuk SMRT Singapura" },
     year: "2023 – 2025",
     line: {
       en: "The mall tenant platform for SMRT Singapore, taken from build to go-live.",
@@ -66,11 +66,11 @@ export const WORKS: Work[] = [
   },
   {
     name: "Simplicity",
-    role: { en: "MRI Software · facilities SaaS", id: "MRI Software · SaaS facilities" },
+    role: { en: "Anacle Systems Ltd · facilities SaaS", id: "Anacle Systems Ltd · SaaS facilities" },
     year: "2023 – 2026",
     line: {
-      en: "Feature work and ticket fixes on MRI's enterprise facilities-management product.",
-      id: "Pengembangan fitur dan perbaikan tiket di produk facilities management enterprise milik MRI.",
+      en: "Feature work and ticket fixes on Anacle's enterprise facilities-management product.",
+      id: "Pengembangan fitur dan perbaikan tiket di produk facilities management enterprise milik Anacle.",
     },
     parts: {
       en: [
@@ -87,7 +87,7 @@ export const WORKS: Work[] = [
     stack: [".NET Core 8", "C#", "SQL Server", "Microservices", "GitLab CI"],
     url: "https://www.anaclesimplicity.com/",
     flow: {
-      big: "MRI",
+      big: "Anacle",
       steps: [
         { en: "Ticket", id: "Tiket" },
         { en: "Feature", id: "Fitur" },

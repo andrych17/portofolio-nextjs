@@ -20,12 +20,11 @@ export interface SectionLink {
 export const SECTIONS: SectionLink[] = [
   { section: "career", no: "01", label: { en: "Career", id: "Karier" }, hint: { en: `${CAREER.length} roles since 2019`, id: `${CAREER.length} peran sejak 2019` } },
   { section: "work", no: "02", label: { en: "Works", id: "Karya" }, hint: { en: `${FEATURED.length} featured, Qualiv first`, id: `${FEATURED.length} unggulan, Qualiv pertama` } },
-  { section: "projects", no: "03", label: { en: "Index", id: "Indeks" }, hint: { en: `All ${projects.length} projects, filterable`, id: `Semua ${projects.length} proyek, bisa difilter` } },
-  { section: "skills", no: "04", label: { en: "Stack", id: "Stack" }, hint: { en: ".NET · Next.js · NestJS · AI", id: ".NET · Next.js · NestJS · AI" } },
-  { section: "certifications", no: "05", label: { en: "Credentials", id: "Sertifikasi" }, hint: { en: `${certifications.length} certificates`, id: `${certifications.length} sertifikat` } },
-  { section: "faq", no: "06", label: { en: "FAQ", id: "FAQ" }, hint: { en: `${faqItems.length} answers`, id: `${faqItems.length} jawaban` } },
-  { section: "contact", no: "07", label: { en: "Contact", id: "Kontak" }, hint: { en: "Email · WhatsApp · CV", id: "Email · WhatsApp · CV" } },
-  { section: "archive", href: ARCHIVE, no: "08", label: { en: "Archive", id: "Arsip" }, hint: { en: "Search and case studies", id: "Pencarian dan studi kasus" } },
+  { section: "skills", no: "03", label: { en: "Stack", id: "Stack" }, hint: { en: ".NET · Next.js · NestJS · AI", id: ".NET · Next.js · NestJS · AI" } },
+  { section: "certifications", no: "04", label: { en: "Credentials", id: "Sertifikasi" }, hint: { en: `${certifications.length} certificates`, id: `${certifications.length} sertifikat` } },
+  { section: "faq", no: "05", label: { en: "FAQ", id: "FAQ" }, hint: { en: `${faqItems.length} answers`, id: `${faqItems.length} jawaban` } },
+  { section: "contact", no: "06", label: { en: "Contact", id: "Kontak" }, hint: { en: "Email · WhatsApp · CV", id: "Email · WhatsApp · CV" } },
+  { section: "archive", href: ARCHIVE, no: "07", label: { en: "Archive", id: "Arsip" }, hint: { en: `All ${projects.length} projects, search and case studies`, id: `Semua ${projects.length} proyek, pencarian dan studi kasus` } },
 ];
 
 export const CONTACTS = {

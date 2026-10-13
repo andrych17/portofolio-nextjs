@@ -110,8 +110,8 @@ export default function AIChatbot() {
 
     if (q.includes("siapa") || q.includes("who is") || q.includes("profil") || q.includes("about")) {
       return currentLang === "id"
-        ? `**Andry Huang** adalah **Senior Full-Stack & AI Systems Developer** berlokasi di **Surabaya, Indonesia** dengan **${yearsExp}+ tahun pengalaman**.\n\nSaat ini beliau bekerja sebagai Fullstack Developer di **MRI Software, Singapura (Remote)** dan juga merupakan **Founder & Lead Architect Qualiv** (qualiv.id).`
-        : `**Andry Huang** is a **Senior Full-Stack & AI Systems Developer** based in **Surabaya, Indonesia** with **${yearsExp}+ years of experience**.\n\nHe currently works as a Fullstack Developer at **MRI Software, Singapore (Remote)** and is the **Founder & Lead Architect of Qualiv** (qualiv.id).`;
+        ? `**Andry Huang** adalah **Senior Full-Stack & AI Systems Developer** berlokasi di **Surabaya, Indonesia** dengan **${yearsExp}+ tahun pengalaman**.\n\nSaat ini beliau bekerja sebagai Fullstack Developer di **Anacle Systems Ltd, Singapura (Remote)** dan juga merupakan **Founder & Lead Architect Qualiv** (qualiv.id).`
+        : `**Andry Huang** is a **Senior Full-Stack & AI Systems Developer** based in **Surabaya, Indonesia** with **${yearsExp}+ years of experience**.\n\nHe currently works as a Fullstack Developer at **Anacle Systems Ltd, Singapore (Remote)** and is the **Founder & Lead Architect of Qualiv** (qualiv.id).`;
     }
 
     if (q.includes("qualiv")) {

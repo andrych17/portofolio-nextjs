@@ -24,7 +24,7 @@ export interface Job {
 // Mirrors public/llms-full.txt; keep both in sync when the CV changes.
 export const CAREER: Job[] = [
   {
-    company: { en: "MRI Software", id: "MRI Software" },
+    company: { en: "Anacle Systems Ltd", id: "Anacle Systems Ltd" },
     note: { en: "formerly Anacle Systems", id: "dulu Anacle Systems" },
     role: "Fullstack Developer",
     place: { en: "Singapore · remote", id: "Singapura · remote" },

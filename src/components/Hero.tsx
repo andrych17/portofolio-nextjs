@@ -66,13 +66,13 @@ export default function Hero() {
               {id ? (
                 <>
                   Saya membangun sistem yang menjalankan bisnis: 3+ tahun SaaS enterprise untuk{" "}
-                  <b>MRI Software</b> di Singapura, ERP untuk toko emas yang menghitung stok per gram, dan{" "}
+                  <b>Anacle Systems Ltd</b> di Singapura, ERP untuk toko emas yang menghitung stok per gram, dan{" "}
                   <b>Qualiv</b>, platform rekrutmen AI yang saya dirikan. Stack utama .NET Core, Next.js, dan NestJS,
                   termasuk <em>fitur RAG dan LLM di production</em>.
                 </>
               ) : (
                 <>
-                  I build the systems a business runs on: 3+ years of enterprise SaaS for <b>MRI Software</b> in
+                  I build the systems a business runs on: 3+ years of enterprise SaaS for <b>Anacle Systems Ltd</b> in
                   Singapore, ERPs for shops that count gold by the gram, and <b>Qualiv</b>, the AI recruitment
                   platform I founded. Mostly .NET Core, Next.js and NestJS, with <em>RAG and LLM features in production</em>.
                 </>

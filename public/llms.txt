@@ -25,7 +25,7 @@
    - Multi-tenant AI SaaS automating talent screening: LLM resume parsing (PDF/Docx), dynamic candidate logic tests, automated AI chat & video interviews, BullMQ queues, and Midtrans billing. Live at https://qualiv.id.
 2. **Wonderful Works Construction (WWCONS Web Platform & Visual CMS):**
    - Architectural and general contracting portal built with Next.js 16, visual Puck CMS, high-contrast editorial aesthetics, and high-performance server-side rendering. Live at https://wwconstruction.id.
-3. **Simplicity • Enterprise Facilities Management SaaS (MRI Software / Anacle Systems):**
+3. **Simplicity • Enterprise Facilities Management SaaS (Anacle Systems Ltd):**
    - Enterprise facility management and tenant operations SaaS (.NET Core 8, C#, SQL Server, Microservices, SMRT Singapore Mall tenant portal). Live at https://www.anaclesimplicity.com.
 4. **OpenClaw • AI VPS Security & Ops Agent:**
    - Autonomous server monitoring agent using OpenAI GPT-4o for syslog anomaly diagnosis, SSH brute force mitigation, fail2ban automation, and Telegram bot alerting.

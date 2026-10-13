@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Andry Huang • Senior Full-Stack & AI Engineer (7+ Years)",
     description:
-      "Senior Full-Stack & AI Engineer, working since September 2019. Enterprise SaaS for MRI Software, the Qualiv AI recruitment platform, and retail POS systems, built with Next.js, .NET Core, Node.js, and TypeScript.",
+      "Senior Full-Stack & AI Engineer, working since September 2019. Enterprise SaaS for Anacle Systems Ltd, the Qualiv AI recruitment platform, and retail POS systems, built with Next.js, .NET Core, Node.js, and TypeScript.",
     siteName: "Andry Huang Portfolio",
     images: [
       {
@@ -325,7 +325,7 @@ const jsonLd = {
           "name": "How many years of experience does Andry Huang have and what is his track record?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "7+ years, starting September 2019. The work covers enterprise SaaS for MRI Software (.NET Core, Next.js), retail POS systems with RFID hardware, and AI automation such as Qualiv. This site lists 20+ of those projects."
+            "text": "7+ years, starting September 2019. The work covers enterprise SaaS for Anacle Systems Ltd (.NET Core, Next.js), retail POS systems with RFID hardware, and AI automation such as Qualiv. This site lists 20+ of those projects."
           }
         },
         {
@@ -341,7 +341,7 @@ const jsonLd = {
           "name": "Where is Andry Huang located and can he work remotely?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Andry lives in Surabaya, East Java, Indonesia, and worked remotely for MRI Software in Singapore for more than 3 years."
+            "text": "Andry lives in Surabaya, East Java, Indonesia, and worked remotely for Anacle Systems Ltd in Singapore for more than 3 years."
           }
         },
         {

@@ -135,60 +135,6 @@ article.v2-plate:nth-of-type(even) { translate: 0 4svh; }
   .v2-plate, .v2-plate[data-lead] { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* ---------- index: every project as a filterable bento ---------- */
-
-.v2-index { padding: var(--sec) var(--pad); background: var(--paper); }
-.v2-index-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem clamp(2rem, 6vw, 8rem); align-items: end; max-width: 96rem; margin: 0 auto clamp(2.5rem, 5vw, 4.5rem); }
-.v2-index-title { display: grid; gap: 1.6rem; justify-items: start; }
-.v2-chips { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
-.v2-chip { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0.45rem 0.5rem 0.45rem 1.1rem; border-radius: 999px; font-size: 0.86rem; font-weight: 500; box-shadow: inset 0 0 0 1px var(--hair); transition: background-color 0.4s var(--ease), color 0.4s, box-shadow 0.4s; }
-.v2-chip span { display: grid; place-items: center; min-width: 1.8rem; height: 1.8rem; padding: 0 0.45rem; border-radius: 999px; font-family: var(--f-mono); font-size: 0.66rem; background: var(--tint); }
-.v2-chip:hover { box-shadow: inset 0 0 0 1px var(--fg); }
-.v2-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); box-shadow: none; }
-.v2-chip[aria-pressed="true"] span { background: var(--accent); color: var(--ink); }
-
-.v2-cards { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: dense; gap: clamp(0.9rem, 1.6vw, 1.5rem); max-width: 96rem; margin: 0 auto; }
-.v2-card { grid-column: span 3; padding: 0.4rem; border-radius: 1.6rem; background: var(--tint); box-shadow: inset 0 0 0 1px var(--hair); }
-.v2-card[data-big] { grid-column: span 6; }
-.v2-card-link { display: flex; flex-direction: column; height: 100%; overflow: hidden; border-radius: calc(1.6rem - 0.4rem); background: #fbfaf7; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6); }
-.v2-card-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink-2); }
-/* screenshots are scaled from the top so capture artefacts along the bottom edge fall out of frame */
-.v2-card-media img { object-fit: cover; object-position: 50% 0; transform-origin: 50% 0; transform: scale(1.05); transition: transform 1.1s var(--ease); }
-.v2-card-cover {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.2rem 1.3rem;
-  container-type: inline-size;
-  background:
-    linear-gradient(rgba(245, 243, 238, 0.06) 1px, transparent 1px) 0 0 / 2.2rem 2.2rem,
-    linear-gradient(90deg, rgba(245, 243, 238, 0.06) 1px, transparent 1px) 0 0 / 2.2rem 2.2rem,
-    var(--ink-2);
-}
-.v2-card-cover span { font-size: clamp(1.1rem, 9cqw, 3.4rem); line-height: 0.95; color: transparent; -webkit-text-stroke: 1px rgba(245, 243, 238, 0.6); }
-.v2-card-go { position: absolute; right: 0.8rem; top: 0.8rem; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--paper); color: var(--ink); box-shadow: 0 0.6rem 1.4rem -0.6rem rgba(0, 0, 0, 0.5); transition: transform 0.5s var(--ease), background-color 0.4s; }
-.v2-card-body { flex: 1; display: grid; align-content: start; gap: 0.55rem; padding: 1.1rem 1.2rem 1.3rem; }
-.v2-card-title { font-size: 1.08rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
-.v2-card[data-big] .v2-card-title { font-size: 1.35rem; }
-.v2-card-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.93rem; line-height: 1.55; color: var(--fg-soft); }
-.v2-card-tags { font-size: 0.6rem; line-height: 1.7; color: var(--fg-note); }
-.v2-card-link:hover img, .v2-card-link:focus-visible img { transform: scale(1.1); }
-.v2-card-link:hover .v2-card-go, .v2-card-link:focus-visible .v2-card-go { background: var(--accent); transform: rotate(45deg); }
-.v2-index-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; max-width: 96rem; margin: clamp(2.5rem, 5vw, 4rem) auto 0; padding-top: 1.6rem; border-top: 1px solid var(--hair); }
-
-@media (max-width: 1180px) {
-  .v2-card { grid-column: span 6; }
-  .v2-card[data-big] { grid-column: span 12; }
-}
-@media (max-width: 900px) {
-  .v2-index-head { grid-template-columns: minmax(0, 1fr); }
-  .v2-chips { justify-content: flex-start; }
-}
-@media (max-width: 640px) {
-  .v2-card, .v2-card[data-big] { grid-column: span 12; }
-}
-
 /* ---------- stack ---------- */
 
 .v2-stack { padding: var(--sec) var(--pad); background: var(--paper); }

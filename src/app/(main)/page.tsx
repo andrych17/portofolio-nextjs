@@ -3,7 +3,6 @@ import Hero from "@/components/v2/Hero";
 import Intro from "@/components/v2/Intro";
 import Career from "@/components/v2/Career";
 import Works from "@/components/v2/Works";
-import ProjectIndex from "@/components/v2/ProjectIndex";
 import Stack from "@/components/v2/Stack";
 import Credentials from "@/components/v2/Credentials";
 import Faq from "@/components/v2/Faq";
@@ -19,7 +18,6 @@ export default function V2Page() {
         <Intro />
         <Career />
         <Works />
-        <ProjectIndex />
         <Stack />
         <Credentials />
         <Faq />

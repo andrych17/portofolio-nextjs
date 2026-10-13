@@ -9,7 +9,7 @@ import Cta from "./Cta";
 import { Words } from "./Words";
 
 // Employers and clients named elsewhere on the site (career, works, archive).
-const BUILT_FOR = ["MRI Software", "SMRT Singapore", "APP Sinar Mas · Tjiwi Kimia", "PT Nagamasban", "Wonderful Works", "Knit and Cro", "Wijaya Mas", "Cahaya Terang", "Tiga Putra"];
+const BUILT_FOR = ["Anacle Systems Ltd", "SMRT Singapore", "APP Sinar Mas · Tjiwi Kimia", "PT Nagamasban", "Wonderful Works", "Knit and Cro", "Wijaya Mas", "Cahaya Terang", "Tiga Putra"];
 
 export default function Intro() {
   const { lang } = useLanguage();
@@ -19,8 +19,8 @@ export default function Intro() {
   useEffect(() => (root.current ? reveal(root.current) : undefined), [lang]);
 
   const bio = id
-    ? "Saya membangun sistem yang menjalankan bisnis: 3+ tahun SaaS enterprise untuk MRI Software di Singapura, ERP untuk toko emas yang menghitung stok per gram, dan Qualiv, platform rekrutmen AI yang saya dirikan. Stack utama .NET Core, Next.js, dan NestJS, termasuk fitur RAG dan LLM di production."
-    : "I build the systems a business runs on: 3+ years of enterprise SaaS for MRI Software in Singapore, ERPs for shops that count gold by the gram, and Qualiv, the AI recruitment platform I founded. Mostly .NET Core, Next.js and NestJS, with RAG and LLM features in production.";
+    ? "Saya membangun sistem yang menjalankan bisnis: 3+ tahun SaaS enterprise untuk Anacle Systems Ltd di Singapura, ERP untuk toko emas yang menghitung stok per gram, dan Qualiv, platform rekrutmen AI yang saya dirikan. Stack utama .NET Core, Next.js, dan NestJS, termasuk fitur RAG dan LLM di production."
+    : "I build the systems a business runs on: 3+ years of enterprise SaaS for Anacle Systems Ltd in Singapore, ERPs for shops that count gold by the gram, and Qualiv, the AI recruitment platform I founded. Mostly .NET Core, Next.js and NestJS, with RAG and LLM features in production.";
 
   return (
     <section className="v2-intro" id="about" data-section="light" ref={root}>
