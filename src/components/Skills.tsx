@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { EASE, Title } from "./ui/Title";
 
-const MAX_YEARS = 7;
+export const MAX_YEARS = 7;
 
-const TRACK = [
+export const TRACK = [
   { name: ".NET Core & enterprise systems", years: 7 },
   { name: "SQL Server & PostgreSQL", years: 7 },
   { name: "TypeScript / JavaScript", years: 6 },
@@ -17,7 +17,7 @@ const TRACK = [
   { name: "AI agents & MCP workflows", years: 2 },
 ];
 
-const GROUPS = [
+export const GROUPS = [
   { en: "Backend", id: "Backend", items: [".NET Core 8/9 · C#", "ASP.NET Core Web API", "EF Core · Dapper", "NestJS · Express", "Laravel 11 · PHP", "Java 17 · Spring Boot", "FastAPI"] },
   { en: "Data", id: "Data", items: ["PostgreSQL · pgvector", "SQL Server · T-SQL", "Oracle · PL/SQL", "MySQL 8", "Redis · BullMQ", "Prisma"] },
   { en: "Frontend", id: "Frontend", items: ["Next.js 16 · App Router", "React 19", "TypeScript strict", "Tailwind CSS v4", "Vue · Inertia", "Livewire 3 · Alpine", "Framer Motion", "three.js", "Flutter"] },

@@ -9,7 +9,7 @@ import { Title } from "./ui/Title";
 
 type Text = { en: string; id: string };
 
-interface Shot {
+export interface Shot {
   src: string;
   label: string;
   /** Crop: zoom into the screenshot from `origin`, which also pushes capture artefacts (dev badges) out of frame. */
@@ -17,7 +17,7 @@ interface Shot {
   origin?: string;
 }
 
-interface Work {
+export interface Work {
   name: string;
   role: Text;
   year?: string;
@@ -32,7 +32,7 @@ interface Work {
 }
 
 // Enterprise first, then client and own builds. Details for every project live in /portofolio.
-const WORKS: Work[] = [
+export const WORKS: Work[] = [
   {
     name: "SMRT Tenant System",
     role: { en: "MRI Software · for SMRT Singapore", id: "MRI Software · untuk SMRT Singapura" },

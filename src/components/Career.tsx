@@ -9,7 +9,7 @@ import { Title } from "./ui/Title";
 
 type Text = { en: string; id: string };
 
-interface Job {
+export interface Job {
   company: Text;
   note: Text;
   role: string;
@@ -22,7 +22,7 @@ interface Job {
 }
 
 // Mirrors public/llms-full.txt; keep both in sync when the CV changes.
-const CAREER: Job[] = [
+export const CAREER: Job[] = [
   {
     company: { en: "MRI Software", id: "MRI Software" },
     note: { en: "formerly Anacle Systems", id: "dulu Anacle Systems" },

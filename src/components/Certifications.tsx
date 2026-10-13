@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Title } from "./ui/Title";
 
-interface Certification {
+export interface Certification {
   id: number;
   title: string;
   issuer: string;
