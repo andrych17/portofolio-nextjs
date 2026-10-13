@@ -44,7 +44,7 @@ export default function Intro() {
               {id ? "Unduh CV" : "Download CV"}
             </Cta>
             <Cta href={ARCHIVE} variant="ghost">
-              {id ? "Arsip 20+ proyek" : "Archive · 20+ projects"}
+              {id ? "Portofolio 20+ proyek" : "Portfolio · 20+ projects"}
             </Cta>
           </div>
 

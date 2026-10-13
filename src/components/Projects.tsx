@@ -1358,13 +1358,13 @@ export default function Projects() {
       <div className="ah-arch-inner">
         {/* ── Header ───────────────────────────────────── */}
         <header className="ah-arch-head">
-          <Title no={fmt(totalCount)} meta={lang === "id" ? "Karya pilihan · indeks" : "Selected works · index"}>
-            {lang === "id" ? "Arsip" : "Archive"}
+          <Title no={fmt(totalCount)} meta={lang === "id" ? "Koleksi lengkap · indeks" : "Complete collection · index"}>
+            {lang === "id" ? "Portofolio" : "Portfolio"}
           </Title>
           <p className="ah-arch-lede">
             {lang === "id"
-              ? "Pengalaman kerja full-time dan proyek mandiri dalam empat bab. Klik proyek untuk detail lengkap."
-              : "Four chapters of full-time work and side projects. Each entry opens the full case."}
+              ? "Koleksi lengkap proyek full-time dan proyek mandiri. Klik proyek untuk detail lengkap."
+              : "Complete collection of full-time work and side projects. Each entry opens the full case."}
           </p>
         </header>
 

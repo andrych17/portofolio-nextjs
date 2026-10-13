@@ -14,7 +14,7 @@ const ITEMS: { key: SectionId | "archive"; en: string; id: string; href: string 
   { key: "skills", en: "Stack", id: "Stack", href: "/#skills" },
   { key: "certifications", en: "Certified", id: "Sertifikasi", href: "/#certifications" },
   { key: "contact", en: "Contact", id: "Kontak", href: "/#contact" },
-  { key: "archive", en: "Archive", id: "Arsip", href: "/portofolio" },
+  { key: "archive", en: "All Projects", id: "Semua Proyek", href: "/portofolio" },
 ];
 
 const WHATSAPP =

@@ -21,7 +21,7 @@ export default function Footer() {
     { name: id ? "Karier" : "Career", href: "/#career" },
     { name: id ? "Karya" : "Works", href: "/#work" },
     { name: "Stack", href: "/#skills" },
-    { name: id ? "Arsip" : "Archive", href: "/portofolio" },
+    { name: id ? "Semua Proyek" : "All Projects", href: "/portofolio" },
     { name: id ? "Kontak" : "Contact", href: "/#contact" },
   ];
 

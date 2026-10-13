@@ -7,23 +7,23 @@ import { OG_IMAGES } from "@/lib/og";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://andryhuang.com";
 
 export const metadata: Metadata = {
-  title: "Archive & Portfolio (20+ Projects) • Andry Huang",
+  title: "Portofolio Lengkap (20+ Proyek) • Andry Huang",
   description:
-    "20+ projects by Andry Huang: enterprise SaaS, AI agents, retail POS systems, and full-stack web apps from 7+ years of work.",
+    "20+ proyek oleh Andry Huang: enterprise SaaS, AI agents, sistem POS ritel, dan full-stack web apps dari 7+ tahun pengalaman.",
   alternates: { canonical: `${SITE_URL}/portofolio` },
   // The root layout's openGraph is replaced wholesale here, so type, siteName and images are repeated.
   openGraph: {
     type: "website",
     url: `${SITE_URL}/portofolio`,
-    title: "Archive & Portfolio • Andry Huang",
-    description: "Archive of 20+ projects in .NET Core, Next.js, AI/MCP, POS, and PostgreSQL.",
+    title: "Portofolio Lengkap • Andry Huang",
+    description: "Koleksi 20+ proyek di .NET Core, Next.js, AI/MCP, POS, dan PostgreSQL.",
     siteName: "Andry Huang Portfolio",
     images: OG_IMAGES,
   },
 };
 
-// The archive itself is still the original component, set inside the v2 shell (see .v2-archive in v2-sections.css).
-export default function ArchivePage() {
+// The portfolio catalog inside the v2 shell (see .v2-archive in v2-sections.css).
+export default function PortfolioPage() {
   return (
     <>
       <Chrome />

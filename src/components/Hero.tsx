@@ -84,7 +84,7 @@ export default function Hero() {
                 {id ? "Unduh CV" : "Download CV"}
               </a>
               <Link className="ah-link" href="/portofolio">
-                {id ? "Arsip 20+ proyek" : "Archive · 20+ projects"}
+                {id ? "Portofolio 20+ proyek" : "Portfolio · 20+ projects"}
                 <ArrowUpRight size={15} strokeWidth={1.75} aria-hidden="true" />
               </Link>
             </div>

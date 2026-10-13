@@ -277,7 +277,7 @@ export default function Works() {
       </div>
 
       <Link href="/portofolio" className="ah-more">
-        <span>{id ? "Semua proyek di arsip (20+)" : "Every project in the archive (20+)"}</span>
+        <span>{id ? "Semua proyek di portofolio (20+)" : "Every project in the portfolio (20+)"}</span>
         <ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" />
       </Link>
     </section>

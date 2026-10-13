@@ -13,7 +13,7 @@ import { CONTACTS, SECTIONS } from "./sections";
 
 // The short list: open under the logo on the first screen of the home page, in the bar on the other pages
 // (the full menu has every section).
-const QUICK = SECTIONS.filter((s) => ["career", "work", "skills", "contact", "archive"].includes(s.section));
+const QUICK = SECTIONS.filter((s) => ["career", "work", "skills", "contact"].includes(s.section));
 
 /**
  * Floating bar, as on the reference site: on the first screen of the home page the menu sits open under

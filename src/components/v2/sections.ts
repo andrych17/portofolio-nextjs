@@ -24,7 +24,7 @@ export const SECTIONS: SectionLink[] = [
   { section: "certifications", no: "04", label: { en: "Credentials", id: "Sertifikasi" }, hint: { en: `${certifications.length} certificates`, id: `${certifications.length} sertifikat` } },
   { section: "faq", no: "05", label: { en: "FAQ", id: "FAQ" }, hint: { en: `${faqItems.length} answers`, id: `${faqItems.length} jawaban` } },
   { section: "contact", no: "06", label: { en: "Contact", id: "Kontak" }, hint: { en: "Email · WhatsApp · CV", id: "Email · WhatsApp · CV" } },
-  { section: "archive", href: ARCHIVE, no: "07", label: { en: "Archive", id: "Arsip" }, hint: { en: `All ${projects.length} projects, search and case studies`, id: `Semua ${projects.length} proyek, pencarian dan studi kasus` } },
+  { section: "archive", href: ARCHIVE, no: "07", label: { en: "All Projects", id: "Semua Proyek" }, hint: { en: `Full portfolio of ${projects.length} projects, search and case studies`, id: `Koleksi lengkap ${projects.length} proyek, pencarian dan studi kasus` } },
 ];
 
 export const CONTACTS = {

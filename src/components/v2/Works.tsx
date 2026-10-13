@@ -135,8 +135,8 @@ export default function Works() {
             <Words as="h2" className="v2-h v2-h-side" r="words" text={id ? "Karya pilihan." : "Selected works."} />
             <p className="v2-lede v2-soft" data-r="up">
               {id
-                ? `${FEATURED.length} karya unggulan, dimulai dari Qualiv yang saya dirikan. ${projects.length} proyek lengkapnya ada di arsip.`
-                : `${FEATURED.length} featured builds, starting with Qualiv, the SaaS I founded. All ${projects.length} projects are in the archive.`}
+                ? `${FEATURED.length} karya unggulan, dimulai dari Qualiv yang saya dirikan. Seluruh ${projects.length} proyek lengkapnya ada di portofolio.`
+                : `${FEATURED.length} featured builds, starting with Qualiv, the SaaS I founded. All ${projects.length} projects are in the full portfolio.`}
             </p>
             <p className="v2-mono v2-soft v2-works-hint" aria-hidden="true">
               {id ? "Gulir untuk menjelajah" : "Keep scrolling"} →
@@ -189,13 +189,13 @@ export default function Works() {
           ))}
 
           <div className="v2-works-end">
-            <Words as="h3" className="v2-h v2-h-lg" r="words" text={id ? `Dan ${rest} proyek lain.` : `And ${rest} more.`} />
+            <Words as="h3" className="v2-h v2-h-lg" r="words" text={id ? `Dan ${rest} proyek lainnya.` : `And ${rest} more projects.`} />
             <p className="v2-lede v2-soft">
-              {id ? "Semua proyek ada di arsip, lengkap dengan studi kasusnya." : "Every project is in the archive, with its case study."}
+              {id ? "Jelajahi seluruh proyek lengkap dengan filter teknologi dan studi kasusnya." : "Explore every project with tech stack filters and full case studies."}
             </p>
             <div className="v2-works-end-ctas">
               <Cta href={ARCHIVE} variant="accent">
-                {id ? "Lihat arsip" : "See the archive"}
+                {id ? "Lihat Semua Proyek" : "View All Projects"}
               </Cta>
             </div>
           </div>

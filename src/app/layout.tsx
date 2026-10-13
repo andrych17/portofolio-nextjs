@@ -303,7 +303,7 @@ const jsonLd = {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Portfolio & Archive",
+          "name": "Portfolio",
           "item": `${SITE_URL}/portofolio`
         }
       ]
