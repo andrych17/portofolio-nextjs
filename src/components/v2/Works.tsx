@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { WORKS, type Shot, type Work } from "@/components/Works";
 import { gsap, ScrollTrigger } from "@/lib/v2/motion";
 import { reveal } from "@/lib/v2/reveal";
+import { ARCHIVE } from "@/lib/v2/routes";
 import Cta from "./Cta";
 import { Words } from "./Words";
 
@@ -169,7 +170,7 @@ export default function Works() {
           <div className="v2-works-end">
             <Words as="h3" className="v2-h v2-h-lg" r="words" text={id ? "Ada lebih dari 20 proyek." : "There are 20+ more."} />
             <p className="v2-lede v2-soft">{id ? "Semua proyek ada di arsip, bisa dicari dan difilter." : "Every project is in the archive, searchable and filterable."}</p>
-            <Cta href="/portofolio" variant="accent">
+            <Cta href={ARCHIVE} variant="accent">
               {id ? "Buka arsip" : "Open the archive"}
             </Cta>
           </div>

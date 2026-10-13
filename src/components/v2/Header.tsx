@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { scroller } from "@/lib/v2/scroll";
+import { ARCHIVE } from "@/lib/v2/routes";
 import Cta from "./Cta";
+import NavLink from "./NavLink";
+import TransitionLink from "./TransitionLink";
 
 const LINKS = [
   { id: "career", en: "Career", idn: "Karier" },
@@ -20,6 +24,7 @@ const LINKS = [
 export default function Header() {
   const { lang, setLang } = useLanguage();
   const id = lang === "id";
+  const onArchive = usePathname() === ARCHIVE;
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [dark, setDark] = useState(true);
@@ -69,17 +74,20 @@ export default function Header() {
   return (
     <header className="v2-header" data-scrolled={scrolled || undefined} data-hidden={(hidden && !open) || undefined} data-dark={dark || undefined}>
       <div className="v2-header-bar">
-        <a href="#home" className="v2-logo" aria-label="Andry Huang" onClick={() => setOpen(false)}>
+        <NavLink section="home" className="v2-logo" aria-label="Andry Huang" onClick={() => setOpen(false)}>
           <span className="v2-logo-mark">AH</span>
           <span className="v2-logo-full">Andry Huang</span>
-        </a>
+        </NavLink>
 
         <nav className="v2-nav" aria-label={id ? "Bagian halaman" : "Page sections"}>
           {LINKS.map((l) => (
-            <a key={l.id} href={`#${l.id}`} data-on={active === l.id || undefined}>
+            <NavLink key={l.id} section={l.id} data-on={active === l.id || undefined}>
               {id ? l.idn : l.en}
-            </a>
+            </NavLink>
           ))}
+          <TransitionLink href={ARCHIVE} data-on={onArchive || undefined}>
+            {id ? "Arsip" : "Archive"}
+          </TransitionLink>
         </nav>
 
         <div className="v2-header-tools">
@@ -104,11 +112,15 @@ export default function Header() {
       <div className="v2-menu" id="v2-menu" data-open={open || undefined}>
         <nav aria-label="Menu">
           {LINKS.map((l, i) => (
-            <a key={l.id} href={`#${l.id}`} style={{ "--i": i } as React.CSSProperties} onClick={() => setOpen(false)}>
+            <NavLink key={l.id} section={l.id} style={{ "--i": i } as React.CSSProperties} onClick={() => setOpen(false)}>
               <span className="v2-mono">{String(i + 1).padStart(2, "0")}</span>
               {id ? l.idn : l.en}
-            </a>
+            </NavLink>
           ))}
+          <TransitionLink href={ARCHIVE} style={{ "--i": LINKS.length } as React.CSSProperties} onClick={() => setOpen(false)}>
+            <span className="v2-mono">{String(LINKS.length + 1).padStart(2, "0")}</span>
+            {id ? "Arsip" : "Archive"}
+          </TransitionLink>
         </nav>
         <Cta href="/Andry_Huang_CV.pdf" external variant="accent">
           {id ? "Unduh CV" : "Download CV"}
