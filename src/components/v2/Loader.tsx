@@ -1,32 +1,36 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { gsap, CustomEase, reducedMotion } from "@/lib/v2/motion";
 import { intro } from "@/lib/v2/intro";
+import { introSeen, markIntroSeen } from "@/lib/v2/seen";
 import { scroller } from "@/lib/v2/scroll";
 
 const BOOT = [".NET Core 8", "Next.js 16 · React 19", "NestJS · BullMQ · Redis", "PostgreSQL · pgvector", "MCP servers · agents"];
+const never = () => () => {};
 
 /**
  * First paint is a black cover with a terminal boot log and a 00 to 100 counter; it ends with three
  * concentric circles opening onto the page (the box-shadow of a growing circle is the cover).
- * Repeat visits in the same session run the same sequence much faster.
+ * It plays once per browser: afterwards the flag in localStorage skips it (the layout hides the cover
+ * before first paint, see MainLayout) and the hero enters straight away.
  */
 export default function Loader() {
   const root = useRef<HTMLDivElement>(null);
+  // false on the server, so hydration matches; true on a client render of a repeat visit (route changes).
+  const seen = useSyncExternalStore(never, introSeen, () => false);
 
   useEffect(() => {
     const el = root.current;
     if (!el) return;
     const html = document.documentElement;
 
-    if (reducedMotion()) {
+    if (reducedMotion() || introSeen()) {
       el.style.display = "none";
       intro.set(true);
       return () => intro.set(false);
     }
 
-    const seen = sessionStorage.getItem("v2-seen") === "1";
     html.classList.add("v2-loading");
     scroller.lenis?.stop();
 
@@ -43,14 +47,14 @@ export default function Loader() {
 
       const tl = gsap.timeline({
         onComplete: () => {
-          sessionStorage.setItem("v2-seen", "1");
+          markIntroSeen();
           html.classList.remove("v2-loading");
           scroller.lenis?.start();
           scroller.lenis?.resize();
           gsap.set(el, { display: "none" });
         },
       });
-      const span = seen ? 0.9 : 2.8;
+      const span = 2.8;
       const lines = q(".v2-term-line");
 
       tl.to(q(".v2-loader-top, .v2-loader-big"), { autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0)
@@ -85,7 +89,7 @@ export default function Loader() {
   }, []);
 
   return (
-    <div className="v2-loader" ref={root} aria-hidden="true">
+    <div className="v2-loader" ref={root} aria-hidden="true" hidden={seen}>
       <div className="v2-loader-cover" />
       <div className="v2-loader-top">
         <span className="v2-mono">Andry Huang</span>

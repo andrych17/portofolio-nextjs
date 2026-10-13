@@ -7,6 +7,7 @@
   --paper: #f5f3ee;
   --paper-2: #ebe8e0;
   --accent: #ff5500;
+  --accent-ink: #c23b00; /* orange as text on paper: 4.8:1 (plain --accent is 2.9:1 there) */
   --ultra: #1c2fd8;
 
   /* surface roles: sections flip these, components read them */
@@ -40,6 +41,7 @@
   --fg-note: rgba(245, 243, 238, 0.5);
   --hair: rgba(245, 243, 238, 0.14);
   --tint: rgba(245, 243, 238, 0.06);
+  --accent-ink: var(--accent);
   color: var(--fg);
 }
 /* Resets sit in :where() so component classes (padding, colour) always win over them. */
@@ -52,6 +54,8 @@
 .v2 ::selection { background: var(--accent); color: var(--ink); }
 
 html.v2-loading, html.v2-menu-open { overflow: hidden; }
+/* data-seen is set by the inline script in the layout: the loader already played in this browser. */
+.v2[data-seen] .v2-loader { display: none; }
 
 /* ---------- type ---------- */
 
@@ -178,6 +182,8 @@ html.v2-loading, html.v2-menu-open { overflow: hidden; }
 
 .v2-header { position: fixed; z-index: 90; top: 0.9rem; left: 0; right: 0; padding: 0 var(--pad); pointer-events: none; transition: transform 0.7s var(--ease); }
 .v2-header[data-hidden] { transform: translateY(-160%); }
+.v2-header { --accent-ink: var(--accent); }
+.v2-header:not([data-dark]) { --accent-ink: #c23b00; } /* light pill over a paper section */
 .v2-header-bar {
   pointer-events: auto;
   display: grid;
@@ -207,8 +213,8 @@ html.v2-loading, html.v2-menu-open { overflow: hidden; }
 .v2-logo-full { display: grid; grid-template-columns: 1fr; overflow: hidden; max-width: 9rem; transition: max-width 0.6s var(--ease), opacity 0.4s; white-space: nowrap; }
 .v2-header[data-scrolled]:not([data-open]) .v2-logo-full { max-width: 0; opacity: 0; }
 .v2-where { justify-self: center; display: flex; gap: 0.6rem; min-height: 1em; white-space: nowrap; opacity: 0.8; }
-.v2-where b { font-weight: 500; color: var(--accent); }
-.v2-header-tools { display: flex; align-items: center; justify-content: flex-end; gap: 0.6rem; }
+.v2-where b { font-weight: 500; color: var(--accent-ink); }
+.v2-header-tools { grid-column: 3; display: flex; align-items: center; justify-content: flex-end; gap: 0.6rem; }
 .v2-lang { display: inline-flex; padding: 0.2rem; border-radius: 999px; background: color-mix(in srgb, currentColor 10%, transparent); }
 .v2-lang button { padding: 0.5rem 0.8rem; border-radius: 999px; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; transition: background-color 0.4s var(--ease), color 0.4s, opacity 0.3s; }
 .v2-lang button[data-on] { opacity: 1; background: var(--accent); color: var(--ink); }
@@ -231,6 +237,13 @@ html.v2-loading, html.v2-menu-open { overflow: hidden; }
   .v2-header[data-home]:not([data-scrolled]):not([data-open]) .v2-quick { visibility: visible; pointer-events: auto; transition-delay: 0s; }
   .v2-header[data-home]:not([data-scrolled]):not([data-open]) .v2-quick a { opacity: 0.85; transform: none; transition-delay: calc(0.1s + var(--i) * 0.05s); }
 }
+
+/* other pages (the archive): the same links sit in the bar, on wide screens; narrower, the Menu button has them */
+.v2-topnav { display: none; justify-self: center; gap: 1.9rem; }
+.v2-topnav a { padding: 0.5rem 0; font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.72; transition: color 0.3s var(--ease), opacity 0.3s var(--ease); }
+.v2-topnav a span { display: none; }
+.v2-topnav a:hover, .v2-topnav a:focus-visible, .v2-topnav a[aria-current] { color: var(--accent-ink); opacity: 1; }
+@media (min-width: 1200px) { .v2-topnav { display: flex; } }
 
 /* full-screen menu: it opens as a circle from the Menu button */
 .v2-menu {

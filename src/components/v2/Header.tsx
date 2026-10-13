@@ -11,7 +11,8 @@ import NavLink from "./NavLink";
 import TransitionLink from "./TransitionLink";
 import { CONTACTS, SECTIONS } from "./sections";
 
-// The open list on the first screen of the home page (the full menu has every section).
+// The short list: open under the logo on the first screen of the home page, in the bar on the other pages
+// (the full menu has every section).
 const QUICK = SECTIONS.filter((s) => ["career", "work", "skills", "contact", "archive"].includes(s.section));
 
 /**
@@ -78,6 +79,25 @@ export default function Header() {
 
   const where = SECTIONS.find((s) => s.section === active);
 
+  const links = QUICK.map((s, i) => {
+    const body = (
+      <>
+        <span>{s.no}</span>
+        {s.label[lang]}
+      </>
+    );
+    const style = { "--i": i } as CSSProperties;
+    return s.href ? (
+      <TransitionLink key={s.section} href={s.href} style={style} aria-current={pathname === s.href ? "page" : undefined}>
+        {body}
+      </TransitionLink>
+    ) : (
+      <NavLink key={s.section} section={s.section} style={style}>
+        {body}
+      </NavLink>
+    );
+  });
+
   return (
     <header
       className="v2-header"
@@ -93,13 +113,19 @@ export default function Header() {
           <span className="v2-logo-full">Andry Huang</span>
         </NavLink>
 
-        <p className="v2-where v2-mono" aria-live="polite">
-          {where && !open && (
-            <>
-              <b>{where.no}</b> {where.label[lang]}
-            </>
-          )}
-        </p>
+        {onHome ? (
+          <p className="v2-where v2-mono" aria-live="polite">
+            {where && !open && (
+              <>
+                <b>{where.no}</b> {where.label[lang]}
+              </>
+            )}
+          </p>
+        ) : (
+          <nav className="v2-topnav" aria-label={id ? "Navigasi utama" : "Main navigation"}>
+            {links}
+          </nav>
+        )}
 
         <div className="v2-header-tools">
           <div className="v2-lang" role="group" aria-label="Language">
@@ -132,26 +158,11 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="v2-quick" aria-label={id ? "Bagian halaman" : "Page sections"}>
-        {QUICK.map((s, i) => {
-          const body = (
-            <>
-              <span>{s.no}</span>
-              {s.label[lang]}
-            </>
-          );
-          const style = { "--i": i } as CSSProperties;
-          return s.href ? (
-            <TransitionLink key={s.section} href={s.href} style={style}>
-              {body}
-            </TransitionLink>
-          ) : (
-            <NavLink key={s.section} section={s.section} style={style}>
-              {body}
-            </NavLink>
-          );
-        })}
-      </nav>
+      {onHome && (
+        <nav className="v2-quick" aria-label={id ? "Bagian halaman" : "Page sections"}>
+          {links}
+        </nav>
+      )}
 
       <Menu open={open} active={active} onClose={close} />
     </header>
