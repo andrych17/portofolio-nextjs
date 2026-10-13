@@ -31,7 +31,7 @@ export default function Faq() {
         <div className="v2-faq-side">
           <p className="v2-eyebrow" data-r="up">
             <i />
-            05 · FAQ
+            06 · FAQ
           </p>
           <Words as="h2" className="v2-h v2-h-side" r="words" text={id ? "Pertanyaan umum." : "Common questions."} />
           <p className="v2-lede v2-soft" data-r="up">

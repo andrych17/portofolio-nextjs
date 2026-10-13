@@ -1,35 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { scroller } from "@/lib/v2/scroll";
-import { ARCHIVE } from "@/lib/v2/routes";
+import { ARCHIVE, HOME } from "@/lib/v2/routes";
 import Cta from "./Cta";
+import Menu from "./Menu";
 import NavLink from "./NavLink";
 import TransitionLink from "./TransitionLink";
+import { CONTACTS, SECTIONS } from "./sections";
 
-const LINKS = [
-  { id: "career", en: "Career", idn: "Karier" },
-  { id: "work", en: "Works", idn: "Karya" },
-  { id: "skills", en: "Stack", idn: "Stack" },
-  { id: "contact", en: "Contact", idn: "Kontak" },
-] as const;
+// The open list on the first screen of the home page (the full menu has every section).
+const QUICK = SECTIONS.filter((s) => ["career", "work", "projects", "skills", "contact", "archive"].includes(s.section));
 
 /**
- * Floating bar. Three states, as on the reference site: it shrinks after the first screen, hides while
- * scrolling down and returns on any upward scroll, and takes its colours from the section under it.
+ * Floating bar, as on the reference site: on the first screen of the home page the menu sits open under
+ * the logo; past it the list folds into the Menu button, the bar hides while scrolling down and returns
+ * on any upward scroll, and it takes its colours from the section under it.
  */
 export default function Header() {
   const { lang, setLang } = useLanguage();
   const id = lang === "id";
-  const onArchive = usePathname() === ARCHIVE;
+  const pathname = usePathname();
+  const onHome = pathname === HOME;
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [dark, setDark] = useState(true);
-  const [active, setActive] = useState<string>("");
+  const [active, setActive] = useState<string>(pathname === ARCHIVE ? "archive" : "");
   const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     let last = window.scrollY;
@@ -71,24 +71,35 @@ export default function Header() {
     };
   }, [open]);
 
+  const close = useCallback(() => {
+    setOpen(false);
+    toggle.current?.focus({ preventScroll: true });
+  }, []);
+
+  const where = SECTIONS.find((s) => s.section === active);
+
   return (
-    <header className="v2-header" data-scrolled={scrolled || undefined} data-hidden={(hidden && !open) || undefined} data-dark={dark || undefined}>
+    <header
+      className="v2-header"
+      data-scrolled={scrolled || undefined}
+      data-hidden={(hidden && !open) || undefined}
+      data-dark={dark || open || undefined}
+      data-home={onHome || undefined}
+      data-open={open || undefined}
+    >
       <div className="v2-header-bar">
         <NavLink section="home" className="v2-logo" aria-label="Andry Huang" onClick={() => setOpen(false)}>
           <span className="v2-logo-mark">AH</span>
           <span className="v2-logo-full">Andry Huang</span>
         </NavLink>
 
-        <nav className="v2-nav" aria-label={id ? "Bagian halaman" : "Page sections"}>
-          {LINKS.map((l) => (
-            <NavLink key={l.id} section={l.id} data-on={active === l.id || undefined}>
-              {id ? l.idn : l.en}
-            </NavLink>
-          ))}
-          <TransitionLink href={ARCHIVE} data-on={onArchive || undefined}>
-            {id ? "Arsip" : "Archive"}
-          </TransitionLink>
-        </nav>
+        <p className="v2-where v2-mono" aria-live="polite">
+          {where && !open && (
+            <>
+              <b>{where.no}</b> {where.label[lang]}
+            </>
+          )}
+        </p>
 
         <div className="v2-header-tools">
           <div className="v2-lang" role="group" aria-label="Language">
@@ -99,33 +110,50 @@ export default function Header() {
             ))}
           </div>
           <span className="v2-header-cta">
-            <Cta href="/Andry_Huang_CV.pdf" external small variant="accent">
+            <Cta href={CONTACTS.cv} external small variant="accent">
               CV
             </Cta>
           </span>
-          <button type="button" className="v2-burger" aria-expanded={open} aria-controls="v2-menu" aria-label="Menu" onClick={() => setOpen((o) => !o)}>
-            {open ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
+          <button
+            ref={toggle}
+            type="button"
+            className="v2-menu-btn"
+            aria-expanded={open}
+            aria-controls="v2-menu"
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span className="v2-menu-dots" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <span>{open ? (id ? "Tutup" : "Close") : "Menu"}</span>
           </button>
         </div>
       </div>
 
-      <div className="v2-menu" id="v2-menu" data-open={open || undefined}>
-        <nav aria-label="Menu">
-          {LINKS.map((l, i) => (
-            <NavLink key={l.id} section={l.id} style={{ "--i": i } as React.CSSProperties} onClick={() => setOpen(false)}>
-              <span className="v2-mono">{String(i + 1).padStart(2, "0")}</span>
-              {id ? l.idn : l.en}
+      <nav className="v2-quick" aria-label={id ? "Bagian halaman" : "Page sections"}>
+        {QUICK.map((s, i) => {
+          const body = (
+            <>
+              <span>{s.no}</span>
+              {s.label[lang]}
+            </>
+          );
+          const style = { "--i": i } as CSSProperties;
+          return s.href ? (
+            <TransitionLink key={s.section} href={s.href} style={style}>
+              {body}
+            </TransitionLink>
+          ) : (
+            <NavLink key={s.section} section={s.section} style={style}>
+              {body}
             </NavLink>
-          ))}
-          <TransitionLink href={ARCHIVE} style={{ "--i": LINKS.length } as React.CSSProperties} onClick={() => setOpen(false)}>
-            <span className="v2-mono">{String(LINKS.length + 1).padStart(2, "0")}</span>
-            {id ? "Arsip" : "Archive"}
-          </TransitionLink>
-        </nav>
-        <Cta href="/Andry_Huang_CV.pdf" external variant="accent">
-          {id ? "Unduh CV" : "Download CV"}
-        </Cta>
-      </div>
+          );
+        })}
+      </nav>
+
+      <Menu open={open} active={active} onClose={close} />
     </header>
   );
 }

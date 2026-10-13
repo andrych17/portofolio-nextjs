@@ -21,7 +21,7 @@ export default function Credentials() {
         <div className="v2-creds-side">
           <p className="v2-eyebrow" data-r="up">
             <i />
-            04 · {id ? "Sertifikasi" : "Credentials"}
+            05 · {id ? "Sertifikasi" : "Credentials"}
           </p>
           <Words as="h2" className="v2-h v2-h-side" r="words" text={id ? "Bisa diverifikasi." : "Verifiable."} />
           <p className="v2-lede v2-soft" data-r="up">

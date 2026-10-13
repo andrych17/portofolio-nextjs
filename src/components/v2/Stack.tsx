@@ -19,7 +19,7 @@ export default function Stack() {
         <div className="v2-stack-side">
           <p className="v2-eyebrow" data-r="up">
             <i />
-            03 · Stack
+            04 · Stack
           </p>
           <Words as="h2" className="v2-h v2-h-side" r="words" text={id ? "Dipakai di production sejak 2019." : "In production since 2019."} />
           <p className="v2-lede v2-soft" data-r="up">

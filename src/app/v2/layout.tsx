@@ -8,10 +8,23 @@ import AIChatbot from "@/components/AIChatbot";
 // Upright, with the width axis driven by font-variation-settings (see .v2-h in v2.css).
 const archivo = Archivo({ variable: "--font-archivo-wide", subsets: ["latin"], axes: ["wdth"], display: "swap" });
 
+const title = "Andry Huang · Senior Full-Stack & AI Engineer";
+const description = "Portfolio of Andry Huang: enterprise SaaS, ERPs and LLM systems. Cinematic preview of the home page.";
+
 export const metadata: Metadata = {
-  title: "Andry Huang · Senior Full-Stack & AI Engineer",
-  description: "Portfolio of Andry Huang: enterprise SaaS, ERPs and LLM systems. Cinematic preview of the home page.",
+  title,
+  description,
   alternates: { canonical: "/" },
+  // Own og:url + title so link previews for /v2 stop inheriting the root card (og:url = /).
+  // Setting openGraph replaces the root block entirely, so type/siteName/images are repeated.
+  openGraph: {
+    type: "website",
+    url: "/v2",
+    title,
+    description,
+    siteName: "Andry Huang Portfolio",
+    images: [{ url: "/img/og-image.jpg", width: 1200, height: 630, alt: "Andry Huang, Senior Full-Stack & AI Engineer" }],
+  },
   robots: { index: false, follow: false }, // preview of the home page; the canonical page is /
 };
 

@@ -27,6 +27,10 @@
 .v2-intro-main { display: grid; gap: 2.8rem; padding-top: 0.5rem; }
 .v2-intro-bio { max-width: 36rem; font-size: clamp(1.2rem, 1rem + 0.95vw, 1.8rem); line-height: 1.42; letter-spacing: -0.01em; }
 .v2-intro-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.v2-built { display: grid; gap: 1rem; margin-top: clamp(1.5rem, 4vw, 3.5rem); padding-top: 1.6rem; border-top: 1px solid var(--hair); }
+.v2-built ul { display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
+.v2-built li { font-size: clamp(0.95rem, 0.8rem + 0.5vw, 1.25rem); }
+.v2-built li:not(:last-child)::after { content: "/"; margin: 0 0.8rem; color: var(--accent); }
 
 /* ---------- career: a pinned road beside the roles ---------- */
 
@@ -86,6 +90,15 @@ article.v2-plate:nth-of-type(even) { translate: 0 4svh; }
 .v2-plate-stack { line-height: 1.8; }
 .v2-visit { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 26%, transparent); transition: background-color 0.5s var(--ease), color 0.5s var(--ease), box-shadow 0.5s var(--ease); }
 .v2-visit:hover { background: var(--accent); color: var(--ink); box-shadow: none; }
+.v2-visit-solid { background: var(--paper); color: var(--ink); box-shadow: none; }
+.v2-plate-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem; }
+.v2-works-end-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+/* the lead plate (Qualiv) is wider and carries a third window */
+.v2-plate[data-lead] { width: min(86rem, 88vw); grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); }
+.v2-shots-lead { padding: 7% 9% 15% 0; }
+.v2-shots-lead > .v2-bezel:first-child { width: 100%; }
+.v2-shots-extra { position: absolute; right: 0; top: 0; width: 36%; rotate: -2.5deg; box-shadow: 0 1.4rem 2.4rem -0.8rem rgba(0, 0, 0, 0.6), inset 0 0 0 1px var(--hair); background: var(--ink-2); }
+.v2-shots-lead .v2-shots-sub { width: 46%; }
 .v2-works-ui { position: absolute; left: var(--pad); right: var(--pad); bottom: 1.8rem; display: flex; align-items: center; gap: 1.5rem; }
 .v2-works-rail { flex: 1; height: 2px; background: var(--hair); overflow: hidden; }
 .v2-works-rail i { display: block; height: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
@@ -114,12 +127,66 @@ article.v2-plate:nth-of-type(even) { translate: 0 4svh; }
   .v2-works-stick { position: static; height: auto; overflow: visible; }
   .v2-works-track { flex-direction: column; align-items: stretch; width: auto; height: auto; padding: 0; gap: clamp(4rem, 12vw, 6rem); transform: none !important; }
   .v2-works-lead, .v2-works-end { width: auto; }
-  .v2-plate { width: auto; max-width: 68rem; }
+  .v2-plate, .v2-plate[data-lead] { width: auto; max-width: 72rem; }
   article.v2-plate:nth-of-type(odd), article.v2-plate:nth-of-type(even) { translate: none; }
   .v2-works-ui { display: none; }
 }
 @media (max-width: 900px) {
-  .v2-plate { grid-template-columns: minmax(0, 1fr); }
+  .v2-plate, .v2-plate[data-lead] { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- index: every project as a filterable bento ---------- */
+
+.v2-index { padding: var(--sec) var(--pad); background: var(--paper); }
+.v2-index-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem clamp(2rem, 6vw, 8rem); align-items: end; max-width: 96rem; margin: 0 auto clamp(2.5rem, 5vw, 4.5rem); }
+.v2-index-title { display: grid; gap: 1.6rem; justify-items: start; }
+.v2-chips { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
+.v2-chip { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0.45rem 0.5rem 0.45rem 1.1rem; border-radius: 999px; font-size: 0.86rem; font-weight: 500; box-shadow: inset 0 0 0 1px var(--hair); transition: background-color 0.4s var(--ease), color 0.4s, box-shadow 0.4s; }
+.v2-chip span { display: grid; place-items: center; min-width: 1.8rem; height: 1.8rem; padding: 0 0.45rem; border-radius: 999px; font-family: var(--f-mono); font-size: 0.66rem; background: var(--tint); }
+.v2-chip:hover { box-shadow: inset 0 0 0 1px var(--fg); }
+.v2-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); box-shadow: none; }
+.v2-chip[aria-pressed="true"] span { background: var(--accent); color: var(--ink); }
+
+.v2-cards { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: dense; gap: clamp(0.9rem, 1.6vw, 1.5rem); max-width: 96rem; margin: 0 auto; }
+.v2-card { grid-column: span 3; padding: 0.4rem; border-radius: 1.6rem; background: var(--tint); box-shadow: inset 0 0 0 1px var(--hair); }
+.v2-card[data-big] { grid-column: span 6; }
+.v2-card-link { display: flex; flex-direction: column; height: 100%; overflow: hidden; border-radius: calc(1.6rem - 0.4rem); background: #fbfaf7; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6); }
+.v2-card-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink-2); }
+/* screenshots are scaled from the top so capture artefacts along the bottom edge fall out of frame */
+.v2-card-media img { object-fit: cover; object-position: 50% 0; transform-origin: 50% 0; transform: scale(1.05); transition: transform 1.1s var(--ease); }
+.v2-card-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem 1.3rem;
+  container-type: inline-size;
+  background:
+    linear-gradient(rgba(245, 243, 238, 0.06) 1px, transparent 1px) 0 0 / 2.2rem 2.2rem,
+    linear-gradient(90deg, rgba(245, 243, 238, 0.06) 1px, transparent 1px) 0 0 / 2.2rem 2.2rem,
+    var(--ink-2);
+}
+.v2-card-cover span { font-size: clamp(1.1rem, 9cqw, 3.4rem); line-height: 0.95; color: transparent; -webkit-text-stroke: 1px rgba(245, 243, 238, 0.6); }
+.v2-card-go { position: absolute; right: 0.8rem; top: 0.8rem; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--paper); color: var(--ink); box-shadow: 0 0.6rem 1.4rem -0.6rem rgba(0, 0, 0, 0.5); transition: transform 0.5s var(--ease), background-color 0.4s; }
+.v2-card-body { flex: 1; display: grid; align-content: start; gap: 0.55rem; padding: 1.1rem 1.2rem 1.3rem; }
+.v2-card-title { font-size: 1.08rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+.v2-card[data-big] .v2-card-title { font-size: 1.35rem; }
+.v2-card-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.93rem; line-height: 1.55; color: var(--fg-soft); }
+.v2-card-tags { font-size: 0.6rem; line-height: 1.7; color: var(--fg-note); }
+.v2-card-link:hover img, .v2-card-link:focus-visible img { transform: scale(1.1); }
+.v2-card-link:hover .v2-card-go, .v2-card-link:focus-visible .v2-card-go { background: var(--accent); transform: rotate(45deg); }
+.v2-index-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; max-width: 96rem; margin: clamp(2.5rem, 5vw, 4rem) auto 0; padding-top: 1.6rem; border-top: 1px solid var(--hair); }
+
+@media (max-width: 1180px) {
+  .v2-card { grid-column: span 6; }
+  .v2-card[data-big] { grid-column: span 12; }
+}
+@media (max-width: 900px) {
+  .v2-index-head { grid-template-columns: minmax(0, 1fr); }
+  .v2-chips { justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .v2-card, .v2-card[data-big] { grid-column: span 12; }
 }
 
 /* ---------- stack ---------- */
@@ -242,7 +309,35 @@ a.v2-cert:hover .v2-cert-go { background: var(--accent); color: var(--ink); tran
   .v2-footer-mark { font-size: 12.4vw; }
 }
 
-/* ---------- archive: the original archive component inside the v2 shell ---------- */
+/* ---------- archive: the original archive component, restyled to the v2 language ---------- */
 
-/* .v2 flips --bg/--fg to the light surface; the archive's own markup expects the site-wide dark ones. */
-.v2-archive { --bg: #0c0c0c; --fg: #d8d8d4; isolation: isolate; background: var(--bg); color: var(--paper); }
+/* .v2 flips --bg/--fg to the light surface; the archive's own markup expects the site-wide dark ones.
+   No stacking context here: the case-study dialog has to sit above the fixed header. */
+.v2-archive { --bg: #0c0c0c; --fg: #d8d8d4; background: var(--bg); color: var(--paper); }
+.v2-archive.ah-archive::before { display: none; }
+.v2-archive .ah-arch { padding: 9rem 0 6rem; }
+
+/* type: the upright wide face instead of the black italic */
+.v2-archive :is(.ah-title, .ah-tab-name, .ah-cover span) { font-family: var(--f-head); font-style: normal; font-weight: 800; font-variation-settings: "wdth" 116; }
+.v2-archive .ah-title { font-size: clamp(2.6rem, 1rem + 5vw, 6.4rem); line-height: 0.95; }
+.v2-archive .ah-title-bar { display: none; }
+
+/* shapes: pills and rounded panels instead of skewed slabs */
+.v2-archive :is(.ah-chip, .ah-tab, .ah-notice, .ah-card) { clip-path: none; }
+.v2-archive .ah-chip { border-radius: 999px; padding: 0.55rem 1.1rem; box-shadow: inset 0 0 0 1px rgba(245, 243, 238, 0.1); }
+.v2-archive .ah-chip[data-on] { box-shadow: none; }
+.v2-archive .ah-search input { border-radius: 999px; background: rgba(245, 243, 238, 0.06); box-shadow: inset 0 0 0 1px rgba(245, 243, 238, 0.12); transition: box-shadow 0.4s var(--ease); }
+.v2-archive .ah-search input:focus { box-shadow: inset 0 0 0 1px var(--accent); }
+.v2-archive .ah-search-clear { border-radius: 999px; }
+.v2-archive .ah-tab { border-radius: 1.4rem; box-shadow: inset 0 0 0 1px rgba(245, 243, 238, 0.1); transition: background-color 0.4s var(--ease), color 0.3s, box-shadow 0.4s; }
+.v2-archive .ah-tab[data-on] { box-shadow: none; }
+.v2-archive .ah-notice { border-radius: 1rem; }
+/* the cards and the dialog keep Tailwind's own radii and blur, which stage.css flattens on the v1 page */
+.v2-archive :is(.ah-card, .ah-card [class*="rounded"], .ah-dialog, .ah-dialog [class*="rounded"]) { border-radius: revert-layer; }
+.v2-archive :is(.ah-card, .ah-dialog) [class*="backdrop-blur"] { backdrop-filter: revert-layer; }
+.v2-archive .ah-card { box-shadow: inset 0 0 0 1px rgba(245, 243, 238, 0.1); transition: transform 0.6s var(--ease), box-shadow 0.4s var(--ease); }
+.v2-archive .ah-card::after { display: none; }
+.v2-archive .ah-card:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(255, 85, 0, 0.55); }
+.v2-archive .ah-impact { border-radius: 1rem; }
+/* stage.css lifts each home section into its own layer (z-index: 1), which would trap the dialog under the header */
+.v2-archive > section { z-index: auto; }

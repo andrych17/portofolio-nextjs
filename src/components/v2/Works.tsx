@@ -4,16 +4,19 @@ import { useEffect, useRef, type CSSProperties } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { WORKS, type Shot, type Work } from "@/components/Works";
+import type { Shot } from "@/components/Works";
+import { projects } from "@/components/Projects";
 import { gsap, ScrollTrigger } from "@/lib/v2/motion";
 import { reveal } from "@/lib/v2/reveal";
 import { ARCHIVE } from "@/lib/v2/routes";
 import Cta from "./Cta";
+import TransitionLink from "./TransitionLink";
 import { Words } from "./Words";
+import { FEATURED, type Featured } from "./featured";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function Window({ shot, name, kind }: { shot: Shot; name: string; kind: "main" | "sub" }) {
+function Window({ shot, name, kind }: { shot: Shot; name: string; kind: "main" | "sub" | "extra" }) {
   const view = { "--zoom": shot.zoom ?? 1, "--origin": shot.origin ?? "0 0" } as CSSProperties;
   return (
     <figure className={`v2-win v2-win-${kind}`}>
@@ -24,22 +27,27 @@ function Window({ shot, name, kind }: { shot: Shot; name: string; kind: "main" |
         <span>{shot.label}</span>
       </figcaption>
       <div className="v2-win-view" style={view}>
-        <Image src={shot.src} alt={`${name}: ${shot.label}`} fill sizes={kind === "main" ? "(max-width: 900px) 80vw, 30vw" : "(max-width: 900px) 50vw, 18vw"} />
+        <Image src={shot.src} alt={`${name}: ${shot.label}`} fill sizes={kind === "main" ? "(max-width: 900px) 80vw, 34vw" : "(max-width: 900px) 50vw, 18vw"} />
       </div>
     </figure>
   );
 }
 
-function Media({ w, lang }: { w: Work; lang: "en" | "id" }) {
+function Media({ w, lang }: { w: Featured; lang: "en" | "id" }) {
   if (w.shots) {
     return (
-      <div className="v2-shots">
+      <div className={w.extra ? "v2-shots v2-shots-lead" : "v2-shots"}>
         <div className="v2-bezel">
           <Window shot={w.shots.main} name={w.name} kind="main" />
         </div>
         {w.shots.sub && (
           <div className="v2-bezel v2-shots-sub">
             <Window shot={w.shots.sub} name={w.name} kind="sub" />
+          </div>
+        )}
+        {w.extra && (
+          <div className="v2-bezel v2-shots-extra">
+            <Window shot={w.extra} name={w.name} kind="extra" />
           </div>
         )}
       </div>
@@ -75,6 +83,7 @@ export default function Works() {
   const track = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLElement>(null);
   const count = useRef<HTMLSpanElement>(null);
+  const rest = projects.length - FEATURED.length;
 
   useEffect(() => (root.current ? reveal(root.current) : undefined), [lang]);
 
@@ -123,19 +132,19 @@ export default function Works() {
               <i />
               02 · {id ? "Karya" : "Works"}
             </p>
-            <Words as="h2" className="v2-h v2-h-side" r="words" text={id ? "Karya, enterprise lebih dulu." : "Works, enterprise first."} />
+            <Words as="h2" className="v2-h v2-h-side" r="words" text={id ? "Karya pilihan." : "Selected works."} />
             <p className="v2-lede v2-soft" data-r="up">
               {id
-                ? `${WORKS.length} karya: dari platform tenant mall untuk SMRT sampai SaaS Qualiv yang saya dirikan.`
-                : `${WORKS.length} builds, from a mall-tenant platform for SMRT to the Qualiv SaaS I founded.`}
+                ? `${FEATURED.length} karya unggulan, dimulai dari Qualiv yang saya dirikan. ${projects.length} proyek lengkapnya ada di indeks.`
+                : `${FEATURED.length} featured builds, starting with Qualiv, the SaaS I founded. All ${projects.length} projects are in the index.`}
             </p>
             <p className="v2-mono v2-soft v2-works-hint" aria-hidden="true">
               {id ? "Gulir untuk menjelajah" : "Keep scrolling"} →
             </p>
           </div>
 
-          {WORKS.map((w, i) => (
-            <article className="v2-plate" key={w.name} aria-labelledby={`v2-work-${i}`}>
+          {FEATURED.map((w, i) => (
+            <article className="v2-plate" data-lead={w.lead || undefined} key={w.name} aria-labelledby={`v2-work-${i}`}>
               <div className="v2-plate-media">
                 <Media w={w} lang={lang} />
               </div>
@@ -143,6 +152,12 @@ export default function Works() {
                 <p className="v2-plate-no v2-h" aria-hidden="true">
                   {pad(i + 1)}
                 </p>
+                {w.lead && (
+                  <p className="v2-eyebrow">
+                    <i />
+                    {id ? "Founder · produk sendiri" : "Founder · my own product"}
+                  </p>
+                )}
                 <h3 className="v2-h v2-h-lg" id={`v2-work-${i}`}>
                   {w.name}
                 </h3>
@@ -157,28 +172,41 @@ export default function Works() {
                   ))}
                 </ul>
                 <p className="v2-mono v2-soft v2-plate-stack">{w.stack.join(" / ")}</p>
-                {w.url && (
-                  <a className="v2-visit" href={w.url} target="_blank" rel="noopener noreferrer">
-                    {new URL(w.url).host.replace(/^www\./, "")}
+                <div className="v2-plate-links">
+                  <TransitionLink className="v2-visit v2-visit-solid" href={`${ARCHIVE}?p=${w.caseId}`}>
+                    {id ? "Studi kasus" : "Case study"}
                     <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden="true" />
-                  </a>
-                )}
+                  </TransitionLink>
+                  {w.url && (
+                    <a className="v2-visit" href={w.url} target="_blank" rel="noopener noreferrer">
+                      {new URL(w.url).host.replace(/^www\./, "")}
+                      <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}
 
           <div className="v2-works-end">
-            <Words as="h3" className="v2-h v2-h-lg" r="words" text={id ? "Ada lebih dari 20 proyek." : "There are 20+ more."} />
-            <p className="v2-lede v2-soft">{id ? "Semua proyek ada di arsip, bisa dicari dan difilter." : "Every project is in the archive, searchable and filterable."}</p>
-            <Cta href={ARCHIVE} variant="accent">
-              {id ? "Buka arsip" : "Open the archive"}
-            </Cta>
+            <Words as="h3" className="v2-h v2-h-lg" r="words" text={id ? `Dan ${rest} proyek lain.` : `And ${rest} more.`} />
+            <p className="v2-lede v2-soft">
+              {id ? "Semua proyek ada di indeks tepat di bawah, dan di arsip lengkap dengan studi kasusnya." : "Every project is in the index right below, and in the archive with its case study."}
+            </p>
+            <div className="v2-works-end-ctas">
+              <Cta href="#projects" variant="accent">
+                {id ? "Lihat indeks" : "See the index"}
+              </Cta>
+              <Cta href={ARCHIVE} variant="ghost">
+                {id ? "Buka arsip" : "Open the archive"}
+              </Cta>
+            </div>
           </div>
         </div>
 
         <div className="v2-works-ui" aria-hidden="true">
           <span className="v2-mono v2-soft" ref={count}>
-            01 / {pad(WORKS.length)}
+            01 / {pad(FEATURED.length)}
           </span>
           <span className="v2-works-rail">
             <i ref={bar} />

@@ -8,6 +8,9 @@ import { ARCHIVE } from "@/lib/v2/routes";
 import Cta from "./Cta";
 import { Words } from "./Words";
 
+// Employers and clients named elsewhere on the site (career, works, archive).
+const BUILT_FOR = ["MRI Software", "SMRT Singapore", "APP Sinar Mas · Tjiwi Kimia", "PT Nagamasban", "Wonderful Works", "Knit and Cro", "Wijaya Mas", "Cahaya Terang", "Tiga Putra"];
+
 export default function Intro() {
   const { lang } = useLanguage();
   const id = lang === "id";
@@ -45,6 +48,16 @@ export default function Intro() {
             </Cta>
           </div>
 
+          <div className="v2-built" data-r="up">
+            <p className="v2-mono v2-soft">{id ? "Dibangun untuk" : "Built for"}</p>
+            <ul>
+              {BUILT_FOR.map((name) => (
+                <li key={name} className="v2-h">
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

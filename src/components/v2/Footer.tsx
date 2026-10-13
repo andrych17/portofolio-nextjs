@@ -3,9 +3,9 @@
 import { ArrowUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { scrollToTarget } from "@/lib/v2/scroll";
-import { ARCHIVE } from "@/lib/v2/routes";
 import NavLink from "./NavLink";
 import TransitionLink from "./TransitionLink";
+import { SECTIONS } from "./sections";
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/andrych17" },
@@ -18,12 +18,6 @@ const TICKER = ["Enterprise SaaS", "ERP & POS", "RAG & LLM", "MCP agents", "Next
 export default function Footer() {
   const { lang } = useLanguage();
   const id = lang === "id";
-  const links = [
-    { name: id ? "Karier" : "Career", section: "career" },
-    { name: id ? "Karya" : "Works", section: "work" },
-    { name: "Stack", section: "skills" },
-    { name: id ? "Kontak" : "Contact", section: "contact" },
-  ];
 
   return (
     <footer className="v2-footer" data-section="light">
@@ -61,12 +55,17 @@ export default function Footer() {
         <div className="v2-footer-cols">
           <nav aria-label={id ? "Navigasi footer" : "Footer"}>
             <h3 className="v2-mono v2-soft">{id ? "Halaman" : "Pages"}</h3>
-            {links.map((l) => (
-              <NavLink key={l.section} section={l.section}>
-                {l.name}
-              </NavLink>
-            ))}
-            <TransitionLink href={ARCHIVE}>{id ? "Arsip proyek" : "Project archive"}</TransitionLink>
+            {SECTIONS.map((s) =>
+              s.href ? (
+                <TransitionLink key={s.section} href={s.href}>
+                  {s.label[lang]}
+                </TransitionLink>
+              ) : (
+                <NavLink key={s.section} section={s.section}>
+                  {s.label[lang]}
+                </NavLink>
+              ),
+            )}
           </nav>
           <div>
             <h3 className="v2-mono v2-soft">{id ? "Terhubung" : "Elsewhere"}</h3>

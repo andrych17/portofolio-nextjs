@@ -1278,6 +1278,25 @@ export default function Projects() {
   const [selectedTag, setSelectedTag] = useState("all");
   const [openProject, setOpenProject] = useState<Project | null>(null);
 
+  // Deep link: /portofolio?p=<id> opens that project's case study (the v2 home links here).
+  useEffect(() => {
+    const wanted = Number(new URLSearchParams(window.location.search).get("p"));
+    const project = projects.find((p) => p.id === wanted);
+    if (!project) return;
+    // Reading the URL has to wait for hydration, like the language in LanguageContext.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setActiveGroup(project.group);
+    setOpenProject(project);
+  }, []);
+
+  // Closing the case study drops ?p= again, so a reload does not reopen it.
+  useEffect(() => {
+    if (openProject || !window.location.search.includes("p=")) return;
+    const url = new URL(window.location.href);
+    url.searchParams.delete("p");
+    window.history.replaceState(window.history.state, "", url);
+  }, [openProject]);
+
   useEffect(() => {
     if (!openProject) return;
     const onKey = (e: KeyboardEvent) => {
@@ -1533,9 +1552,8 @@ function DialogPanel({
         onClick={(e) => e.stopPropagation()}
         className="ah-dialog relative w-full md:max-w-3xl bg-gray-950 md:rounded-3xl rounded-t-3xl border border-white/10 shadow-2xl max-h-[92vh] md:max-h-[88vh] overflow-hidden flex flex-col"
       >
-            <div className="md:hidden flex justify-center pt-2.5 pb-1">
-              <span className="w-10 h-1 rounded-full bg-white/20" />
-            </div>
+            {/* The handle sits on the cover: as its own row it read as a second sheet behind the first. */}
+            <span aria-hidden="true" className="md:hidden absolute top-2.5 left-1/2 -translate-x-1/2 z-10 w-10 h-1 rounded-full bg-white/40" />
 
             <button
               onClick={onClose}
