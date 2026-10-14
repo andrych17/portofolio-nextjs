@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     siteName: "Andry Huang Portfolio",
     images: [
       {
-        url: "/img/og-image.jpg",
+        url: "/img/og-image.jpg?v=2",
         width: 1200,
         height: 630,
         alt: "Andry Huang, Senior Full-Stack & AI Engineer",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     description:
       "Senior Full-Stack & AI Engineer in Indonesia. 7+ years building enterprise SaaS, AI tools, and POS systems.",
     creator: "@andryhuang",
-    images: ["/img/og-image.jpg"],
+    images: ["/img/og-image.jpg?v=2"],
   },
   robots: {
     index: true,
