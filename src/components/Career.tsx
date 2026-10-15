@@ -71,8 +71,8 @@ export const CAREER: Job[] = [
   },
   {
     company: { en: "Independent", id: "Mandiri" },
-    note: { en: "Qualiv founder · freelance", id: "Founder Qualiv · freelance" },
-    role: "Freelance Fullstack & AI Engineer",
+    note: { en: "Qualiv founder", id: "Founder Qualiv" },
+    role: "Fullstack & AI Engineer",
     place: { en: "Surabaya · remote", id: "Surabaya · remote" },
     dates: { en: "2021 – now", id: "2021 – sekarang" },
     from: [2021, 1],

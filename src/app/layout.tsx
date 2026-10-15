@@ -333,7 +333,7 @@ const jsonLd = {
           "name": "Is Andry Huang available for project collaboration or full-time roles?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Andry is open to remote full-time roles, freelance projects, and architecture consulting."
+            "text": "Yes. Andry is open to remote full-time roles, client projects, and architecture consulting."
           }
         },
         {

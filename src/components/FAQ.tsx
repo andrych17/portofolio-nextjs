@@ -22,11 +22,11 @@ export const faqItems: FAQItem[] = [
   },
   {
     questionEn: "Is Andry Huang available for project collaboration or full-time roles?",
-    questionId: "Apakah Andry Huang terbuka untuk proyek freelance, konsultasi, atau peran full-time?",
+    questionId: "Apakah Andry Huang terbuka untuk kolaborasi proyek, konsultasi, atau peran full-time?",
     answerEn:
-      "Yes. Andry is open to remote full-time roles, freelance projects, and architecture consulting.",
+      "Yes. Andry is open to remote full-time roles, client projects, and architecture consulting.",
     answerId:
-      "Ya. Andry terbuka untuk peran full-time remote, proyek freelance, dan konsultasi arsitektur sistem.",
+      "Ya. Andry terbuka untuk peran full-time remote, proyek klien, dan konsultasi arsitektur sistem.",
   },
   {
     questionEn: "Where is Andry Huang located and can he work remotely?",
