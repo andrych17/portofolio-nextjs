@@ -138,10 +138,10 @@ export default function AIChatbot() {
         : `**CG Home Sharing & Booking Platform** is a volunteer church project for church communities.\n\nKey features include Airbnb-style Connect Group house listing, Leaflet interactive map with BPS regional filters, Surveyor inspection workflow, Member ID (NIJ) verification, and booking calendars.`;
     }
 
-    if (q.includes("kontak") || q.includes("contact") || q.includes("hubungi") || q.includes("email") || q.includes("whatsapp")) {
+    if (q.includes("kontak") || q.includes("contact") || q.includes("hubungi") || q.includes("email") || q.includes("whatsapp") || q.includes("upwork")) {
       return currentLang === "id"
-        ? `**Cara Menghubungi Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Lokasi**: Surabaya, Indonesia`
-        : `**How to Contact Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Location**: Surabaya, Indonesia`;
+        ? `**Cara Menghubungi Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **Upwork**: [upwork.com/freelancers/~010b8007dbf51d6f3c](https://www.upwork.com/freelancers/~010b8007dbf51d6f3c)\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Lokasi**: Surabaya, Indonesia`
+        : `**How to Contact Andry Huang**:\n\n• **Email**: andrych17@gmail.com\n• **WhatsApp**: +62 81-357-296-386\n• **Upwork**: [upwork.com/freelancers/~010b8007dbf51d6f3c](https://www.upwork.com/freelancers/~010b8007dbf51d6f3c)\n• **GitHub**: [github.com/andrych17](https://github.com/andrych17)\n• **LinkedIn**: [linkedin.com/in/andry-huang-ba410a170](https://linkedin.com/in/andry-huang-ba410a170)\n• **Location**: Surabaya, Indonesia`;
     }
 
     return currentLang === "id"

@@ -264,7 +264,7 @@ export default function Works() {
                   </ul>
                   <p className="ah-mono ah-stack">{w.stack.join(" / ")}</p>
                   {w.url && (
-                    <a className="ah-visit" href={w.url} target="_blank" rel="noopener noreferrer">
+                    <a className="ah-visit" href={w.url} target="_blank" rel="noopener">
                       {new URL(w.url).host.replace(/^www\./, "")}
                       <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden="true" />
                     </a>

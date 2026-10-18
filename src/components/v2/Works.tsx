@@ -178,7 +178,7 @@ export default function Works() {
                     <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden="true" />
                   </TransitionLink>
                   {w.url && (
-                    <a className="v2-visit" href={w.url} target="_blank" rel="noopener noreferrer">
+                    <a className="v2-visit" href={w.url} target="_blank" rel="noopener">
                       {new URL(w.url).host.replace(/^www\./, "")}
                       <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden="true" />
                     </a>

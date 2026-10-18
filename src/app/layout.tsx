@@ -162,7 +162,8 @@ const jsonLd = {
       "image": `${SITE_URL}/img/foto.jpg`,
       "sameAs": [
         "https://github.com/andrych17",
-        "https://linkedin.com/in/andry-huang-ba410a170"
+        "https://linkedin.com/in/andry-huang-ba410a170",
+        "https://www.upwork.com/freelancers/~010b8007dbf51d6f3c"
       ],
       "jobTitle": "Senior Full-Stack & AI Engineer",
       "hasOccupation": {
@@ -289,6 +290,23 @@ const jsonLd = {
         "addressRegion": "East Java",
         "addressCountry": "ID"
       }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://qualiv.id/#organization",
+      "name": "Qualiv",
+      "url": "https://qualiv.id",
+      "description": "Multi-tenant AI recruitment & candidate assessment SaaS platform",
+      "founder": { "@id": `${SITE_URL}/#person` }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://qualiv.id/#app",
+      "name": "Qualiv",
+      "url": "https://qualiv.id",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "creator": { "@id": `${SITE_URL}/#person` }
     },
     {
       "@type": "BreadcrumbList",

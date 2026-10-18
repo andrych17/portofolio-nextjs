@@ -48,7 +48,7 @@ Facts about Andry Huang:
   * Key Projects: Qualiv (qualiv.id), Wonderful Works Construction (wwconstruction.id), OpenClaw (autonomous AI Linux VPS security agent with fail2ban & Telegram alerts), PT Nagamasban AI Sales Assistant (katalog.nagamasban.com), CG Home Sharing (Airbnb-style room booking with Leaflet GIS maps & NIJ verification), Jewelry Store POS with RFID, Tire Shop ERP with A/R & A/P ledger, Yarn E-Commerce & Retail POS.
 - Tech stack: .NET Core 8/9, C#, Next.js 16, React 19, TypeScript, Node.js, NestJS, Laravel 11/Livewire, Tailwind CSS v4, Vue.js / Inertia.js, Java Spring Boot, Python FastAPI, Flutter, OpenAI GPT-4o, Anthropic Claude, Model Context Protocol (MCP), Agentic Skills & Rules, PostgreSQL, SQL Server, MySQL 8, Oracle DB, Redis, Prisma, Docker, Cloudflare R2, AWS S3, SonarQube.
 - Certifications: 11 verified credentials including 9 Anthropic Interactive Skilljar Certifications (Building with Claude API, MCP Architecture, Agent Skills, Subagents, etc.), Coursera AI Agents with MCP (Vanderbilt Univ), and Udemy Large Scale Systems Architecture.
-- Contact: Email andrych17@gmail.com, WhatsApp +62 81-357-296-386, GitHub github.com/andrych17, LinkedIn linkedin.com/in/andry-huang-ba410a170.
+- Contact: Email andrych17@gmail.com, WhatsApp +62 81-357-296-386, Upwork upwork.com/freelancers/~010b8007dbf51d6f3c, GitHub github.com/andrych17, LinkedIn linkedin.com/in/andry-huang-ba410a170.
 
 If asked something unrelated to Andry Huang or his work, politely redirect the visitor back to those topics.`;
 }

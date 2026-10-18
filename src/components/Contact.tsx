@@ -14,6 +14,7 @@ export default function Contact() {
   const rows = [
     { k: "Email", v: "andrych17@gmail.com", href: "mailto:andrych17@gmail.com" },
     { k: "WhatsApp", v: "+62 813-5729-6386", href: WHATSAPP },
+    { k: "Upwork", v: "andry-huang", href: "https://www.upwork.com/freelancers/~010b8007dbf51d6f3c" },
     { k: "LinkedIn", v: "andry-huang", href: "https://linkedin.com/in/andry-huang-ba410a170" },
     { k: "GitHub", v: "andrych17", href: "https://github.com/andrych17" },
     { k: "CV", v: id ? "PDF, satu halaman" : "PDF, one page", href: "/Andry_Huang_CV.pdf" },

@@ -10,7 +10,15 @@ import { SECTIONS } from "./sections";
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/andrych17" },
   { label: "LinkedIn", href: "https://linkedin.com/in/andry-huang-ba410a170" },
+  { label: "Upwork", href: "https://www.upwork.com/freelancers/~010b8007dbf51d6f3c" },
   { label: "WhatsApp", href: "https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you" },
+];
+
+const BUILDS = [
+  { label: "Qualiv", href: "https://qualiv.id" },
+  { label: "Nagamasban", href: "https://nagamasban.com" },
+  { label: "Knit and Cro", href: "https://knitandcro.com" },
+  { label: "Wonderful Works", href: "https://wwconstruction.id" },
 ];
 
 const TICKER = ["Enterprise SaaS", "ERP & POS", "RAG & LLM", "MCP agents", "Next.js", ".NET Core", "NestJS", "PostgreSQL"];
@@ -68,9 +76,17 @@ export default function Footer() {
             )}
           </nav>
           <div>
+            <h3 className="v2-mono v2-soft">{id ? "Karya Live" : "Live Builds"}</h3>
+            {BUILDS.map((b) => (
+              <a key={b.label} href={b.href} target="_blank" rel="noopener">
+                {b.label}
+              </a>
+            ))}
+          </div>
+          <div>
             <h3 className="v2-mono v2-soft">{id ? "Terhubung" : "Elsewhere"}</h3>
             {SOCIALS.map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+              <a key={s.label} href={s.href} target="_blank" rel="noopener">
                 {s.label}
               </a>
             ))}

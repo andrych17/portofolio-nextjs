@@ -1717,7 +1717,7 @@ function DialogPanel({
                           key={link.url}
                           href={link.url}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="noopener"
                           className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[var(--bg)] font-semibold text-sm bg-[var(--accent)] hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(255,77,0,0.25)]"
                         >
                           <ExternalLink size={16} />
@@ -1728,7 +1728,7 @@ function DialogPanel({
                         <a
                           href={project.liveUrl}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="noopener"
                           className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[var(--bg)] font-semibold text-sm bg-[var(--accent)] hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(255,77,0,0.25)]"
                         >
                           <ExternalLink size={16} />

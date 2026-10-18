@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/andrych17" },
   { label: "LinkedIn", href: "https://linkedin.com/in/andry-huang-ba410a170" },
+  { label: "Upwork", href: "https://www.upwork.com/freelancers/~010b8007dbf51d6f3c" },
   {
     label: "WhatsApp",
     href: "https://wa.me/6281357296386?text=Hi%20Andry%2C%20I'm%20interested%20in%20discussing%20a%20project%20with%20you",
