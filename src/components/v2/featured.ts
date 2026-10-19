@@ -1,4 +1,4 @@
-import { WORKS, type Shot, type Work } from "@/components/Works";
+import { WORKS, type Shot, type Work } from "@/data/works";
 
 /** A featured build on the v2 home: the curated v1 entry, its archive id (for the case-study link) and optional extra screens. */
 export type Featured = Work & { caseId: number; extra?: Shot; lead?: boolean };

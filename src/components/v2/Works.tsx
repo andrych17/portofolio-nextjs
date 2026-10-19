@@ -9,6 +9,7 @@ import { projects } from "@/components/Projects";
 import { gsap, ScrollTrigger } from "@/lib/v2/motion";
 import { reveal } from "@/lib/v2/reveal";
 import { ARCHIVE } from "@/lib/v2/routes";
+import { PROJECT_SLUGS } from "@/data/projects";
 import Cta from "./Cta";
 import TransitionLink from "./TransitionLink";
 import { Words } from "./Words";
@@ -173,7 +174,10 @@ export default function Works() {
                 </ul>
                 <p className="v2-mono v2-soft v2-plate-stack">{w.stack.join(" / ")}</p>
                 <div className="v2-plate-links">
-                  <TransitionLink className="v2-visit v2-visit-solid" href={`${ARCHIVE}?p=${w.caseId}`}>
+                  <TransitionLink
+                    className="v2-visit v2-visit-solid"
+                    href={PROJECT_SLUGS[w.caseId] ? `/works/${PROJECT_SLUGS[w.caseId]}` : `${ARCHIVE}?p=${w.caseId}`}
+                  >
                     {id ? "Studi kasus" : "Case study"}
                     <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden="true" />
                   </TransitionLink>
