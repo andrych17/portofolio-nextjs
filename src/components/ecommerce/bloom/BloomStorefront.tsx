@@ -16,16 +16,22 @@ import {
   TruckIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Accordion } from "@/components/Accordion";
 import { ArrowIsland } from "@/components/ArrowIsland";
 import { Eyebrow } from "@/components/Eyebrow";
+import { ClipReveal } from "@/components/motion/ClipReveal";
 import { Counter } from "@/components/motion/Counter";
+import { HorizontalScroll } from "@/components/motion/HorizontalScroll";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { Marquee } from "@/components/motion/Marquee";
+import { MaskText, SplitWords } from "@/components/motion/MaskText";
+import { ParallaxImage } from "@/components/motion/ParallaxImage";
 import { Reveal } from "@/components/motion/Reveal";
-import { RiseLines } from "@/components/motion/RiseLines";
+import { ScrollWords } from "@/components/motion/ScrollWords";
 import { bloom, type BloomCategory } from "@/content/ecommerce/bloom";
 import { useContactForm } from "@/lib/use-contact-form";
 import { useMenu } from "@/lib/use-menu";
@@ -253,24 +259,25 @@ export function BloomStorefront() {
         </div>
       )}
 
-      {/* Bright Botanical Hero */}
-      <section id="top" aria-labelledby="bloom-h1" className="mx-auto max-w-[1400px] px-5 pb-14 pt-8 md:px-10 md:pb-20 md:pt-14">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
-            <Eyebrow>Small-Batch Cold-Pressed Botanicals</Eyebrow>
-            <RiseLines
-              id="bloom-h1"
-              className="mt-4 font-display text-[clamp(2.5rem,5.8vw,5.1rem)] font-bold leading-[0.96] tracking-[-0.02em]"
-              lines={[
-                "Pure plant chemistry.",
-                <span key="2" className="italic text-accent">Refilled, never wasted.</span>,
-              ]}
-            />
-            <p data-speakable className="mt-5 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-              {bloom.speakable}
-            </p>
+      {/* Editorial Centered Botanical Hero + Dual Parallax Triptych */}
+      <section id="top" aria-labelledby="bloom-h1" className="mx-auto max-w-[1400px] px-5 pb-16 pt-10 md:px-10 md:pb-24 md:pt-16">
+        <div className="mx-auto max-w-4xl text-center">
+          <Eyebrow>Small-Batch Cold-Pressed Botanicals · Zero-Waste Refill Bar</Eyebrow>
+          <MaskText
+            id="bloom-h1"
+            as="h1"
+            className="mt-4 font-display text-[clamp(2.6rem,6.4vw,5.6rem)] font-bold leading-[0.94] tracking-[-0.02em]"
+            lines={[
+              "Pure plant chemistry.",
+              <span key="2" className="italic text-accent">Refilled, never wasted.</span>,
+            ]}
+          />
+          <p data-speakable className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+            <SplitWords text={bloom.speakable} />
+          </p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-3">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <Magnetic strength={0.22}>
               <a
                 href="#catalog"
                 className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-accent py-2 pl-6 pr-2 font-medium text-accent-fg"
@@ -278,64 +285,106 @@ export function BloomStorefront() {
                 <span>Shop Formulas &amp; Pouches</span>
                 <ArrowIsland className="size-9 bg-black/15" size={15} />
               </a>
+            </Magnetic>
+            <Magnetic strength={0.18}>
               <a
-                href="#ritual"
+                href="#ritual-track"
                 className="inline-flex min-h-12 items-center gap-2 rounded-full bg-surface px-6 py-3 text-sm font-semibold text-fg ring-1 ring-line transition-colors hover:bg-fg hover:text-bg"
               >
                 <SparkleIcon size={16} weight="fill" className="text-accent" aria-hidden />
-                Build 3-Step Ritual (-15%)
+                Explore Horizontal Ritual Lookbook
               </a>
-            </div>
+            </Magnetic>
+          </div>
+        </div>
 
-            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-line pt-6">
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Extraction</dt>
-                <dd className="mt-1 font-display text-xl font-bold">Cold-Pressed</dd>
+        {/* 3-Column Arched Botanical Parallax Triptych */}
+        <div className="mt-12 grid grid-cols-1 items-end gap-6 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <div className="overflow-hidden rounded-t-[10rem] rounded-b-[2rem] bg-surface p-2.5 ring-1 ring-line">
+              <ParallaxImage
+                src="/template/images/ecommerce/bloom/hero.webp"
+                alt="Botanical infusion glass vessel and fresh yellow blossoms on a bright table"
+                sizes="(min-width: 1024px) 30vw, 92vw"
+                offset={55}
+                priority
+                className="aspect-[4/5] rounded-t-[9.5rem] rounded-b-[1.5rem] bg-[#e3efe7]"
+              />
+              <div className="flex items-center justify-between px-3 pt-3 pb-1">
+                <div>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">Lot #N18 · Fresh Press</span>
+                  <p className="font-display text-lg font-bold">Neroli &amp; Oat Cleanse</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    addToBag("neroli-cleansing-gel", "refill");
+                    setBagOpen(true);
+                  }}
+                  className="rounded-full bg-accent px-3.5 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-accent-fg"
+                >
+                  + Refill $54
+                </button>
               </div>
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Refill System</dt>
-                <dd className="mt-1 font-display text-xl font-bold">-82% Plastic</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Transit</dt>
-                <dd className="mt-1 font-display text-xl font-bold">Thermal Cold-Pack</dd>
-              </div>
-            </dl>
+            </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="rounded-[2rem] bg-surface p-2 ring-1 ring-line shadow-[0_24px_60px_-24px_rgba(20,46,31,0.14)]">
-              <div className="rounded-[calc(2rem-0.5rem)] bg-bg p-4 md:p-5">
-                <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-[#e3efe7]">
-                  <Image
-                    src="/template/images/ecommerce/bloom/hero.webp"
-                    alt="Botanical infusion glass vessel and fresh yellow blossoms on a bright table"
-                    fill
-                    priority
-                    sizes="(min-width: 1024px) 38vw, 92vw"
-                    className="object-cover"
-                  />
-                  <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-bg/90 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent ring-1 ring-line backdrop-blur-sm">
-                    <LeafIcon size={13} weight="fill" aria-hidden />
-                    Harvest Lot #N18 · Distilled Tuesday
-                  </span>
+          <div className="lg:col-span-4">
+            <div className="rounded-[2.25rem] bg-surface p-6 ring-1 ring-line md:p-8">
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/12 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">
+                  <LeafIcon size={13} weight="fill" aria-hidden />
+                  Closed-Loop Refill System
+                </span>
+                <span className="font-mono text-xs font-bold text-fg">-82% Plastic</span>
+              </div>
+              <h2 className="mt-4 font-display text-2xl font-bold leading-snug md:text-3xl">
+                One UV-violet glass bottle. Endless aluminum pouch refills.
+              </h2>
+              <p className="mt-2 text-xs leading-relaxed text-muted">
+                Every 500 ml spout pouch refills your heavy vanity bottle 2.5 times while shielding cold-pressed botanical actives from light and oxygen.
+              </p>
+              <dl className="mt-6 grid grid-cols-3 gap-2 border-t border-line pt-5 text-center">
+                <div className="rounded-2xl bg-bg p-3 ring-1 ring-line">
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">Potency</dt>
+                  <dd className="mt-1 font-display text-lg font-bold">7-Day Press</dd>
                 </div>
-                <div className="mt-4 flex items-start justify-between gap-3">
-                  <div>
-                    <h2 className="font-display text-2xl font-bold">Bitter Orange &amp; Oat Cleansing Gel</h2>
-                    <p className="mt-0.5 text-xs text-muted">Neroli · Green Petitgrain · Colloidal Oat</p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      addToBag("neroli-cleansing-gel", "refill");
-                      setBagOpen(true);
-                    }}
-                    className="shrink-0 rounded-full bg-accent px-4 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-fg"
-                  >
-                    + Add Refill $54
-                  </button>
+                <div className="rounded-2xl bg-bg p-3 ring-1 ring-line">
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">Refill Save</dt>
+                  <dd className="mt-1 font-display text-lg font-bold text-accent">18% Off</dd>
                 </div>
+                <div className="rounded-2xl bg-bg p-3 ring-1 ring-line">
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">Courier</dt>
+                  <dd className="mt-1 font-display text-lg font-bold">Cold-Pack</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4">
+            <div className="overflow-hidden rounded-t-[10rem] rounded-b-[2rem] bg-surface p-2.5 ring-1 ring-line">
+              <ParallaxImage
+                src="/template/images/ecommerce/bloom/serum.webp"
+                alt="Golden rosehip and bakuchiol nectar serum in an apothecary vessel"
+                sizes="(min-width: 1024px) 30vw, 92vw"
+                offset={-45}
+                className="aspect-[4/5] rounded-t-[9.5rem] rounded-b-[1.5rem] bg-[#e3efe7]"
+              />
+              <div className="flex items-center justify-between px-3 pt-3 pb-1">
+                <div>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">Lot #R29 · Cold Oil</span>
+                  <p className="font-display text-lg font-bold">Rosehip &amp; Bakuchiol Nectar</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    addToBag("bakuchiol-nectar", "bottle");
+                    setBagOpen(true);
+                  }}
+                  className="rounded-full bg-fg px-3.5 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-bg hover:bg-accent hover:text-accent-fg"
+                >
+                  + Bottle $48
+                </button>
               </div>
             </div>
           </div>
@@ -352,6 +401,71 @@ export function BloomStorefront() {
           ))}
         </Marquee>
       </div>
+
+      {/* Pinned Horizontal Scroll Apothecary Lookbook */}
+      <div id="ritual-track">
+        <HorizontalScroll className="border-b border-line bg-surface/55" trackClassName="gap-8 px-6 md:px-16 items-center">
+          <div className="w-[82vw] shrink-0 md:w-[420px]">
+            <Eyebrow>Horizontal Ritual Lookbook · Scroll to Glide</Eyebrow>
+            <h2 className="mt-3 font-display text-4xl font-bold leading-[0.98] md:text-6xl">
+              From harvest lot to your vanity shelf.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
+              Keep scrolling vertically to glide horizontally through our 4-stage cold-press extraction and zero-waste refill ritual.
+            </p>
+          </div>
+          {bloom.products.slice(0, 4).map((item, i) => (
+            <div
+              key={item.id}
+              className="flex w-[84vw] shrink-0 flex-col justify-between rounded-[2.25rem] bg-bg p-5 ring-1 ring-line md:w-[460px] md:p-6"
+            >
+              <ClipReveal direction="left" className="aspect-[16/10] rounded-2xl bg-[#e3efe7]">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(min-width: 768px) 460px, 84vw"
+                  className="object-cover"
+                />
+                <span className="absolute left-3 top-3 rounded-full bg-bg/90 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-accent ring-1 ring-line">
+                  Stage 0{i + 1} · {item.step}
+                </span>
+              </ClipReveal>
+              <div className="mt-5">
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">{item.notes}</span>
+                <div className="mt-1 flex items-baseline justify-between gap-2">
+                  <h3 className="font-display text-2xl font-bold">{item.name}</h3>
+                  <span className="font-display text-xl font-bold text-accent">${item.refillPrice} refill</span>
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{item.subtitle}</p>
+                <div className="mt-4 flex items-center justify-between border-t border-line pt-3.5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                    {item.refillSize}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => addToBag(item.id, "refill")}
+                    className="rounded-full bg-fg px-4 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-bg transition-colors hover:bg-accent hover:text-accent-fg"
+                  >
+                    + Add Refill Pouch
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </HorizontalScroll>
+      </div>
+
+      {/* ScrollWords Botanical Manifesto */}
+      <section aria-label="Botanical extraction philosophy" className="mx-auto max-w-[1400px] px-5 pt-16 md:px-10 md:pt-24">
+        <div className="rounded-[2.25rem] bg-surface/80 p-8 ring-1 ring-line md:p-14">
+          <Eyebrow>Cold-Pressed Within 7 Days of Harvest</Eyebrow>
+          <ScrollWords
+            className="mt-4 font-display text-[clamp(1.7rem,3.6vw,3.2rem)] font-bold italic leading-[1.15] text-fg"
+            text="We never heat-pasteurize our botanical oils. Every serum is pressed below 32°C, bottled in UV-blocking glass, and refilled from recyclable aluminum spout pouches."
+          />
+        </div>
+      </section>
 
       {/* Product Catalog with Interactive Bottle vs Refill Pouch Toggle */}
       <section id="catalog" aria-labelledby="bloom-catalog-h2" className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
@@ -400,13 +514,21 @@ export function BloomStorefront() {
               <Reveal key={product.id} delay={(idx % 3) * 0.06} className="min-w-0">
                 <article className="flex h-full flex-col rounded-[1.75rem] bg-surface p-1.5 ring-1 ring-line">
                   <div className="flex h-full flex-col rounded-[calc(1.75rem-0.375rem)] bg-bg p-4">
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#e3efe7]">
+                    <ClipReveal direction="bottom" delay={(idx % 3) * 0.06} className="aspect-[4/3] rounded-2xl bg-[#e3efe7]">
                       <Image
                         src={product.image}
                         alt={product.alt}
                         fill
                         sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 92vw"
                         className="object-cover"
+                      />
+                      <motion.div
+                        key={scent.batch}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.18 }}
+                        transition={{ duration: 0.45 }}
+                        className="pointer-events-none absolute inset-0 mix-blend-multiply"
+                        style={{ backgroundColor: scent.hex }}
                       />
                       {product.badge && (
                         <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-fg">
@@ -416,7 +538,7 @@ export function BloomStorefront() {
                       <span className="absolute bottom-3 right-3 rounded-full bg-bg/90 px-2.5 py-1 font-mono text-[10px] font-semibold text-fg ring-1 ring-line backdrop-blur-sm">
                         {scent.batch} · {product.stock} in stock
                       </span>
-                    </div>
+                    </ClipReveal>
 
                     <div className="mt-4 flex flex-1 flex-col">
                       <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">{product.notes}</p>
@@ -661,7 +783,7 @@ export function BloomStorefront() {
           <div className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
             <a href="#catalog" className="hover:text-fg">Formulas</a>
             <a href="#ritual" className="hover:text-fg">Ritual Builder</a>
-            <Link href="/template" className="text-accent hover:underline">All Templates →</Link>
+            <Link href="/showcase" className="text-accent hover:underline">All Templates →</Link>
           </div>
         </div>
       </footer>

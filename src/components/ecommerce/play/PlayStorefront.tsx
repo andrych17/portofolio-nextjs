@@ -15,16 +15,21 @@ import {
   TruckIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Accordion } from "@/components/Accordion";
 import { ArrowIsland } from "@/components/ArrowIsland";
 import { Eyebrow } from "@/components/Eyebrow";
+import { ClipReveal } from "@/components/motion/ClipReveal";
 import { Counter } from "@/components/motion/Counter";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { Marquee } from "@/components/motion/Marquee";
+import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
-import { RiseLines } from "@/components/motion/RiseLines";
+import { StackCards } from "@/components/motion/StackCards";
+import { Tilt } from "@/components/motion/Tilt";
 import { play, type PlayCategory } from "@/content/ecommerce/play";
 import { useContactForm } from "@/lib/use-contact-form";
 import { useMenu } from "@/lib/use-menu";
@@ -49,6 +54,8 @@ export function PlayStorefront() {
   const [cfgKit, setCfgKit] = useState("mono65-cnc-kit");
   const [cfgSwitch, setCfgSwitch] = useState("cloud-linear-switches");
   const [cfgKeycap, setCfgKeycap] = useState("swiss-pbt-keycaps");
+  const [activeSwitchTest, setActiveSwitchTest] = useState<0 | 1 | 2>(0);
+  const [keyPressCount, setKeyPressCount] = useState(14);
 
   const [cart, setCart] = useState<CartLine[]>([
     { productId: "mono65-cnc-kit", variantIndex: 0, qty: 1 },
@@ -251,91 +258,179 @@ export function PlayStorefront() {
         </div>
       )}
 
-      {/* Daylight Hardware Hero */}
-      <section id="top" aria-labelledby="play-h1" className="mx-auto max-w-[1400px] px-5 pb-14 pt-8 md:px-10 md:pb-20 md:pt-14">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
-            <Eyebrow>CNC Aluminum Kits · Factory-Lubed Switches</Eyebrow>
-            <RiseLines
-              id="play-h1"
-              className="mt-4 font-display text-[clamp(2.4rem,5.5vw,4.9rem)] font-extrabold leading-[0.96] tracking-[-0.025em]"
-              lines={[
-                "Tactile precision.",
-                <span key="2" className="text-accent">In stock on the shelf.</span>,
-              ]}
-            />
-            <p data-speakable className="mt-5 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-              {play.speakable}
-            </p>
-
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <a
-                href="#catalog"
-                className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-accent py-2 pl-6 pr-2 font-medium text-accent-fg"
-              >
-                <span>Shop In-Stock Drops</span>
-                <ArrowIsland className="size-9 bg-black/15" size={15} />
-              </a>
-              <a
-                href="#builder"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-surface px-6 py-3 text-sm font-semibold text-fg ring-1 ring-line transition-colors hover:bg-fg hover:text-bg"
-              >
-                <SlidersHorizontalIcon size={16} weight="bold" className="text-accent" aria-hidden />
-                Configure Custom Build
-              </a>
+      {/* Swiss Industrial Bento Hero + Interactive Mechanical Switch Tester */}
+      <section id="top" aria-labelledby="play-h1" className="mx-auto max-w-[1400px] px-5 pb-14 pt-8 md:px-10 md:pb-20 md:pt-12">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
+          {/* Top-Left Kinetic Headline Bento */}
+          <div className="flex flex-col justify-between rounded-[2.25rem] bg-surface p-7 ring-1 ring-line md:p-10 lg:col-span-7">
+            <div>
+              <Eyebrow>CNC Aluminum Kits · Factory-Lubed Switches · Zero Group-Buy Wait</Eyebrow>
+              <MaskText
+                id="play-h1"
+                as="h1"
+                className="mt-4 font-display text-[clamp(2.35rem,5.2vw,4.7rem)] font-extrabold leading-[0.94] tracking-[-0.03em]"
+                lines={[
+                  "Tactile precision.",
+                  <span key="2" className="text-accent">In stock on the shelf.</span>,
+                ]}
+              />
+              <p data-speakable className="mt-5 max-w-xl text-base leading-relaxed text-muted">
+                {play.speakable}
+              </p>
             </div>
 
-            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-line pt-6">
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Firmware</dt>
-                <dd className="mt-1 font-display text-lg font-extrabold md:text-xl">QMK &amp; VIA Web</dd>
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <Magnetic strength={0.22}>
+                  <a
+                    href="#catalog"
+                    className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-accent py-2 pl-6 pr-2 font-medium text-accent-fg"
+                  >
+                    <span>Shop In-Stock Drops</span>
+                    <ArrowIsland className="size-9 bg-black/15" size={15} />
+                  </a>
+                </Magnetic>
+                <Magnetic strength={0.18}>
+                  <a
+                    href="#architecture"
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-bg px-5 py-3 text-xs font-mono font-bold uppercase tracking-[0.14em] text-fg ring-1 ring-line transition-colors hover:bg-fg hover:text-bg"
+                  >
+                    <SlidersHorizontalIcon size={15} weight="bold" className="text-accent" aria-hidden />
+                    Exploded Stack Specs
+                  </a>
+                </Magnetic>
               </div>
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Mounting</dt>
-                <dd className="mt-1 font-display text-lg font-extrabold md:text-xl">Silicone Gasket</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Dispatch</dt>
-                <dd className="mt-1 font-display text-lg font-extrabold md:text-xl">Same-Day Hub</dd>
-              </div>
-            </dl>
+              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+                QMK / VIA Ready · Same-Day Hub
+              </span>
+            </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="rounded-[2rem] bg-surface p-2 ring-1 ring-line shadow-[0_24px_60px_-24px_rgba(15,23,42,0.14)]">
-              <div className="rounded-[calc(2rem-0.5rem)] bg-bg p-4 md:p-5">
-                <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-[#e2e8f0]">
-                  <Image
-                    src="/template/images/ecommerce/play/hero.webp"
-                    alt="Clean desk setup with custom mechanical keyboard and glasses"
-                    fill
-                    priority
-                    sizes="(min-width: 1024px) 38vw, 92vw"
-                    className="object-cover"
-                  />
-                  <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-bg/90 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-accent ring-1 ring-line backdrop-blur-sm">
-                    <KeyboardIcon size={13} weight="bold" aria-hidden />
-                    Batch #04 · 18 Kits in Hub
-                  </span>
-                </div>
-                <div className="mt-4 flex items-start justify-between gap-3">
-                  <div>
-                    <h2 className="font-display text-xl font-extrabold">Mono65 Gasket CNC Aluminum Kit</h2>
-                    <p className="mt-0.5 font-mono text-xs text-muted">65% · Hot-Swap PCB · Brass Weight</p>
+          {/* Top-Right Interactive Mechanical Switch Tester Lab */}
+          <div className="flex flex-col justify-between rounded-[2.25rem] bg-[#0f172a] p-7 text-[#f6f8fc] ring-1 ring-line md:p-8 lg:col-span-5">
+            {(() => {
+              const switchProfiles = [
+                {
+                  code: "SW-L45",
+                  keyLabel: "LIN 45g",
+                  name: "POM Cloud Linear",
+                  force: 45,
+                  travel: "3.6 mm",
+                  sound: "Deep Marbly Clack · 42 dB",
+                  color: "#38bdf8",
+                  productId: "cloud-linear-switches",
+                  variantIndex: 0,
+                },
+                {
+                  code: "SW-T58",
+                  keyLabel: "TAC 58g",
+                  name: "Bergamot D-Bump Tactile",
+                  force: 58,
+                  travel: "3.4 mm",
+                  sound: "Crisp Rounded Bump · 46 dB",
+                  color: "#f97316",
+                  productId: "citrus-tactile-switches",
+                  variantIndex: 0,
+                },
+                {
+                  code: "SW-S62",
+                  keyLabel: "SIL 62g",
+                  name: "Bergamot Silent Tactile",
+                  force: 62,
+                  travel: "3.3 mm",
+                  sound: "Dampened Studio · 29 dB",
+                  color: "#10b981",
+                  productId: "citrus-tactile-switches",
+                  variantIndex: 1,
+                },
+              ] as const;
+              const current = switchProfiles[activeSwitchTest];
+              return (
+                <>
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#38bdf8]">
+                      <span className="size-2 animate-ping rounded-full bg-[#38bdf8]" />
+                      Interactive Switch Tester · Press Keycap
+                    </span>
+                    <span className="rounded-full bg-white/10 px-2.5 py-1 font-mono text-[10px] text-white/80">
+                      {keyPressCount} actuations
+                    </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      addToCart("mono65-cnc-kit", 0);
-                      setBagOpen(true);
-                    }}
-                    className="shrink-0 rounded-full bg-accent px-4 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-accent-fg"
-                  >
-                    + Add $148
-                  </button>
-                </div>
-              </div>
-            </div>
+
+                  {/* 3 Physical Pressable Keycaps */}
+                  <div className="my-6 grid grid-cols-3 gap-3">
+                    {switchProfiles.map((sw, i) => {
+                      const active = activeSwitchTest === i;
+                      return (
+                        <motion.button
+                          key={sw.code}
+                          type="button"
+                          whileHover={{ y: -2 }}
+                          whileTap={{ y: 8, scale: 0.96 }}
+                          transition={{ type: "spring", stiffness: 520, damping: 18 }}
+                          onClick={() => {
+                            setActiveSwitchTest(i as 0 | 1 | 2);
+                            setKeyPressCount((c) => c + 1);
+                          }}
+                          className={`relative flex flex-col items-center justify-between rounded-2xl border-b-[6px] p-3.5 text-left transition-colors ${
+                            active
+                              ? "border-[#2546f0] bg-white text-[#0f172a]"
+                              : "border-white/15 bg-white/8 text-white/80 hover:bg-white/14"
+                          }`}
+                        >
+                          <span className="w-full font-mono text-[9px] uppercase tracking-[0.14em] opacity-65">{sw.code}</span>
+                          <span className="my-2 font-display text-base font-extrabold tracking-tight">{sw.keyLabel}</span>
+                          <span className="h-1.5 w-8 rounded-full" style={{ backgroundColor: sw.color }} />
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Live Force & Travel Telemetry */}
+                  <div className="rounded-2xl bg-white/6 p-4 ring-1 ring-white/10">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-display text-lg font-extrabold">{current.name}</p>
+                        <p className="font-mono text-[11px] text-white/65">{current.sound}</p>
+                      </div>
+                      <span className="font-mono text-xs font-bold" style={{ color: current.color }}>
+                        {current.travel}
+                      </span>
+                    </div>
+
+                    <div className="mt-3">
+                      <div className="flex justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-white/60">
+                        <span>Actuation Force</span>
+                        <span>{current.force} gf / 80 gf</span>
+                      </div>
+                      <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-white/10">
+                        <motion.div
+                          className="h-full rounded-full"
+                          style={{ backgroundColor: current.color }}
+                          initial={false}
+                          animate={{ width: `${(current.force / 80) * 100}%` }}
+                          transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-3">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">35-Switch Box · $19–$21</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          addToCart(current.productId, current.variantIndex);
+                          setBagOpen(true);
+                        }}
+                        className="rounded-full bg-[#2546f0] px-3.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-white hover:bg-[#3b82f6]"
+                      >
+                        + Add Tested Pack
+                      </button>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
           </div>
         </div>
       </section>
@@ -350,6 +445,66 @@ export function PlayStorefront() {
           ))}
         </Marquee>
       </div>
+
+      {/* Sticky Stacking Hardware Architecture (StackCards) */}
+      <section id="architecture" aria-labelledby="play-stack-h2" className="mx-auto max-w-[1400px] px-5 pt-20 md:px-10 md:pt-28">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <Eyebrow>Exploded Chassis Engineering · Scroll to Stack</Eyebrow>
+            <h2 id="play-stack-h2" className="mt-3 font-display text-3xl font-extrabold tracking-tight md:text-5xl">
+              Three precision layers inside every board.
+            </h2>
+          </div>
+          <p className="max-w-md font-mono text-xs uppercase tracking-[0.14em] text-muted">
+            Cards pin and scale in 3D space as you scroll down the chassis stack.
+          </p>
+        </div>
+
+        <StackCards top={96} step={24} minScale={0.9} gapClassName="mb-[8vh]">
+          {[
+            {
+              layer: "LAYER 01 // CHASSIS",
+              title: "6063 CNC Bead-Blasted Aluminum Monoblock",
+              desc: "Machined from solid billet aluminum with a 6.5° typing angle, internal brass acoustic weight, and electrostatic milk-white or cobalt anodized finish.",
+              spec: "1,650g Unbuilt Weight · Zero Case Ping",
+              img: "/template/images/ecommerce/play/hero.webp",
+            },
+            {
+              layer: "LAYER 02 // ACOUSTIC MOUNT",
+              title: "Silicone Sock Gaskets & Flex-Cut Hot-Swap PCB",
+              desc: "Isolated plate mounting absorbs harsh bottom-out vibrations while Kailh 5-pin hot-swap sockets let you swap linear or tactile switches without soldering.",
+              spec: "1.2mm PCB · Per-Key South-Facing RGB",
+              img: "/template/images/ecommerce/play/board.webp",
+            },
+            {
+              layer: "LAYER 03 // KEYCAPS & CABLE",
+              title: "1.6mm Five-Side Dye-Sub PBT + Coiled Lemo Connector",
+              desc: "Oil-resistant Cherry profile PBT legends paired with a double-sleeved Techflex USB-C cable and quick-release CNC metal push-pull aviator latch.",
+              spec: "QMK / VIA Browser Remapping Out of the Box",
+              img: "/template/images/ecommerce/play/keycaps.webp",
+            },
+          ].map((card) => (
+            <div
+              key={card.layer}
+              className="grid grid-cols-1 items-center gap-6 rounded-[2.25rem] bg-surface p-6 ring-1 ring-line shadow-[0_24px_60px_-24px_rgba(15,23,42,0.18)] md:grid-cols-12 md:p-10"
+            >
+              <div className="md:col-span-7">
+                <span className="inline-block rounded-full bg-accent/12 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
+                  {card.layer}
+                </span>
+                <h3 className="mt-4 font-display text-2xl font-extrabold leading-tight md:text-4xl">{card.title}</h3>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted md:text-base">{card.desc}</p>
+                <p className="mt-5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-fg">{card.spec}</p>
+              </div>
+              <div className="md:col-span-5">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-[#e2e8f0] ring-1 ring-line">
+                  <Image src={card.img} alt={card.title} fill sizes="(min-width: 768px) 38vw, 90vw" className="object-cover" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </StackCards>
+      </section>
 
       {/* Hardware Catalog */}
       <section id="catalog" aria-labelledby="play-catalog-h2" className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
@@ -389,26 +544,27 @@ export function PlayStorefront() {
             const isAdded = addedKey === `${product.id}-${vIdx}`;
 
             return (
-              <Reveal key={product.id} delay={(idx % 3) * 0.06} className="min-w-0">
-                <article className="flex h-full flex-col rounded-[1.75rem] bg-surface p-1.5 ring-1 ring-line">
-                  <div className="flex h-full flex-col rounded-[calc(1.75rem-0.375rem)] bg-bg p-4">
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#e2e8f0]">
-                      <Image
-                        src={product.image}
-                        alt={product.alt}
-                        fill
-                        sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 92vw"
-                        className="object-cover"
-                      />
-                      {product.badge && (
-                        <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-accent-fg">
-                          {product.badge}
+              <Reveal key={product.id} delay={(idx % 3) * 0.06} className={`min-w-0 ${idx === 0 ? "md:col-span-2" : ""}`}>
+                <Tilt max={7} className="h-full">
+                  <article className="flex h-full flex-col rounded-[1.75rem] bg-surface p-1.5 ring-1 ring-line">
+                    <div className="flex h-full flex-col rounded-[calc(1.75rem-0.375rem)] bg-bg p-4">
+                      <ClipReveal direction="top" delay={(idx % 3) * 0.05} className={`${idx === 0 ? "aspect-[16/9]" : "aspect-[4/3]"} rounded-2xl bg-[#e2e8f0]`}>
+                        <Image
+                          src={product.image}
+                          alt={product.alt}
+                          fill
+                          sizes="(min-width: 1024px) 45vw, (min-width: 768px) 45vw, 92vw"
+                          className="object-cover"
+                        />
+                        {product.badge && (
+                          <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-accent-fg">
+                            {product.badge}
+                          </span>
+                        )}
+                        <span className="absolute bottom-3 right-3 rounded-full bg-bg/92 px-2.5 py-1 font-mono text-[10px] font-semibold text-fg ring-1 ring-line">
+                          {product.spec}
                         </span>
-                      )}
-                      <span className="absolute bottom-3 right-3 rounded-full bg-bg/92 px-2.5 py-1 font-mono text-[10px] font-semibold text-fg ring-1 ring-line">
-                        {product.spec}
-                      </span>
-                    </div>
+                      </ClipReveal>
 
                     <div className="mt-4 flex flex-1 flex-col">
                       <div className="flex items-start justify-between gap-2">
@@ -461,6 +617,7 @@ export function PlayStorefront() {
                     </div>
                   </div>
                 </article>
+                </Tilt>
               </Reveal>
             );
           })}
@@ -650,7 +807,7 @@ export function PlayStorefront() {
           <div className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
             <a href="#catalog" className="hover:text-fg">Hardware</a>
             <a href="#builder" className="hover:text-fg">Kit Builder</a>
-            <Link href="/template" className="text-accent hover:underline">All Templates →</Link>
+            <Link href="/showcase" className="text-accent hover:underline">All Templates →</Link>
           </div>
         </div>
       </footer>

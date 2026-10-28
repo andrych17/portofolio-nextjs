@@ -28,7 +28,7 @@ export function useContactForm(studio: StudioKey) {
     setNotice("");
     setStatus("sending");
     try {
-      const res = await fetch("/template/api/contact", {
+      const res = await fetch("/showcase/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),

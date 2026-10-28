@@ -46,6 +46,6 @@ export const templatesOf = (sector: string) => templates.filter((t) => t.sector 
 export const getTemplate = (sector: string, slug: string) => templates.find((t) => t.sector === sector && t.slug === slug);
 
 /** App path of a template's home page. */
-export const templatePath = (t: Pick<TemplateMeta, "sector" | "slug">) => `/template/${t.sector}/${t.slug}`;
+export const templatePath = (t: Pick<TemplateMeta, "sector" | "slug">) => `/showcase/${t.sector}/${t.slug}`;
 /** Thumbnail for gallery cards. next/image does not add basePath to public files, so it is spelled out here. */
 export const thumbSrc = (t: Pick<TemplateMeta, "sector" | "slug">) => `/template/thumbs/${t.sector}-${t.slug}.webp`;

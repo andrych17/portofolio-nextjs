@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowIsland } from "@/components/ArrowIsland";
 import { galleryFonts } from "@/fonts/gallery";
 import "./gallery.css";
 
@@ -10,14 +9,13 @@ export default function GalleryLayout({ children }: { children: ReactNode }) {
       <header className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-5 md:px-10 md:py-7">
         <Link href="/" className="flex items-center gap-3" aria-label="Andry Huang, home">
           <span className="wide grid size-10 place-items-center rounded-full bg-accent font-display text-[13px] font-extrabold text-accent-fg">AH</span>
-          <span className="wide hidden font-display text-[17px] font-extrabold uppercase tracking-wide sm:block">Andry Huang</span>
+          <span className="hidden sm:block">
+            <span className="wide block font-display text-[16px] font-extrabold uppercase leading-none tracking-wide">Andry Huang</span>
+            <span className="mt-0.5 block font-mono text-[10px] tracking-[0.14em] text-muted">andryhuang.com</span>
+          </span>
         </Link>
         <nav className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em]">
-          <Link href="/" className="rounded-full px-4 py-2.5 transition-colors duration-500 ease-studio hover:bg-fg/10">← Portfolio</Link>
-          <Link href="/#contact" className="group flex items-center gap-2 rounded-full bg-accent py-1.5 pl-4 pr-1.5 font-semibold text-accent-fg">
-            Hire me
-            <ArrowIsland className="size-7 bg-black/15" size={13} />
-          </Link>
+          <Link href="/" className="rounded-full bg-fg px-4 py-2.5 font-semibold text-bg transition-colors duration-500 ease-studio hover:bg-accent hover:text-accent-fg">← Back to Portfolio</Link>
         </nav>
       </header>
       <main id="main">{children}</main>

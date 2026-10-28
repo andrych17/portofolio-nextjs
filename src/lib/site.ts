@@ -1,4 +1,4 @@
-export const basePath = "/template";
+export const basePath = "/showcase";
 
 const fromEnv =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -9,7 +9,7 @@ const fromEnv =
 /** Origin only, no basePath. Production is https://andryhuang.com. */
 export const siteUrl = fromEnv.replace(/\/$/, "");
 
-/** Absolute URL for an app path ("/fashion/maison" -> https://andryhuang.com/template/fashion/maison). */
+/** Absolute URL for an app path ("/fashion/maison" -> https://andryhuang.com/showcase/fashion/maison). */
 export function absoluteUrl(path = "/") {
   const sub = path.startsWith(basePath) ? path.slice(basePath.length) || "/" : path;
   return `${siteUrl}${basePath}${sub === "/" ? "" : sub}`;

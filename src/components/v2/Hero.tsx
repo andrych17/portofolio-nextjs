@@ -83,7 +83,7 @@ export default function Hero() {
               {id ? "Lihat karya" : "See the work"}
             </Cta>
             <Cta href={TEMPLATES} variant="accent">
-              {id ? "Sample Template" : "Sample Templates"}
+              {id ? "Web Showcase" : "Web Showcase"}
             </Cta>
             <Cta href="/Andry_Huang_CV.pdf" external variant="ghost">
               {id ? "Unduh CV" : "Download CV"}

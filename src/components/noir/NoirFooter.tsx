@@ -18,7 +18,7 @@ export function NoirFooter() {
         />
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-5">
           <Magnetic>
-            <NoirButton href="/template/agency/noir/contact" size="lg">
+            <NoirButton href="/showcase/agency/noir/contact" size="lg">
               Start a project
             </NoirButton>
           </Magnetic>
@@ -72,7 +72,7 @@ export function NoirFooter() {
 
         <div className="mt-20 flex flex-wrap justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
           <span>© 2026 {noir.name}</span>
-          <Link href="/template" className="hover:text-fg">
+          <Link href="/showcase" className="hover:text-fg">
             More templates
           </Link>
         </div>

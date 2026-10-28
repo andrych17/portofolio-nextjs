@@ -56,7 +56,7 @@ export function EmberFooter() {
         </div>
         <div className="mt-16 flex flex-wrap justify-between gap-4 text-[11px] uppercase tracking-[0.18em] text-muted">
           <span>© 2026 Your Brand</span>
-          <Link href="/template" className="inline-flex min-h-11 items-center hover:text-fg">
+          <Link href="/showcase" className="inline-flex min-h-11 items-center hover:text-fg">
             More templates
           </Link>
         </div>

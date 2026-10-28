@@ -29,7 +29,7 @@ export function KineticFooter() {
       </div>
 
       <div ref={ref} className="mx-auto max-w-[1440px] px-5 pb-8 pt-20 md:px-10 md:pt-28">
-        <Link href="/template/agency/kinetic/contact" className="group block" aria-label="Let's talk, go to the contact page">
+        <Link href="/showcase/agency/kinetic/contact" className="group block" aria-label="Let's talk, go to the contact page">
           <motion.span
             style={{ scale, rotate }}
             className="block origin-bottom-left font-display text-[clamp(4rem,17vw,17rem)] font-black uppercase leading-[0.82] tracking-tight transition-colors duration-300 group-hover:text-accent"
@@ -90,7 +90,7 @@ export function KineticFooter() {
         </div>
         <div className="mt-14 flex flex-wrap justify-between gap-3 text-sm text-white/50">
           <span>© 2026 Your Brand Pty Ltd</span>
-          <Link href="/template" className="hover:text-white">
+          <Link href="/showcase" className="hover:text-white">
             More templates
           </Link>
         </div>

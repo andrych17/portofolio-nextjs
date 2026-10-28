@@ -35,7 +35,7 @@ export function NoirHeader() {
         className="fixed inset-x-0 top-0 z-50 text-[#ece7dd] mix-blend-difference"
       >
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-5 md:px-10 md:py-7">
-          <Link href="/template/agency/noir" className="font-display text-[1.9rem] leading-none tracking-tight" aria-label="Your Brand home">
+          <Link href="/showcase/agency/noir" className="font-display text-[1.9rem] leading-none tracking-tight" aria-label="Your Brand home">
             Your Brand<sup className="ml-0.5 font-sans text-[9px]">®</sup>
           </Link>
           <nav aria-label="Main" className="hidden md:block">

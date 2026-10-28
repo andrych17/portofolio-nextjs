@@ -57,7 +57,7 @@ export function SectorView({ slug }: { slug: SectorSlug }) {
         ]}
       />
       <section className="mx-auto max-w-[1400px] px-5 pb-12 pt-10 md:px-10 md:pb-16 md:pt-16" aria-labelledby="top">
-        <Link href="/template" className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-fg">
+        <Link href="/showcase" className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-fg">
           ← All sectors
         </Link>
         <RiseLines

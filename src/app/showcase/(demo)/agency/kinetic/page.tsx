@@ -63,8 +63,8 @@ export default function KineticHome() {
               {kinetic.intro}
             </p>
             <div className="fade-up flex flex-wrap gap-3 md:col-span-5" style={{ ["--d" as string]: 820 }}>
-              <KineticButton href="/template/agency/kinetic/work">See the work</KineticButton>
-              <KineticButton href="/template/agency/kinetic/contact" tone="white">
+              <KineticButton href="/showcase/agency/kinetic/work">See the work</KineticButton>
+              <KineticButton href="/showcase/agency/kinetic/contact" tone="white">
                 Start a project
               </KineticButton>
             </div>
@@ -114,7 +114,7 @@ export default function KineticHome() {
             <Eyebrow className={eyebrow}>Fresh work</Eyebrow>
             <MaskText id="work" className={`mt-5 ${h2}`} lines={["Stuff we", <span key="s" className="text-accent">shipped.</span>]} />
           </div>
-          <KineticButton href="/template/agency/kinetic/work" tone="yellow">
+          <KineticButton href="/showcase/agency/kinetic/work" tone="yellow">
             All work
           </KineticButton>
         </div>

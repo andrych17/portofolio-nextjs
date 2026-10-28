@@ -24,7 +24,7 @@ export function AtelierHeader() {
       </a>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 rounded-full bg-bg/75 py-2 pl-5 pr-2 ring-1 ring-black/[0.06] backdrop-blur-xl">
-          <Link href="/template/agency/atelier" className="flex items-baseline gap-2" aria-label="Your Brand home">
+          <Link href="/showcase/agency/atelier" className="flex items-baseline gap-2" aria-label="Your Brand home">
             <span className="font-display text-2xl italic leading-none tracking-tight">Your Brand</span>
             <span className="hidden text-[10px] uppercase tracking-[0.2em] text-muted sm:inline">est. {atelier.founded}</span>
           </Link>
@@ -58,7 +58,7 @@ export function AtelierHeader() {
 
           <div className="flex items-center gap-2">
             <Link
-              href="/template/agency/atelier/contact"
+              href="/showcase/agency/atelier/contact"
               className="group hidden items-center gap-3 rounded-full bg-accent py-1.5 pl-5 pr-1.5 text-sm font-medium text-accent-fg sm:inline-flex"
             >
               Book a visit

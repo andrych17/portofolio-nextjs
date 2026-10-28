@@ -51,9 +51,9 @@ export default function NoirHome() {
         <div className="mt-14 grid gap-10 md:grid-cols-12 md:items-end">
           <div className="fade-up flex flex-wrap items-center gap-5 md:col-span-6" style={{ ["--d" as string]: 650 }}>
             <Magnetic>
-              <NoirButton href="/template/agency/noir/work">See the work</NoirButton>
+              <NoirButton href="/showcase/agency/noir/work">See the work</NoirButton>
             </Magnetic>
-            <NoirButton href="/template/agency/noir/contact" variant="ghost">
+            <NoirButton href="/showcase/agency/noir/contact" variant="ghost">
               Start a project
             </NoirButton>
           </div>
@@ -70,7 +70,7 @@ export default function NoirHome() {
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted md:col-span-3">(01) The studio</p>
           <div className="md:col-span-9">
             <ScrollWords text={noir.manifesto} className="font-display text-[clamp(2rem,4.6vw,4.6rem)] leading-[1.04]" />
-            <Link href="/template/agency/noir/about" className="group mt-12 inline-flex items-center gap-3 text-sm uppercase tracking-[0.2em]">
+            <Link href="/showcase/agency/noir/about" className="group mt-12 inline-flex items-center gap-3 text-sm uppercase tracking-[0.2em]">
               <span className="h-px w-10 bg-accent transition-[width] duration-700 ease-studio group-hover:w-20" />
               About the studio
             </Link>

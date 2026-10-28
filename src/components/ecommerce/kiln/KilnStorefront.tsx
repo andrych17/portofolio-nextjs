@@ -17,16 +17,21 @@ import {
   TruckIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Accordion } from "@/components/Accordion";
 import { ArrowIsland } from "@/components/ArrowIsland";
 import { Eyebrow } from "@/components/Eyebrow";
+import { ClipReveal } from "@/components/motion/ClipReveal";
 import { Counter } from "@/components/motion/Counter";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { Marquee } from "@/components/motion/Marquee";
 import { Reveal } from "@/components/motion/Reveal";
 import { RiseLines } from "@/components/motion/RiseLines";
+import { ScrollWords } from "@/components/motion/ScrollWords";
+import { Tilt } from "@/components/motion/Tilt";
 import { kiln, type KilnCategory } from "@/content/ecommerce/kiln";
 import { useContactForm } from "@/lib/use-contact-form";
 import { useMenu } from "@/lib/use-menu";
@@ -280,20 +285,24 @@ export function KilnStorefront() {
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <a
-                href="#catalog"
-                className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-accent py-2 pl-6 pr-2 font-medium text-accent-fg transition-transform duration-300 ease-studio hover:-translate-y-0.5"
-              >
-                <span>Browse Supply Catalog</span>
-                <ArrowIsland className="size-9 bg-black/15" size={15} />
-              </a>
-              <a
-                href="#studio"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-surface px-6 py-3 text-sm font-semibold text-fg ring-1 ring-line transition-colors hover:bg-fg hover:text-bg"
-              >
-                <SparkleIcon size={16} weight="fill" className="text-accent" aria-hidden />
-                Book Studio Wheel Pass
-              </a>
+              <Magnetic strength={0.22}>
+                <a
+                  href="#catalog"
+                  className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-accent py-2 pl-6 pr-2 font-medium text-accent-fg transition-transform duration-300 ease-studio hover:-translate-y-0.5"
+                >
+                  <span>Browse Supply Catalog</span>
+                  <ArrowIsland className="size-9 bg-black/15" size={15} />
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.18}>
+                <a
+                  href="#studio"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-surface px-6 py-3 text-sm font-semibold text-fg ring-1 ring-line transition-colors hover:bg-fg hover:text-bg"
+                >
+                  <SparkleIcon size={16} weight="fill" className="text-accent" aria-hidden />
+                  Book Studio Wheel Pass
+                </a>
+              </Magnetic>
             </div>
 
             {/* Live shelf trust pills */}
@@ -313,11 +322,11 @@ export function KilnStorefront() {
             </dl>
           </div>
 
-          {/* Right featured showcase card with quick batch-add */}
+          {/* Right featured showcase card with 3D Tilt + ClipReveal */}
           <div className="lg:col-span-5">
-            <div className="rounded-[2rem] bg-surface p-2 ring-1 ring-line shadow-[0_24px_60px_-24px_rgba(30,25,22,0.18)]">
+            <Tilt max={6} className="rounded-[2rem] bg-surface p-2 ring-1 ring-line shadow-[0_24px_60px_-24px_rgba(30,25,22,0.18)]">
               <div className="overflow-hidden rounded-[calc(2rem-0.5rem)] bg-bg p-4 md:p-5">
-                <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-[#e7dfd3]">
+                <ClipReveal direction="bottom" immediate className="aspect-[16/11] rounded-2xl bg-[#e7dfd3]">
                   <Image
                     src="/template/images/ecommerce/kiln/hero.webp"
                     alt="Curated ceramic tools, stoneware samples and studio vessels on a worktable"
@@ -330,7 +339,7 @@ export function KilnStorefront() {
                     <StorefrontIcon size={13} weight="bold" aria-hidden />
                     In-Store Shelf #A4
                   </span>
-                </div>
+                </ClipReveal>
 
                 <div className="mt-4 flex items-start justify-between gap-3">
                   <div>
@@ -368,7 +377,7 @@ export function KilnStorefront() {
                   </button>
                 </div>
               </div>
-            </div>
+            </Tilt>
           </div>
         </div>
       </section>
@@ -384,6 +393,17 @@ export function KilnStorefront() {
           ))}
         </Marquee>
       </div>
+
+      {/* ScrollWords Ceramic Craft Manifesto */}
+      <section aria-label="Craft philosophy" className="mx-auto max-w-[1400px] px-5 pt-16 md:px-10 md:pt-24">
+        <div className="rounded-[2.25rem] bg-surface/80 p-8 ring-1 ring-line md:p-14">
+          <Eyebrow>Milled &amp; Tested in Small Batches</Eyebrow>
+          <ScrollWords
+            className="mt-4 font-display text-[clamp(1.65rem,3.4vw,3rem)] font-bold leading-[1.18] tracking-[-0.015em] text-fg"
+            text="Every stoneware block and mineral glaze bucket is test-fired in our community kiln before the lot number goes live on our shelf."
+          />
+        </div>
+      </section>
 
       {/* Interactive Storefront Catalog */}
       <section id="catalog" aria-labelledby="catalog-heading" className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
@@ -460,25 +480,34 @@ export function KilnStorefront() {
 
               return (
                 <Reveal key={product.id} delay={(idx % 4) * 0.05} className="min-w-0">
-                  <article className="group flex h-full flex-col rounded-[1.75rem] bg-surface p-1.5 ring-1 ring-line transition-shadow hover:shadow-[0_20px_50px_-20px_rgba(30,25,22,0.16)]">
-                    <div className="flex h-full flex-col rounded-[calc(1.75rem-0.375rem)] bg-bg p-3.5">
-                      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#e7dfd3]">
-                        <Image
-                          src={product.image}
-                          alt={product.alt}
-                          fill
-                          sizes="(min-width: 1024px) 22vw, (min-width: 768px) 45vw, 92vw"
-                          className="object-cover transition-transform duration-700 ease-studio group-hover:scale-105"
-                        />
-                        {product.badge && (
-                          <span className="absolute left-2.5 top-2.5 rounded-full bg-accent px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-fg">
-                            {product.badge}
+                  <Tilt max={5} className="h-full">
+                    <article className="group flex h-full flex-col rounded-[1.75rem] bg-surface p-1.5 ring-1 ring-line transition-shadow hover:shadow-[0_20px_50px_-20px_rgba(30,25,22,0.16)]">
+                      <div className="flex h-full flex-col rounded-[calc(1.75rem-0.375rem)] bg-bg p-3.5">
+                        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#e7dfd3]">
+                          <Image
+                            src={product.image}
+                            alt={product.alt}
+                            fill
+                            sizes="(min-width: 1024px) 22vw, (min-width: 768px) 45vw, 92vw"
+                            className="object-cover transition-transform duration-700 ease-studio group-hover:scale-105"
+                          />
+                          <motion.div
+                            key={activeVariant.lot}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.22 }}
+                            transition={{ duration: 0.45 }}
+                            className="pointer-events-none absolute inset-0 mix-blend-multiply"
+                            style={{ backgroundColor: activeVariant.hex }}
+                          />
+                          {product.badge && (
+                            <span className="absolute left-2.5 top-2.5 rounded-full bg-accent px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-fg">
+                              {product.badge}
+                            </span>
+                          )}
+                          <span className="absolute bottom-2.5 right-2.5 rounded-full bg-[#1e1916]/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[#faf6ef] backdrop-blur-sm">
+                            {product.coneRange}
                           </span>
-                        )}
-                        <span className="absolute bottom-2.5 right-2.5 rounded-full bg-[#1e1916]/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[#faf6ef] backdrop-blur-sm">
-                          {product.coneRange}
-                        </span>
-                      </div>
+                        </div>
 
                       <div className="mt-4 flex flex-1 flex-col">
                         <div className="flex items-start justify-between gap-2">
@@ -543,6 +572,7 @@ export function KilnStorefront() {
                       </div>
                     </div>
                   </article>
+                  </Tilt>
                 </Reveal>
               );
             })}
@@ -824,7 +854,7 @@ export function KilnStorefront() {
             <button type="button" onClick={() => setCartOpen(true)} className="hover:text-fg">
               Bag ({totalItems})
             </button>
-            <Link href="/template" className="text-accent hover:underline">
+            <Link href="/showcase" className="text-accent hover:underline">
               All Templates →
             </Link>
           </div>

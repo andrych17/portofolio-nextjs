@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
   redirects: async () => [
     { source: "/v2", destination: "/", permanent: true },
     { source: "/v2/:path+", destination: "/:path+", permanent: true },
+    { source: "/template", destination: "/showcase", permanent: true },
+    { source: "/template/:path((?!images/|thumbs/|icon\\.svg).*)", destination: "/showcase/:path", permanent: true },
+    { source: "/templates", destination: "/showcase", permanent: true },
+    { source: "/templates/:path+", destination: "/showcase/:path+", permanent: true },
   ],
 };
 

@@ -18,7 +18,7 @@ export function AtelierFooter() {
               lines={["Have something", <em key="e">in the oven?</em>]}
             />
             <div className="mt-10 flex flex-wrap gap-3">
-              <AtelierButton href="/template/agency/atelier/contact" variant="light">
+              <AtelierButton href="/showcase/agency/atelier/contact" variant="light">
                 Book a studio visit
               </AtelierButton>
               <a href={`mailto:${atelier.email}`} className="inline-flex items-center rounded-full px-6 py-3 text-[15px] ring-1 ring-accent-fg/25 transition-colors hover:bg-accent-fg/10">
@@ -63,7 +63,7 @@ export function AtelierFooter() {
         </p>
         <div className="flex flex-wrap justify-between gap-3 px-6 pb-6 text-xs text-accent-fg/60 md:px-14">
           <span>© 2026 Your Brand B.V.</span>
-          <Link href="/template" className="hover:text-accent-fg">
+          <Link href="/showcase" className="hover:text-accent-fg">
             More templates
           </Link>
         </div>

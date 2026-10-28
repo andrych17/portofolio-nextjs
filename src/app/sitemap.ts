@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { projects, getProjectSlug } from "@/data/projects";
 
-// Gallery and sector pages live in the andryhuang-templates project (served under /template). Demo pages are noindex.
+// Gallery and sector pages live under /showcase. Demo pages are noindex.
 const templateSectors = ["ecommerce", "agency", "fashion", "tech", "food", "property", "health", "logistics"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -29,13 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/template`,
+      url: `${baseUrl}/showcase`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     ...templateSectors.map((sector) => ({
-      url: `${baseUrl}/template/${sector}`,
+      url: `${baseUrl}/showcase/${sector}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,

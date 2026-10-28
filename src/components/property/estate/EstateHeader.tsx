@@ -37,7 +37,7 @@ export function EstateHeader() {
         }`}
       >
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-3 md:px-10 md:py-4">
-          <Link href="/template/property/estate" className="flex items-center gap-3 whitespace-nowrap font-display text-[1.65rem] leading-none" aria-label="Your Brand home">
+          <Link href="/showcase/property/estate" className="flex items-center gap-3 whitespace-nowrap font-display text-[1.65rem] leading-none" aria-label="Your Brand home">
             <Mark />
             Your Brand
           </Link>

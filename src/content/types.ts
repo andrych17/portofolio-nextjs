@@ -60,5 +60,5 @@ export const pages = [
 ] as const;
 
 export function pagePath(studio: StudioKey, slug: string) {
-  return slug ? `/template/agency/${studio}/${slug}` : `/template/agency/${studio}`;
+  return slug ? `/showcase/agency/${studio}/${slug}` : `/showcase/agency/${studio}`;
 }

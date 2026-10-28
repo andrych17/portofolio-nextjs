@@ -88,7 +88,7 @@ export function OrbitFooter() {
             <span>•</span>
             <span>HIPAA BAA Available</span>
             <span>•</span>
-            <Link href="/template" className="hover:text-orbit-fg transition-colors">
+            <Link href="/showcase" className="hover:text-orbit-fg transition-colors">
               Gallery Home
             </Link>
           </div>

@@ -36,7 +36,7 @@ export function NoirWorkSlider({ projects }: { projects: Project[] }) {
         </Link>
       ))}
       <Link
-        href="/template/agency/noir/work"
+        href="/showcase/agency/noir/work"
         className="group flex size-[60vw] shrink-0 flex-col items-center justify-center gap-4 rounded-full border border-line text-center transition-colors duration-700 ease-studio hover:bg-accent hover:text-accent-fg md:size-[22vw]"
       >
         <span className="font-display text-4xl italic md:text-5xl">All work</span>

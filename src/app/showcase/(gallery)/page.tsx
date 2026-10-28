@@ -51,7 +51,7 @@ export default function GalleryHome() {
               <h2 id={`h-${sector.slug}`} className="wide font-display text-2xl font-extrabold uppercase tracking-tight md:text-4xl">{sector.name}</h2>
               <p className="mt-1.5 text-sm text-muted md:text-base">{sector.blurb}</p>
             </div>
-            <Link href={`/template/${sector.slug}`} className="shrink-0 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-fg">
+            <Link href={`/showcase/${sector.slug}`} className="shrink-0 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-fg">
               All {list.length} →
             </Link>
           </div>

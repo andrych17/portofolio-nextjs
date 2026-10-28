@@ -66,7 +66,7 @@ export function EstateFooter() {
 
         <div className="mt-16 flex flex-wrap justify-between gap-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f6f2ea]/55">
           <span>© 2026 Your Brand</span>
-          <Link href="/template" className="hover:text-[#f6f2ea]">
+          <Link href="/showcase" className="hover:text-[#f6f2ea]">
             More templates
           </Link>
         </div>

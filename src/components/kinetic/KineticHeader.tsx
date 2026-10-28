@@ -23,7 +23,7 @@ export function KineticHeader() {
       </a>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-3 rounded-full border-2 border-k-ink bg-white py-1.5 pl-3 pr-1.5 shadow-[4px_4px_0_0_#121212]">
-          <Link href="/template/agency/kinetic" className="group flex items-center gap-2" aria-label={`${kinetic.name} home`}>
+          <Link href="/showcase/agency/kinetic" className="group flex items-center gap-2" aria-label={`${kinetic.name} home`}>
             <Scoop className="h-9 w-8 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-rotate-12 group-hover:scale-110" />
             <span className="font-display text-xl font-black uppercase tracking-tight">{kinetic.name}</span>
           </Link>
@@ -51,7 +51,7 @@ export function KineticHeader() {
 
           <div className="flex items-center gap-1.5">
             <Link
-              href="/template/agency/kinetic/contact"
+              href="/showcase/agency/kinetic/contact"
               className="hidden rounded-full border-2 border-k-ink bg-accent px-5 py-2 font-display text-sm font-extrabold uppercase transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-3 hover:scale-105 sm:block"
             >
               Let&apos;s talk

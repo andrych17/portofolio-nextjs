@@ -48,8 +48,8 @@ export default function AtelierHome() {
             {atelier.intro}
           </p>
           <div className="fade-up mt-10 flex flex-wrap items-center gap-3" style={{ ["--d" as string]: 640 }}>
-            <AtelierButton href="/template/agency/atelier/work">See our work</AtelierButton>
-            <AtelierButton href="/template/agency/atelier/process" variant="ghost">
+            <AtelierButton href="/showcase/agency/atelier/work">See our work</AtelierButton>
+            <AtelierButton href="/showcase/agency/atelier/process" variant="ghost">
               How we work
             </AtelierButton>
           </div>
@@ -92,7 +92,7 @@ export default function AtelierHome() {
           </div>
           <div className="md:col-span-9">
             <ScrollWords text={atelier.manifesto} className="font-display text-[clamp(1.9rem,4vw,4rem)] leading-[1.08] tracking-[-0.01em]" />
-            <Link href="/template/agency/atelier/about" className="group mt-10 inline-flex items-center gap-3 text-sm font-medium">
+            <Link href="/showcase/agency/atelier/about" className="group mt-10 inline-flex items-center gap-3 text-sm font-medium">
               <span className="h-px w-10 bg-accent transition-[width] duration-700 ease-studio group-hover:w-20" />
               Meet the studio
             </Link>
@@ -125,7 +125,7 @@ export default function AtelierHome() {
             <Eyebrow className={eyebrow}>Selected work</Eyebrow>
             <MaskText id="work" as="h2" className="mt-6 font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.95] tracking-[-0.02em]" lines={["Made with,", <em key="e" className="text-accent">not for.</em>]} />
           </div>
-          <AtelierButton href="/template/agency/atelier/work" variant="ghost">
+          <AtelierButton href="/showcase/agency/atelier/work" variant="ghost">
             All {atelier.projects.length} projects
           </AtelierButton>
         </div>

@@ -70,7 +70,7 @@ export function ClinicFooter() {
             danger, call your local emergency number first.
           </p>
           <p className="md:col-span-5 md:text-right">
-            © 2026 Your Brand · <Link href="/template" className="underline-offset-4 hover:underline">More templates</Link>
+            © 2026 Your Brand · <Link href="/showcase" className="underline-offset-4 hover:underline">More templates</Link>
           </p>
         </div>
       </div>
