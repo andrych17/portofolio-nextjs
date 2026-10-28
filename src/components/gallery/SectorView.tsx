@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { RiseLines } from "@/components/motion/RiseLines";
 import { faqSchema } from "@/lib/jsonld";
 import { getSector, templatePath, templatesOf, type SectorSlug } from "@/lib/registry";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, siteUrl } from "@/lib/site";
 
 export function sectorMetadata(slug: SectorSlug): Metadata {
   const sector = getSector(slug)!;
@@ -16,7 +16,20 @@ export function sectorMetadata(slug: SectorSlug): Metadata {
     title: { absolute: title },
     description: sector.description,
     alternates: { canonical: absoluteUrl(`/${sector.slug}`) },
-    openGraph: { type: "website", url: absoluteUrl(`/${sector.slug}`), title, description: sector.description, siteName: "Andry Huang" },
+    openGraph: {
+      type: "website",
+      url: absoluteUrl(`/${sector.slug}`),
+      title,
+      description: sector.description,
+      siteName: "Andry Huang",
+      images: [{ url: `${siteUrl}/img/og-image.jpg?v=2`, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: sector.description,
+      images: [`${siteUrl}/img/og-image.jpg?v=2`],
+    },
   };
 }
 

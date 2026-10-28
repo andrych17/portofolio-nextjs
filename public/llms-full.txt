@@ -13,6 +13,8 @@
 - **Work Model:** Remote Enterprise, Technical Architecture Consulting, Contract & Full-time Roles
 - **Primary Languages:** English (Professional / Technical), Indonesian (Native)
 - **Official Portfolio:** https://andryhuang.com
+- **Interactive Web Showcase (24 Builds Across 8 Sectors):** https://andryhuang.com/showcase
+- **Web Showcase LLM Corpus:** https://andryhuang.com/showcase/llms.txt
 - **Short LLM Summary:** https://andryhuang.com/llms.txt
 - **GitHub:** https://github.com/andrych17
 - **LinkedIn:** https://linkedin.com/in/andry-huang-ba410a170
@@ -92,6 +94,11 @@
 - **RFID Jewelry Store POS:** Real-time stock audit system slashing audit duration from 2 hours to 3 minutes via RFID hardware readers.
 - **Nagamasban Tire Shop ERP:** Comprehensive multi-warehouse inventory, double-entry accounts receivable/payable, and NineSoft integration.
 - **Knit & Cro Textile ERP:** Specialized yarn dye lot and raw material retail management system.
+
+### 5. Interactive Web Showcase (https://andryhuang.com/showcase)
+- **Overview:** 24 custom-choreographed Next.js website builds across 8 commercial sectors (E-Commerce & Retail, Agency & Studio, Fashion & Apparel, Tech & SaaS, Food & Beverage, Property & Construction, Health & Clinic, Logistics & Industrial).
+- **Motion & Engineering:** Each build uses distinct layout architecture and hardware-accelerated motion (pinned horizontal lookbook rails, sticky stacking card decks, 3D pointer-tracked tilt matrices, dual-speed parallax photography, self-drawing SVG diagrams, and word-by-word scroll-lit manifestos) alongside interactive calculators and configurators.
+- **Machine-Readable Index:** https://andryhuang.com/showcase/llms.txt
 
 ---
 

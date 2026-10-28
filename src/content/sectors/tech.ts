@@ -30,9 +30,9 @@ export const tech: TemplateMeta[] = [
     name: "Orbit",
     tagline: "Distributed GPU cloud & edge inference",
     description:
-      "An obsidian-and-violet distributed GPU cloud infrastructure template with interactive SVG topology mesh, real-time inference TCO calculator, and 42-region Anycast latency HUD.",
+      "An obsidian-and-violet distributed GPU cloud infrastructure website with 3D pointer-tilted terminal & architecture cards, scroll-lit NVLink manifesto, interactive SVG topology mesh, and real-time inference TCO calculator.",
     palette: ["#090d16", "#f8fafc", "#8b5cf6"],
-    motion: ["Live cluster topology diagram", "Interactive token inference calculator", "Real-time edge latency HUD", "Bento architecture specs"],
+    motion: ["3D tilt terminal & bento", "Scroll-lit NVLink manifesto", "Live cluster topology mesh", "Interactive inference TCO calculator"],
     pages: 1,
   },
 ];

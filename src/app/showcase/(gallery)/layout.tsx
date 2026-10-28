@@ -6,6 +6,12 @@ import "./gallery.css";
 export default function GalleryLayout({ children }: { children: ReactNode }) {
   return (
     <div className={`theme-gallery ${galleryFonts} min-h-dvh font-sans text-fg`}>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:font-semibold focus:text-accent-fg"
+      >
+        Skip to content
+      </a>
       <header className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-5 md:px-10 md:py-7">
         <Link href="/" className="flex items-center gap-3" aria-label="Andry Huang, home">
           <span className="wide grid size-10 place-items-center rounded-full bg-accent font-display text-[13px] font-extrabold text-accent-fg">AH</span>

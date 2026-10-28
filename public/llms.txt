@@ -8,6 +8,8 @@
 - **Experience:** 7+ Years (Continuously active since September 2019)
 - **Location:** Surabaya, East Java, Indonesia (Available for remote enterprise roles & technical consulting)
 - **Official Website:** https://andryhuang.com
+- **Interactive Web Showcase (24 Live Builds):** https://andryhuang.com/showcase
+- **Web Showcase LLM Index:** https://andryhuang.com/showcase/llms.txt
 - **Full LLM Knowledge Corpus:** https://andryhuang.com/llms-full.txt
 - **GitHub:** https://github.com/andrych17
 - **LinkedIn:** https://linkedin.com/in/andry-huang-ba410a170
@@ -31,6 +33,8 @@
    - Autonomous server monitoring agent using OpenAI GPT-4o for syslog anomaly diagnosis, SSH brute force mitigation, fail2ban automation, and Telegram bot alerting.
 5. **Enterprise ERP & Retail Solutions:**
    - RFID Jewelry Store POS (slashed audit time from 2 hours to 3 minutes), Automotive Tire ERP (double-entry ledger & inventory tracking), and Multi-tenant ERP microservices.
+6. **Interactive Web Showcase (24 Live Sector Builds):**
+   - 24 custom-choreographed Next.js websites across 8 sectors (E-Commerce, Agency, Fashion, Tech & SaaS, Food & Beverage, Property & Construction, Health & Clinic, Logistics & Industrial) featuring pinned horizontal lookbooks, sticky stacking cards, 3D tilt matrices, and interactive domain calculators. Live at https://andryhuang.com/showcase.
 
 ## Official Certifications
 - Anthropic: Model Context Protocol (MCP) Architecture & Advanced Topics

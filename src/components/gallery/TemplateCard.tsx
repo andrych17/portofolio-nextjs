@@ -15,7 +15,7 @@ export function TemplateCard({ t, index, priority = false }: { t: TemplateMeta; 
           <div className="relative aspect-[16/10] overflow-hidden rounded-[1.4rem] ring-1 ring-black/8" style={{ background: t.palette[0] }}>
             <Image
               src={thumbSrc(t)}
-              alt={`${t.name} template preview, ${t.tagline.toLowerCase()}`}
+              alt={`${t.name} web showcase preview, ${t.tagline.toLowerCase()}`}
               fill
               priority={priority}
               sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 92vw"
