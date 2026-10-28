@@ -54,6 +54,9 @@
 .v2 ::selection { background: var(--accent); color: var(--ink); }
 
 html.v2-loading, html.v2-menu-open { overflow: hidden; }
+/* Lenis does the smoothing. The root layout's scroll-smooth made the browser's own #hash jump on load glide,
+   and that glide kept moving the page after <Smooth> had placed it. */
+html:has(.v2) { scroll-behavior: auto; }
 /* data-seen is set by the inline script in the layout: the loader already played in this browser. */
 .v2[data-seen] .v2-loader { display: none; }
 

@@ -1,36 +1,39 @@
+"use client";
+
 import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
+import { ScrollWords } from "@/components/motion/ScrollWords";
+import { Tilt } from "@/components/motion/Tilt";
 import { forge } from "@/content/logistics/forge";
 
 export function ForgeCapabilities() {
   return (
     <section id="capabilities" aria-labelledby="capabilities-heading" className="py-20 md:py-32">
       <div className="mx-auto max-w-[1500px] px-5 md:px-10">
+        <div className="mb-14 rounded-[2.25rem] bg-surface/80 p-7 ring-1 ring-line md:p-12">
+          <Eyebrow>PE-Stamped Structural Rigging</Eyebrow>
+          <ScrollWords
+            className="mt-3 font-display text-[clamp(1.65rem,3.4vw,3rem)] font-semibold leading-[1.16] text-fg"
+            text="Every transformer, turbine stator, and vessel move is simulated for axle load distribution, bridge deflection, and overhead utility clearance before mobilization."
+          />
+        </div>
+
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <Eyebrow>Heavy Transport</Eyebrow>
+            <Eyebrow>Heavy Transport · 3D Interactive Cards</Eyebrow>
             <h2 id="capabilities-heading" className="mt-3 font-display text-[clamp(2.2rem,4.5vw,4rem)] font-semibold leading-tight text-fg">
               Engineered Capabilities
             </h2>
-            <p className="mt-3 max-w-xl text-muted">
-              Specialized multi-axle modular trailers, high-girder schnabel frames, and indoor hydraulic gantry systems.
-            </p>
           </div>
           <div className="text-sm font-medium text-muted">
             PE stamped rigging &amp; transport calculations
           </div>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-12">
-          {forge.capabilities.map((c, idx) => {
-            const isLarge = idx === 0 || idx === 3;
-            return (
-              <Reveal
-                key={c.id}
-                y={20}
-                delay={idx * 0.1}
-                className={isLarge ? "lg:col-span-7" : "lg:col-span-5"}
-              >
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {forge.capabilities.map((c, idx) => (
+            <Reveal key={c.id} y={20} delay={idx * 0.08}>
+              <Tilt max={7} className="h-full">
                 <article className="group flex h-full flex-col justify-between rounded-[2rem] bg-surface p-6 ring-1 ring-line transition-all duration-300 hover:ring-accent/40 md:p-8">
                   <div>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
@@ -58,7 +61,7 @@ export function ForgeCapabilities() {
                     </div>
                   </div>
 
-                  <div className="mt-8 grid grid-cols-2 gap-2 border-t border-line/60 pt-4 text-xs text-muted sm:grid-cols-2">
+                  <div className="mt-8 grid grid-cols-2 gap-2 border-t border-line/60 pt-4 text-xs text-muted">
                     <div>
                       <span className="block text-[10px] uppercase tracking-wider opacity-70">Primary Equipment</span>
                       <span className="font-medium text-fg">{c.equipment}</span>
@@ -69,9 +72,9 @@ export function ForgeCapabilities() {
                     </div>
                   </div>
                 </article>
-              </Reveal>
-            );
-          })}
+              </Tilt>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

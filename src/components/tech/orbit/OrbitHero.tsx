@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { Magnetic } from "@/components/motion/Magnetic";
+import { MaskText } from "@/components/motion/MaskText";
+import { Tilt } from "@/components/motion/Tilt";
 import { orbit } from "@/content/tech/orbit";
 
 export function OrbitHero() {
@@ -38,32 +41,39 @@ export function OrbitHero() {
               <span className="font-semibold text-orbit-emerald">42 Regions Online</span>
             </div>
 
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-orbit-fg leading-[1.08]">
-              Distributed GPU cloud for{" "}
-              <span className="bg-gradient-to-r from-orbit-accent via-orbit-cyan to-orbit-emerald bg-clip-text text-transparent">
-                ultra-low latency
-              </span>{" "}
-              AI inference.
-            </h1>
+            <MaskText
+              as="h1"
+              className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-orbit-fg leading-[1.04]"
+              lines={[
+                "Distributed GPU cloud",
+                <span key="2" className="bg-gradient-to-r from-orbit-accent via-orbit-cyan to-orbit-emerald bg-clip-text text-transparent">
+                  for ultra-low latency AI.
+                </span>,
+              ]}
+            />
 
             <p className="text-base sm:text-lg text-orbit-muted max-w-2xl font-sans leading-relaxed">
               Eliminate cold starts and sluggish round trips. Run frontier open-weight models across 42 global edge points of presence with guaranteed sub-15ms Time-to-First-Token.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <a
-                href="#cluster"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-orbit-accent px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(139,92,246,0.4)] hover:bg-orbit-accent/90 transition-all hover:scale-[1.02]"
-              >
-                <span>Deploy Serverless Cluster</span>
-                <ArrowUpRightIcon size={16} weight="bold" />
-              </a>
-              <a
-                href="#calculator"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-orbit-border bg-orbit-surface px-6 py-3.5 text-sm font-semibold text-orbit-fg hover:bg-orbit-surface-hover hover:border-orbit-border/80 transition-all"
-              >
-                <span>Calculate Cost Savings</span>
-              </a>
+              <Magnetic strength={0.22}>
+                <a
+                  href="#cluster"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-orbit-accent px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(139,92,246,0.4)] hover:bg-orbit-accent/90 transition-all hover:scale-[1.02]"
+                >
+                  <span>Deploy Serverless Cluster</span>
+                  <ArrowUpRightIcon size={16} weight="bold" />
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.18}>
+                <a
+                  href="#calculator"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-orbit-border bg-orbit-surface px-6 py-3.5 text-sm font-semibold text-orbit-fg hover:bg-orbit-surface-hover hover:border-orbit-border/80 transition-all"
+                >
+                  <span>Calculate Cost Savings</span>
+                </a>
+              </Magnetic>
             </div>
 
             {/* Proof Badges */}
@@ -83,9 +93,9 @@ export function OrbitHero() {
             </div>
           </div>
 
-          {/* Right Column: Live Terminal Code Preview */}
+          {/* Right Column: Live Terminal Code Preview with 3D Tilt */}
           <div className="lg:col-span-5">
-            <div className="rounded-2xl border border-orbit-border bg-orbit-surface/90 shadow-2xl backdrop-blur-xl overflow-hidden">
+            <Tilt max={7} className="rounded-2xl border border-orbit-border bg-orbit-surface/90 shadow-2xl backdrop-blur-xl overflow-hidden">
               {/* Terminal Title Bar */}
               <div className="flex items-center justify-between border-b border-orbit-border px-4 py-3 bg-orbit-bg/60">
                 <div className="flex items-center gap-2">
@@ -127,7 +137,7 @@ export function OrbitHero() {
                   <span>Region: edge-ap-northeast-1</span>
                 </div>
               </div>
-            </div>
+            </Tilt>
           </div>
         </div>
       </div>

@@ -9,6 +9,9 @@ export function scrollToTarget(target: string | number, offset = 0, immediate = 
   if (typeof target === "string" && !el) return;
   const { lenis } = scroller;
   if (lenis) {
+    // scrollTo clamps to the cached page height, which trails layout changes by Lenis's resize debounce
+    // (Works makes itself taller on mount), so a #hash jump right after load stopped inside Works.
+    lenis.resize();
     // force: menu links scroll while the menu still has the engine stopped.
     lenis.scrollTo(el ?? (target as number), { offset, immediate, duration: 1.6, easing: (t) => 1 - Math.pow(1 - t, 4), force: true });
     return;
