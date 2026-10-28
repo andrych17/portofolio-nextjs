@@ -855,7 +855,7 @@ export function KilnStorefront() {
               Bag ({totalItems})
             </button>
             <Link href="/showcase" className="text-accent hover:underline">
-              All Templates →
+              Back to Showcase →
             </Link>
           </div>
         </div>

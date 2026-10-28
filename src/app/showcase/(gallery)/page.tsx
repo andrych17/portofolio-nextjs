@@ -6,9 +6,9 @@ import { TemplateCard } from "@/components/gallery/TemplateCard";
 import { sectors, templatePath, templates, templatesOf } from "@/lib/registry";
 import { absoluteUrl } from "@/lib/site";
 
-const title = "Website Templates by Sector · Andry Huang";
+const title = "Web Showcase by Sector · Andry Huang";
 const description =
-  "Animated, mobile-first website templates for agency, fashion, tech, food, property, health and logistics. SEO, AEO and GEO built in. Made with Next.js.";
+  "Interactive, mobile-first web showcase for e-commerce, agency, fashion, tech, food, property, health and logistics. SEO, AEO and GEO built in. Made with Next.js.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -27,11 +27,11 @@ export default function GalleryHome() {
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Website templates by sector",
+          name: "Web showcase by sector",
           description,
           url: absoluteUrl("/"),
           author: { "@type": "Person", name: "Andry Huang", url: "https://andryhuang.com" },
-          hasPart: sectors.map((s) => ({ "@type": "CollectionPage", name: `${s.name} website templates`, url: absoluteUrl(`/${s.slug}`) })),
+          hasPart: sectors.map((s) => ({ "@type": "CollectionPage", name: `${s.name} web showcase`, url: absoluteUrl(`/${s.slug}`) })),
           mainEntity: {
             "@type": "ItemList",
             itemListElement: templates.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: `${t.name}: ${t.tagline}`, url: absoluteUrl(templatePath(t)) })),
@@ -39,7 +39,7 @@ export default function GalleryHome() {
         }}
       />
       <h1 id="top" className="sr-only">
-        Website Templates by Sector
+        Web Showcase by Sector
       </h1>
 
       <SectorNav items={groups.map((g) => ({ slug: g.sector.slug, name: g.sector.name.split(" ")[0], count: g.list.length }))} />

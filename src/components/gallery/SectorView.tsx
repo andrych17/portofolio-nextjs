@@ -11,7 +11,7 @@ import { absoluteUrl } from "@/lib/site";
 
 export function sectorMetadata(slug: SectorSlug): Metadata {
   const sector = getSector(slug)!;
-  const title = `${sector.name} Website Templates · Andry Huang`;
+  const title = `${sector.name} Web Showcase · Andry Huang`;
   return {
     title: { absolute: title },
     description: sector.description,
@@ -21,9 +21,9 @@ export function sectorMetadata(slug: SectorSlug): Metadata {
 }
 
 const faqs = (sector: string) => [
-  { q: `Are these ${sector.toLowerCase()} templates finished websites?`, a: "They are complete, animated front-end designs with working navigation, forms and SEO markup. You supply the brand name, copy and photos, and I can do that part for you." },
-  { q: "Do the templates work on phones?", a: "Yes. Every template is designed mobile-first and checked at 390 px and 1440 px wide, with reduced-motion support for visitors who turn animation off." },
-  { q: "How do I get one for my business?", a: "Choose a template, then message me through andryhuang.com. I replace Your Brand with your name, write or tidy the copy, add your photos and deploy it on your domain." },
+  { q: `Are these ${sector.toLowerCase()} showcase demos finished websites?`, a: "They are complete, animated front-end builds with working navigation, interactive components, forms and SEO markup. You supply the brand name, copy and photos, and I can handle the full customization for you." },
+  { q: "Do the showcase designs work on phones?", a: "Yes. Every showcase build is designed mobile-first and checked at 390 px and 1440 px wide, with reduced-motion support for visitors who turn animation off." },
+  { q: "How do I commission one for my business?", a: "Pick a showcase direction, then message me through andryhuang.com. I replace Your Brand with your identity, adapt the copy, integrate your assets and deploy it on your domain." },
 ];
 
 export function SectorView({ slug }: { slug: SectorSlug }) {
@@ -38,13 +38,13 @@ export function SectorView({ slug }: { slug: SectorSlug }) {
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            name: `${sector.name} website templates`,
+            name: `${sector.name} web showcase`,
             description: sector.description,
             url: absoluteUrl(`/${sector.slug}`),
             breadcrumb: {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Templates", item: absoluteUrl("/") },
+                { "@type": "ListItem", position: 1, name: "Showcase", item: absoluteUrl("/") },
                 { "@type": "ListItem", position: 2, name: sector.name, item: absoluteUrl(`/${sector.slug}`) },
               ],
             },
@@ -63,18 +63,18 @@ export function SectorView({ slug }: { slug: SectorSlug }) {
         <RiseLines
           id="top"
           className="wide mt-6 font-display text-[clamp(2.4rem,7.4vw,6.5rem)] font-black uppercase leading-[0.94] tracking-[-0.015em]"
-          lines={[sector.name, <span key="s" className="text-accent">templates</span>]}
+          lines={[sector.name, <span key="s" className="text-accent">showcase</span>]}
         />
         <Reveal delay={0.3}>
           <p data-speakable className="mt-7 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">{sector.description}</p>
         </Reveal>
       </section>
 
-      <section className="mx-auto grid max-w-[1400px] grid-cols-1 gap-4 px-5 md:grid-cols-2 md:px-10 lg:grid-cols-3" aria-label={`${sector.name} templates`}>
+      <section className="mx-auto grid max-w-[1400px] grid-cols-1 gap-4 px-5 md:grid-cols-2 md:px-10 lg:grid-cols-3" aria-label={`${sector.name} showcase`}>
         {list.length ? (
           list.map((t, i) => <TemplateCard key={t.slug} t={t} index={i} />)
         ) : (
-          <p className="col-span-full rounded-[2rem] bg-white/[0.04] p-10 text-muted ring-1 ring-white/10">Templates for this sector are on the way.</p>
+          <p className="col-span-full rounded-[2rem] bg-white/[0.04] p-10 text-muted ring-1 ring-white/10">Showcase demos for this sector are on the way.</p>
         )}
       </section>
 

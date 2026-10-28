@@ -66,11 +66,11 @@ export function ClinicFooter() {
 
         <div className="mt-20 grid gap-6 border-t border-white/10 pt-8 text-[13px] leading-relaxed text-bg/60 md:grid-cols-12">
           <p className="md:col-span-7">
-            This is a website template with sample content. It does not give medical advice. If you think someone&apos;s life is in
+            This is a web showcase demo with sample content. It does not give medical advice. If you think someone&apos;s life is in
             danger, call your local emergency number first.
           </p>
           <p className="md:col-span-5 md:text-right">
-            © 2026 Your Brand · <Link href="/showcase" className="underline-offset-4 hover:underline">More templates</Link>
+            © 2026 Your Brand · <Link href="/showcase" className="underline-offset-4 hover:underline">Back to Showcase →</Link>
           </p>
         </div>
       </div>

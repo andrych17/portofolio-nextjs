@@ -73,7 +73,7 @@ export function NoirFooter() {
         <div className="mt-20 flex flex-wrap justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
           <span>© 2026 {noir.name}</span>
           <Link href="/showcase" className="hover:text-fg">
-            More templates
+            Back to Showcase →
           </Link>
         </div>
       </div>

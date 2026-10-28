@@ -64,7 +64,7 @@ export function AtelierFooter() {
         <div className="flex flex-wrap justify-between gap-3 px-6 pb-6 text-xs text-accent-fg/60 md:px-14">
           <span>© 2026 Your Brand B.V.</span>
           <Link href="/showcase" className="hover:text-accent-fg">
-            More templates
+            Back to Showcase →
           </Link>
         </div>
       </div>

@@ -783,7 +783,7 @@ export function BloomStorefront() {
           <div className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
             <a href="#catalog" className="hover:text-fg">Formulas</a>
             <a href="#ritual" className="hover:text-fg">Ritual Builder</a>
-            <Link href="/showcase" className="text-accent hover:underline">All Templates →</Link>
+            <Link href="/showcase" className="text-accent hover:underline">Back to Showcase →</Link>
           </div>
         </div>
       </footer>

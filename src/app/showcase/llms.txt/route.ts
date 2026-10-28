@@ -9,6 +9,6 @@ export function GET() {
       .join("\n");
     return `## ${s.name}\n\n${s.description}\n\n${items || "- Coming soon."}`;
   });
-  const body = `# Website Templates by Andry Huang\n\n> Animated, mobile-first Next.js website templates grouped by sector. Each demo uses the placeholder brand "Your Brand". Demo content is fictional. Templates are customised and deployed by Andry Huang, https://andryhuang.com.\n\nSector pages: ${absoluteUrl("/")}\n\n${blocks.join("\n\n")}\n`;
+  const body = `# Web Showcase by Andry Huang\n\n> Interactive, mobile-first Next.js web showcase grouped by sector. Each demo uses the placeholder brand "Your Brand". Demo content is fictional. Built and deployed by Andry Huang, https://andryhuang.com.\n\nSector pages: ${absoluteUrl("/")}\n\n${blocks.join("\n\n")}\n`;
   return new Response(body, { headers: { "content-type": "text/plain; charset=utf-8" } });
 }

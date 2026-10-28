@@ -61,7 +61,7 @@ export function MaisonFooter() {
         <div className="maison-caps mt-10 flex flex-wrap justify-between gap-4 text-muted">
           <span>&copy; 2026 Your Brand</span>
           <Link href="/showcase" className="-my-3 py-3 hover:text-fg">
-            More templates
+            Back to Showcase →
           </Link>
         </div>
       </div>

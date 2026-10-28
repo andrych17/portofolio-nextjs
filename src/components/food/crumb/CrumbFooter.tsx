@@ -59,7 +59,7 @@ export function CrumbFooter() {
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-line/60 pt-6 text-xs text-muted">
           <p>© 2026 Your Brand. All rights reserved.</p>
           <Link href="/showcase" className="hover:text-fg">
-            Explore All Templates
+            Back to Showcase →
           </Link>
         </div>
       </div>

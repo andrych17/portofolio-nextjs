@@ -29,14 +29,14 @@ export type TemplateMeta = {
 };
 
 export const sectors: Sector[] = [
-  { slug: "ecommerce", name: "E-Commerce & Retail", blurb: "Online storefronts, craft supply shops and retail catalogs.", description: "Animated e-commerce storefront templates with interactive product filtering, batch-lot variant swatches, live stock indicators, cart drawer and shipping estimator." },
-  { slug: "agency", name: "Agency & Studio", blurb: "Design studios, creative and digital agencies.", description: "Animated website templates for design studios, branding and digital agencies, with portfolio, process and contact pages." },
-  { slug: "fashion", name: "Fashion & Apparel", blurb: "Labels, boutiques and streetwear drops.", description: "Animated website templates for fashion labels, boutiques and streetwear brands, with lookbooks and product showcases." },
-  { slug: "tech", name: "Tech & SaaS", blurb: "Software, AI and developer products.", description: "Animated landing page templates for SaaS, AI and developer tools, with product demos, pricing and docs-style sections." },
-  { slug: "food", name: "Food & Beverage", blurb: "Restaurants, cafes, bakeries and delivery.", description: "Animated website templates for restaurants, cafes and food brands, with menus, reservations and ordering." },
-  { slug: "property", name: "Property & Construction", blurb: "Developers, agents, contractors and architects.", description: "Animated company profile templates for property developers, real estate agents, contractors and architecture studios." },
-  { slug: "health", name: "Health & Clinic", blurb: "Clinics, dentists, wellness and spas.", description: "Animated website templates for clinics, dental practices and wellness brands, with doctor profiles and booking." },
-  { slug: "logistics", name: "Logistics & Industrial", blurb: "Freight, fleet, manufacturing and supply chain.", description: "Animated company profile templates for logistics, freight and industrial companies, with tracking, coverage and capability sections." },
+  { slug: "ecommerce", name: "E-Commerce & Retail", blurb: "Online storefronts, craft supply shops and retail catalogs.", description: "Interactive e-commerce storefront showcase with live product filtering, batch-lot variant swatches, stock indicators, cart drawer and shipping estimator." },
+  { slug: "agency", name: "Agency & Studio", blurb: "Design studios, creative and digital agencies.", description: "Animated web showcase for design studios, branding and digital agencies, with portfolio, process and contact pages." },
+  { slug: "fashion", name: "Fashion & Apparel", blurb: "Labels, boutiques and streetwear drops.", description: "Animated web showcase for fashion labels, boutiques and streetwear brands, with lookbooks and product stories." },
+  { slug: "tech", name: "Tech & SaaS", blurb: "Software, AI and developer products.", description: "Animated landing page showcase for SaaS, AI and developer tools, with product demos, pricing and docs-style sections." },
+  { slug: "food", name: "Food & Beverage", blurb: "Restaurants, cafes, bakeries and delivery.", description: "Animated web showcase for restaurants, cafes and food brands, with menus, reservations and ordering." },
+  { slug: "property", name: "Property & Construction", blurb: "Developers, agents, contractors and architects.", description: "Animated company profile showcase for property developers, real estate agents, contractors and architecture studios." },
+  { slug: "health", name: "Health & Clinic", blurb: "Clinics, dentists, wellness and spas.", description: "Animated web showcase for clinics, dental practices and wellness brands, with doctor profiles and booking." },
+  { slug: "logistics", name: "Logistics & Industrial", blurb: "Freight, fleet, manufacturing and supply chain.", description: "Animated company profile showcase for logistics, freight and industrial companies, with tracking, coverage and capability sections." },
 ];
 
 export const templates: TemplateMeta[] = [...ecommerce, ...agency, ...fashion, ...tech, ...food, ...property, ...health, ...logistics];

@@ -91,7 +91,7 @@ export function KineticFooter() {
         <div className="mt-14 flex flex-wrap justify-between gap-3 text-sm text-white/50">
           <span>© 2026 Your Brand Pty Ltd</span>
           <Link href="/showcase" className="hover:text-white">
-            More templates
+            Back to Showcase →
           </Link>
         </div>
       </div>
