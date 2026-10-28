@@ -33,7 +33,7 @@ export function SectorNav({ items }: { items: Item[] }) {
   }, [active]);
 
   return (
-    <nav aria-label="Sectors" className="sticky top-0 z-40 border-y border-line bg-[#0c0c0c]/85 backdrop-blur-md">
+    <nav aria-label="Sectors" className="sticky top-0 z-40 border-y border-line bg-bg/88 backdrop-blur-md">
       <div ref={bar} className="no-scrollbar mx-auto flex max-w-[1400px] gap-2 overflow-x-auto px-5 py-3 md:px-10">
         {items.map((i) => (
           <a
@@ -42,11 +42,11 @@ export function SectorNav({ items }: { items: Item[] }) {
             data-slug={i.slug}
             aria-current={active === i.slug ? "true" : undefined}
             className={`flex min-h-11 shrink-0 items-center gap-2 rounded-full px-4 font-mono text-[11px] uppercase tracking-[0.14em] ring-1 transition-colors duration-500 ease-studio ${
-              active === i.slug ? "bg-accent text-accent-fg ring-accent" : "text-muted ring-white/12 hover:bg-white/10 hover:text-fg"
+              active === i.slug ? "bg-accent font-semibold text-accent-fg ring-accent" : "bg-surface/80 text-muted ring-line hover:bg-fg/[0.06] hover:text-fg"
             }`}
           >
             {i.name}
-            <span className={active === i.slug ? "opacity-70" : "opacity-50"}>{i.count}</span>
+            <span className={active === i.slug ? "opacity-80" : "opacity-55"}>{i.count}</span>
           </a>
         ))}
       </div>

@@ -1,0 +1,16 @@
+.theme-ecommerce-play {
+  --t-bg: #f6f8fc;
+  --t-fg: #0f172a;
+  --t-muted: #526077;
+  --t-accent: #2546f0;
+  --t-accent-fg: #f6f8fc;
+  --t-surface: #e8eef7;
+  --t-line: rgb(15 23 42 / 0.11);
+  --t-display: var(--font-play-display);
+  --t-sans: var(--font-play-sans);
+  --t-mono: var(--font-play-mono);
+}
+
+:root:has(.theme-ecommerce-play) {
+  background: #f6f8fc;
+}

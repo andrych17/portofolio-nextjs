@@ -1,0 +1,16 @@
+.theme-ecommerce-bloom {
+  --t-bg: #f6faf7;
+  --t-fg: #142e1f;
+  --t-muted: #526b5c;
+  --t-accent: #1b5e3a;
+  --t-accent-fg: #f6faf7;
+  --t-surface: #e8f1eb;
+  --t-line: rgb(20 46 31 / 0.12);
+  --t-display: var(--font-bloom-display);
+  --t-sans: var(--font-bloom-sans);
+  --t-mono: var(--font-bloom-mono);
+}
+
+:root:has(.theme-ecommerce-bloom) {
+  background: #f6faf7;
+}
