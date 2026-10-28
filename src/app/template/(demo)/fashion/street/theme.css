@@ -1,0 +1,119 @@
+.theme-fashion-street {
+  --t-bg: #0d0d0d;
+  --t-fg: #efede6;
+  --t-muted: #8d8b84;
+  --t-accent: #d7ff1f;
+  --t-accent-fg: #0d0d0d;
+  --t-surface: #1a1a19;
+  --t-line: rgb(239 237 230 / 0.16);
+  --t-display: var(--font-street-display);
+  --t-sans: var(--font-street-sans);
+  --t-mono: var(--font-street-mono);
+  --s-paper: #efede6;
+}
+:root:has(.theme-fashion-street) {
+  background: #0d0d0d;
+}
+
+.theme-fashion-street .font-display {
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
+}
+
+/* Fine film grain on the hero poster. */
+.street-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Slanted tape band. */
+.street-tape {
+  transform: rotate(-2.2deg);
+}
+.street-tape-b {
+  transform: rotate(1.6deg);
+}
+
+/* A countdown digit drops in when its value changes. */
+@keyframes street-drop {
+  from { opacity: 0; transform: translateY(-55%); }
+  to { opacity: 1; transform: none; }
+}
+.street-digit {
+  display: inline-block;
+  animation: street-drop 0.5s var(--e-studio) both;
+}
+
+/* Sticker: tilted at rest, straightens on hover. */
+.street-sticker {
+  transition: transform 0.6s var(--e-studio), box-shadow 0.6s var(--e-studio);
+}
+.street-sticker:hover {
+  transform: rotate(0deg) translateY(-6px);
+}
+
+@keyframes street-spin {
+  to { transform: rotate(360deg); }
+}
+.street-spin {
+  animation: street-spin 18s linear infinite;
+}
+
+@keyframes street-scribble {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.street-scribble {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: street-scribble 1.1s var(--e-studio) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+.street-noscroll {
+  scrollbar-width: none;
+}
+.street-noscroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .street-digit,
+  .street-spin,
+  .street-scribble {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .street-sticker {
+    transition: none;
+  }
+}
+
+.street-tag {
+  font-family: var(--t-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* CSS-only tape ticker, so the hero band moves before hydration. */
+@keyframes street-run {
+  to { transform: translateX(-50%); }
+}
+.street-run {
+  display: flex;
+  width: max-content;
+  animation: street-run 26s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .street-run {
+    animation: none;
+  }
+}

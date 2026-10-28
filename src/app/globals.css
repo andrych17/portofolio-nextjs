@@ -28,13 +28,42 @@
   --d-fast: 280ms;
   --d-norm: 620ms;
   --d-slow: 1100ms;
+
+  /* default font bridges when outside .templates-root */
+  --t-sans: var(--font-geist-sans);
+  --t-mono: var(--font-geist-mono);
 }
 
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--fg);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--t-bg);
+  --color-fg: var(--t-fg);
+  --color-muted: var(--t-muted);
+  --color-accent: var(--t-accent);
+  --color-accent-fg: var(--t-accent-fg);
+  --color-surface: var(--t-surface);
+  --color-line: var(--t-line);
+  --font-display: var(--t-display);
+  --font-sans: var(--t-sans);
+  --font-mono: var(--t-mono);
+}
+
+@theme {
+  --ease-studio: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);
+  --color-k-blue: #2f4bff;
+  --color-k-lime: #c6f432;
+  --color-k-pink: #ff8fc7;
+  --color-k-yellow: #ffd23f;
+  --color-k-ink: #121212;
+  --animate-spin-slow: spin 16s linear infinite;
+  --animate-blink: blink 1.6s var(--ease-studio) infinite;
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
 }
 
 body {

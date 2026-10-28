@@ -1,0 +1,37 @@
+.theme-logistics-forge {
+  --t-bg: #101317;
+  --t-fg: #f3f4f6;
+  --t-muted: #94a3b8;
+  --t-accent: #f59e0b;
+  --t-accent-fg: #111418;
+  --t-surface: #1a1f26;
+  --t-line: rgb(243 244 246 / 0.12);
+  --t-display: var(--font-forge-display);
+  --t-sans: var(--font-forge-sans);
+  --t-mono: var(--font-forge-mono);
+}
+
+:root:has(.theme-logistics-forge) {
+  background: #101317;
+}
+
+@keyframes forge-glow {
+  0%, 100% {
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.4);
+  }
+}
+
+.forge-glow {
+  animation: forge-glow 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forge-glow {
+    animation: none;
+  }
+}

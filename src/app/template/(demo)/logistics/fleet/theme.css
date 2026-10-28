@@ -1,0 +1,37 @@
+.theme-logistics-fleet {
+  --t-bg: #f5f6f9;
+  --t-fg: #0f1722;
+  --t-muted: #526071;
+  --t-accent: #e65100;
+  --t-accent-fg: #ffffff;
+  --t-surface: #e9eef3;
+  --t-line: rgb(15 23 34 / 0.12);
+  --t-display: var(--font-fleet-display);
+  --t-sans: var(--font-fleet-sans);
+  --t-mono: ui-monospace, monospace;
+}
+
+:root:has(.theme-logistics-fleet) {
+  background: #f5f6f9;
+}
+
+@keyframes fleet-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+.fleet-pulse {
+  animation: fleet-pulse 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fleet-pulse {
+    animation: none;
+  }
+}

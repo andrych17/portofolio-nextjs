@@ -1,0 +1,117 @@
+.theme-property-foundry {
+  --t-bg: #d9d8d3;
+  --t-fg: #141414;
+  --t-muted: #55554f;
+  --t-accent: #ffd100;
+  --t-accent-fg: #141414;
+  --t-surface: #c8c7c1;
+  --t-line: rgb(20 20 20 / 0.2);
+  --t-display: var(--font-foundry-display);
+  --t-sans: var(--font-foundry-sans);
+  --t-mono: var(--font-foundry-mono);
+  --f-char: #17181a;
+  --f-char-2: #232528;
+}
+:root:has(.theme-property-foundry) {
+  background: #d9d8d3;
+}
+
+.theme-property-foundry .font-display {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  font-optical-sizing: auto;
+}
+
+/* Blueprint paper: fine 32px grid with a heavier line every 160px. */
+.foundry-grid {
+  background-image:
+    linear-gradient(rgb(20 20 20 / 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 20 20 / 0.14) 1px, transparent 1px),
+    linear-gradient(rgb(20 20 20 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 20 20 / 0.06) 1px, transparent 1px);
+  background-size: 160px 160px, 160px 160px, 32px 32px, 32px 32px;
+  background-position: -1px -1px;
+}
+.foundry-grid-dark {
+  background-image:
+    linear-gradient(rgb(255 209 0 / 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 209 0 / 0.16) 1px, transparent 1px),
+    linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 160px 160px, 160px 160px, 32px 32px, 32px 32px;
+  background-position: -1px -1px;
+}
+.foundry-hazard {
+  background: repeating-linear-gradient(-45deg, #ffd100 0 14px, #141414 14px 28px);
+}
+
+/* SVG dimension lines draw themselves on load, with no JS. */
+@keyframes foundry-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes foundry-scale-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes foundry-scale-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes foundry-pop {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: none; }
+}
+.foundry-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: foundry-draw 1.8s var(--e-studio) forwards;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+.foundry-scale-x,
+.foundry-scale-y {
+  animation: foundry-scale-x 1.6s var(--e-studio) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+  transform-origin: left center;
+}
+.foundry-scale-y {
+  animation-name: foundry-scale-y;
+  transform-origin: center top;
+}
+.foundry-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: foundry-pop 0.7s var(--e-studio) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+.foundry-card {
+  transition: transform 0.6s var(--e-studio);
+}
+.foundry-card:hover {
+  transform: translateY(-4px);
+}
+.foundry-card .foundry-corner {
+  transition: transform 0.6s var(--e-studio);
+  transform-origin: top right;
+}
+.foundry-card:hover .foundry-corner {
+  transform: scale(2.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foundry-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .foundry-pop,
+  .foundry-scale-x,
+  .foundry-scale-y {
+    animation: none;
+  }
+  .foundry-card,
+  .foundry-card .foundry-corner {
+    transition: none;
+  }
+}

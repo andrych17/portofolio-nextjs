@@ -1,0 +1,128 @@
+/* Tomato is the default shade. The picker swaps data-shade on the theme root. */
+.theme-fashion-salt {
+  --t-bg: #cc3a16;
+  --t-fg: #fff4e4;
+  --t-muted: rgb(255 244 228 / 0.84);
+  --t-accent: #fff4e4;
+  --t-accent-fg: #3d1105;
+  --t-surface: #b6300f;
+  --t-line: rgb(255 244 228 / 0.3);
+  --t-display: var(--font-salt-display);
+  --t-sans: var(--font-salt-sans);
+  --t-mono: var(--font-salt-sans);
+  --l-paper: #fff4e4;
+  --l-ink: #2a1a12;
+}
+.theme-fashion-salt[data-shade="sea"] {
+  --t-bg: #0f4c5c;
+  --t-fg: #f6eddc;
+  --t-muted: rgb(246 237 220 / 0.8);
+  --t-accent: #ffd98a;
+  --t-accent-fg: #0b2f39;
+  --t-surface: #0b3b48;
+  --t-line: rgb(246 237 220 / 0.26);
+}
+.theme-fashion-salt[data-shade="butter"] {
+  --t-bg: #f5d36a;
+  --t-fg: #2a1a12;
+  --t-muted: rgb(42 26 18 / 0.78);
+  --t-accent: #2a1a12;
+  --t-accent-fg: #f5d36a;
+  --t-surface: #ecc552;
+  --t-line: rgb(42 26 18 / 0.26);
+}
+.theme-fashion-salt[data-shade="chalk"] {
+  --t-bg: #efe7d8;
+  --t-fg: #1c2a24;
+  --t-muted: rgb(28 42 36 / 0.75);
+  --t-accent: #cc3a16;
+  --t-accent-fg: #fff4e4;
+  --t-surface: #e2d8c3;
+  --t-line: rgb(28 42 36 / 0.22);
+}
+:root:has(.theme-fashion-salt) { background: #cc3a16; }
+:root:has(.theme-fashion-salt[data-shade="sea"]) { background: #0f4c5c; }
+:root:has(.theme-fashion-salt[data-shade="butter"]) { background: #f5d36a; }
+:root:has(.theme-fashion-salt[data-shade="chalk"]) { background: #efe7d8; }
+
+.theme-fashion-salt .font-display {
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+.salt-caps {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Arched photo frame. */
+.salt-arch {
+  border-radius: 999px 999px 0 0;
+}
+
+/* Slow-turning sun badge. */
+@keyframes salt-turn {
+  to { transform: rotate(360deg); }
+}
+.salt-turn {
+  animation: salt-turn 24s linear infinite;
+}
+
+/* Fine paper grain on the cream cards. */
+.salt-paper {
+  background-color: var(--l-paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.1 0 0 0 0 0.07 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--l-ink);
+}
+
+.salt-noscroll {
+  scrollbar-width: none;
+}
+.salt-noscroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Range input used by the planner and the wash slider. */
+.salt-range {
+  appearance: none;
+  background: transparent;
+  height: 2.75rem;
+  width: 100%;
+  cursor: pointer;
+}
+.salt-range::-webkit-slider-runnable-track {
+  height: 3px;
+  background: color-mix(in srgb, currentColor 35%, transparent);
+}
+.salt-range::-moz-range-track {
+  height: 3px;
+  background: color-mix(in srgb, currentColor 35%, transparent);
+}
+.salt-range::-webkit-slider-thumb {
+  appearance: none;
+  height: 1.75rem;
+  width: 1.75rem;
+  margin-top: -0.8rem;
+  border-radius: 999px;
+  background: var(--t-bg);
+  border: 3px solid var(--l-ink);
+  box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.5);
+}
+.salt-range::-moz-range-thumb {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 999px;
+  background: var(--t-bg);
+  border: 3px solid var(--l-ink);
+}
+.salt-range:focus-visible {
+  outline: 2px solid var(--l-ink);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .salt-turn {
+    animation: none;
+  }
+}

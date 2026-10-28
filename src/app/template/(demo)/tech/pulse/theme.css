@@ -1,0 +1,47 @@
+.theme-tech-pulse {
+  --t-bg: #0a0a08;
+  --t-fg: #efede4;
+  --t-muted: #8c897e;
+  --t-accent: #c8f04a;
+  --t-accent-fg: #10130a;
+  --t-surface: #121210;
+  --t-line: rgb(239 237 228 / 0.1);
+  --t-display: var(--font-pulse-display);
+  --t-sans: var(--font-pulse-sans);
+  --t-mono: var(--font-pulse-mono);
+  --p-panel: #141412;
+  --p-panel-2: #1b1b17;
+  --p-coral: #ff7a59;
+  --p-lime-rgb: 200 240 74;
+}
+:root:has(.theme-tech-pulse) { background: #0a0a08; }
+
+.theme-tech-pulse .font-display { font-variation-settings: "wdth" 84; letter-spacing: -0.028em; }
+.theme-tech-pulse .tnum { font-variant-numeric: tabular-nums; }
+
+/* Fine dot grid, faded out with a linear mask (no radial glow). */
+.pulse-dots {
+  background-image: radial-gradient(rgb(239 237 228 / 0.14) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, #000, transparent 85%);
+}
+/* Inner top highlight for the "glass" product panels. */
+.pulse-panel { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 30px 60px -30px rgb(0 0 0 / 0.8); }
+
+@keyframes pulse-underline { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.pulse-underline path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: pulse-underline 1.1s var(--e-studio) 0.9s forwards; }
+
+@keyframes pulse-ping { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
+.pulse-ping { animation: pulse-ping 1.8s var(--e-studio) infinite; }
+
+@keyframes pulse-flash { from { color: var(--t-accent); } to { color: inherit; } }
+.pulse-flash { animation: pulse-flash 0.9s var(--e-studio) both; }
+
+@keyframes pulse-caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.pulse-caret { animation: pulse-caret 1s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-word { opacity: 1 !important; }
+  .pulse-underline path { animation: none; stroke-dashoffset: 0; }
+  .pulse-ping, .pulse-flash, .pulse-caret { animation: none; }
+}

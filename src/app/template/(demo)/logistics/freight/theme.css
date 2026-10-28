@@ -1,0 +1,63 @@
+.theme-logistics-freight {
+  --t-bg: #07142b;
+  --t-fg: #eaf0fa;
+  --t-muted: #93a6c6;
+  --t-accent: #ff4b1f;
+  --t-accent-fg: #07142b;
+  --t-surface: #0d1f3f;
+  --t-line: rgb(234 240 250 / 0.13);
+  --t-display: var(--font-freight-display);
+  --t-sans: var(--font-freight-sans);
+  --t-mono: var(--font-freight-mono);
+}
+:root:has(.theme-logistics-freight) { background: #07142b; }
+
+.theme-logistics-freight .font-display {
+  font-variation-settings: "wdth" 92;
+  letter-spacing: -0.022em;
+}
+
+/* Route comets: dashes travel along each arc (pathLength is 100). */
+@keyframes freight-comet {
+  from { stroke-dashoffset: var(--len, 14); }
+  to { stroke-dashoffset: -100; }
+}
+@keyframes freight-ping {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes freight-draw {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes freight-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(-0.8deg); }
+}
+@keyframes freight-roll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-48px); }
+}
+@keyframes freight-fly {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -40; }
+}
+@keyframes freight-sheen {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+.freight-route { fill: none; stroke: var(--t-accent); stroke-width: 1.1; stroke-opacity: 0.28; stroke-dasharray: 100; animation: freight-draw 2.4s var(--e-studio) both; animation-delay: calc(var(--d, 0) * 1ms); }
+.freight-trail { fill: none; stroke: var(--t-accent); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 16 200; --len: 16; stroke-opacity: 0.55; animation: freight-comet var(--dur, 9s) cubic-bezier(0.45, 0.05, 0.35, 1) infinite both; animation-delay: calc(var(--d, 0) * 1ms); }
+.freight-head { fill: none; stroke: #fff; stroke-width: 5.5; stroke-linecap: round; stroke-dasharray: 0.01 200; --len: 0.01; animation: freight-comet var(--dur, 9s) cubic-bezier(0.45, 0.05, 0.35, 1) infinite both; animation-delay: calc(var(--d, 0) * 1ms); filter: drop-shadow(0 0 5px var(--t-accent)); }
+.freight-ping { transform-box: fill-box; transform-origin: center; animation: freight-ping 3s var(--e-studio) infinite; animation-delay: calc(var(--d, 0) * 1ms); }
+.freight-ship { animation: freight-bob 3.6s var(--e-studio) infinite; transform-box: fill-box; transform-origin: center; }
+.freight-road { animation: freight-roll 0.9s linear infinite; }
+.freight-contrail { stroke-dasharray: 6 8; animation: freight-fly 1.4s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .freight-route, .freight-trail, .freight-head, .freight-ping, .freight-ship, .freight-road, .freight-contrail { animation: none; }
+  .freight-route { stroke-dashoffset: 0; }
+  .freight-trail, .freight-head { stroke-dashoffset: -50; }
+  .freight-ping { opacity: 0; }
+}

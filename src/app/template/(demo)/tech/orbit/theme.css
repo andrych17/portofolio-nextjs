@@ -1,0 +1,47 @@
+.theme-tech-orbit {
+  --t-bg: #090d16;
+  --t-fg: #f8fafc;
+  --t-muted: #94a3b8;
+  --t-accent: #8b5cf6;
+  --t-accent-fg: #ffffff;
+  --t-surface: #111726;
+  --t-line: rgb(248 250 252 / 0.1);
+  --t-display: var(--font-orbit-display);
+  --t-sans: var(--font-orbit-sans);
+  --t-mono: var(--font-orbit-mono);
+
+  --color-orbit-bg: #090d16;
+  --color-orbit-fg: #f8fafc;
+  --color-orbit-surface: #111726;
+  --color-orbit-surface-hover: #172033;
+  --color-orbit-border: rgb(248 250 252 / 0.1);
+  --color-orbit-muted: #94a3b8;
+  --color-orbit-accent: #8b5cf6;
+  --color-orbit-cyan: #06b6d4;
+  --color-orbit-emerald: #10b981;
+}
+
+:root:has(.theme-tech-orbit) {
+  background: #090d16;
+}
+
+@keyframes orbit-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.orbit-glow {
+  animation: orbit-pulse 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-glow {
+    animation: none;
+  }
+}

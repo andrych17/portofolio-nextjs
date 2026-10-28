@@ -1,0 +1,24 @@
+/* Same look as andryhuang.com: near-black, one orange accent, wide Archivo, mono labels. */
+.theme-gallery {
+  --t-bg: #0c0c0c;
+  --t-fg: #f5f3ee;
+  --t-muted: rgb(245 243 238 / 0.62);
+  --t-accent: #ff4d00;
+  --t-accent-fg: #0c0c0c;
+  --t-surface: #151515;
+  --t-line: rgb(255 255 255 / 0.09);
+  --t-display: var(--font-archivo);
+  --t-sans: var(--font-geist);
+  --t-mono: var(--font-geist-mono);
+  background-color: var(--t-bg);
+  background-image:
+    linear-gradient(var(--t-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--t-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: -1px -1px;
+}
+.theme-gallery .wide { font-stretch: 118%; font-variation-settings: "wdth" 118; }
+:root:has(.theme-gallery) { background: #0c0c0c; }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+html { scroll-padding-top: 4.5rem; }

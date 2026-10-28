@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { getYearsOfExperience } from "@/utils/experience";
 import { gsap, reducedMotion } from "@/lib/v2/motion";
 import { useIntroReady } from "@/lib/v2/intro";
+import { TEMPLATES } from "@/lib/v2/routes";
 import Cta from "./Cta";
 import Pipeline from "./Pipeline";
 import { Words } from "./Words";
@@ -80,6 +81,9 @@ export default function Hero() {
           <div className="v2-hero-ctas">
             <Cta href="#work" variant="solid">
               {id ? "Lihat karya" : "See the work"}
+            </Cta>
+            <Cta href={TEMPLATES} variant="accent">
+              {id ? "Sample Template" : "Sample Templates"}
             </Cta>
             <Cta href="/Andry_Huang_CV.pdf" external variant="ghost">
               {id ? "Unduh CV" : "Download CV"}

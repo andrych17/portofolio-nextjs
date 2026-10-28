@@ -1,0 +1,37 @@
+.theme-health-dental {
+  --t-bg: #f8fafb;
+  --t-fg: #111822;
+  --t-muted: #526070;
+  --t-accent: #167d8a;
+  --t-accent-fg: #ffffff;
+  --t-surface: #edf2f6;
+  --t-line: rgb(17 24 34 / 0.1);
+  --t-display: var(--font-dental-display);
+  --t-sans: var(--font-dental-sans);
+  --t-mono: ui-monospace, monospace;
+}
+
+:root:has(.theme-health-dental) {
+  background: #f8fafb;
+}
+
+@keyframes dental-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+.dental-pulse {
+  animation: dental-pulse 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dental-pulse {
+    animation: none;
+  }
+}

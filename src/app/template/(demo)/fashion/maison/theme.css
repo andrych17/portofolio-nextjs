@@ -1,0 +1,80 @@
+.theme-fashion-maison {
+  --t-bg: #f3eee6;
+  --t-fg: #17130f;
+  --t-muted: #6b645a;
+  --t-accent: #6b1d26;
+  --t-accent-fg: #f3eee6;
+  --t-surface: #eae2d5;
+  --t-line: rgb(23 19 15 / 0.14);
+  --t-display: var(--font-maison-display);
+  --t-sans: var(--font-maison-sans);
+  --t-mono: var(--font-maison-sans);
+}
+:root:has(.theme-fashion-maison) {
+  background: #f3eee6;
+}
+
+.theme-fashion-maison .font-display {
+  font-weight: 400;
+  font-feature-settings: "liga", "dlig", "kern";
+}
+.theme-fashion-maison ::selection {
+  background: #6b1d26;
+  color: #f3eee6;
+}
+
+/* Small-caps label used for every eyebrow, number and meta line. */
+.maison-caps {
+  font-family: var(--t-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* Hairline that draws itself in from the left when its parent reveals. */
+@keyframes maison-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.maison-line {
+  transform-origin: left;
+  animation: maison-line 1.6s var(--e-studio) 0.6s both;
+}
+
+@keyframes maison-cue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.maison-cue {
+  animation: maison-cue 2.6s var(--e-studio) infinite;
+}
+
+/* Slow settle on the hero frame so the picture feels printed, not pasted. */
+@keyframes maison-frame {
+  from { opacity: 0; transform: translate(0, 0); }
+  to { opacity: 1; transform: translate(14px, 14px); }
+}
+.maison-frame {
+  animation: maison-frame 1.8s var(--e-studio) 0.9s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maison-line,
+  .maison-cue,
+  .maison-frame {
+    animation: none;
+  }
+  .maison-frame {
+    transform: translate(14px, 14px);
+  }
+  .maison-word {
+    opacity: 1 !important;
+  }
+  .maison-draw {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

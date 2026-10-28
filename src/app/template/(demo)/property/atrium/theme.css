@@ -1,0 +1,118 @@
+.theme-property-atrium {
+  --t-bg: #e8ebea;
+  --t-fg: #0b1319;
+  --t-muted: #566068;
+  --t-accent: #ff4a1c;
+  --t-accent-fg: #0b1319;
+  --t-surface: #dbe0df;
+  --t-line: rgb(11 19 25 / 0.16);
+  --t-display: var(--font-atrium-display);
+  --t-sans: var(--font-atrium-sans);
+  --t-mono: var(--font-atrium-mono);
+  --a-ink: #0b1319;
+  --a-ink-2: #15222c;
+  /* Accent as text on the light ground. #ff4a1c alone only reaches 2.8:1 there. */
+  --a-text: #c2300a;
+}
+:root:has(.theme-property-atrium) {
+  background: #e8ebea;
+}
+
+.theme-property-atrium .font-display {
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 92;
+}
+.theme-property-atrium .font-display b,
+.theme-property-atrium .font-display strong {
+  font-weight: 600;
+}
+
+/* Hairline floor rules: a faint 12-column structure behind the hero and dark bands. */
+.atrium-cols {
+  background-image: linear-gradient(90deg, rgb(11 19 25 / 0.07) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+}
+.atrium-cols-dark {
+  background-image: linear-gradient(90deg, rgb(255 255 255 / 0.07) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+}
+
+/* Lift display: the number column steps up one floor at a time and stops on level 14. */
+@keyframes atrium-lift {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-13 * 1em)); }
+}
+.atrium-lift {
+  height: 1em;
+  overflow: hidden;
+  line-height: 1;
+}
+.atrium-lift > span {
+  display: block;
+  animation: atrium-lift 3.1s steps(13, jump-end) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+.atrium-lift > span > b {
+  display: block;
+  height: 1em;
+  font-weight: inherit;
+}
+
+@keyframes atrium-grow-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+.atrium-grow-y {
+  transform-origin: bottom;
+  animation: atrium-grow-y 1.8s var(--e-studio) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+@keyframes atrium-grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.atrium-grow-x {
+  transform-origin: left;
+  animation: atrium-grow-x 1.6s var(--e-studio) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+.atrium-hover-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.6s var(--e-studio);
+}
+.atrium-hover-line:hover,
+.atrium-hover-line:focus-visible {
+  background-size: 100% 1px;
+}
+
+.atrium-noscroll {
+  scrollbar-width: none;
+}
+.atrium-noscroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atrium-lift > span {
+    animation: none;
+    transform: translateY(calc(-13 * 1em));
+  }
+  .atrium-grow-y,
+  .atrium-grow-x {
+    animation: none;
+  }
+  .atrium-hover-line {
+    transition: none;
+  }
+}
+
+/* 24 hairline floors down a single edge. */
+.atrium-ruler {
+  background-image: repeating-linear-gradient(to bottom, rgb(11 19 25 / 0.55) 0 1px, transparent 1px calc(100% / 24));
+}

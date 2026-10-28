@@ -1,0 +1,203 @@
+import type { Studio } from "./types";
+
+export const kinetic: Studio = {
+  key: "kinetic",
+  name: "Your Brand",
+  tagline: "Loud brands, fast websites",
+  description:
+    "Your Brand is a Melbourne brand and web studio for consumer brands: bold identities, animated websites, social content and launch campaigns.",
+  intro:
+    "Your Brand is a brand and web studio in Melbourne for consumer brands that would rather be remembered than be safe. Strategy, identity, websites and the content that keeps them moving.",
+  manifesto:
+    "Boring is the most expensive choice a brand can make. Every scroll past is money spent on nothing, so we make brands people stop for, then build websites fast enough that they stay.",
+  city: "Melbourne",
+  country: "Australia",
+  countryCode: "AU",
+  street: "41 Easey Street, Collingwood",
+  postalCode: "VIC 3066",
+  timeZone: "Australia/Melbourne",
+  email: "hello@yourbrand.com",
+  phone: "+61 3 7010 4321",
+  founded: 2019,
+  hours: "Mon to Thu, 9:00 to 17:30",
+  services: [
+    {
+      title: "Brand systems",
+      body: "Logos are the easy part. We build colour, type, motion and voice rules that survive a hundred social posts.",
+      deliverables: ["Strategy sprint", "Identity", "Motion rules", "Voice guide"],
+    },
+    {
+      title: "Websites that move",
+      body: "Animated Next.js sites that still score 90+ on Lighthouse, with a CMS your marketing team will actually use.",
+      deliverables: ["Web design", "Next.js build", "CMS", "Performance budget"],
+    },
+    {
+      title: "Social and motion",
+      body: "Launch films, stickers, templates and short-form video kits your team can remix every week.",
+      deliverables: ["Launch film", "Template kit", "Sticker packs", "Reels"],
+    },
+    {
+      title: "Campaigns",
+      body: "Product drops and launches, from the first idea to the last paid media asset.",
+      deliverables: ["Campaign idea", "Key visuals", "Landing pages", "Paid assets"],
+    },
+  ],
+  projects: [
+    {
+      slug: "redcup-roasters",
+      title: "Redcup Roasters",
+      category: "Brand",
+      year: 2026,
+      summary: "A coffee brand and bag system loud enough to win a crowded supermarket shelf.",
+      result: "Stocked in 120 stores",
+      image: "/template/images/kinetic/coffee.jpg",
+      tags: ["Identity", "Packaging", "Social"],
+    },
+    {
+      slug: "night-shift-festival",
+      title: "Night Shift Festival",
+      category: "Campaign",
+      year: 2025,
+      summary: "Identity, ticketing site and 300 social assets for a three-day music festival.",
+      result: "Sold out six weeks early",
+      image: "/template/images/kinetic/concert.jpg",
+      tags: ["Campaign", "Website", "Motion"],
+    },
+    {
+      slug: "garage-days",
+      title: "Garage Days",
+      category: "Website",
+      year: 2025,
+      summary: "A booking site for a classic car restoration workshop in Brunswick.",
+      result: "Quote requests up 3x",
+      image: "/template/images/kinetic/garage.jpg",
+      tags: ["Website", "Booking", "Photography"],
+    },
+    {
+      slug: "petal-skin",
+      title: "Petal Skin",
+      category: "Brand",
+      year: 2024,
+      summary: "Packaging and launch site for a plant-based skincare line.",
+      result: "AU$1.2M in first-year sales",
+      image: "/template/images/kinetic/blossom.jpg",
+      tags: ["Identity", "Packaging", "E-commerce"],
+    },
+    {
+      slug: "roam-vans",
+      title: "Roam Vans",
+      category: "Website",
+      year: 2024,
+      summary: "Campervan rentals with live availability and a three-step booking flow.",
+      result: "Booking time cut from 9 to 3 minutes",
+      image: "/template/images/kinetic/van.jpg",
+      tags: ["Website", "Booking", "UX"],
+    },
+    {
+      slug: "kick-theory",
+      title: "Kick Theory",
+      category: "Campaign",
+      year: 2023,
+      summary: "A drop campaign and waitlist for a vintage shoe resale shop.",
+      result: "18,000 signups before launch",
+      image: "/template/images/kinetic/shoes.jpg",
+      tags: ["Campaign", "Landing page", "Social"],
+    },
+  ],
+  stats: [
+    { value: 7, label: "Years of loud" },
+    { value: 120, suffix: "+", label: "Brands launched" },
+    { value: 93, label: "Average Lighthouse score" },
+    { value: 14, label: "Humans, plus one dog" },
+  ],
+  clients: ["Redcup", "Night Shift", "Garage Days", "Petal Skin", "Roam", "Kick Theory", "Harbour Hop", "Bun Bun Bakery"],
+  testimonials: [
+    {
+      quote: "Your Brand made our coffee bags the loudest thing on the shelf. Three cafés asked to stock us within a month.",
+      name: "Mia Tran",
+      role: "Founder, Redcup Roasters",
+    },
+    {
+      quote: "The festival site took 40,000 people at ticket launch and didn't blink.",
+      name: "Josh Kelly",
+      role: "Marketing Lead, Night Shift Festival",
+    },
+    {
+      quote: "Our booking flow went from a phone call to three taps. Weekends now sell out on Tuesday.",
+      name: "Hannah Ross",
+      role: "Co-founder, Roam Vans",
+    },
+  ],
+  team: [
+    { name: "Priya Nair", role: "Founder, Creative Director", fact: "Has named 40 brands and one very loud parrot." },
+    { name: "Oli Hart", role: "Design Director", fact: "Owns more fonts than socks. By a lot." },
+    { name: "Zoe Park", role: "Motion Lead", fact: "Animates everything, including her grocery lists." },
+    { name: "Marcus Lee", role: "Tech Lead", fact: "Will not ship a page that scores under 90." },
+    { name: "Ruby Collins", role: "Strategist", fact: "Asks why five times before anyone opens Figma." },
+    { name: "Biscuit", role: "Head of Morale", fact: "Good boy. Attends every kickoff, approves every snack." },
+  ],
+  values: [
+    { title: "Bold is a strategy", body: "Being noticed is the first job of a brand. We design to be remembered, then refine." },
+    { title: "Fast is a feature", body: "Every animation earns its bytes. If it slows the page, it goes." },
+    { title: "Fun to work with", body: "Clear plans, honest timelines and a studio you actually want to visit." },
+  ],
+  process: [
+    {
+      title: "Scoop",
+      duration: "1 week",
+      body: "A workshop to find what is actually different about you, and the one sentence everything hangs on.",
+      outputs: ["Workshop", "Audience map", "Brand sentence"],
+    },
+    {
+      title: "Mix",
+      duration: "2 weeks",
+      body: "Big ideas, fast. We test directions on real posts, packs and pages before falling in love with any of them.",
+      outputs: ["Three directions", "Real-world tests", "Chosen route"],
+    },
+    {
+      title: "Build",
+      duration: "3 to 6 weeks",
+      body: "Identity, website and content kit built together, so launch day looks like one brand.",
+      outputs: ["Identity system", "Next.js website", "Content kit"],
+    },
+    {
+      title: "Serve",
+      duration: "Launch month",
+      body: "We launch, then spend a month tweaking based on what real people click, share and buy.",
+      outputs: ["Launch", "Analytics", "Tweaks and handover"],
+    },
+  ],
+  faqs: [
+    {
+      q: "How much does Your Brand charge for a brand and website?",
+      a: "Brand projects start at AU$15,000 and websites at AU$20,000. Most brand-plus-website projects land between AU$35,000 and AU$70,000.",
+    },
+    {
+      q: "Will an animated website be slow?",
+      a: "No. We animate transforms and opacity, lazy-load media and test every page on a mid-range phone. Our sites average 93 on Lighthouse.",
+    },
+    {
+      q: "Do you work with startups?",
+      a: "Yes, if you have a product and the funding to launch it. Early-stage founders get a shorter, fixed-scope sprint.",
+    },
+    {
+      q: "Can you make social content for us every month?",
+      a: "Yes. After launch we offer monthly content retainers: templates, short videos and campaign assets.",
+    },
+    {
+      q: "Where is Your Brand based?",
+      a: "Collingwood, Melbourne. We work with brands across Australia, New Zealand and the United States.",
+    },
+  ],
+  milestones: [
+    { year: "2019", text: "Priya starts Your Brand above a gelato shop." },
+    { year: "2021", text: "Night Shift Festival, our first sold-out campaign." },
+    { year: "2023", text: "Biscuit joins. Morale improves immediately." },
+    { year: "2026", text: "Fourteen humans, 120 brands and a much bigger fridge." },
+  ],
+  socials: [
+    { label: "Instagram", href: "https://www.instagram.com/" },
+    { label: "TikTok", href: "https://www.tiktok.com/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+  ],
+};

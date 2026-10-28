@@ -1,0 +1,206 @@
+import type { Studio } from "./types";
+
+export const noir: Studio = {
+  key: "noir",
+  name: "Your Brand",
+  tagline: "Design and engineering studio",
+  description:
+    "Your Brand is an independent design and engineering studio in Lisbon building brand identities, websites and digital products for ambitious companies.",
+  intro:
+    "Your Brand is an independent studio in Lisbon. Eleven designers and engineers who take on a few projects a year and stay with them from the first sketch to the last line of code.",
+  manifesto:
+    "We think a website should feel as considered as the product it sells. So the people who design it also build it, nobody hands work over a wall, and every decision has a reason you can read in the result.",
+  city: "Lisbon",
+  country: "Portugal",
+  countryCode: "PT",
+  street: "Rua das Flores 28",
+  postalCode: "1200-195",
+  timeZone: "Europe/Lisbon",
+  email: "hello@yourbrand.com",
+  phone: "+351 210 000 128",
+  founded: 2014,
+  hours: "Mon to Fri, 09:30 to 18:30",
+  services: [
+    {
+      title: "Brand identity",
+      body: "Naming, logo systems, type and the rules that keep them consistent once we have left the room.",
+      deliverables: ["Strategy workshop", "Identity system", "Brand guidelines", "Launch assets"],
+    },
+    {
+      title: "Websites",
+      body: "Marketing sites and online stores in Next.js, with a CMS your team can actually use.",
+      deliverables: ["UX and wireframes", "Art direction", "Next.js build", "Headless CMS"],
+    },
+    {
+      title: "Digital product",
+      body: "Dashboards, apps and internal tools, designed around the people who use them every day.",
+      deliverables: ["User research", "Prototyping", "Design systems", "Front-end build"],
+    },
+    {
+      title: "Motion",
+      body: "Interaction design, launch films and the small animations that make an interface feel considered.",
+      deliverables: ["Motion language", "Launch films", "Micro-interactions", "3D"],
+    },
+  ],
+  projects: [
+    {
+      slug: "halden-audio",
+      title: "Halden Audio",
+      category: "E-commerce",
+      year: 2026,
+      summary: "A direct-to-consumer store for a Norwegian headphone maker, built around listening rather than spec sheets.",
+      result: "+38% conversion in the first quarter",
+      image: "/template/images/noir/turntable.jpg",
+      tags: ["Brand", "Headless Shopify", "Next.js"],
+    },
+    {
+      slug: "northline-transit",
+      title: "Northline Transit",
+      category: "Product",
+      year: 2025,
+      summary: "Real-time wayfinding for a regional rail network used by 200,000 riders a day.",
+      result: "Support calls down 41%",
+      image: "/template/images/noir/night.jpg",
+      tags: ["Product design", "Design system", "React"],
+    },
+    {
+      slug: "monochrome-gallery",
+      title: "Monochrome Gallery",
+      category: "Website",
+      year: 2025,
+      summary: "Exhibition site and ticketing for a museum of black and white photography.",
+      result: "Online ticket sales tripled",
+      image: "/template/images/noir/stairs.jpg",
+      tags: ["Website", "Ticketing", "CMS"],
+    },
+    {
+      slug: "kade-architects",
+      title: "Kade Architects",
+      category: "Brand",
+      year: 2024,
+      summary: "Identity and portfolio for a practice that designs libraries, schools and stations.",
+      result: "Shortlisted for two national competitions",
+      image: "/template/images/noir/corridor.jpg",
+      tags: ["Identity", "Portfolio", "Print"],
+    },
+    {
+      slug: "vela-camera",
+      title: "Vela Camera",
+      category: "Launch",
+      year: 2024,
+      summary: "Launch campaign and pre-order site for the revival of a 1970s film camera.",
+      result: "4,200 pre-orders in 72 hours",
+      image: "/template/images/noir/lens.jpg",
+      tags: ["Campaign", "E-commerce", "Film"],
+    },
+    {
+      slug: "strata-records",
+      title: "Strata Records",
+      category: "Brand",
+      year: 2023,
+      summary: "Identity, sleeves and a web shop for an independent techno label.",
+      result: "First pressing sold out in a week",
+      image: "/template/images/noir/mixer.jpg",
+      tags: ["Identity", "Packaging", "Shop"],
+    },
+  ],
+  stats: [
+    { value: 12, label: "Years independent" },
+    { value: 140, suffix: "+", label: "Projects shipped" },
+    { value: 11, label: "Designers and engineers" },
+    { value: 96, suffix: "%", label: "Clients who come back" },
+  ],
+  clients: ["Halden", "Northline", "Vela", "Monochrome", "Kade", "Strata", "Lumen Bank", "Ostra", "Parallel", "Tessel"],
+  testimonials: [
+    {
+      quote:
+        "They asked better questions in the first week than our last agency did in a year. The site launched on time and our team updates it without calling anyone.",
+      name: "Ingrid Solberg",
+      role: "Head of Digital, Halden Audio",
+    },
+    {
+      quote: "Your Brand treated a rail timetable like a design problem worth solving. Riders noticed within days.",
+      name: "Tomás Reis",
+      role: "Product Lead, Northline Transit",
+    },
+  ],
+  team: [
+    { name: "Marta Vieira", role: "Founder, Creative Director" },
+    { name: "Rui Antunes", role: "Technical Director" },
+    { name: "Leah Brandt", role: "Design Lead" },
+    { name: "Kenji Mori", role: "Senior Engineer" },
+    { name: "Inês Duarte", role: "Motion Designer" },
+    { name: "Sam Okafor", role: "Producer" },
+  ],
+  values: [
+    { title: "Senior people only", body: "The people in the pitch are the people doing the work. No juniors learning on your budget." },
+    { title: "Designers who ship", body: "Our designers write front-end code and our engineers sit in critiques. The handover problem never starts." },
+    { title: "Fewer, better projects", body: "We run four projects at a time, so each one gets a team that knows every detail of it." },
+  ],
+  process: [
+    {
+      title: "Discover",
+      duration: "1 to 2 weeks",
+      body: "Interviews, analytics and a hard look at what you already have. We leave with a written brief that both sides sign.",
+      outputs: ["Stakeholder interviews", "Content and analytics audit", "Project brief"],
+    },
+    {
+      title: "Define",
+      duration: "1 to 2 weeks",
+      body: "Sitemap, content plan and wireframes. Structural decisions happen here, while they are still cheap to change.",
+      outputs: ["Sitemap", "Wireframes", "Content plan"],
+    },
+    {
+      title: "Design",
+      duration: "2 to 4 weeks",
+      body: "Art direction first, then every page and state in full, reviewed each week as a working prototype.",
+      outputs: ["Art direction", "UI design", "Clickable prototype"],
+    },
+    {
+      title: "Build",
+      duration: "3 to 6 weeks",
+      body: "Next.js, a headless CMS and automated checks for speed, accessibility and SEO before anything ships.",
+      outputs: ["Development", "CMS setup", "QA and accessibility"],
+    },
+    {
+      title: "Launch and care",
+      duration: "Ongoing",
+      body: "We launch, watch the numbers for 30 days and fix what they show. Monthly retainers are available after that.",
+      outputs: ["Launch", "Analytics review", "Support retainer"],
+    },
+  ],
+  faqs: [
+    {
+      q: "How much does a website with Your Brand cost?",
+      a: "Most marketing websites land between €18,000 and €60,000. Brand identities start at €12,000. We send a fixed quote after the discovery call, so the number does not move once we start.",
+    },
+    {
+      q: "How long does a website project take?",
+      a: "A five-page marketing site takes 6 to 8 weeks from kickoff to launch. Larger sites and digital products take 3 to 6 months.",
+    },
+    {
+      q: "Do you work with clients outside Portugal?",
+      a: "Yes. About two thirds of our clients are in other countries. We work in English and overlap with European and US East Coast hours.",
+    },
+    {
+      q: "What technology do you build websites with?",
+      a: "Next.js and React on the front end, with a headless CMS such as Sanity or Payload. Sites are hosted on Vercel or on your own infrastructure.",
+    },
+    {
+      q: "Do you offer support after launch?",
+      a: "Every project includes 30 days of fixes after launch. After that, most clients keep us on a monthly retainer for updates and new pages.",
+    },
+  ],
+  milestones: [
+    { year: "2014", text: "Founded by Marta Vieira in a shared studio in Cais do Sodré." },
+    { year: "2017", text: "First engineer joins. We stop handing designs to other developers." },
+    { year: "2020", text: "Moved to Rua das Flores. Team of seven." },
+    { year: "2023", text: "Northline Transit, our first product used by 200,000 people a day." },
+    { year: "2026", text: "Eleven people, 140 projects, still one room." },
+  ],
+  socials: [
+    { label: "Instagram", href: "https://www.instagram.com/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+    { label: "Dribbble", href: "https://dribbble.com/" },
+  ],
+};

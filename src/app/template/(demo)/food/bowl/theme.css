@@ -1,0 +1,35 @@
+.theme-food-bowl {
+  --t-bg: #fbf9f4;
+  --t-fg: #17231a;
+  --t-muted: #5c6d60;
+  --t-accent: #d95c26;
+  --t-accent-fg: #ffffff;
+  --t-surface: #f2eee4;
+  --t-line: rgb(23 35 26 / 0.12);
+  --t-display: var(--font-bowl-display);
+  --t-sans: var(--font-bowl-sans);
+  --t-mono: ui-monospace, monospace;
+}
+
+:root:has(.theme-food-bowl) {
+  background: #fbf9f4;
+}
+
+@keyframes bowl-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.bowl-float {
+  animation: bowl-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bowl-float {
+    animation: none;
+  }
+}

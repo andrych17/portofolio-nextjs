@@ -1,0 +1,76 @@
+.theme-health-clinic {
+  --t-bg: #f6f4ed;
+  --t-fg: #0e3535;
+  --t-muted: #52706d;
+  --t-accent: #f2694b;
+  --t-accent-fg: #0e3535;
+  --t-surface: #ffffff;
+  --t-line: rgb(14 53 53 / 0.12);
+  --t-display: var(--font-clinic-display);
+  --t-sans: var(--font-clinic-sans);
+  --t-mono: var(--font-clinic-sans);
+  --c-deep: #0e3535;
+  --c-teal: #1b6361;
+  --c-mint: #dcebe4;
+  --c-coral-ink: #c2432a;
+  --c-coral-soft: #fde3da;
+  --c-cream: #fffdf8;
+}
+:root:has(.theme-health-clinic) { background: #f6f4ed; }
+
+.theme-health-clinic .font-display {
+  font-variation-settings: "wdth" 92, "opsz" 72;
+  letter-spacing: -0.035em;
+}
+
+/* ECG line drawn once on load, then a soft pulse travels along it. CSS only so it plays before hydration. */
+@keyframes clinic-ecg-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes clinic-ecg-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.clinic-ecg path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: clinic-ecg-draw 2.2s cubic-bezier(0.32, 0.72, 0, 1) 0.7s forwards, clinic-ecg-pulse 3.2s ease-in-out 3s infinite;
+}
+
+@keyframes clinic-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.clinic-float { animation: clinic-float 6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+.clinic-float-b { animation-delay: -3s; }
+
+@keyframes clinic-ring {
+  from { transform: scale(0.8); opacity: 0.6; }
+  to { transform: scale(2.2); opacity: 0; }
+}
+.clinic-ring::before,
+.clinic-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: clinic-ring 2.4s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+.clinic-ring::after { animation-delay: 1.2s; }
+
+.clinic-scroll { scrollbar-width: none; }
+.clinic-scroll::-webkit-scrollbar { display: none; }
+
+@keyframes clinic-panel-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.clinic-panel { animation: clinic-panel-in 0.7s cubic-bezier(0.32, 0.72, 0, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .clinic-panel { animation: none; }
+  .clinic-ecg path { animation: none; stroke-dashoffset: 0; }
+  .clinic-float, .clinic-ring::before, .clinic-ring::after { animation: none; }
+}

@@ -1,0 +1,178 @@
+// Photos: none. Every product screen on this template is drawn in HTML, CSS and SVG.
+import type { Faq } from "@/content/types";
+
+export const pulse = {
+  key: "tech/pulse",
+  path: "/tech/pulse",
+  title: "Your Brand · Product analytics for teams that ship fast",
+  description:
+    "Your Brand is a product analytics platform that shows how each release performs within minutes, with funnels, retention and alerts and no tracking plan.",
+  answer:
+    "Your Brand is product analytics for software teams that release often: add one snippet and see funnels, retention and live events for every new feature within a minute, with no tracking plan and no data engineer.",
+  email: "hello@yourbrand.com",
+  phone: "+00 000 000 000",
+  street: "88 Foundry Lane",
+  city: "Port Alder",
+  postalCode: "00000",
+  country: "United States",
+  countryCode: "US",
+  hours: "Mon to Fri, 09:00 to 18:00 UTC",
+  nav: [
+    { label: "Product", href: "#product" },
+    { label: "Customers", href: "#customers" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "FAQ", href: "#faq" },
+  ],
+  clients: ["Brightloom", "Tidewell", "Quillfold", "Mosswick", "Halvorsen", "Parallax Ten", "Oddsmith", "Fieldnote", "Kiln Works", "Ostrava Labs"],
+  manifesto:
+    "Most analytics tools answer last quarter's questions. Yours should answer the one from this morning's standup: did the thing we shipped yesterday work, and for whom?",
+  features: [
+    {
+      title: "Funnels that rebuild themselves",
+      body: "Name a start and an end. Your Brand finds the steps in between from real behaviour, so a redesign never breaks your report.",
+    },
+    {
+      title: "Retention you can read in a glance",
+      body: "Every weekly cohort in one grid. Hover a cell to see who came back, who didn't, and what they did instead.",
+    },
+    {
+      title: "Alerts that don't cry wolf",
+      body: "Thresholds learn the weekly rhythm of your product. You hear about a real drop, not about Sunday.",
+    },
+    {
+      title: "Cohorts and flags, one place",
+      body: "Save any group of users and roll a feature out to them. Watch the funnel move before you go to 100 percent.",
+    },
+  ],
+  funnel: [
+    { label: "Visited pricing", pct: 100 },
+    { label: "Started signup", pct: 62 },
+    { label: "Activated", pct: 41 },
+    { label: "Paid", pct: 11 },
+  ],
+  alerts: [
+    { title: "Checkout errors up 3.1x", meta: "payments · 2 min ago", tone: "bad" },
+    { title: "Signup to activation +4.2 pts", meta: "onboarding v3 · 14 min ago", tone: "good" },
+    { title: "Mobile p95 load slower than 2 s", meta: "web vitals · 41 min ago", tone: "warn" },
+    { title: "Invite flow completion back to normal", meta: "teams · 1 h ago", tone: "good" },
+  ],
+  flags: [
+    { name: "new-onboarding", note: "Checklist after first login", rollout: 25, on: true },
+    { name: "checkout-v2", note: "One-page checkout", rollout: 60, on: true },
+    { name: "ai-summaries", note: "Weekly digest by email", rollout: 5, on: false },
+  ],
+  commands: [
+    { group: "Jump to", label: "Funnel: checkout completion", keys: "funnel checkout", note: "Last 7 days, 4 steps, 11.0% end to end" },
+    { group: "Jump to", label: "Retention: weekly cohorts", keys: "retention cohort weekly", note: "Week 4 retention is 38%, up 2 points" },
+    { group: "Jump to", label: "Live events", keys: "live events stream", note: "1,284 users online, 312 events per second" },
+    { group: "Create", label: "New alert from this chart", keys: "alert new create", note: "Notify #growth when the metric moves 15%" },
+    { group: "Create", label: "New cohort: power users", keys: "cohort new create power users", note: "Used the product on 4 of the last 7 days" },
+    { group: "Ask", label: "What changed after v2.14?", keys: "what changed release v2.14", note: "Activation up 4.2 pts, mobile load slower" },
+    { group: "Ask", label: "Who dropped off at billing?", keys: "who dropped billing churn", note: "62% were on mobile Safari, 38% on trial day 13" },
+  ],
+  palettePhrases: ["funnel checkout", "alert", "what changed"],
+  cases: [
+    {
+      name: "Brightloom",
+      kind: "Online shop, 90 people",
+      metric: 18,
+      prefix: "+",
+      suffix: "%",
+      label: "checkout conversion in nine days",
+      quote: "We shipped the one-page checkout on a Tuesday and had the answer by lunch. We kept it, and we knew which devices to fix first.",
+      who: "Maren, head of growth",
+      series: [18, 20, 19, 22, 21, 23, 22, 38, 44, 47, 49, 52],
+    },
+    {
+      name: "Tidewell",
+      kind: "Payroll software, 40 people",
+      metric: 11,
+      suffix: " min",
+      label: "from question to answer, down from three days",
+      quote: "Support used to file a ticket to get a number. Now they press command K and ask. The analyst got her Fridays back.",
+      who: "Dov, product lead",
+      series: [60, 58, 61, 57, 59, 40, 31, 22, 17, 14, 12, 11],
+    },
+    {
+      name: "Quillfold",
+      kind: "Writing app, 22 people",
+      metric: 40,
+      suffix: "%",
+      label: "onboarding drop traced to one bad redirect",
+      quote: "A single redirect was eating four in ten new signups. Nobody had a dashboard that could have shown it. Your Brand showed it in the first hour.",
+      who: "Ines, engineering manager",
+      series: [48, 47, 46, 45, 47, 46, 24, 26, 25, 41, 47, 49],
+    },
+  ],
+  process: [
+    {
+      title: "Paste one snippet",
+      body: "Add a single script tag or the SDK for your stack. Your Brand records pageviews, clicks and form events on its own, so day one already has data.",
+    },
+    {
+      title: "Ship the way you always do",
+      body: "Releases are detected from your deploy webhook. Each one gets a marker on every chart, so cause and effect sit side by side.",
+    },
+    {
+      title: "Ask in plain words",
+      body: "Press command K and type the question. Your Brand builds the funnel, the cohort or the comparison and gives you a link to share.",
+    },
+  ],
+  stats: [
+    { value: 4200, suffix: "+", label: "product teams" },
+    { value: 38, suffix: " s", label: "median time from deploy to first chart" },
+    { value: 2400, suffix: " M", label: "events processed every month" },
+    { value: 99, suffix: "%", label: "of queries answered in under two seconds" },
+  ],
+  plans: [
+    {
+      name: "Starter",
+      blurb: "For a side project or a first launch.",
+      monthly: 0,
+      yearly: 0,
+      cta: "Start free",
+      features: ["1 million events a month", "1 project, 3 seats", "Funnels and live events", "30 days of history"],
+    },
+    {
+      name: "Team",
+      blurb: "For a product team shipping every week.",
+      monthly: 49,
+      yearly: 39,
+      cta: "Start 14-day trial",
+      featured: true,
+      features: ["25 million events a month", "Unlimited projects and seats", "Retention, cohorts and flags", "Alerts to Slack and email", "13 months of history"],
+    },
+    {
+      name: "Scale",
+      blurb: "For companies with more than one product.",
+      monthly: 199,
+      yearly: 159,
+      cta: "Talk to us",
+      features: ["500 million events a month", "SSO and audit log", "Warehouse export every hour", "Dedicated support channel", "Unlimited history"],
+    },
+  ],
+  testimonials: [
+    { quote: "It is the first analytics tool our designers open without being asked.", name: "Lena", role: "Design lead, Mosswick" },
+    { quote: "We stopped arguing about whose dashboard was right. There is only one, and it updates while we talk.", name: "Tomas", role: "COO, Halvorsen" },
+    { quote: "Setup took twenty minutes, most of which was finding the deploy webhook.", name: "Aiyana", role: "Staff engineer, Parallax Ten" },
+    { quote: "The alert caught a broken coupon code at 7 a.m. It would have cost us a weekend.", name: "Gus", role: "Head of ecommerce, Oddsmith" },
+    { quote: "I ask it questions the way I used to ask the data team. The data team now builds new things.", name: "Priya", role: "VP product, Fieldnote" },
+    { quote: "Pricing is honest. We know the bill before we send the events.", name: "Jonas", role: "CTO, Kiln Works" },
+  ],
+  faqs: [
+    { q: "Do I need a tracking plan before I start?", a: "No. Your Brand records pageviews, clicks, form submits and errors automatically from the first minute. You can name custom events later, and any event you add shows its full history from the day the snippet went live." },
+    { q: "How fast does data show up?", a: "The median event is on a chart 38 seconds after it happens. Heavy queries on large date ranges can take a couple of seconds, and they stream in so you can read the first rows while the rest load." },
+    { q: "Where is the data stored, and who owns it?", a: "Your events are stored in the region you pick at signup, in the United States or the EU. You own them, you can export them to your warehouse every hour, and you can delete a user and all of their events with one API call." },
+    { q: "Does it work with a mobile app?", a: "Yes. There are SDKs for iOS, Android, React Native and Flutter. Mobile and web users are stitched into one profile once they sign in, so a funnel can start on a phone and finish on a laptop." },
+    { q: "What counts as an event on the pricing page?", a: "Anything the SDK sends: a pageview, a click, a custom event. Replays and heatmaps do not count. If you go over your plan we send a warning first and never cut off collection mid-month." },
+    { q: "Can I switch from another analytics tool?", a: "Yes. The importer reads exports from the common analytics tools and rebuilds your saved funnels and cohorts. Most teams are running both side by side within a day and switch over after a week." },
+  ] satisfies Faq[],
+  interests: ["Book a demo", "Pricing question", "Migration help"],
+  sizes: ["1 to 10", "11 to 50", "51 to 250", "250+"],
+  socials: [
+    { label: "X", href: "#" },
+    { label: "GitHub", href: "#" },
+    { label: "LinkedIn", href: "#" },
+    { label: "Status", href: "#" },
+  ],
+};

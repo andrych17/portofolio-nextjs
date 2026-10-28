@@ -2,7 +2,7 @@ import { CAREER } from "@/components/Career";
 import { certifications } from "@/components/Certifications";
 import { faqItems } from "@/components/FAQ";
 import { projects } from "@/components/Projects";
-import { ARCHIVE } from "@/lib/v2/routes";
+import { ARCHIVE, TEMPLATES } from "@/lib/v2/routes";
 import { FEATURED } from "./featured";
 
 type Text = { en: string; id: string };
@@ -25,6 +25,7 @@ export const SECTIONS: SectionLink[] = [
   { section: "faq", no: "05", label: { en: "FAQ", id: "FAQ" }, hint: { en: `${faqItems.length} answers`, id: `${faqItems.length} jawaban` } },
   { section: "contact", no: "06", label: { en: "Contact", id: "Kontak" }, hint: { en: "Email · WhatsApp · CV", id: "Email · WhatsApp · CV" } },
   { section: "archive", href: ARCHIVE, no: "07", label: { en: "All Projects", id: "Semua Proyek" }, hint: { en: `Full portfolio of ${projects.length} projects, search and case studies`, id: `Koleksi lengkap ${projects.length} proyek, pencarian dan studi kasus` } },
+  { section: "templates", href: TEMPLATES, no: "08", label: { en: "Sample Templates", id: "Sample Template" }, hint: { en: "22 live website demos across 8 sectors", id: "22 demo website siap pakai di 8 sektor" } },
 ];
 
 export const CONTACTS = {

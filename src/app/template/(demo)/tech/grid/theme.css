@@ -1,0 +1,43 @@
+.theme-tech-grid {
+  --t-bg: #f6f5f0;
+  --t-fg: #0e0e0c;
+  --t-muted: #66655d;
+  --t-accent: #0f3dff;
+  --t-accent-fg: #ffffff;
+  --t-surface: #ecebe4;
+  --t-line: rgb(14 14 12 / 0.16);
+  --t-display: var(--font-grid-sans);
+  --t-sans: var(--font-grid-sans);
+  --t-mono: var(--font-grid-mono);
+}
+:root:has(.theme-tech-grid) { background: #f6f5f0; }
+
+.theme-tech-grid .font-display { letter-spacing: -0.045em; font-weight: 800; }
+.theme-tech-grid .mono { font-family: var(--t-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Twelve visible columns, one hairline each. */
+.grid-cols-lines {
+  background-image: linear-gradient(to right, rgb(14 14 12 / 0.07) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+  background-position: 0 0;
+}
+.grid-cols-lines-r { border-right: 1px solid rgb(14 14 12 / 0.07); }
+
+/* Dots travel along the flow diagram paths. */
+@keyframes grid-travel { from { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { offset-distance: 100%; opacity: 0; } }
+.grid-dot { offset-rotate: 0deg; animation: grid-travel 3.2s var(--e-studio) infinite; }
+
+@keyframes grid-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.grid-cursor { animation: grid-blink 1s steps(1) infinite; }
+
+@keyframes grid-flash { from { background-color: var(--t-accent); color: #fff; } to { background-color: transparent; } }
+.grid-flash { animation: grid-flash 1.2s var(--e-studio) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-dot, .grid-cursor, .grid-flash { animation: none; }
+  .grid-dot { opacity: 1; offset-distance: 50%; }
+}
+@media (prefers-reduced-motion: reduce) { .grid-dots { display: none; } }
+
+.grid-noscroll { scrollbar-width: none; }
+.grid-noscroll::-webkit-scrollbar { display: none; }

@@ -15,6 +15,17 @@ const SKIP_LOADER = `try{if(localStorage.getItem(${JSON.stringify(INTRO_KEY)})==
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <a
+        href="#home"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-[var(--bg)] focus:font-mono focus:text-xs focus:font-bold focus:rounded-lg focus:shadow-xl"
+      >
+        Skip to content
+      </a>
+      <div aria-hidden="true" className="fixed inset-0 -z-10 bg-[var(--bg)]" />
+      <div
+        aria-hidden="true"
+        className="grain pointer-events-none fixed inset-0 z-[60] opacity-[0.035] mix-blend-overlay"
+      />
       <div className={`v2 ${archivo.variable}`} suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: SKIP_LOADER }} />
         {children}

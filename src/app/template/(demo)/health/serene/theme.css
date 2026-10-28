@@ -1,0 +1,35 @@
+.theme-health-serene {
+  --t-bg: #f6f4ee;
+  --t-fg: #161b17;
+  --t-muted: #5f6a62;
+  --t-accent: #2b5c40;
+  --t-accent-fg: #ffffff;
+  --t-surface: #ece8df;
+  --t-line: rgb(22 27 23 / 0.12);
+  --t-display: var(--font-serene-display);
+  --t-sans: var(--font-serene-sans);
+  --t-mono: ui-monospace, monospace;
+}
+
+:root:has(.theme-health-serene) {
+  background: #f6f4ee;
+}
+
+@keyframes serene-drift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.serene-drift {
+  animation: serene-drift 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serene-drift {
+    animation: none;
+  }
+}

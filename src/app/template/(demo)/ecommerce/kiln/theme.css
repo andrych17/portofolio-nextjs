@@ -1,0 +1,20 @@
+.theme-ecommerce-kiln {
+  --t-bg: #faf6ef;
+  --t-fg: #1e1916;
+  --t-muted: #6c6158;
+  --t-accent: #c44d34;
+  --t-accent-fg: #faf6ef;
+  --t-surface: #f1eae0;
+  --t-line: rgb(30 25 22 / 0.12);
+  --t-display: var(--font-kiln-display);
+  --t-sans: var(--font-kiln-sans);
+  --t-mono: var(--font-kiln-mono);
+}
+
+:root:has(.theme-ecommerce-kiln) {
+  background: #faf6ef;
+}
+
+.theme-ecommerce-kiln .font-display {
+  font-variation-settings: "SOFT" 50, "opsz" 48;
+}

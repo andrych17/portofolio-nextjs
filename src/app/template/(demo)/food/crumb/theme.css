@@ -1,0 +1,37 @@
+.theme-food-crumb {
+  --t-bg: #f7f3ec;
+  --t-fg: #1e1411;
+  --t-muted: #685952;
+  --t-accent: #b85e28;
+  --t-accent-fg: #ffffff;
+  --t-surface: #ede6da;
+  --t-line: rgb(30 20 17 / 0.12);
+  --t-display: var(--font-crumb-display);
+  --t-sans: var(--font-crumb-sans);
+  --t-mono: ui-monospace, monospace;
+}
+
+:root:has(.theme-food-crumb) {
+  background: #f7f3ec;
+}
+
+@keyframes crumb-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+}
+
+.crumb-pulse {
+  animation: crumb-pulse 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crumb-pulse {
+    animation: none;
+  }
+}
