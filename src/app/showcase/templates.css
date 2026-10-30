@@ -18,6 +18,10 @@
   text-rendering: optimizeLegibility;
 }
 
+html:has(.templates-root) {
+  scroll-behavior: auto;
+}
+
 body:has(.templates-root) {
   background: transparent;
 }
