@@ -9,13 +9,12 @@ const display = Big_Shoulders({
 });
 const sans = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   variable: "--font-foundry-sans",
   display: "swap",
 });
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: "400",
   variable: "--font-foundry-mono",
   display: "swap",
   preload: false,

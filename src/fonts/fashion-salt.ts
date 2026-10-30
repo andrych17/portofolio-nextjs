@@ -8,7 +8,6 @@ const display = Young_Serif({
 });
 const sans = Figtree({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-salt-sans",
   display: "swap",
 });

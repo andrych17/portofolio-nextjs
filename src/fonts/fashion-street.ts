@@ -8,13 +8,11 @@ const display = Dela_Gothic_One({
 });
 const sans = Chivo({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
   variable: "--font-street-sans",
   display: "swap",
 });
 const mono = Chivo_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
   variable: "--font-street-mono",
   display: "swap",
   preload: false,

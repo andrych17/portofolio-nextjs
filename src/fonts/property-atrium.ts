@@ -9,13 +9,12 @@ const display = Bricolage_Grotesque({
 });
 const sans = Albert_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   variable: "--font-atrium-sans",
   display: "swap",
 });
 const mono = DM_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: "400",
   variable: "--font-atrium-mono",
   display: "swap",
   preload: false,
